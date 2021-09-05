@@ -1,0 +1,30 @@
+<article class="featured-post">
+  <div class="featured-post__inner">
+    {% for item in collections.featuredPost %}
+      <div class="featured-post__image">
+        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" />
+        <div class="featured-post__image--credit">
+          <a href="{{ item.data.featuredImageCreditUrl }}">{{ item.data.featuredImageCredit }}</a>
+        </div>
+      </div>
+
+      <article class="featured-post__article">
+        <h3 class="feature-post__article--heading">
+          {{ featuredPost.heading }}
+        </h3>
+        <div class="featured-post__article--date">
+          {{ item.date }}
+        </div>
+        <h2 class="featured-post__article--title">
+          <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
+            {{ item.data.title }}
+          </a>
+        </h2>
+        <p class="featured-post__summary">{{ item.data.summary }}</p>
+      </article>
+      <div class="featured-post__cta" aria-label="{{ item.title }}">
+        <a href="{{ item.url }}" class="button">Read the full article</a>
+      </div>
+    {% endfor %}
+  </div>
+</article>

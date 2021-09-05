@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+  {% block content %}
+  <article class="hero">
+    <h1 class="hero__heading">
+      {{ hero.heading }}
+    </h1>
+    <h2 class="hero__subheading">
+      {{ hero.subheading }}
+    </h2>
+    {% include "partials/social.html" %}
+
+    <div class="hero__about-cta">
+      <a href="{{ hero.button.url }}">{{ hero.button.text }}</a>
+    </div>
+  </article>
+  {% include "partials/featured.html" %}
+
+  {% include "partials/about-teaser.html" %}
+{% endblock %}
