@@ -4,8 +4,8 @@
   "description": "A personal blog website built with Eleventy",
   "main": ".eleventy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx eleventy --serve"
+    "start": "npx gulp && concurrently \"npx gulp watch\" \"npx eleventy --serve\"",
+    "production": "NODE_ENV=production npx gulp && NODE_ENV=production npx eleventy"
   },
   "keywords": [],
   "author": "Mario Hernandez",
@@ -13,6 +13,13 @@
   "dependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
-    "moment": "^2.29.1"
+    "concurrently": "^6.2.1",
+    "get-google-fonts": "^1.2.2",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "moment": "^2.29.1",
+    "sass": "^1.39.0"
   }
 }

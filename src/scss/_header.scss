@@ -1,0 +1,13 @@
+.header {
+  margin: 2rem;
+  max-width: 1200px;
+
+  @media all and (min-width: 1200px) {
+    margin: 2rem auto;
+  }
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+}

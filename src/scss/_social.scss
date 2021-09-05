@@ -1,0 +1,18 @@
+.social__items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.social__item {
+  margin: 0 1rem;
+}
+
+.social__item--icon {
+
+  img {
+    height: 32px;
+    width: 32px;
+  }
+}

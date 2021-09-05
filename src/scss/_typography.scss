@@ -1,0 +1,13 @@
+$font-primary: Georgia, serif;
+$font-secondary: 'Playfair Display', serif;
+$font-tertiary: '-apple-system', 'BlinkMacSystemFont', 'avenir next', avenir,
+    'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, 'sans-serif';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-secondary;
+}

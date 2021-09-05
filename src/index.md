@@ -2,8 +2,8 @@
 title: 'Mario Hernandez Personal Blog'
 layout: 'layouts/home.html'
 hero:
-  heading: 'I build websites'
-  subheading: 'write curriculums, train teams and speak a tech conferences'
+  heading: 'I Build Websites'
+  subheading: 'train teams, and speak a tech conferences'
   button: {
     'text': 'More about me',
     'url': '#aboutme'

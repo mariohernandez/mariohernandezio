@@ -1,0 +1,26 @@
+.navigation__items {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+}
+
+.navigation__item {
+  margin: 0 10px;
+  padding: 4px 10px;
+
+  a {
+    text-decoration: none;
+    text-transform: lowercase;
+    color: $color-black;
+    font-size: 2.2rem;
+    font-weight: normal;
+    transition: color 0.3s ease-in-out;
+
+    &[data-state="active"],
+    &:hover {
+      padding-bottom: 2px;
+      color: $color-gray-dark;
+      border-bottom: 4px solid $color-black;
+    }
+  }
+}

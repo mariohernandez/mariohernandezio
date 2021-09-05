@@ -1,21 +1,20 @@
 <a class="[ skip-link ] [ button ]" href="#main-content">Skip to content</a>
 <header role="banner" class="header">
-  <div class="wrapper">
-    <div class="site-head__inner">
-      <a href="/" aria-label="{{ site.name }} - home" class="header__brand">
-        {{ site.name }}
-      </a>
-      <nav class="navigation" aria-label="Primary">
-        <ul class="navigation__items">
-          {% for item in navigation.items %}
-          <li>
-            <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}
-              >{{ item.text }}</a
-            >
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </div>
+  <div class="header__inner">
+    <a href="/" aria-label="{{ site.name }} - home" class="header__logo">
+      Mario
+      <span>Hernandez</span>
+    </a>
+    <nav class="navigation" aria-label="Primary">
+      <ul class="navigation__items">
+        {% for item in navigation.items %}
+        <li class="navigation__item">
+          <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+            {{ item.text }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
   </div>
 </header>

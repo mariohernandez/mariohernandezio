@@ -1,0 +1,22 @@
+.button {
+  display: inline-block;
+  padding: 1rem 1.4rem;
+  border: 2px solid $color-black;
+  color: $color-black;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: $font-tertiary;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 30px auto;
+  letter-spacing: 0.2em;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+
+  &:hover {
+    border-color: $color-black;
+    background: $color-black;
+    color: $color-white;
+  }
+}
