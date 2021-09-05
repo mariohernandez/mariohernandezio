@@ -20,7 +20,7 @@
             {{ item.data.title }}
           </a>
         </h2>
-        <p class="featured-post__summary">{{ item.data.summary }}</p>
+        <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
       </article>
       <div class="featured-post__cta" aria-label="{{ item.title }}">
         <a href="{{ item.url }}" class="button">Read the full article</a>

@@ -11,6 +11,8 @@
   "author": "Mario Hernandez",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^0.12.1"
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-plugin-rss": "^1.1.1",
+    "moment": "^2.29.1"
   }
 }

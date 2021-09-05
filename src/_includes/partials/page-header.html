@@ -1,0 +1,12 @@
+<div class="page-header">
+  <div class="page-header__inner">
+    <h1 class="page-header__title" data-highlight="primary">
+      {{ pageHeaderTitle }}
+    </h1>
+    {% if pageHeaderSummary %}
+    <div class="page-header__summary">
+      {{ pageHeaderSummary | safe }}
+    </div>
+    {% endif %}
+  </div>
+</div>
