@@ -1,12 +1,10 @@
 .featured-post {
   background-color: $color-gray-light;
-  margin-left: -2rem;
-  margin-right: -2rem;
+  margin: 0 -2rem 4rem -2rem;
   padding-top: 12rem;
-  padding-bottom: 8rem;
 
   @media all and (min-width: 1200px) {
-    margin: 0 auto;
+    margin: 0 auto 6rem auto;
   }
 }
 
