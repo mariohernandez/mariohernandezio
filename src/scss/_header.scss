@@ -3,11 +3,16 @@
   max-width: 1200px;
 
   @media all and (min-width: 1200px) {
-    margin: 2rem auto;
+    margin: 3rem auto;
   }
 }
 
 .header__inner {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+
+  @media all and (min-width: 768px) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
 }

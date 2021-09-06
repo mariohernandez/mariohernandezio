@@ -19,4 +19,17 @@
     background: $color-black;
     color: $color-white;
   }
+
+  &.button--skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+
+    // @extends should be used with care, but this is a great example of them being hella useful
+    &:not(:focus) {
+      @include visually-hidden;
+    }
+  }
 }
