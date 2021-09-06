@@ -4,8 +4,12 @@ const w3DateFilter = require('./src/filters/w3-date-filter.js');
 
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = config => {
+  // Enables syntax highlighted for code snippets.
+  config.addPlugin(syntaxHighlight);
+
   // Set directories to pass through to the dist folder
   config.addPassthroughCopy('./src/images/');
 
