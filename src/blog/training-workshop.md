@@ -1,5 +1,4 @@
 ---
-url: "/blog/running-a-training-workshop"
 date: "2018-05-20"
 title: "Running a training workshop"
 tags: ['training']

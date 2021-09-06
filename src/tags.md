@@ -1,6 +1,6 @@
 ---
 title: 'Blog tags'
-layout: 'layouts/feed.html'
+layout: 'layouts/post-list.html'
 pagination:
   data: collections
   size: 1

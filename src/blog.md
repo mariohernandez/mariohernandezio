@@ -1,6 +1,6 @@
 ---
-title: 'Mario Hernandez Personal Blog'
-layout: 'layouts/feed.html'
+title: 'Blog'
+layout: 'layouts/post-list.html'
 pagination:
   data: collections.blog
   size: 5
@@ -10,4 +10,4 @@ paginationNextText: 'Next posts'
 paginationAnchor: '#post-list'
 ---
 
-These are Mario Hernandez' blog post.
+Read the latest blog post by Mario Hernandez.

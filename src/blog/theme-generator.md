@@ -1,5 +1,4 @@
 ---
-url: "/blog/mediacurrent-theme-generator"
 date: "2020-03-30"
 title: "Building a Drupal 8 Theme with Mediacurrent's Theme Generator"
 tags: ['drupal', 'drupal 8 theme', 'pattern lab',]

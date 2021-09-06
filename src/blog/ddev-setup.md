@@ -1,5 +1,4 @@
 ---
-url: "/blog/building-an-automated-ddev-based-drupal-environment"
 date: "2020-06-29"
 title: "Building an automated DDEV-based Drupal environment"
 tags: ['drupal', 'ddev', 'training']

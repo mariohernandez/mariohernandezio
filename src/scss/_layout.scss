@@ -1,0 +1,17 @@
+.main-content {
+  margin: 0 20px;
+
+  @media all and (min-width: 1200px) {
+    margin: 0 auto;
+  }
+}
+
+// Post listing
+.post-list {
+  margin: 0;
+  max-width: 960px;
+
+  @media all and (min-width: 768px) {
+    margin: 0 auto;
+  }
+}

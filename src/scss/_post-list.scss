@@ -1,0 +1,26 @@
+.post-list__items:nth-type(odd) {
+  background-color: $color-gray-light;
+}
+
+.post-list__item {
+  border-bottom: 2px solid $color-gray-light;
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.post-list__item--title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.post-list__item-date {
+  @include eyebrow;
+}

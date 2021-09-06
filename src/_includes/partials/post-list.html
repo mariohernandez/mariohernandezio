@@ -1,18 +1,20 @@
-<div class="post-list" id="post-list">
+<div class="post-list__wrapper" id="post-list">
   <div class="post-list__inner">
     {% if postListHeadline %}
     <h2 class="post-list__heading" data-highlight="primary">
       {{ postListHeadline }}
     </h2>
     {% endif %}
-    <div>
-      <ol class="post-list__items">
+      <dl class="post-list__items">
         {% for item in postListItems %}
-        <li class="post-list__item">
-          <a href="{{ item.url }}" class="post-list__link">{{ item.data.title }}</a>
-        </li>
+          <div class="post-list__item">
+            <dt class="post-list__item--title">
+              <a href="{{ item.url }}" class="post-list__link">{{ item.data.title }}</a>
+            </dt>
+            <dd class="post-list__item-date">{{ item.date | dateFilter }}</dd>
+            <dd>{{ item.data.summary | safe }}</dd>
+          </div>
         {% endfor %}
-      </ol>
-    </div>
+      </dl>
   </div>
 </div>

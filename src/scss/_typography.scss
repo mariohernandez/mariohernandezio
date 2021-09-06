@@ -11,3 +11,15 @@ h5,
 h6 {
   font-family: $font-secondary;
 }
+
+.page-header__title {
+  font-size: 4rem;
+
+  @media all and (min-width: 1200px) {
+    font-size: 8rem;
+  }
+}
+
+.page-header__summary {
+  margin-bottom: 4rem;
+}
