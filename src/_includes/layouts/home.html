@@ -1,4 +1,7 @@
 {% extends "layouts/base.html" %}
+{# Grab random blog post for the 'more from the blog' feed #}
+{% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
+
   {% block content %}
   <article class="hero">
     <h1 class="hero__heading">
@@ -16,4 +19,13 @@
   {% include "partials/featured.html" %}
 
   {% include "partials/about-teaser.html" %}
+
+  {% if recommendedPosts %}
+    <footer class="recommended-posts">
+      {% set postListItems = recommendedPosts %}
+      {% set postListHeadline = 'Recommended blog posts' %}
+      {% include "partials/post-list.html" %}
+    </footer>
+  {% endif %}
+
 {% endblock %}

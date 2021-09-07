@@ -1,0 +1,119 @@
+.blog-post__full {
+  margin: 4rem 2rem;
+  max-width: 960px;
+
+  @media all and (min-width: 1200px) {
+    margin: 6rem auto;
+  }
+
+  .page-header__summary {
+    margin-bottom: 0.5rem
+  }
+
+  .page-header__title {
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+}
+
+.blog-post__date {
+  @include eyebrow;
+  margin-bottom: 4rem;
+}
+
+.blog-post__tags--wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.blog-post__tags {
+  display: flex;
+  margin-left: 2rem;
+
+  li {
+    margin-right: 1rem;
+  }
+
+  a {
+    padding: 6px 10px;
+    display: block;
+    background: $color-gray-light;
+    text-decoration: none;
+    font-family: $font-tertiary;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $color-black;
+      color: $color-white;
+    }
+  }
+}
+
+.blog-post__content--image {
+  margin-bottom: 2rem;
+
+  @media all and (min-width: 1200px) {
+    margin-bottom: 4rem;
+  }
+}
+
+.blog-post__content--body {
+
+  // Adds dropcap on full blog post.
+  > p:first-child:first-letter {
+    color: $color-black;
+    float: left;
+    font-family: $font-secondary;
+    font-size: 7.5rem;
+    line-height: 6rem;
+    padding-top: 0.4rem;
+    padding-right: 0.8rem;
+    padding-left: 0;
+  }
+
+  h2,
+  h3 {
+    margin-top: 2rem;
+  }
+}
+
+// Recommended post list.
+.recommended-posts {
+  background-color: $color-gray-light;
+  margin-top: 4rem;
+  padding: 2rem;
+
+  .post-list__heading {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $color-gray-mid;
+  }
+
+  .post-list__title {
+    font-size: 2.2rem;
+  }
+
+  .post-list__item--title {
+    margin-bottom: 0;
+  }
+
+  .post-list__item {
+    margin-bottom: 1rem;
+    padding-bottom: 0;
+  }
+
+  .post-list__teaser {
+    display: none;
+  }
+
+  .post-list__item-date {
+
+    &::after {
+      display: none;
+    }
+  }
+}

@@ -9,5 +9,3 @@ paginationPrevText: 'Previous posts'
 paginationNextText: 'Next posts'
 paginationAnchor: '#post-list'
 ---
-
-Read the latest blog post by Mario Hernandez.

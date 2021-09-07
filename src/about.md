@@ -1,9 +1,11 @@
 ---
-title: 'Mario Hernandez Personal Blog'
+title: 'About'
 layout: 'layouts/about.html'
 permalink: '/about/index.html'
+about:
+  headshot: '/images/headshot.jpg'
 ---
 
-Wanna see our foosball table? Nah, only kidding. We’re a made-up
-agency being used as an example for the Piccalilli course,
-[Learn Eleventy From Scratch](https://piccalil.li/course/learn-eleventy-from-scratch/).
+Thank you for visiting my blog.  I hope you find its content engaging and most of all, helpful.
+
+I am a passionate Front-end developer with over 15 years of experience.  I specialize on building [Drupal](https://drupal.org) websites and leading teams to build great user experiences. Another of my passions is training teams of all sizes on all things Front-end and Drupal.  I travel across the country to speak and run workshops at various Open Source events such as Drupal Cons, Drupal Camps and others.

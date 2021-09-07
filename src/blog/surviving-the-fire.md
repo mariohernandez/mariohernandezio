@@ -16,7 +16,7 @@ We first heard about <a href="https://losangeles.cbslocal.com/tag/woolsey-fire/"
 
 We went to bed without a single concern.  At 3:30 am. the morning of Friday November 9th, we woke up to loud screams and knocks on our door by the Fire Department.  As I opened the door still half asleep, they told me we had 15 min minutes to get out and to head to the nearest shelter in place.  They had to repeat this information about 3 times as I was still in disbelief and completely confused.  As I looked out our door, this was the image I saw:
 
-<img src="fire-before.jpg" alt="Image of hill burning">
+<img src="/images/fire-before.jpg" alt="Image of hill burning">
 
 You probably can't tell from the picture but that fire is only feets away from our house.  That is the same hills I hike on and now they are completely burned.
 
@@ -29,7 +29,7 @@ As we leave the shelter in place at around 5:30 am., my wife asked me to drive b
 
 The fire stopped short of our place and we could not be more fortunate.  I was relieved and felt like we had made it through the worst when we saw our place still standing.
 
-<img src="fire-after.jpg" alt="Burned hill">
+<img src="/images/fire-after.jpg" alt="Burned hill">
 
 ## Then it gets better
 While at the shelter in place, I notified several people at my job, <a href="https://www.mediacurrent.com/who-we-are/team/" target="_blank">Mediacurrent.com</a>, that I was being evacuated and would not be able to work that day.  The response from everyone was unbelievable.  Mediacurrent's partner Paul Chason responded within seconds of my email to let me know that they were behind us and to let him know of anything we needed.  This was the same message I received from many colleagues and friends.  I have always felt fortunate to be part of a great team like Mediacurrent's, but they go above and beyond to support their employees.  This is not the first time they have shown me this kind of support.  The first time was when my wife was diagnosed with Chronic Kidney disease and Mediacurrent's response was unbelievable.

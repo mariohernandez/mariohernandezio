@@ -9,10 +9,12 @@
         {% for item in postListItems %}
           <div class="post-list__item">
             <dt class="post-list__item--title">
-              <a href="{{ item.url }}" class="post-list__link">{{ item.data.title }}</a>
+              <h3 class="post-list__title">
+                <a href="{{ item.url }}" class="post-list__link">{{ item.data.title }}</a>
+              </h3>
             </dt>
             <dd class="post-list__item-date">{{ item.date | dateFilter }}</dd>
-            <dd>{{ item.data.summary | safe }}</dd>
+            <dd class="post-list__teaser">{{ item.data.summary | safe }}</dd>
           </div>
         {% endfor %}
       </dl>
