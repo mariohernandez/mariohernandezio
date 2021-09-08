@@ -1,7 +1,7 @@
 ---
 date: '2021-09-04'
 title: 'Five principles for building better components'
-tags: ['Patterns', 'Components']
+tags: ['patterns', 'components']
 featured: false
 featuredImage: '/images/wireframes.jpg'
 featuredImageAlt: 'Hand drawing website wireframes'

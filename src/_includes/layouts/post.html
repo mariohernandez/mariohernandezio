@@ -10,17 +10,53 @@
 {% set pageHeaderSummary %}
   <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
   {% if tags %}
-    <div class="blog-post__tags--wrapper">
-      <p id="tags-desc">Tags:</p>
-      <ul class="blog-post__tags" aria-describedby="tags-desc">
-        {% for tag in tags %}
-          <li>
-            <a href="/tag/{{ tag | slug }}/">{{ tag | title | replace(' ', '') }}</a>
-          </li>
-        {% endfor %}
+    <div class="tags-and-social-share">
+      <div class="blog-post__tags--wrapper">
+        <div class="tags-icon" id="tags-desc">
+          <span class="visually-hidden">Tags for this post</span>
+          <span aria-hidden="true">
+            {% include 'partials/tag.svg' %}
+          </span>
+        </div>
+        <ul class="blog-post__tags" aria-describedby="tags-desc">
+          {% for tag in tags %}
+            <li>
+              <a href="/tag/{{ tag | slug }}/">{{ tag | title | replace(' ', '') }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+      <ul class="blog-post__social-share">
+        <li class="social-share__label">
+          Share this post
+        </li>
+        <li>
+          <a href="https://twitter.com/intent/tweet?text={{ tweet | urlencode }}+{{ title | urlencode }}&url=https://mariohernandez.io{{ page.url }}&hashtags={{ hashtags }}" target="_blank" rel="”noopener" noreferrer”>
+            <span class="visually-hidden">Share on Twitter</span>
+            <span aria-hidden="true">
+              {% include 'partials/twitter.svg' %}
+            </span>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmariohernandez.io{{ page.url }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" rel="”noopener" noreferrer”>
+            <span class="visually-hidden">Share on Facebook</span>
+            <span aria-hidden="true">
+              {% include 'partials/facebook.svg' %}
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://mariohernandez.io{{ page.url }}" target="_blank" rel=""noopener" noreferrer">
+            <span class="visually-hidden">Share on LinkedIn</span>
+            <span aria-hidden="true">
+              {% include 'partials/linkedin.svg' %}
+            </span>
+          </a>
+        </li>
       </ul>
-    </div>
-  {% endif %}
+    </div> <!-- This is the closing for 'tags-and-social-share' div. -->
 {% endset %}
 
 {% block content %}

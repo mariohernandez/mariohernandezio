@@ -26,7 +26,14 @@
   display: flex;
 }
 
+// Tags and social share links.
+.tags-and-social-share {
+  display: flex;
+  justify-content: space-between;
+}
+
 .blog-post__tags {
+  align-items: center;
   display: flex;
   margin-left: 2rem;
 
@@ -35,7 +42,6 @@
   }
 
   a {
-    padding: 6px 10px;
     display: block;
     background: $color-gray-light;
     text-decoration: none;
@@ -43,15 +49,32 @@
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    text-decoration: underline;
+    text-transform: lowercase;
     white-space: nowrap;
 
     &:hover {
-      background-color: $color-black;
-      color: $color-white;
+      text-decoration: none;
     }
   }
+}
+
+.tags-icon {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  margin-right: 10px;
+
+  svg {
+    display: block;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.blog-post__social-share {
+  align-items: center;
+  display: flex;
 }
 
 .blog-post__content--image {

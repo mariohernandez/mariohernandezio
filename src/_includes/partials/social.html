@@ -6,7 +6,7 @@
         {{ item.title }}
       </span>
       <span class="social__item--icon">
-        <img aria-hidden="true" src="/images/{{ item.icon }}.svg" alt="Social media icon" />
+        {% include 'partials/' + item.icon + '.svg' %}
       </span>
       </a>
     </li>
