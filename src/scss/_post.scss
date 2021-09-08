@@ -46,7 +46,7 @@
     background: $color-gray-light;
     text-decoration: none;
     font-family: $font-tertiary;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     line-height: 1;
     text-decoration: underline;
@@ -59,22 +59,37 @@
   }
 }
 
-.tags-icon {
-  display: inline-block;
-  height: 32px;
-  width: 32px;
+.tag-icon__tag {
+  align-items: center;
+  display: flex;
   margin-right: 10px;
-
-  svg {
-    display: block;
-    height: 32px;
-    width: 32px;
-  }
 }
 
 .blog-post__social-share {
   align-items: center;
   display: flex;
+
+  li {
+    margin: 0 0 0 5px;
+
+    a {
+      display: block;
+      padding: 1rem;
+    }
+  }
+}
+
+.social-share__icon {
+  align-items: center;
+  display: flex;
+}
+
+.social-share__label {
+  font-family: $font-tertiary;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 2rem;
+  text-transform: uppercase;
 }
 
 .blog-post__content--image {
