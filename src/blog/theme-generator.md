@@ -1,6 +1,6 @@
 ---
 date: "2020-03-30"
-title: "Building a Drupal 8 Theme with Mediacurrent's Theme Generator"
+title: "Building a Drupal 8 Theme with Mediacurrent Theme Generator"
 tags: ['drupal', 'drupal 8 theme', 'pattern lab',]
 featured: false
 featuredImage: "/images/scaffold.jpg"
