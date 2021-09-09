@@ -1,5 +1,5 @@
 .blog-post__full {
-  margin: 4rem 2rem;
+  margin: 4rem 0;
   max-width: 960px;
 
   @media all and (min-width: 1200px) {
@@ -24,12 +24,24 @@
 .blog-post__tags--wrapper {
   align-items: center;
   display: flex;
+  margin-bottom: 3rem;
+
+  @media all and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 }
 
 // Tags and social share links.
 .tags-and-social-share {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  @media all and (min-width: 768px) {
+    align-items: unset;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .blog-post__tags {
