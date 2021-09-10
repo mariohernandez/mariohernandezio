@@ -21,6 +21,7 @@ module.exports = config => {
   config.addFilter('w3DateFilter', w3DateFilter);
 
   const sortByDisplayOrder = require('./src/utils/sort.js');
+
   // Returns blog items, sorted by display order
   config.addCollection('blog', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md'));
