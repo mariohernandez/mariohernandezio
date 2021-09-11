@@ -3,13 +3,12 @@ path: "/blog/adding-social-share-links-to-gatsby"
 date: "2018-09-10"
 title: "Adding Social Share Links to Gatsby"
 tags: ['gatsby', 'social share']
-draft: false
 featured: false
 featuredImage: "/images/beach.jpg"
 featuredImageAlt: "Beach waves coming to shore"
 featuredCredit: "Unsplash.com"
 featuredCreditUrl: "https://unsplash.com/"
-excerpt: "Don't know about you but one of the first things I look for after reading a great article online is how to share it with others."
+summary: "Don't know about you but one of the first things I look for after reading a great article online is how to share it with others."
 ---
 <blockquote>Sharing is caring.</blockquote>
 
@@ -47,7 +46,6 @@ You may think, that's so easy, just modify each of the links with my personal in
 
 2. Add the following code where you wish to display the sharing links to generate a twitter share link:
 ```javascript
-{% raw %}
 <Share>
     <ShareLink
       href={`https://twitter.com/intent/tweet/?text=${post.frontmatter.title}
@@ -56,7 +54,6 @@ You may think, that's so easy, just modify each of the links with my personal in
       <LinkLabel>Share on Twitter</LinkLabel>
     </ShareLink>
 </Share>
-{% endraw %}
 ```
 
 The example above creates a twitter share link and uses the data variables I am already using to print the blog post content.  As you know, Gatsby uses GraphQL to query the posts and by doing this you have access to each of the fields in your post (i.e. title, path, tags, date, etc.).
@@ -73,7 +70,6 @@ You may have noticed that I created the sharing snippet directly in the blog-pos
 
 Here's the full snippet for all the social channels I am using:
 ```javascript
-{% raw %}
 <Share>
   <ShareLabel>Share this post</ShareLabel>
   <ShareSocial>
@@ -158,7 +154,6 @@ Here's the full snippet for all the social channels I am using:
     </ShareItem>
   </ShareSocial>
 </Share>
-{% endraw %}
 ```
 
 ---

@@ -2,7 +2,6 @@
 date: "2018-07-21"
 title: "Flexible Headings with Twig"
 tags: ['components', 'twig']
-draft: false
 featured: false
 featuredImage: "/images/flexible-headings-hero.jpg"
 featuredImageAlt: "Stacked rocks"

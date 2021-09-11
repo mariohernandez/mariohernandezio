@@ -1,5 +1,4 @@
 ---
-path: "/blog/styling-forms-elements"
 date: "2020-12-13"
 title: "Styling Forms Elements"
 tags: ['css', 'forms']

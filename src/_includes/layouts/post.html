@@ -27,35 +27,7 @@
         </ul>
       </div>
     {% endif %}
-      <ul class="blog-post__social-share">
-        <li class="social-share__label">
-          Share this post
-        </li>
-        <li>
-          <a title="Tweet it" href="https://twitter.com/intent/tweet?text={{ tweet | urlencode }}+{{ title | urlencode }}&url=https://mariohernandez.io{{ page.url }}&hashtags={{ hashtags }}" target="_blank" rel="”noopener" noreferrer”>
-            <span class="visually-hidden">Share on Twitter</span>
-            <span class="social-share__icon" aria-hidden="true">
-              {% include 'partials/twitter.svg' %}
-            </span>
-          </a>
-        </li>
-        <li>
-          <a title="Post on Facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmariohernandez.io{{ page.url }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" rel="”noopener" noreferrer”>
-            <span class="visually-hidden">Share on Facebook</span>
-            <span class="social-share__icon" aria-hidden="true">
-              {% include 'partials/facebook.svg' %}
-            </span>
-          </a>
-        </li>
-        <li>
-          <a title="Share it on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://mariohernandez.io{{ page.url }}" target="_blank" rel=""noopener" noreferrer">
-            <span class="visually-hidden">Share on LinkedIn</span>
-            <span class="social-share__icon" aria-hidden="true">
-              {% include 'partials/linkedin.svg' %}
-            </span>
-          </a>
-        </li>
-      </ul>
+      {% include 'partials/social-share.html' %}
     </div> <!-- This is the closing for 'tags-and-social-share' div. -->
 {% endset %}
 
