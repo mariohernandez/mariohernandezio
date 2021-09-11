@@ -6,9 +6,21 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
+// Transforms
+const htmlMinTransform = require('./src/transforms/html-min-transform.js');
+
+// Create a helpful production flag
+const isProduction = process.env.NODE_ENV === 'production';
+
+
 module.exports = config => {
   // Enables syntax highlighted for code snippets.
   config.addPlugin(syntaxHighlight);
+
+  // Only minify HTML if we are in production because it slows builds _right_ down
+  if (isProduction) {
+    config.addTransform('htmlmin', htmlMinTransform);
+  }
 
   // Plugins
   config.addPlugin(rssPlugin);
