@@ -1,7 +1,7 @@
 ---
 date: "2020-03-30"
-title: "Building a Drupal 8 Theme with Mediacurrent Theme Generator"
-tags: ['drupal', 'drupal 8 theme', 'pattern lab',]
+title: "Building a Drupal Theme with the Theme Generator"
+tags: ['drupal', 'drupal theme']
 featured: false
 featuredImage: "/images/scaffold.jpg"
 featuredImageAlt: "Construction building with dust covers"
@@ -15,8 +15,6 @@ On one of my last training workshops I took a chance and decided to let students
 Although I was able to help everyone get ready for training, and no big issues were encountered during training, I learned that perhpas having a preconfigured training environment is the best way to go.  Having done this in the past I found that a preconfigured environment not only provides a consistent experience for everyone but it makes things more predictable for everyone.
 
 I'm going to show you the latest setup I am using when training people.  This is a new setup I put together using DDev with a host of other tools including Drupal
-
-
 
 ***
 

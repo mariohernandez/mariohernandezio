@@ -1,14 +1,15 @@
 ---
-url: "/blog/adding-social-share-links-to-gatsby"
+path: "/blog/adding-social-share-links-to-gatsby"
 date: "2018-09-10"
 title: "Adding Social Share Links to Gatsby"
-tags: ''
+tags: ['gatsby', 'social share']
+draft: false
 featured: false
 featuredImage: "/images/beach.jpg"
 featuredImageAlt: "Beach waves coming to shore"
-featuredImageCredit: "Unsplash.com"
-featuredImageCreditUrl: "https://unsplash.com/"
-summary: "Don't know about you but one of the first things I look for after reading a great article online is how to share it with others."
+featuredCredit: "Unsplash.com"
+featuredCreditUrl: "https://unsplash.com/"
+excerpt: "Don't know about you but one of the first things I look for after reading a great article online is how to share it with others."
 ---
 <blockquote>Sharing is caring.</blockquote>
 
@@ -46,19 +47,21 @@ You may think, that's so easy, just modify each of the links with my personal in
 
 2. Add the following code where you wish to display the sharing links to generate a twitter share link:
 ```javascript
+{% raw %}
 <Share>
     <ShareLink
       href={`https://twitter.com/intent/tweet/?text=${post.frontmatter.title}
-      &url=https://mariohernandez.io${post.frontmatter.url}%2F&via=imariohernandez`}>
+      &url=https://mariohernandez.io${post.frontmatter.path}%2F&via=imariohernandez`}>
       // Optional icon
       <LinkLabel>Share on Twitter</LinkLabel>
     </ShareLink>
 </Share>
+{% endraw %}
 ```
 
-The example above creates a twitter share link and uses the data variables I am already using to print the blog post content.  As you know, Gatsby uses GraphQL to query the posts and by doing this you have access to each of the fields in your post (i.e. title, url, tags, date, etc.).
+The example above creates a twitter share link and uses the data variables I am already using to print the blog post content.  As you know, Gatsby uses GraphQL to query the posts and by doing this you have access to each of the fields in your post (i.e. title, path, tags, date, etc.).
 
-In the example above, I am passing `${post.frontmatter.title}` so when the post is shared the title of the post is included as your tweet text.  In addition, I am linking to the current post by passing `${post.frontmatter.url}`.  Finally I am passing my twitter handle.
+In the example above, I am passing `${post.frontmatter.title}` so when the post is shared the title of the post is included as your tweet text.  In addition, I am linking to the current post by passing `${post.frontmatter.path}`.  Finally I am passing my twitter handle.
 
 There are other parameters  you can pass to your share links.  Things like hashtags, mentions, and more.  Following the same pattern you can do the same for Facebook, LinkedIn and others.
 
@@ -70,6 +73,7 @@ You may have noticed that I created the sharing snippet directly in the blog-pos
 
 Here's the full snippet for all the social channels I am using:
 ```javascript
+{% raw %}
 <Share>
   <ShareLabel>Share this post</ShareLabel>
   <ShareSocial>
@@ -77,7 +81,7 @@ Here's the full snippet for all the social channels I am using:
       <ShareLink
         href={`https://twitter.com/intent/tweet/?text=${
           post.frontmatter.title
-        }&url=https://mariohernandez.io${post.frontmatter.url}%2F&via=imariohernandez`}
+        }&url=https://mariohernandez.io${post.frontmatter.path}%2F&via=imariohernandez`}
       >
         <span>
           <svg
@@ -92,7 +96,7 @@ Here's the full snippet for all the social channels I am using:
             stroke-linejoin="round"
             class="icon icon-twitter"
           >
-            <url d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
           </svg>
         </span>
         <LinkLabel>Share on Twitter</LinkLabel>
@@ -101,7 +105,7 @@ Here's the full snippet for all the social channels I am using:
     <ShareItem>
       <ShareLink
         href={`https://www.facebook.com/sharer/sharer.php?u=https://mariohernandez.io${
-          post.frontmatter.url
+          post.frontmatter.path
         }`}
         target="_blank"
       >
@@ -118,7 +122,7 @@ Here's the full snippet for all the social channels I am using:
             stroke-linejoin="round"
             class="icon icon-facebook"
           >
-            <url d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
           </svg>
         </span>
         <LinkLabel>Share on Facebook</LinkLabel>
@@ -127,7 +131,7 @@ Here's the full snippet for all the social channels I am using:
     <ShareItem>
       <ShareLink
         href={`https://www.linkedin.com/shareArticle?mini=true&url=https://mariohernandez.io${
-          post.frontmatter.url
+          post.frontmatter.path
         }&title=${post.frontmatter.title}&source=${post.frontmatter.title}`}
         target="_blank"
       >
@@ -144,7 +148,7 @@ Here's the full snippet for all the social channels I am using:
             stroke-linejoin="round"
             class="icon icon-linkedin"
           >
-            <url d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
             <rect x="2" y="9" width="4" height="12" />
             <circle cx="4" cy="4" r="2" />
           </svg>
@@ -154,6 +158,7 @@ Here's the full snippet for all the social channels I am using:
     </ShareItem>
   </ShareSocial>
 </Share>
+{% endraw %}
 ```
 
 ---

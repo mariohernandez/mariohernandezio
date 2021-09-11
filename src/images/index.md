@@ -3,12 +3,13 @@ path: "/blog/styling-forms-elements"
 date: "2020-12-13"
 title: "Styling Forms Elements"
 tags: ['css', 'forms']
+draft: false
 featured: false
-featuredImage: "/images/frames.jpg"
+featuredImage: "./frames.jpg"
 featuredImageAlt: "Four black wall arts on brown wall"
-featuredImageCredit: "Leonardo Yip"
-featuredImageCreditUrl: "https://unsplash.com/@yipleonardo"
-summary: "Styling web forms is not the most exciting thing when working on a project but they are essensial to most websites and is important to give them the attention they deserve."
+photoCredit: "Leonardo Yip"
+photoCreditUrl: "https://unsplash.com/@yipleonardo"
+excerpt: "Styling web forms is not the most exciting thing when working on a project but they are essensial to most websites and is important to give them the attention they deserve."
 ---
 Whether you are a veteran or just getting started with web development, working with web forms is not the sexiest thing but there is no avoiding them.  Forms on a website are critical to the website's mission and the visitors using them.  In this post I am going to show you how to properly style webforms and form elements so you can ensure they are consistent with your brand and provide a pleasant user experience.
 

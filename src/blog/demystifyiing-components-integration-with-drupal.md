@@ -39,6 +39,19 @@ In the Card display view mode of an Article content type, ensure Body and Image 
 
 Just like in Evan’s post, we still need to associate a Node template with our Card.  For this we will use the same template suggestion as Evan, `node--card.html.twig`.  This is a summarized version of the integration code, see a full template at the end of this post.
 
+```php
+{% raw %}
+{% include '@molecules/card/card.twig' with {
+    'image': content.field_image,
+    'date': date,
+    'title': label,
+    'body': content.body,
+    'link_url': url,
+    'link_text': "Read the article",
+  } only
+%}
+{% endraw %}
+```
 
 ## Displaying a list of cards with Views
 
@@ -57,7 +70,7 @@ A few things about the view:
 
 With some minor CSS the articles would look like this:
 
-<img style="display:inline" src="./latestarticles.png" alt="List of latest articles shown as cards" />
+<img style="display:inline" src="/images/latestarticles.png" alt="List of latest articles shown as cards" />
 
 ### In closing
 

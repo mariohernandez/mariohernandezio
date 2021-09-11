@@ -118,8 +118,8 @@ Composer template</a>.
 
 1. Update `settings.php` to include `settings.local.php`.
     ```php
-    if (file_exists($app_root . '/' . $site_url . '/settings.local.php')) {
-      include $app_root . '/' . $site_url . '/settings.local.php';
+    if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+      include $app_root . '/' . $site_path . '/settings.local.php';
     }
     ```
     * I'd suggest adding the above code right after the `settings.ddev.php` include already in settings.php.  This will allow us to override configuration found in settings.ddev.php.
@@ -271,7 +271,7 @@ Now let's write the script to import the database we are using in the hook above
 # Use a table that should exist in your database.
 if ! mysql -e 'SELECT * FROM node__field_hero;' db 2>/dev/null; then
   echo 'Importing the database'
-  # Provide url to custom database.
+  # Provide path to custom database.
   gzip -dc /var/www/html/db/drupaltraining.sql.gz | mysql db
 fi
 ```
@@ -343,7 +343,7 @@ id
 ```bash
 /System/Volumes/Data/Users/xxxx/Sites/Docker -alldirs -mapall=502:20 localhost
 ```
-* Replace `xxxx` with your username. The full url shown above is required if you are using macOS Catalina.
+* Replace `xxxx` with your username. The full path shown above is required if you are using macOS Catalina.
 * Replace `Sites/Docker` (This is my personal project's directory), with the directory name where your DDEV projects are created.  Most people would mount the entire user's home directory, but I think only mounting the directory where your projects live is good enough (`/Sites/Docker/`).
 * Replace `502` and `20` with the values you got when you ran the `id` command above.
 
