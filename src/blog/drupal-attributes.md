@@ -18,7 +18,7 @@ Since the attributes variable can include class, id, and data attributes in one 
 
 ```php
 {% raw %}
-<article class="card {{ attributes ? attributes.class }}"
+<article class="card{{ attributes ? ' ' ~ attributes.class }}"
   {{ attributes ? attributes|without(class) }}>
   {{ title_prefix }}
   {{ title_suffix }}
@@ -66,7 +66,7 @@ Now if we integrate our card component with Drupal (i.e. `node--card.html.twig`)
     title_prefix: title_prefix,
     title_suffix: title_suffix,
     heading: heading,
-    image: content.field_image|render|trim is not empty ? content.field_image,
+    image: content.field_image is not empty ? content.field_image,
   } only
 %}
 {% endraw %}

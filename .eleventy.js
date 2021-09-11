@@ -10,9 +10,6 @@ module.exports = config => {
   // Enables syntax highlighted for code snippets.
   config.addPlugin(syntaxHighlight);
 
-  // Set directories to pass through to the dist folder
-  config.addPassthroughCopy('./src/images/');
-
   // Plugins
   config.addPlugin(rssPlugin);
 
