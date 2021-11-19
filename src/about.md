@@ -8,4 +8,4 @@ about:
 
 Thank you for visiting my blog.  I hope you find its content engaging and most of all, helpful.
 
-I am a passionate Front-end developer with over 15 years of experience.  I specialize on building [Drupal](https://drupal.org) websites and leading teams to build great user experiences. Another of my passions is training teams of all sizes on all things Front-end and Drupal.  I travel across the country to speak and run workshops at various Open Source events such as Drupal Cons, Drupal Camps and others.
+I am a passionate Sr. Software Engineer with over 15 years of experience.  I specialize on building [Drupal](https://drupal.org) websites and leading teams to build great user experiences. Another of my passions is training teams of all sizes on all things Front-end and Drupal.  I travel across the country to speak and run workshops at various Open Source events such as Drupal Cons, Drupal Camps and others.
