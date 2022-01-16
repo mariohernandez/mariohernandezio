@@ -37,7 +37,7 @@ In the Card display view mode of an Article content type, ensure Body and Image 
 
 ## Integrating the Card component within a Node template
 
-Just like in Evan’s post, we still need to associate a Node template with our Card.  For this we will use the same template suggestion as Evan, `node--card.html.twig`.  This is a summarized version of the integration code, see a full template at the end of this post.
+Just like in Evan’s post, we still need to associate a Node template with our Card.  For this we will use the same template suggestion as Evan, `node--card.html.twig`.
 
 ```php
 {% raw %}
