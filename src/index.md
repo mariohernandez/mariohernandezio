@@ -3,7 +3,7 @@ title: 'Mario Hernandez Personal Blog'
 layout: 'layouts/home.html'
 hero:
   heading: 'I build Websites'
-  subheading: 'train teams, and speak a tech conferences'
+  subheading: 'and speak at tech conferences'
   button: {
     'text': 'More about me',
     'url': '#aboutme'
