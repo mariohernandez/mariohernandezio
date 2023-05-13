@@ -34,27 +34,14 @@
       {% endfor %}
     {% endif %}
 
-    <link rel="stylesheet" media="print" href="css/styles.css?{{ assetHash }}" onload="this.media='all'" />
+    <link rel="stylesheet" media="print" href="/css/styles.css?{{ assetHash }}" onload="this.media='all'" />
 
     {# Add facility for pages to declare an array of stylesheet paths #}
     {% if pageStylesheets %}
       {% for item in pageStylesheets %}
-        <link rel="stylesheet" media="print" href="{{ item }}?{{ assetHash }}" onload="this.media='all'" />
+        <link rel="stylesheet" media="screen" href="{{ item }}?{{ assetHash }}" onload="this.media='all'" />
       {% endfor %}
     {% endif %}
-
-    <!-- Google Analytics -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-STMRK0N7TY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-STMRK0N7TY');
-</script>
-
-    <!-- End Google Analytics -->
 
   </head>
   <body>
