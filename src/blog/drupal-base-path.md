@@ -20,52 +20,36 @@ My goal with this task was to dynamically point to the image regardless the site
 
 I started by doing research to determine the best way possible to achieve this.  I read about using a pre-process function that would generate a dynamic base path of the site but I was hoping I could keep things simple and do everything on the front-end with only Twig. This would make it a more appealing approach for front-end developers.
 
-After some research, I came across two little gems that became game-chargers for my project.  One of these gems is the `{{ url('<front>') }}` Twig function.  This will provide the current site's homepage/base path. The other very handy Twig function is `{{ active_theme_path() }}` which prints the path of the current active theme (`themes/custom/my_theme`). While researching for this task, I also found you can use the `{{ directory }} Twig variable in your theme's templates to print the current theme's path.  Very nice.
-Armed with these two little functions, and one Twig variable, we can now work in generating a dynamic path to our theme's directory where the static image for our component is located.  So this may seem like a simple thing but remember, our component's image should work regardless which site the component is used on.
+After some research, I came across two little gems that became game-chargers for my project.  One of these gems is the `{{ url('<front>') }}` Twig function.  This will provide the current site's homepage/base path. The other very handy Twig function is `{{ active_theme_path() }}` which prints the path of the current active theme (`themes/custom/my_theme`). While researching for this task, I also found you can use the `{{ directory }}` Twig variable in your theme's templates to print the active theme's path.  A word of coution when using either the `{{ active_theme_path() }}` function of the `{{ directory }}` variable as these could have different results depending on your whether you are using them in a base or sub theme.  Here's a [drupal.org issue](https://www.drupal.org/project/drupal/issues/3049414) that discusses this in more detail.
+Armed with these two little functions, and one Twig variable, we can now work in generating a dynamic path to our theme's directory where the static image for our component is located.  So this may seem like a simple thing but remember, our component's image should work regardless of the site the component is used on within our multi-site architecture.  Some sites even use a different sub-theme but the parent theme is always the same which is where our image is stored.
 
 ## Building the dynamic path
 
-Before we can use the first functions we need to run it through the `|render` Twig filter.  Doing this will allow us to get the value of the function (the site's base path).  Let's take a look:
+Before we can use the first function we need to run it through the `|render` Twig filter.  Since Twig will return an array from the `url()` function, we need to convert it to a string because we need the value of the function. Let's take a look:
 
 ```php
 {{ url('<front>')|render }} # This will give us http://my-site.com/
 ```
 
-Next let's work with the theme path function. Similarly to the function above, we will use the `|render` Twig filter to TODO: RESEARCH HOW TO EXPLAIN WHY THE RENDER FILTER IS NEEDED.
+Next let's work with the theme path function. Similarly to the function above, we will use the `|render` Twig filter to convert it from an array to a string.
 
 ```php
-{{ active_theme_path()|render }} # This will give us themes/custom/my_theme
+{{ active_theme_path()|render }} # This will give us themes/custom/my-theme
 ```
 
-Armed with these functions we can now put them together to compose our image's path:
+Now that we have two strings we can joint them together to compose the full path to our image:
 
 ```php
-{% if 9 => 5 %}
-  '<img src='" ~ {{ url('<front>')|render }}{{ active_theme_path()|render }} ~ '/images/image.jpg'" 'alt="my component image" />'
-{% endif %}
+  <img src="{{ url('<front>')|render }}{{ active_theme_path()|render }}/images/image.jpg" alt="alt text" />
 ```
 
-If we want to get more fancy we could actually set a variable to shorten things a little:
+If we want to get fancy we could actually set a variable to shorten things a bit:
 
 ```php
-{% set theme_url = {{ url('<front>')|render }}{{ active_theme_path()|render }} %}
-
-{% if 9 => 5 %}
-  "<img src="' ~ {{ theme_url }} ~ '/images/image.jpg'" 'alt="my component image" />'
-{% endif %}
-
+  {% set theme_url = url('<front>')|render ~ active_theme_path()|render %}
+  <img src="{{ theme_url ~ '/images/image.jpg' }}" alt="alt text" />
 ```
 
-Let's take a lookLet's take a look at how we can make this workmake use of the actual outcome of the statement above, we needed to render it so we can obtain the actual value of the homepage/base path.  So the statement above needed to change to `{{ url('<front>')|render }}`. Now the output of the statement will actuall be our site's base path (`http://my-site.com/`).  Don't underestimate the trailing slash ("/") because that makes things easier when creating a path.
+And there you have it.  A dynamic path that will work on any of our sites.
 
-
-
-and then reference it using Twig's handy `{{ file_url('public://image.jpg') }}` statement
-
-
-
-So the first part is done, now we need to find a way to dynamically create a path to our theme.  Some may think, well, how about `/themes/custom/theme-name`?  Sure.  As long as all the sites are using the same theme.  In my case they are not.  So our theme path needs to work regardless of the theme each site is using.  Back to research and trying things.  This is when I found a little variable I never knew about in my over 15 years as a Drupal Front-end developer.  The `{{ directory }}` variable in a Twig template within your theme will output ... the current's theme path.  How cool is that?
-
-So now with these two weapons in hand, I could actually compose a dynamic path to my theme by concatenating the two Twig statements above like this: `{{ url('<front>')|render ~ directory ~ '/images/my-image.jpg' }}`.  Now no matter the site or the theme in the site, we have a dynamic path to our component's image.
-
-I realized some people reading this already knew all of this but I didn't.  So I figured I would share it because I bet there are others out there that also do not know about the `{{ url('<front>') }}` or `{{ directory }}` Twig statements statements.  As I said before, there are many ways in which this challenged could be addressed, but in my case this is exactly how I wanted to approachh it.  I hope</front>)`
+I realized some people reading this already knew all of this but I didn't.  So I figured I would share it because I bet there are others out there that also do not know about the `{{ url('<front>') }}` or `{{ active_theme_path() }}` Twig functions as well as the `{{ directory }}` variable.  As I said before, there are many ways to handle this challenge, but in my case this is exactly how I wanted to approachh it.  I hope this was helpful.  Cheers!
