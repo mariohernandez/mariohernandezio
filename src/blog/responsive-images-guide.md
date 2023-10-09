@@ -1,11 +1,11 @@
 ---
 date: "2023-10-09"
-title: "Managing Images in Drupal, a complete guide"
-tags: ['drupal','images','media']
+title: "Responsive images in Drupal, a complete guide"
+tags: ['drupal','responsive-images']
 draft: false
 featured: true
 featuredImage: "/images/emily-bernal.webp"
-featuredImageAlt: "Person confronted with two paths to choose from"
+featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
 featuredImageCredit: "Emily Bernal"
 featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
 summary: "The challenge is finding the balance between enhancing the look of your website through the use of images without sacrificing the performance of your website."
@@ -23,8 +23,8 @@ It is important to become well-versed with all the tools available in Drupal for
 Let's start by breaking down the topics this guide will focus on and organizing them in a table of contents:
 
 - What are responsive images?
-- Resolution switching
 - Art direction
+- Resolution switching
 - Dimesifying image styles
 - Resonsive image styles
 - Media, media types and view modes
@@ -45,3 +45,26 @@ If you are responsible for creating or working with images in an image editor su
 Depending on your requirements and environment, you could also look at using different file types for your images.  One highly recommended image type is **webp**.  With the ability to do lossless and lossy compression, webp provides significant improvements in file sizes while still maintaining your images high quality.  The browser support for webp is excellent as it is supported by all major browsers, but do some research as there are some hosting platforms that do not support webp and this could be a problem for you.
 
 To give you an example of how good webp is, the image in the header of this blog post was originally exported from Photoshop as a `.JPG`, which resulted in a 317KB file size.  This is not bad, but then I ran the image through the ImageOptim app and the file size was reduced to 120KB. That's a 62% file size reduction.  Then I exported the same image from Photoshop but this time in webp format and the file size was only 93KB.  That's 71% in file size reduction compared to the original JPG version.
+
+## Ways to achieve responsive images
+
+By now it should be clear that the goal for serving images on any website is doing it by using the responsive images approach.  The way you implement responsive images on your site may vary depending on your platform, available tools, and skillset.
+
+### CSS
+
+Did you know your images can automatically become responsive by this simple CSS rule?
+
+```css
+img {
+  display: block;
+  max-width: 100%;
+}
+```
+
+Easy right?  That's it, we're done 😃
+
+The CSS rule above will in fact make your images responsive (images will automatically adapt to the width of their containers).  This rule should be added to your website's base styles so every image in your website becomes responsive.  However, this should not be the extend of your responsive images solution.  Although your images will be responsive with the CSS rule above, this does not address image compression nor optimization and for sure will result in performance issues.  [Take a look at this example](https://codepen.io/mariohernandez/full/ZEVVKab) where the rule above is being used.  Resize your browser to any width including super small to simulate a mobile device.  Notice how the image automatically resizes based on the width of the browser. Here's the problem though, the image in this example measures 5760x3840 pixels and it weights 6.7 MB. This means, even if your browser width is super narrow, and the image is resized to a very small visual size, you are still loading an image that is 6.7 MB in weight.  You see why this should not be the only step you take to handle responsive images?
+
+In the next article we will begin the process of implementing a more robust solution for handling responsive images in a Drupal website.
+
+Next: [The `<picture>` element and Art Direction](./managing-images-art-direction.md).
