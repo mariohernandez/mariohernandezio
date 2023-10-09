@@ -69,6 +69,15 @@ Remember at the begining of this post when I said "_In order to achieve art dire
 
 The issue with the statement above is that we are telling the browser which image to use solely based on the size of the device. This may not always be the best way to determine which image a device should use. Imagine you are using a nice size laptop with super high density screen.  Based on our rules established within the `<picture>` element code snippet above, we would end up with an image that is 2800px in size.  This is a pretty large image but it's the one that meets our creteria defined in the media query above.  If you're home with a decent wifi connection you will never see any issue loading an image this large, but imagine you are working out of a coffee shop, or a conference with poor wifi connection, or worse yet, you're on the road using your phone as a hotspot and your signal is very bad, now you will really experience some performance issues because we are telling the browser to load the largest image possible because your computer screen is big (relatively speaking).  With the `<picture>` element we can't check how fast your internet connection is, or whether there are browser preferences a user has configured to account for slow internet speeds.  We are basing everything on the size of the device.
 
+## Identifying the gap
+
+| Environment conditions                  |Does the developers know? |Does the browser know? |
+| --------------------------------------- | :----: | :----: |
+| Viewport dimensions                     | No     | Yes    |
+| Image size relative to the viewport     | Yes    | No     |
+| Screen density                          | No     | Yes    |
+| Images dimensions                       | Yes    | No     |
+
 You may be wondering: "_Why did you get us all excited about the `<picture>` element if we can't really use it?_", well, if you are trying to achieve art direction, then you use the `<picture>` element.  It's the recommended approach for that use case.  If you are looking for resolution switching, a use case for most images in the web, you need to use the `srcset` and `sizes` attributes approach.  In the next post we'll dive deep into this technique.
 
 

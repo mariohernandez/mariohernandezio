@@ -52,12 +52,20 @@ But there are more benefits when we let the browser make the decisions.  The bro
 
 ## Closing the gap
 
-
-| Variables                               |Things developers know during development|Things the browser knowsduring image rendering|
-| -----------------------------------     | :--------: | :--------: |
-| Viewport dimensions                     | No         | Yes        |
-| Image size relative to the viewport     | Yes        | No         |
-| Screen density                          | No         | Yes        |
-| Images dimensions                       | Yes        | No         |
+| Environment conditions                  |Does the developers know? |Does the browser know? |
+| --------------------------------------- | :----: | :----: |
+| Viewport dimensions                     | No     | Yes              |
+| Image size relative to the viewport     | Yes    | Yes via `sizes`  |
+| Screen density                          | No     | Yes              |
+| Images dimensions                       | Yes    | Yes via `srcset` |
 
 Insert chart closing the gap.
+
+<div class="post__nav">
+  <div class="post_prev">
+    <span>Previous:</span>
+  </div>
+  <div class="post_next">
+    <span>Next:</span>
+  </div>
+</div>
