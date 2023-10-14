@@ -1,6 +1,6 @@
 ---
 date: "2023-10-09"
-title: "Responsive images in Drupal, a complete guide"
+title: "Responsive images in Drupal, a guide"
 tags: ['drupal','responsive-images']
 draft: false
 featured: true
@@ -23,9 +23,9 @@ It is important to become well-versed with all the tools available in Drupal for
 Let's start by breaking down the topics this guide will focus on and organizing them in a table of contents:
 
 - What are responsive images?
-- Art direction
-- Resolution switching
-- Dimesifying image styles
+- The `<picture>` HTML element and art direction
+- `srcset` and `sizes` attributes and resolution switching
+- Dimesifying image styles in Drupal
 - Resonsive image styles
 - Media, media types and view modes
 - Third party of contrib tools

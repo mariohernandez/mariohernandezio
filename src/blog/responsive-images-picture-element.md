@@ -3,11 +3,11 @@ date: "2023-10-09"
 title: "Responsive images and the picture element"
 tags: ['drupal','responsive-images','art-direction']
 draft: false
-featured: true
-featuredImage: "/images/emily-bernal.webp"
-featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
-featuredImageCredit: "Emily Bernal"
-featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
+featured: false
+featuredImage: "/images/picture-element.webp"
+featuredImageAlt: "A person rowing during sunset"
+featuredImageCredit: "Rhys Moult"
+featuredImageCreditUrl: "https://unsplash.com/@rhysatwork"
 summary: "In the context of responsive images, art direction is the ability to display different images based on the device size."
 ---
 In the [previous article](./responsive-images-guide.md) of this guide we covered the concept of responsive images and some of the challenges that come with implementing an effective system for serving the right image to the right device.  In this article we will go in detail about the concept of "Art Directions" and how this apply to responsive images.

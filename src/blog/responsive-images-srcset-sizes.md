@@ -3,16 +3,16 @@ date: "2023-10-09"
 title: "Responsive images using srcset and sizes attributes"
 tags: ['drupal','responsive-images','srcset','sizes']
 draft: false
-featured: true
-featuredImage: "/images/emily-bernal.webp"
-featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
-featuredImageCredit: "Emily Bernal"
-featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
+featured: false
+featuredImage: "/images/srcset-sizes.webp"
+featuredImageAlt: "A person rowin behind a water color painted sky"
+featuredImageCredit: "Robin GAILLOT-DREVON"
+featuredImageCreditUrl: "https://unsplash.com/@robingaillotdrevon"
 summary: "The challenge is finding the balance between enhancing the look of your website through the use of images without sacrificing the performance of your website."
 ---
 In the [previous article](./responsive-images-in-drupal-a-complete-guide.md) we detailed what art direction is and how to address it using the `<picture>` element.  In this post, the focus will be how to address responsive images when the requirement is image resolution switching.  Resolution switching in the context of responsive images is rendering identical image content (same aspect ratio), on all devices.  Unlike art direction where each device gets a different cropped image that may vary on aspect ratio, resolution switching uses identical images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings.  Resolution switching is how most images are rendered (the rule), the `<picture>` element approach is the exception to the rule. Take a look at an example of resolution switching below.
 
-<img src="/images/res-switching.webp" alt="Image of fireworks shown in different sizes">
+<img src="/images/res-switching.webp" alt="Image of lights show displayed in different device sizes">
 
 The image above demonstrate how multiple resolutions of the same image can be served to different devices.  All the images in the example above are cropped exactly the same maintaining the same aspect ratio from large to small.
 
