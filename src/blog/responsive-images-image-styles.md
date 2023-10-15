@@ -20,7 +20,6 @@ So we have some picture frames and we have ordered several pictures from our fav
 
 <img src="/images/images.webp" alt="Drawn images of different sizes">
 
-
 ## Image styles best practices
 
 Image styles are actually pretty easy to create but unfortunately because of this they can be misused or mismanaged. If not done properly, you may end up with a lot more image styles than you really need or image styles that are not well define and do no provide the outcome you are looking for.  To avoid this, let's go over some best practices for creating image styles which will result in less image styles to manage.
@@ -33,7 +32,7 @@ Have you heard the phrase "naming things is hard"?  It's true.  Unfortunately wh
 - It is limited to news article images
 - It lacks information about the image dimensions or aspect ratio
 
-One key best practice of image styles is that they should be reusable. The more reusable an image style is the less image styles you will need to create which in turn becomes easier to manage.  The main issue with the image style above ("Homepage news article images"), besides the 3 bullet points we called out, is that is not reusable.  The name of it limits us to only use it on the homepage and only for news article images.  If we want to display similar images elsewhere, we would need to create another image style maybe with the same parameters as the first one.  You may be asking yourself, wait, why can't we use the same image style elsewhere?  Technically you can, but think about how confusing it will be to use an image style called "Homepage news article images", not on the homepage and not on news article images.
+One goal with image styles is to make sure they are reusable. The more reusable an image style is the less image styles you will need to create which in turn becomes easier to manage.  The main issue with the image style above ("Homepage news article images"), besides the 3 bullet points we called out, is that is not reusable.  The name of it limits us to only use it on the homepage and only for news article images.  If we want to display similar images elsewhere, we would need to create another image style maybe with the same parameters as the first one.  You may be asking yourself, wait, why can't we use the same image style elsewhere?  Technically you can, but think about how confusing it will be to use an image style called "Homepage news article images", not on the homepage and not on news article images.
 
 ### Creating reusable image styles
 
@@ -58,9 +57,9 @@ A 100px or even 200px difference between the image style dimensions and the imag
 
 ## Image styles effects
 
-Image styles effects are the rules you set on each image.  Rules such as cropping, sizing and scaling of images is how we determine how to render the images in our site. In most cases, you want to let content creators of your site upload images that are as big as possible.  Doing so will allow you to use the images in your library in any use case.  It is perfectly okay to scale your images down thorugh the use of image styles, but it is not recommended to scale images up.  Doing so will result in blurry or pixelated images.  This is why is better to upload large images.  But you may be thinking, if I upload super large images, this will affect the performance of my site.  It will if you are rendering the original images, but since we are using image styles, our super large images get resized to smaller images.
+Image styles effects are the rules you set on each image.  Rules such as cropping, sizing, saturating, rotating, and scaling of images is how we determine how to render the images in our site. In most cases, you want to let content creators of your site upload images that are as big as possible.  Doing so will allow you to use the images in your library in any use case.  It is perfectly okay to scale your images down thorugh the use of image styles, but it is not recommended to scale images up.  Doing so will result in blurry or pixelated images.  This is why is better to upload large images.  But you may be thinking, if I upload super large images, this will affect the performance of my site.  It will if you are rendering the original images, but since we are using image styles, our super large images get resized to smaller images.
 
-Image styles effects can vary from image style to image style.  For example, some image styles will require images to be scaled down, than cropped.  Other image styles will require images to be resized than cropped it and others may just need for images to be resized to specific size.  All these actions are called "Effects" in image styles.  The effects you apply to your image styles will depend on the end goal for rendering the images.  Let's do a quick demo of creating image styles and applying effects to them.
+Image styles effects can vary from image style to image style.  For example, some image styles will require images to be scaled down, then cropped.  Other image styles will require images to be resized then cropped and others may just need for images to be resized to specific size.  All these actions are called "Effects" in image styles.  The effects you apply to your image styles will depend on the end goal for rendering the images.  Let's do a quick demo of creating one image styles then applying effects to it.
 
 ## Hands-on demo
 
@@ -71,11 +70,15 @@ All the principles covered in this series apply to Drupal 8, 9, and 10.  To get 
 1. Login to Drupal as administrator
 1. In your Drupal site navigate to `/admin/config/media/image-styles`
 1. Click **Add image style**
-1. For _Image style name_ type: **1:1 (720px)**
-1. To keep things nifty, edit the image style machine name so it reads `1_1_720px`
+1. For _Image style name_ type: **6:9 (720px)**
+1. To keep things nifty, edit the image style machine name so it reads `6_9_720px`
 1. Click **Create new style**
 
+<div class="body-image image__narrow">
+
 <img src="/images/img-screenshot.webp" alt="Screenshot of image style creation form">
+
+</div>
 
 The image style above follows the best practices for name we covered earlier.  This makes this image style reusable on any image that meets the aspect ratio and dimension requirements.
 
@@ -91,6 +94,27 @@ For the purpose of this demo, we are going to use the **Scale and crop** effect.
 1. Click **Add effect**. This will bring you back to the image style page.
 1. We're done!
 
+<div class="body-image image__narrow">
+
 <img src="/images/img-effect.webp" alt="Screenshot of image effect screen">
 
-## Using the new image style
+</div>
+
+Now we have one custom image style with specific effects.  If you noticed, Drupal comes with a couple of predefined image styles.  If they work for your images you should make use of them. In this series we will be creating custom image styles.
+
+As I mentioned earlier, names of image styles should be descriptive but not limiting.  In the example of a couple of the image styles that come out of the box with Drupal, the names **Large**, **Medium**, and **Wide** do not seem like good choices for names because those names are all relative.  **Large** in relation to what? **Medium** in relation to what?
+
+## Image multipliers
+
+One thing we have not discussed but it is very important in image styles, is the use of "Image Multipliers".  What are image multipliers? In responsive images, you often think of image sizes in default or natural dimensions. If I think of an image that needs to be rendered at 720px, I will most likely resize or crop that image at 720px which makes total sense. With the evolution of high density or high resolution (retina) screens on mobile and large devices, because they contain thousands or millions more pixels than traditional resolution screens, images need to actually be bigger than the intended size so they are rendered at their highest resolution/quality. This is what image multipliers are.
+
+If we go back to the example above of the 720px image. For this image to be rendered as sharp and high-quality as possible in retina screen devices, we should add a 2x or 3x multiplier to it.  Meaning, we should create multiple image styles for this image at twice and three times the intended size (1440px, 2160px). When we do this, the image will still be rendered at 720px (visually), but because we are providing bigger size images, these images will have twice or three times the number of pixels within them and when viewed in high resolution screens, the image quality will be superior than if we are only providing a simple 720px image. **Note**: I typically only create a 2x multiplier image styles for most of my images, but there may be situation when there are specific requirements for creating a 3x multiplier image styles.
+
+## Create one more image style using a 2x multiplier
+
+The same way you created the original image style above for 6:9 (720px), go ahead and repeat the process but this time create a 2x multiplier image style (**6:9 (1440px)**).  Remember, the dimensions of this image style should be 1440 x 1400px.
+
+## So what's next?
+
+With our custom image styles in place, we can now make use of them, but before we do, let's go over another very important concept within Drupal, **Responsive image styles** ...whaaaaatttt?
+We'll comeback to Drupal in a bit but first, let's talk about responsive image styles in the next post.
