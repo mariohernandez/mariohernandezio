@@ -1,20 +1,20 @@
 ---
 date: "2023-10-09"
 title: "Responsive images and the picture HTML element"
-tags: ['drupal','responsive-images','art-direction']
+tags: ['drupal','responsive-images','picture-element']
 draft: false
 featured: false
 featuredImage: "/images/picture-element.webp"
 featuredImageAlt: "A person rowing during sunset"
 featuredImageCredit: "Rhys Moult"
 featuredImageCreditUrl: "https://unsplash.com/@rhysatwork"
-summary: "In the context of responsive images, art direction is the ability to display different images based on the device size."
+summary: "In the context of responsive images, art direction is the ability to display differently-cropped images based on the device size."
 ---
 In the [previous article](../responsive-images-in-drupal-a-guide) of this guide we covered the concept of responsive images and some of the challenges that come with implementing an effective system for them.  In this article we will go in detail about the concept of "Art Direction" and how this applies to responsive images.
 
 ## What is art direction?
 
-In the context of responsive images, art direction is the ability to display a differently-cropped image based on the device size. For example, a large landscape shot of a person rowing in the middle of a lake is shown when viewed on a large desktop device. If we were to use the same image on a mobile device, that image would shrunk down, making the person in the image very small and hard to see. A better option would be to show a different version of the image that zooms in and focuses on the most important part of the image, the person. Take a look at the image below where an image is cropped slightly differently depending the device size.
+In the context of responsive images, art direction is the ability to display differently-cropped images based on the device size. For example, a large landscape shot of a person rowing in the middle of a lake is shown when viewed on a large desktop device. If we were to use the same image on a mobile device, that image would shrunk down, making the person in the image very small and hard to see. A better option would be to show a different version of the image that zooms in and focuses on the most important part of the image, the person. Take a look at the image below where an image is cropped slightly differently depending the device size.
 
 <img src="/images/art-direction.webp" alt="Person rowing shown in different devices">
 

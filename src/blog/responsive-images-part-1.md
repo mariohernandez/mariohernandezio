@@ -8,9 +8,9 @@ featuredImage: "/images/emily-bernal.webp"
 featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
 featuredImageCredit: "Emily Bernal"
 featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
-summary: "The challenge is finding the balance between enhancing the look of your website through the use of images without sacrificing performance."
+summary: "The challenge is finding the balance between enhancing the look of your website through the use of images and not jeopardizing performance."
 ---
-Images are an essential part of a website.  They enhance the appeal of the site and make the user experience a more pleasant one. The challenge is finding the balance between enhancing the look through the use of images and other media without sacrificing performance. In this guide, we'll dig deep into how to find that balance by going over knowledge, techniques and practices that will provide you with a solid understanding of the best way to serve images to your visitors using the latest technologies and taking advantage of the advances of web browsers in recent years.
+Images are an essential part of a website.  They enhance the appeal of the site and make the user experience a more pleasant one. The challenge is finding the balance between enhancing the look of your website through the use of images and not jeopardizing performance. In this guide, we'll dig deep into how to find that balance by going over knowledge, techniques and practices that will provide you with a solid understanding of the best way to serve images to your visitors using the latest technologies and taking advantage of the advances of web browsers in recent years.
 
 **NOTE**: Although the content in this guide is intended for Drupal websites, the core principles of responsive images apply to any platform you use to build your sites.
 
