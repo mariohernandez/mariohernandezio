@@ -36,7 +36,7 @@ One goal with image styles is to make sure they are reusable. The more reusable 
 
 ### Creating reusable image styles
 
-One very efficient way for creating reusable image styles is to name them based on the image aspect ratio (whenever possible).  For example: "**6:9 (Max 720px)**", or "**1:1 (500px)**".  Here are some reasons why this is a great way to name image styles:
+One very efficient way for creating reusable image styles is to name them based on the image aspect ratio (whenever possible).  For example: "**16:9 (Max 720px)**", or "**1:1 (500px)**".  Here are some reasons why this is a great way to name image styles:
 
 - They are not specific to any page or type of image (articles, events, etc.)
 - They provide key information about the image aspect ratio and their dimensions
@@ -47,7 +47,7 @@ I hope you see the impact good names for image styles have in your site. When yo
 
 ### Image styles use cases
 
-When naming image styles it helps me to think of the characteristics of the image I am creating image styles for. For example, I have an image that should be rendered in 6:9 aspect ratio and it should not exceed a width of 720px.  This is how I arrived at the name **6:9 (Max 720px)**. This also makes it possible to know which image style to use if I have other images that need to be rendered similarly.  It is perfectly okay to use an image that is slightly off from what an image needs to be rendered at.  For example, Let's say I have an image that should be rendered at 6:9 aspect ratio, but its size should not exceed 640px. for this image, I can still use the **6:9 (Max 720px)** image style.  The keyword **Max** in the image style name makes it possible for me to use it on other images as long as those images don't need to be rendered at a size that exceed 720px.  This is also a technique for limiting the number of image styles you need to create.
+When naming image styles it helps me to think of the characteristics of the image I am creating image styles for. For example, I have an image that should be rendered in 16:9 aspect ratio and it should not exceed a width of 720px.  This is how I arrived at the name **16:9 (Max 720px)**. This also makes it possible to know which image style to use if I have other images that need to be rendered similarly.  It is perfectly okay to use an image that is slightly off from what an image needs to be rendered at.  For example, Let's say I have an image that should be rendered at 16:9 aspect ratio, but its size should not exceed 640px. for this image, I can still use the **16:9 (Max 720px)** image style.  The keyword **Max** in the image style name makes it possible for me to use it on other images as long as those images don't need to be rendered at a size that exceed 720px.  This is also a technique for limiting the number of image styles you need to create.
 
 A 100px or even 200px difference between the image style dimensions and the image you need to use it on it's an acceptable thing to do for a couple of reasons:
 
@@ -70,8 +70,8 @@ All the principles covered in this series apply to Drupal 8, 9, and 10.  To get 
 1. Login to Drupal as administrator
 1. In your Drupal site navigate to `/admin/config/media/image-styles`
 1. Click **Add image style**
-1. For _Image style name_ type: **6:9 (720px)**
-1. To keep things nifty, edit the image style machine name so it reads `6_9_720px`
+1. For _Image style name_ type: **16:9 (720px)**
+1. To keep things nifty, edit the image style machine name so it reads `16_9_720px`
 1. Click **Create new style**
 
 <div class="body-image image__narrow">
@@ -89,7 +89,7 @@ For the purpose of this demo, we are going to use the **Scale and crop** effect.
 1. While in the page where the new image style was created (admin/config/media/image-styles/manage/1_1_720px), scroll down and you should see the **Effect** dropdown
 1. Select **Scale and crop** effect from the dropdown
 1. Click **Add**.  The Add Scale and Crop effect screen will come up
-1. Type **720** for width and height.  Notice these two values are required.  **Note**: It is important to define fixed dimensions on your image styles.  This ensures your images will be rendered at exactly the size you expect them to.
+1. Type **720** for width and **405** for height.  **Note**: These two values are required. When applicable, it is important to define fixed dimensions on your image styles.  This ensures your images will be sized/cropped at exactly the size you expect them to. How did I figure out the height for a 16:9 image with a width of 720px is 405px?  I used this online [aspect ratio calculator](https://calculateaspectratio.com/).
 1. Notice how you can change the focal point of the cropping by clicking any of the circles under **Anchor**.  For this example we'll keep it in the middle circle.
 1. Click **Add effect**. This will bring you back to the image style page.
 1. We're done!
@@ -112,9 +112,18 @@ If we go back to the example above of the 720px image. For this image to be rend
 
 ## Create one more image style using a 2x multiplier
 
-The same way you created the original image style above for 6:9 (720px), go ahead and repeat the process but this time create a 2x multiplier image style (**6:9 (1440px)**).  Remember, the dimensions of this image style should be 1440 x 1400px.
+The same way you created the original image style above for 16:9 (Max 720px), go ahead and repeat the process but this time create a 2x multiplier image style (**16:9 (Max 1440px)**).  Remember, the dimensions of this image style should be 1440 x 788px.
+
+Just for fun, also create another image style but this one will have a max width of 480px.
 
 ## So what's next?
 
 With our custom image styles in place, we can now make use of them, but before we do, let's go over another very important concept within Drupal, **Responsive image styles** ...whaaaaatttt?
-We'll comeback to Drupal in a bit but first, let's talk about responsive image styles in the next post.
+We'll comeback to Drupal in a bit but first, we'll talk about responsive image styles in the next post.
+
+<div class="post-pager">
+
+[< Responsive images and srcset and sizes attributes](../image-styles-in-drupal)
+[Responsive images in Drupal, a guide >](../responsive-images-and-media)
+
+</div>

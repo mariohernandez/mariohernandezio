@@ -1,6 +1,6 @@
 ---
 date: "2023-10-09"
-title: "Responsive image styles in Drupal"
+title: "Responsive image styles"
 tags: ['drupal','responsive-image-styles']
 draft: false
 featured: false
@@ -28,7 +28,7 @@ In the previous post we went in detail about best practices for naming image sty
 
 Let's say we are building a photo gallery where we will use a series of images to display as a slider or grid of images. We don't need to worry what the images aspect ratio or dimentions are, we're only interested on how the images will be used.  In this example the use case is a Gallery.  So a name for the responsive image style that makes sense to me would be **Gallery** or even **Photo gallery**.
 
-The example above was very specific but is one that may be common when working on a media website.  Other examples where we may want to use names that could apply to more than one use case, might be something like **6:9 (Max 720px)** or **4:3 (Max 460px)**. These responsive image styles names give us all the information we need regarding their use case.  One important point I'd like to make when I name image styles or responsive image styles is the use of **(Max xxx)**.  To me this is critical because it tells me the biggest size of the image where these styles can be used.  In the two examples above, I can tell right away that I can use the responsive image styles in images **720px** and below and **460px** and below respectively.  Some people opt not to include dimension specs which makes it very hard to know what size images can use those styles.
+The example above was very specific but is one that may be common when working on a media website.  Other examples where we may want to use names that could apply to more than one use case, might be something like **16:9 (Max 720px)** or **4:3 (Max 460px)**. These responsive image styles names give us all the information we need regarding their use case.  One important point I'd like to make when I name image styles or responsive image styles is the use of **(Max xxx)**.  To me this is critical because it tells me the biggest size of the image where these styles can be used.  In the two examples above, I can tell right away that I can use the responsive image styles in images **720px** and below and **460px** and below respectively.  Some people opt not to include dimension specs which makes it very hard to know what size images can use those styles.
 
 ## Back to hands-on exercises
 
@@ -43,14 +43,14 @@ Here's where all of our knowledge about `<picture>` (art direction) and `srcset`
 1. Enable the Responsive image core module (/admin/modules)
 1. Once enabled, head over to `/admin/config/media/responsive-image-style` to begin creating our first responsive image style
 1. Click **Add responsive image style**
-1. Type **6:9 (Max 720)** as the label for the responsive image style
-1. Edit the machine name so it reads `6_9_max_720px`
+1. Type **16:9 (Max 720px)** as the label for the responsive image style
+1. Edit the machine name so it reads `16_9_max_720px`
 1. Select **Responsive image* from the Breakpoint group dropdown
-1. Scroll down and select a Fallback image style (**Large (480x480)** or any other square image style)
+1. Scroll down and select a Fallback image style (**16:9 (Max 480px)**) or any other square image style)
 1. Expand the **1x Viewport Sizing []** panel
 1. Under **Type**, select **Select multiple image styles and use the sizes attribute.**
 1. Under **Sizes** type the following: **(max-width:700px) 100vw, 50vw** (I'll explain shortly)
-1. Under **Image styles** select the two image styles we created before (6:9 (Max 720px) and 6:9 (Max 1440px))
+1. Under **Image styles** select the two image styles we created before (16:9 (Max 480px), 16:9 (Max 720px) and 16:9 (Max 1440px))
 1. Scroll down and click **Save**
 
 <div class="body-image image__centered">
@@ -82,3 +82,9 @@ In Drupal, the core Media module manages the creation, editing, deletion, settin
 The core Media module can play a big role in effectively managing responsive images in your site.  Because media uses Media types and view modes, we can use these powerful features to our advantage when managing responsive images.  As part of our plan to effectively manage responsive images, we will rely on the Media module to make the best of responsive images.
 
 We're done creating our first responsive image style.  In the next post, we will work on telling Drupal to use what we've built and we will also get the Media module involved for more flexibility.
+
+<div class="post-pager">
+
+[< Responsive images and Media](../responsive-images-and-media)
+
+</div>

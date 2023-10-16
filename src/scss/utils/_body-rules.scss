@@ -1,3 +1,4 @@
+// Body images styles.
 .body-image {
   padding: 2rem 0;
 }
@@ -12,4 +13,27 @@
 
 .image__centered {
   margin: 0 auto;
+}
+
+// Blog series pager styles.
+.post-pager {
+  display: flex;
+  font-size: 1.8rem;
+  justify-content: space-between;
+  margin: 4rem 0;
+
+  span {
+    display: block;
+  }
+}
+
+// Info panel styles.
+.post-hint {
+  background-color: lighten($color-light-blue, 15%);
+  border-left: 3px solid $color-purple;
+  font-size: 1.8rem;
+  margin: 2rem 0 4rem;
+  padding: 2rem;
+  padding-inline-start: 4rem;
+
 }

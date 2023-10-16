@@ -10,7 +10,7 @@ featuredImageCredit: "Rhys Moult"
 featuredImageCreditUrl: "https://unsplash.com/@rhysatwork"
 summary: "In the context of responsive images, art direction is the ability to display different images based on the device size."
 ---
-In the [previous article](./responsive-images-guide.md) of this guide we covered the concept of responsive images and some of the challenges that come with implementing an effective system for serving the right image to the right device.  In this article we will go in detail about the concept of "Art Directions" and how this apply to responsive images.
+In the [previous article](./responsive-images-part-1.md) of this guide we covered the concept of responsive images and some of the challenges that come with implementing an effective system for serving the right image to the right device.  In this article we will go in detail about the concept of "Art Directions" and how this apply to responsive images.
 
 ## What is art direction?
 
@@ -80,10 +80,10 @@ The issue with the statement above is that we are telling the browser which imag
 
 You may be wondering: "_Why did you get us all excited about the `<picture>` element if we can't really use it?_", well, if you are trying to achieve art direction, then you use the `<picture>` element.  It's the recommended approach for that use case.  If you are looking for resolution switching, a use case for most images in the web, you need to use the `srcset` and `sizes` attributes approach.  In the next post we'll dive deep into this technique.
 
+<div class="post-pager">
 
+[< Responsive images in Drupal, a guide](../responsive-images-in-drupal-a-guide)
 
+[Responsive images and srcset and sizes attributes >](../responsive-images-using-srcset-and-sizes-attributes)
 
-
-
-Previous: [Responsive images in Drupal - A complete guide](https://mariohernandez.io).
-Next: [Responsive images and srcset and sizes attributes](https://mariohernandez.io).
+</div>

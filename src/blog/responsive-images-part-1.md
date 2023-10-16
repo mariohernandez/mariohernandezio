@@ -46,13 +46,9 @@ Depending on your requirements and environment, you could also look at using dif
 
 To give you an example of how good webp is, the image in the header of this blog post was originally exported from Photoshop as a `.JPG`, which resulted in a 317KB file size.  This is not bad, but then I ran the image through the ImageOptim app and the file size was reduced to 120KB. That's a 62% file size reduction.  Then I exported the same image from Photoshop but this time in webp format and the file size was only 93KB.  That's 71% in file size reduction compared to the original JPG version.
 
-## Ways to achieve responsive images
+## A must have CSS rule in your project
 
-By now it should be clear that the goal for serving images on any website is doing it by using the responsive images approach.  The way you implement responsive images on your site may vary depending on your platform, available tools, and skillset.
-
-### CSS
-
-Did you know your images can automatically become responsive by this simple CSS rule?
+By now it should be clear that the goal for serving images on any website is doing it by using the responsive images approach.  The way you implement responsive images on your site may vary depending on your platform, available tools, and skillset.  Regardless, the following CSS rule should always be available within your project:
 
 ```css
 img {
@@ -63,8 +59,12 @@ img {
 
 Easy right?  That's it, we're done 😃
 
-The CSS rule above will in fact make your images responsive (images will automatically adapt to the width of their containers).  This rule should be added to your website's base styles so every image in your website becomes responsive.  However, this should not be the extend of your responsive images solution.  Although your images will be responsive with the CSS rule above, this does not address image compression nor optimization and for sure will result in performance issues.  [Take a look at this example](https://codepen.io/mariohernandez/full/ZEVVKab) where the rule above is being used.  Resize your browser to any width including super small to simulate a mobile device.  Notice how the image automatically resizes based on the width of the browser. Here's the problem though, the image in this example measures 5760x3840 pixels and it weights 6.7 MB. This means, even if your browser width is super narrow, and the image is resized to a very small visual size, you are still loading an image that is 6.7 MB in weight.  You see why this should not be the only step you take to handle responsive images?
+The CSS rule above will in fact make your images responsive (images will automatically adapt to the width of their containers).  This rule should be added to your website's base styles so every image in your website becomes responsive by default.  However, this should not be the extend of your responsive images solution.  Although your images will be responsive with the CSS rule above, this does not address image compression nor optimization and for sure will result in performance issues.  [Take a look at this example](https://codepen.io/mariohernandez/full/ZEVVKab) where the rule above is being used.  Resize your browser to any width including super small to simulate a mobile device.  Notice how the image automatically adapts to the width of the browser. Here's the problem though, the image in this example measures 5760x3840 pixels and it weights 6.7 MB. This means, even if your browser width is super narrow, and the image is resized to a very small visual size, you are still loading an image that is 6.7 MB in weight. No good 👎
 
-In the next article we will begin the process of implementing a more robust solution for handling responsive images in a Drupal website.
+In the next post of this series, we will begin the process of implementing a more robust solution for handling responsive images.
 
-Next: [The `<picture>` element and Art Direction](./managing-images-art-direction.md).
+<div class="post-pager">
+
+[Responsive images and the picture element](../responsive-images-and-the-picture-element)
+
+</div>
