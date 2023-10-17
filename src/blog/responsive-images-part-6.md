@@ -86,5 +86,6 @@ We're done creating our first responsive image style.  In the next post, we will
 <div class="post-pager">
 
 [< Responsive images and Media](../responsive-images-and-media)
+[Responsive images and Media >](../responsive-images-and-media)
 
 </div>
