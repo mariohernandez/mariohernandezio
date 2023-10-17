@@ -12,11 +12,7 @@ summary: "Resolution switching uses identical images that are simply larger or s
 ---
 In the [previous article](../responsive-images-and-the-picture-html-element) we defined what art direction is and how to address it using the `<picture>` element.  In this post, the focus will be how to address responsive images when the requirement is image resolution switching.  Resolution switching in the context of responsive images is rendering identical image content on all devices.  Unlike art direction where each device gets a different cropped image that may vary on aspect ratio, resolution switching uses identical images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings.  Resolution switching is how most images are rendered (the rule), the `<picture>` element approach is the exception to the rule. Take a look at an example of resolution switching below.
 
-<div class="body-image">
-
-<img src="/images/res-switching.webp" alt="Image of lights show displayed in different device sizes">
-
-</div>
+![Image of lights show displayed in different device sizes](/images/res-switching.webp)
 
 The image above demonstrate how multiple resolutions of the same image can be served to different devices.  All the images in the example above are cropped exactly the same maintaining the same aspect ratio from large to small.
 
@@ -58,7 +54,7 @@ But that's not all, the browser is smarter and knows more about the web environm
 
 Now let's see how using the `srcset` and `sizes` attributes closes the gap we identified when using the `<picture>` tag.
 
-| Environment conditions                  |Does the developers know? |Does the browser know? |
+| Environment conditions                 |What the developer knows<br /> during development |What the browser knows<br />during image rendering |
 | --------------------------------------- | :----: | :----: |
 | Viewport dimensions                     | No     | Yes              |
 | Image size relative to the viewport     | Yes    | Yes via `sizes`  |

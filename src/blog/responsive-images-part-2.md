@@ -16,7 +16,7 @@ In the [previous article](../responsive-images-in-drupal-a-guide) of this guide 
 
 In the context of responsive images, art direction is the ability to display differently-cropped images based on the device size. For example, a large landscape shot of a person rowing in the middle of a lake is shown when viewed on a large desktop device. If we were to use the same image on a mobile device, that image would shrunk down, making the person in the image very small and hard to see. A better option would be to show a different version of the image that zooms in and focuses on the most important part of the image, the person. Take a look at the image below where an image is cropped slightly differently depending the device size.
 
-<img src="/images/art-direction.webp" alt="Person rowing shown in different devices">
+![Person rowing shown in different devices](/images/art-direction.webp)
 
 ## Enter the `<picture>` HTML element
 
@@ -70,11 +70,7 @@ And there you have it.  The `<picture>` element is a great way to serve differen
 
 </div>
 
-<div class="body-image">
-
-<img src="/images/picture.webp" alt="List of all browsers that support the picture element">
-
-</div>
+![List of all browsers that support the picture element](/images/picture.webp)
 
 ### Great! Let's use `<picture>` on all our images ...NOOOOOOOO!!!!!!
 
@@ -88,7 +84,7 @@ When developing a website, the developer does not have all the information they 
 
 ## Identifying the gap
 
-| Environment conditions                  |Does the developers know? |Does the browser know? |
+| Environment conditions                 |What the developer knows<br /> during development |What the browser knows<br />during image rendering |
 | --------------------------------------- | :----: | :----: |
 | Viewport dimensions                     | No     | Yes    |
 | Image size relative to the viewport     | Yes    | No     |
