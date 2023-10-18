@@ -10,7 +10,7 @@ featuredImageCredit: "Robin GAILLOT-DREVON"
 featuredImageCreditUrl: "https://unsplash.com/@robingaillotdrevon"
 summary: "Resolution switching uses identical images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings."
 ---
-In the [previous article](../responsive-images-and-the-picture-html-element) we defined what art direction is and how to address it using the `<picture>` element.  In this post, the focus will be how to address responsive images when the requirement is image resolution switching.  Resolution switching in the context of responsive images is rendering identical image content on all devices.  Unlike art direction where each device gets a different cropped image that may vary on aspect ratio, resolution switching uses identical images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings.  Resolution switching is how most images are rendered (the rule), the `<picture>` element approach is the exception to the rule. Take a look at an example of resolution switching below.
+In the [previous article](../responsive-images-and-the-picture-html-element) we defined what art direction is and how to address it using the `<picture>` element.  In this post, the focus will be how to address responsive images when the requirement is image resolution switching.  Resolution switching in the context of responsive images is rendering identical image content on all devices.  Unlike art direction where each device gets a differently cropped image that may vary on aspect ratio, resolution switching uses images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings.  Resolution switching is how most images are rendered (the rule), the `<picture>` element approach is the exception to the rule. Take a look at an example of resolution switching below.
 
 ![Image of lights show displayed in different device sizes](/images/res-switching.webp)
 
@@ -37,7 +37,7 @@ Let's break things down so we can understand this approach better.
 
 - `<img>`: Right off the bat we start by using a widely supported html tag.
 - `srcset`: The `srcset` attribute in the img tag serves two important roles, 1) It stores a list of images that can be used by the browser, 2) Each image provides its width value which plays a role on the browser choosing the right image.
-- `sizes`: The `sizes` attribute tells the browser the width, in relation to the viewport, the image should be rendered at.  The value of `100vw` shown above, means the image will be rendered at 100% the viewport width on all the devices. You could also use media queries like `(min-width: 720px) 50vw, 100vw`.  This means that if the device size is 720px or lager, the image will be rendered at 50% the viewport width, otherwise (if the device is smaller than 720px), the image will be rendered at 100% the viewport width.
+- `sizes`: The `sizes` attribute tells the browser the width, in relation to the viewport, the image should be rendered at.  The value of `100vw` shown above, means the image will be rendered at 100% the viewport width on all the devices. You could also use media queries like `(max-width: 720px) 100vw, 50vw`.  This means that if the device does not exceed 720px in width, the image will be rendered at 100% the viewport width, otherwise (if the device is larger than 720px), the image will be rendered at 50% the viewport width.
 - `src`: The `src` attribute is used as a fallback if everything fails.
 
 ## What does all this mean?
@@ -48,7 +48,7 @@ The biggest difference/advantage of using `srcset` and `sizes` versus `<picture>
 
 The `sizes` value tells the browser the size the image needs to be rendered at in relation to the viewport.  This too is extremely important information we are providing the browser because if the browser knows the dimensions of all the images to choose from and how big/small the image needs to be rendered, then the browser is able to pick the best image possible.
 
-But that's not all, the browser is smarter and knows more about the web environment than we do when a page or image is rendered. For example, the browser knows the viewport width used when viewing a website, it knows how fast/slow your internet connection is, and it knows about any user browser settings.  Using all this information the browser is able to determine which image from the `srcset` is the best to use.  In contrast, with the `<picture>` element, we tell the browser which image to use solely based on the device size.
+But that's not all, the browser is smarter and knows more about the web environment than we do when a page or image is rendered. For example, the browser knows the viewport width used when viewing a website, it knows how fast/slow your internet connection is, and it knows about any browser preference settings (if any), setup by the user.  Using all this information the browser is able to determine which image from the `srcset` is the best to use.  In contrast, with the `<picture>` element, we tell the browser which image to use solely based on the device size.
 
 ## Closing the gap
 
@@ -60,6 +60,16 @@ Now let's see how using the `srcset` and `sizes` attributes closes the gap we id
 | Image size relative to the viewport     | Yes    | Yes via `sizes`  |
 | Screen density                          | No     | Yes              |
 | Images dimensions                       | Yes    | Yes via `srcset` |
+
+Pretty nice huh? Now thanks to the `srcset` and `sizes` attributes we've closed the gap and the browser has all the information it needs to ensure the best image is served to each device.
+
+The next post of this series will focus on image styles. These are fun but can also get you in a lot of trouble if not properly done. See you there.
+
+Save this story for later.
+A quick story for you. I recently did an experiment that 100% proves the power of resolution switching using `srcset` and `sizes`.  As most people nowadays, I use a very large second display so I can fit more apps on my screen. While viewing a site I am currently working on, the main image on the page I was looking at renders at a 3:2 aspect ratio with a max width of about 660px. I have configured image styles, responsive image styles and media types using exactly the same process shown in this guide.
+
+My second display is nice but it's not a 4K display.  It's double the physical size of my mac's screen, but the mac's screen resolution is higher by almost double (twice the number of pixels).  When I look at the image in the large display, and inspect the page, I see the browser selects an image that is 720px which makes complete sense.  However, I unplugged the second display and this time I view the page on my mac's scrren (higher resolution), and when inspecting the page, I noticed the browser has selected an image that is double the size.  This is exactly the behavior I would expect.  Also, this will make a lot more sense when we cover image multipliers later in this series.
+
 
 
 <div class="post-pager">

@@ -115,13 +115,18 @@
 
 .blog-post__content--body {
 
+  p {
+    margin-bottom: 1.5rem;
+  }
+
   // Adds dropcap on full blog post.
   > p:first-child:first-letter {
     color: $color-black;
     float: left;
     font-family: $font-secondary;
-    font-size: 7.5rem;
+    font-size: 6.5rem;
     line-height: 6rem;
+    margin-bottom: 0;
     padding-top: 0.4rem;
     padding-right: 0.8rem;
     padding-left: 0;
@@ -133,7 +138,8 @@
   }
 
   img {
-    margin: 3rem;
+    margin: 3rem auto;
+    max-width: 75%;
   }
 }
 
