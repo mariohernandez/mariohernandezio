@@ -47,6 +47,12 @@ One very efficient way for creating reusable image styles is to name them based 
 
 I hope you see the impact good names for image styles have on your site. When you are working on an enterprise level website, using the best practices above can really help you with the maintenance of your image styles.
 
+<div class="post-hint">
+
+**NOTE**: I have found one of the most effective ways for identifyiing the image styles you need to create is by looking at your website mockups (if you are fortunate enough to have them). This may not always be possible, but if you do have designs for your website, this will tell you exactly which images you will need and how they need to be rendered.  Having this information upfront will help you tremendously when creating image styles because you can plan ahead of time how to create reusable image styles that share commom attributes.
+
+</div>
+
 ### Image styles use cases
 
 When naming image styles it helps me to think of the characteristics of the images I am creating image styles for. For example, I have an image that should be rendered in 16:9 aspect ratio and it should not exceed a width of 720px.  This is how I arrived at the name **16:9 (Max 720px)**. This also makes it possible to know which image style to use if I have other images that need to be rendered similarly.  By the way, it is perfectly okay to use an image style that is slightly off from what an image needs to be rendered at.  For example, Let's say I have an image that should be rendered at 16:9 aspect ratio, but its size should not exceed 640px. for this image, I can still use the **16:9 (Max 720px)** image style.  The keyword **Max** in the image style name makes it possible for me to use it on other images as long as those images don't exceed 720px.  This is also a technique for limiting the number of image styles you need to create.

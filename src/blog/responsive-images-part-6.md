@@ -14,7 +14,7 @@ In Drupal, the core [Media module](https://www.drupal.org/docs/8/core/modules/me
 
 ## Working with Media in Drupal
 
-Out of the box, Drupal ships with the following media types: Audio, Document, Image, Remote video, and Video.  You can create new media types if needed. For example, you could create a new media type that is of type "Image" (or references the Image media type).  Why would you do this?  Well, in some cases, you may have specific requirements to handle images of a particular entity and rather than modify the existing Image media type, you could create a new one so you can manage specific settings on the new type and don't run the risk of breaking something on your site by updating the default Image media type.Creating new media types is outside the scope of this post, but wanted to let you know what's available to you.
+Out of the box, Drupal ships with the following media types: Audio, Document, Image, Remote video, and Video.  You can create new media types if needed. For example, you could create a new media type that is of type "Image".  Why would you do this?  Well, in some cases, you may have specific requirements to handle images of a particular entity and rather than modify the existing Image media type, you could create a new one so you can manage specific settings on the new type and don't run the risk of breaking something on your site by updating the default Image media type.Creating new media types is outside the scope of this post, but wanted to let you know what's available to you.
 
 Drupal's Media module is not enabled by default.  Let's start by enableing the Media and Media Library modules. After enabling the modules, follow these steps to configure responsive images within the Image media type:
 
@@ -22,7 +22,7 @@ Drupal's Media module is not enabled by default.  Let's start by enableing the M
 1. Since we'll be working with images, click the **Edit** link to the right of the Image media type
 1. We won't get into all the wonders of Media types, instead let's jump into **Manage display**
 
-Like any other Drupal entity bundle, Manage displays, also known as View modes, are a pretty powerful feature. So what are view modes?  View modes are a way to display content in different ways.  Take a look at the image below.  Each of the numbered marks is a view mode. Same content, different ways and different fields.
+Like any other Drupal entity bundle, Manage displays, also known as View modes, are a pretty powerful feature. So what are view modes?  View modes is how we display content in different ways.  Take a look at the image below.  Each of the numbered marks is a view mode. Same content, different ways and different fields.
 
 ![Image of amazon.com page showin a computer mouse](/images/modes.webp)
 
@@ -33,37 +33,45 @@ Now that we understand how view modes work, we will use them to manage/display o
 1. Within the Manage display tab for the Image media type, scroll down and expand the **Custom display settings** fieldset
 1. Click **Manage view modes**
 1. In the View modes screen scroll down to the Media section and click **Add new Media view mode**
-1. Type **News full** as the view mode name. Spoiler, news articles is where we will use reponsive images.
+1. Type **Content listing** as the view mode name.
 1. Click **Save**
 1. Go back to the Image media type Manage display screen (/admin/structure/media/manage/image/display)
 1. Scroll down and expand the **Custom display settings** fieldset
-1. Check **News full** and click **Save**.  This enables the newly created view mode.  You should now see it under the Manage display tab for the Image media type.
+1. Check **Content listing** and click **Save**.  This enables the newly created view mode.  You should now see it under the Manage display tab for the Image media type.
 
-<div class="post-hint">
+### Configure the new view mode
 
-**Note**: I realize we have used the same name, **16:9 (Max 720px)**, for image styles and responsive image styles, so to make things less confusing we named the Media view mode **News full**. Using **16:9 (Max 720px)** as the Media view name would had made it reusable, but for the purpose of this guide I wanted to avoid confusion when we connect all the pieces together.
+It's time to link the new view mode for the Image media type with the responsive image style we created.
 
-</div>
-
-## Configure the new view mode
-
-It's time to link the new view mode for the Image media type to the responsive image style we created.
-
-1. Withing the Manage display screen, click the **News full** view mode we just created
+1. Withing the Manage display screen, click the **Content listing** view mode we just created
 1. Change the Format of the image field to **Responsive image**
 1. Click the gear icon to the right of the image field
-1. Under _Responsive image style_ select **16:9 (Max 720px)**.  This is the responsive image style we created before.
+1. Under _Responsive image style_ select **Content listing**.  This is the responsive image style we created before.
 1. Link image to nothing
 1. Click **Update**
 1. Scroll to the bottom of the page and click **Save**
 
+### What did we just do?
+
+We just put all the pieces together which will result in well-managed responsive images.
+
+- **Image styles**: These are a series of image templates we have grouped together because they share similar attributes (i.e. aspect ratio).
+- **Responsive image styles**: This is a collection of image styles we gather together that fullfill a specific use case.
+- **Media type via View modes**: We have specific requirements for news and event article images. View modes allow us to fullfill these requirements without affecting other image displays. So basically, for every type of image display we may need to create a view mode.
+
 ## Where do we use the responsive images?
 
-So image styles, responsive image styles and image view mode are all connected and working great (you'll have to take my word for it 😃).  One thing though, what content in our site will take advantage of all the beutiful work we've done?  How about the Article content type?  Every news article will be able to take advantage of the responsive images work we've done.
+So image styles, responsive image styles and image view mode are all connected and working great (you'll have to take my word for it 😃).  One thing though, what content in our site will take advantage of all the beutiful work we've done?  How about news articles? Take another look at the screenshot above where news articles are shown in a list. That's what we will do with all the work we've done.
 
-### Replace the image field with a Media type field
+## Configure the Article content type
 
-One thing about the image field that ships with the Article content type. The image field does not use Drupal's Media, it's a stand-alone basic image field. This does not mean we can't use responsive images with this type of image field, we can, but since we have prepared the Media system with a media entity of type image, it makes more sense to use a media type image field as this provides more advantages over a basic image image.  For example, with the media type image field, we can take advantage of media library, add more fields to the image media type, reuse images, and much more.
+Since we opted to use news article images as the content to use the work we've done for responsive images, there is a little clean up we need to do first in the Article content type.
+
+The image field that ships with the Article content type does not use Drupal's Media, it's a basic image field. This does not mean we can't use responsive images with this type of image field, we can, but we get more out of the Media type field (view modes for starters). In addition, with the media type image field, we can take advantage of media library, add more fields to the image media type, reuse images, and much more.
+
+### Remove the image field from Article content type
+
+**Warning**: Removing the image field will result in loosing all images in Articles. Only do this if you are sure you don't need the images.
 
 1. From the admin toolbar, click **Structure**, **Content types**
 1. Click **Manage fields** to the right of the Article content type
@@ -72,7 +80,7 @@ One thing about the image field that ships with the Article content type. The im
 
 ### Adding a new media reference field to the Article content type
 
-1. Still within the _Manage fields_ for the Article content types
+1. Still within the _Manage fields_ for the Article content type
 1. Click **Create a new field**
 1. In the _Add a new field_ dropdown, select **Media** which is located under the _Reference_ section. Notice there is also an image field, but this is the same kind we just deleted.  Media is what we want.
 1. Type **Image** as the label for the new field
@@ -82,7 +90,7 @@ One thing about the image field that ships with the Article content type. The im
 1. Check the box if you want to make this a required field
 1. Reference method should be **Default**
 1. Check the **Create referenced entities if they don't already exist** checkbox
-1. For _Media type_ check **Image**
+1. For _Media type_ check **Image** (extremely important)
 1. Click **Save settings**.  A new Image field is now available but this time it's a Media reference field of type Image.
 
 ### Arranging the field for content entry and content display
@@ -94,26 +102,25 @@ By default the new image field was added at the bottom of the list of fields. Le
 1. Click **Save**
 1. Repeat for **Manage display**
 
-### Configure responsive images for the new image field
+## Configure responsive images for the new image field
 
 1. Still within the Article content type page, click **Manage display**
-1. Drupal by default provides 3 view modes for the Article content type: **Default**, **RSS**, **Teaser**, and **Full content** (currently not enabled).  We can create as many new view modes as we want/need, but for this excersice we will use the ones Drupal provides.
-1. Scroll down the page and expand the **Custom display settings** fieldset
-1. Check the **Full content** checkbox.  It's a good practice to uncheck any view modes that are not being used or not planning on using.
-1. Click **Save**
-1. After saving the changes, click **Full content** from the list of view modes
+1. Drupal by default provides 3 view modes for the Article content type: **Default**, **RSS**, **Teaser**, and **Full content** (currently not enabled).  We can create as many new view modes as we want/need, but for this excersice we will use **Teaser**.
+1. Click **Teaser** from the list of view modes
 1. For the image field, make sure its Format is set to **Rendered entity**.  Since the new Image field we added is of Media type, the image is an entity and we want to render it as such.
 1. Click the gear icon to the far right of the Image field
-1. Under _View mode_ select **16:9 (Max 720px)**
+1. Under _View mode_ select **Content listing**
 1. Click **Update** then scroll down and click **Save**.  That's it.
 
 ## Displaying responsive images in news articles
 
-Before we can see the responsive images, let's create a couple of news articles so we have content to work with.  Go ahead and create a few news articles using the Article content type.  Upload images that are at least 1440px in width so we can see our responsive image styles in action.
+Before we can see the responsive images, let's create a couple of news articles so we have content to work with.  Go ahead and create a few news articles using the Article content type.  Upload images that are at least 1440px in width, we don't need images this large for the responsive images we are displaying as teasers, but we will need larger images for another exercise we will do later.
+
+In the next post, we will complete the configuration and display of responsive images.
 
 <div class="post-pager">
 
 [< Responsive images and Media](../responsive-image-styles)
-[Responsive images, that's a wrap >](../responsive-images-thats-a-wrap)
+[Responsive images, the end >](../responsive-images-the-end)
 
 </div>
