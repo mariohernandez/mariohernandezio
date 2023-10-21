@@ -1,6 +1,6 @@
 ---
 date: "2023-10-09"
-title: "Responsive images and the picture HTML element"
+title: "Art Direction using the picture HTML element"
 tags: ['drupal','responsive-images','picture-element']
 draft: false
 featured: false
@@ -16,7 +16,7 @@ In the [previous article](../responsive-images-in-drupal-a-guide) of this guide 
 
 In the context of responsive images, art direction is the ability to display differently-cropped images based on the device size. For example, a large landscape shot of a person rowing in the middle of a lake is shown when viewed on a large desktop device. If we were to use the same image on a mobile device, that image would shrunk down, making the person in the image very small and hard to see. A better option would be to show a different version of the image that zooms in and focuses on the most important part of the image, the person. Take a look at the image below where an image is cropped slightly differently depending the device size.
 
-![Person rowing shown in different devices](/images/art-direction.webp)
+![Person rowing shown in different devices](/images/art-direction.webp){.body-img--wide}
 
 ## Enter the `<picture>` HTML element
 
@@ -93,10 +93,5 @@ When developing a website, the developer does not have all the information they 
 
 You may be wondering: "_Why did you get us all excited about the `<picture>` element if we can't really use it?_" well, if you are trying to achieve art direction, then you use the `<picture>` element.  It's the recommended approach for that use case.  If you are looking for resolution switching, a use case for most images in the web, you need to use the `srcset` and `sizes` attributes approach.  In the next post we'll dive deep into this technique.
 
-<div class="post-pager">
-
-[< Responsive images in Drupal, a guide](../responsive-images-in-drupal-a-guide)
-
-[Responsive images and srcset and sizes attributes >](../responsive-images-using-srcset-and-sizes-attributes)
-
-</div>
+- [Responsive images in Drupal, a guide](../responsive-images-in-drupal-a-guide)
+- [Responsive images and srcset and sizes attributes](../responsive-images-using-srcset-and-sizes-attributes)
