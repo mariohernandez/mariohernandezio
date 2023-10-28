@@ -1,5 +1,5 @@
 ---
-date: "2023-10-28"
+date: "2023-10-27"
 title: "Art Direction using the picture HTML element"
 tags: ['drupal','responsive-images','picture-element']
 draft: false
