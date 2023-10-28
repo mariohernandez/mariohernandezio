@@ -1,6 +1,6 @@
 ---
 date: "2023-10-27"
-title: "Responsive images, the end"
+title: "Responsive images, wrapping up"
 tags: ['drupal','responsive-images']
 draft: false
 featured: false
@@ -132,6 +132,7 @@ Once the responsive image style above is ready to go, You can repeat the process
 
 Navigate posts within this series
 
-- < [Responsive images and Media](../responsive-image-styles)
+* < [Responsive images and Media](../responsive-image-styles)
+* < [Back to the begining of this guide](../responsive-images-in-drupal-a-guide) >
 
 </div>

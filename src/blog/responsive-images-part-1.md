@@ -22,14 +22,14 @@ It is important to become well-versed with the tools available in Drupal for man
 
 Let's start by breaking down the topics this guide will cover:
 
-1. What are responsive images?
-1. Art Direction using the `<picture>` HTML element
-1. Image resolution switching using `srcset` and `sizes` attributes
-1. Image styles and Responsive image styles in Drupal
-1. Media, media types and view modes
-1. Third party or contrib tools
+1. [What are responsive images?](#responsive-images)
+1. [Art Direction using the `<picture>` HTML element](../art-direction-using-the-picture-html-element)
+1. [Image resolution switching using `srcset` and `sizes` attributes](../image-resolution-switching-using-srcset-and-sizes-attributes)
+1. [Image styles](../image-styles-in-drupal) and [Responsive image styles](../responsive-image-styles) in Drupal
+1. [Responsive images and Media](../responsive-images-and-media)
+1. [Responsive images, wrapping up](../responsive-images-wrapping-up)
 
-## What are responsive images?
+## What are responsive images? {id=responsive-images}
 
 A responsive image is one whose dimensions adjust to changes in screen resolutions. The concept of responsive images is one that developers and designers have been strugling with ever since Ethan Marcotte published his famous blog post, [Responsive Web Design](https://alistapart.com/article/responsive-web-design/), back in 2010 followed by his book of the same title.  The concept itself is pretty straight forward, serve the right image to any device type based on various factors such as screen resolution, internet speed, device orientation, viewport size, and others.  The technique for achieving this concept is not as easy.  I can honestly say that over 10 years after reponsive images were introduced, we are still trying to figure out the best way to render images that are responsive.  Read more about [responsive images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
 
