@@ -8,11 +8,11 @@ featuredImage: "/images/emily-bernal.webp"
 featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
 featuredImageCredit: "Emily Bernal"
 featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
-summary: "The challenge is finding the balance between enhancing the look of your website through the use of images and not jeopardizing performance."
+summary: "In this seven-part guide I cover everything you need to know about responsive images and how to manage them in a Drupal site."
 ---
 Images are an essential part of a website.  They enhance the appeal of the site and make the user experience a more pleasant one. The challenge is finding the balance between enhancing the look of your website through the use of images and not jeopardizing performance. In this guide, we'll dig deep into how to find that balance by going over knowledge, techniques and practices that will provide you with a solid understanding of the best way to serve images to your visitors using the latest technologies and taking advantage of the advances of web browsers in recent years.
 
-**NOTE**: Although the excercises in this guide are Drupal-specific, the core principles of responsive images apply to any platform you use to build your sites.
+Hi, I hope you are ready to dig into responsive images. This is a seven-part guide that will cover everything you need to know about responsive images and how to manage them in a Drupal site. Although the excercises in this guide are Drupal-specific, the core principles of responsive images apply to any platform you use to build your sites.
 
 ## Where do we start?
 
