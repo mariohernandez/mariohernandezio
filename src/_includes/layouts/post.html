@@ -18,7 +18,7 @@
             {% include 'partials/tag.svg' %}
           </span>
         </div>
-        <ul class="blog-post__tags" aria-describedby="tags-desc">
+        <ul class="blog-post__tags" aria-describedby="tags-desc" role="list">
           {% for tag in tags %}
             <li>
               <a href="/tag/{{ tag | slug }}/">{{ tag | title | replace(' ', '') }}</a>
