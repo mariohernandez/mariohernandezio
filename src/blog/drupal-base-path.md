@@ -3,7 +3,7 @@ date: "2023-09-27"
 title: "Drupal base path"
 tags: ['drupal','twig']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/paths.jpg"
 featuredImageAlt: "Person confronted with two paths to choose from"
 featuredImageCredit: "Caleb Jones"

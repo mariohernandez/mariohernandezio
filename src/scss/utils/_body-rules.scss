@@ -1,0 +1,67 @@
+// Blog series pager styles.
+.post-pager {
+  background-color: $color-gray-light;
+  margin: 4rem 0 6rem;
+  padding: 2rem 1rem 1rem;
+
+  p {
+    @include eyebrow;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-align: center;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    justify-content: space-between;
+    list-style-type: none;
+    padding-inline-start: 0;
+
+     @media all and (min-width: 1040px) {
+      flex-direction: row;
+    }
+  }
+
+  li:first-child {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    font-family: $font-tertiary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Info panel styles.
+.post-hint {
+  background-color: lighten($color-light-blue, 15%);
+  border-left: 3px solid $color-purple;
+  font-size: 1.8rem;
+  margin: 2rem 0 4rem;
+  padding: 2rem;
+  padding-inline-start: 4rem;
+
+}
+
+// Body images
+.body-image {
+  margin: 3rem auto;
+}
+
+.body-image--wide {
+  max-width: 75%;
+}
+
+.body-image--narrow {
+  max-width: 50%;
+}

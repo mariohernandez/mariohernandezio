@@ -12,8 +12,22 @@ const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
 
+// Enable the use of HTML attributes in markdown
+// https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/
+// https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
+const markdownIt = require('markdown-it');
+const markdownItAttrs = require('markdown-it-attrs');
+const markdownItOptions = {
+  html: true,
+  breaks: true,
+  linkify: true
+};
+const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs);
 
 module.exports = config => {
+  // Enables html attributes in markdown
+  config.setLibrary('md', markdownLib);
+
   // Enables syntax highlighted for code snippets.
   config.addPlugin(syntaxHighlight);
 
