@@ -15,10 +15,10 @@
         <div class="tags-icon" id="tags-desc">
           <span class="visually-hidden">Tags for this post</span>
           <span class="tag-icon__tag" aria-hidden="true">
-            {% include 'partials/tag.svg' %}
+            {% include '../../images/tag.svg' %}
           </span>
         </div>
-        <ul class="blog-post__tags" aria-describedby="tags-desc">
+        <ul class="blog-post__tags" aria-describedby="tags-desc" role="list">
           {% for tag in tags %}
             <li>
               <a href="/tag/{{ tag | slug }}/">{{ tag | title | replace(' ', '') }}</a>

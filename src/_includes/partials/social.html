@@ -1,4 +1,4 @@
-<ul class="social__items">
+<ul class="social__items" role="list">
   {% for item in social.items %}
     <li class="social__item">
       <a href="{{ item.url }}" title="{{ item.text }}" target="_blank">
@@ -6,7 +6,7 @@
         {{ item.title }}
       </span>
       <span class="social__item--icon">
-        {% include 'partials/' + item.icon + '.svg' %}
+        {% include '../../images/' + item.icon + '.svg' %}
       </span>
       </a>
     </li>

@@ -6,7 +6,7 @@
       <span>Hernandez</span>
     </a>
     <nav class="navigation" aria-label="Primary">
-      <ul class="navigation__items">
+      <ul class="navigation__items" role="list">
         {% for item in navigation.items %}
         <li class="navigation__item">
           <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>

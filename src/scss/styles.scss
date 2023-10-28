@@ -1,9 +1,14 @@
-@import '../scss/init';
+// Import Sass partials.
+@import '../scss/about-me';
 @import '../scss/button';
 @import '../scss/featured-post';
 @import '../scss/social';
-@import '../scss/about-me';
 @import '../scss/footer';
+@import 'utils/body-rules';
+
+// Import remaining Sass styles.
+@import 'post-list';
+@import 'post';
 
 html {
   font-size: 62.5%;
@@ -11,7 +16,8 @@ html {
 
 body {
   color: $color-black;
-  font-family: $font-primary;
+  // font-family: $font-primary;
+  font-family: Georgia, Times New Roman, serif;
   font-size: 2rem;
   line-height: 1.8;
 }

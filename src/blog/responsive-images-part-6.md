@@ -126,6 +126,6 @@ In the next post, we will complete the configuration and display of responsive i
 Navigate posts within this series
 
 - < [Responsive image styles](../responsive-image-styles)
-- [Responsive images, the end](../responsive-images-the-end) >
+- [Responsive images, wrapping up](../responsive-images-wrapping-up) >
 
 </div>
