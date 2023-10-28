@@ -1,9 +1,9 @@
 .blog-post__full {
   margin: 4rem 0;
-  max-width: 960px;
 
-  @media all and (min-width: 1200px) {
+  @media all and (min-width: 1040px) {
     margin: 6rem auto;
+    max-width: 960px;
   }
 
   .page-header__summary {
@@ -137,9 +137,10 @@
     margin-top: 2rem;
   }
 
-  img {
-    margin: 3rem auto;
-    max-width: 75%;
+  ol {
+    p {
+      margin: 0;
+    }
   }
 }
 
