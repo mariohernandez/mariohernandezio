@@ -1,0 +1,122 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-color: var(--gray-200);
+  border-style: solid;
+  border-width: 0;
+}
+
+html {
+  accent-color: var(--accent-color, var(--ucla-blue));
+  background-color: var(--bg-color, var(--white));
+  caret-color: var(--caret-color, var(--ucla-blue));
+  color: var(--color, var(--gray-900));
+  font-family: var(--font-body);
+  font-size: 62.5%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-primary);
+  line-height: var(--line-height-1-8);
+  overflow-x: hidden;
+  scrollbar-gutter: stable both-edges;
+  word-wrap: break-word;
+}
+
+hr {
+  border-top-width: 1px;
+  color: inherit;
+  height: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  border-color: inherit;
+  text-indent: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+summary {
+  display: list-item;
+}
+
+fieldset {
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ::selection {
+  background-color: var(--selection-bg-color, var(--blue-900));
+  color: var(--selection-color, var(--white));
+} */
+
+:disabled {
+  cursor: default;
+}
+
+svg {
+  block-size: auto;
+  fill: currentcolor;
+  max-inline-size: 100%;
+  stroke: none;
+
+  &:where(:not([width])) {
+    inline-size: var(--size-20);
+  }
+}

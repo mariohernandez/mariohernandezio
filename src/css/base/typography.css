@@ -1,0 +1,28 @@
+/**
+ * @file
+ * Font family, font weight, and line height variables.
+ */
+:root {
+  /* Font family. */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen-Sans', Ubuntu, Cantarell, 'Fira Sans', Aria, 'Droid Sans', sans-serif;
+  --font-secondary: Georgia, 'Times New Roman', Times, serif;
+
+  /* Font weight. */
+  --weight-100: 100;
+  --weight-200: 200;
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+  --weight-800: 800;
+  --weight-900: 900;
+
+  /* Line height. */
+  --line-height-1: 1;
+  --line-height-1-2: 1.2
+  --line-height-1-5: 1.5;
+  --line-height-1-8: 1.8;
+  --line-height-2: 2;
+  --line-height-2-4: 2.4;
+}

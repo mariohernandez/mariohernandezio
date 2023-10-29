@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Z-index variables.
+ */
+:root {
+  --below: -1;
+  --ground: 0;
+  --lowest: 10;
+  --lower: 20;
+  --low: 30;
+  --high: 40;
+  --highest: 50;
+}

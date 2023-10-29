@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Color variables.
+ */
+:root {
+  --black: #0e1e25;
+  --white: #ffffff;
+  --gray-dark: #414141;
+  --gray-mid: #bbbbbb;
+  --gray-light: #f5f5f5;
+  --purple: #663399;
+  --light-blue: #add8e6;
+}
