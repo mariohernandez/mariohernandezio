@@ -2,15 +2,14 @@ blockquote {
   color: $color-gray-dark;
   font-size: 2.2rem;
   font-style: italic;
-  line-height: 1.4;
-  margin: 40px auto;
-  max-width: 720px;
-  padding: 20px;
+  line-height: var(--line-height-14);
+  margin: 4rem auto;
+  padding: 2rem;
   position: relative;
   border-left: 4px solid $color-purple;
-  margin-top: 6rem;
+  margin-block-start: 6rem;
   max-width: 768px;
-  padding: 20px 0 20px 80px;
+  padding: 2rem 0 2rem 8rem;
   text-align: left;
 
   &::before {
@@ -18,10 +17,10 @@ blockquote {
     content: '"';
     display: block;
     font-family: cursive,serif;
-    font-size: 140px;
-    font-weight: 700;
-    left: -10px;
+    font-size: 14rem;
+    font-weight: var(--weight-700);
+    left: -1rem;
     position: absolute;
-    top: -80px;
+    top: -8rem;
   }
 }

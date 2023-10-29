@@ -2,7 +2,7 @@
   margin: 2rem;
   max-width: 1200px;
 
-  @media all and (min-width: 1200px) {
+  @media (--laptop) {
     margin: 3rem auto;
   }
 }
@@ -10,7 +10,7 @@
 .header__inner {
   text-align: center;
 
-  @media all and (min-width: 768px) {
+  @media (--tablet) {
     align-items: center;
     display: flex;
     justify-content: space-between;

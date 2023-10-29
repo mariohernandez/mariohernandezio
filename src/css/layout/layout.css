@@ -1,7 +1,7 @@
 .main-content {
-  margin: 4rem 20px 0;
+  margin: 4rem 2rem 0;
 
-  @media all and (min-width: 1200px) {
+  @media (--laptop) {
     margin: 10rem auto 0;
   }
 }
@@ -11,7 +11,7 @@
   margin: 0;
   max-width: 960px;
 
-  @media all and (min-width: 768px) {
+  @media (--tablet) {
     margin: 0 auto;
   }
 }

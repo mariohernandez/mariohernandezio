@@ -13,7 +13,7 @@
                 <a href="{{ item.url }}" class="post-list__link">{{ item.data.title }}</a>
               </h3>
             </dt>
-            <dd class="post-list__item-date">{{ item.date | dateFilter }}</dd>
+            <dd class="post-list__item-date eyebrow">{{ item.date | dateFilter }}</dd>
             <dd class="post-list__teaser">{{ item.data.summary | safe }}</dd>
           </div>
         {% endfor %}

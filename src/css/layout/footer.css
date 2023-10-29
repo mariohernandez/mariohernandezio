@@ -3,10 +3,10 @@
   border-top: 1px solid $color-gray-mid;
   display: flex;
   flex-direction: column;
-  margin-top: 10rem;
+  margin-block-start: 10rem;
   padding: 2rem;
 
   .social__items {
-    margin-bottom: 2rem;
+    margin-block-end: 2rem;
   }
 }

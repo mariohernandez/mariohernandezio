@@ -8,7 +8,7 @@
 
 {# Render post date and any tags that this post has been filed under #}
 {% set pageHeaderSummary %}
-  <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
+  <time class="blog-post__date eyebrow" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
   {% if tags %}
     <div class="tags-and-social-share">
       <div class="blog-post__tags--wrapper">

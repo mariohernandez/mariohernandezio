@@ -2,6 +2,12 @@
 @import 'base/colors.css';
 @import 'base/typography.css';
 
+@import 'utilities/breakpoints.css';
+@import 'utilities/sizes.css';
+@import 'utilities/props.css';
+@import 'utilities/visibility.css';
+@import 'utilities/zindex.css';
+
 @import 'components/button.css';
 @import 'components/featured-post.css';
 @import 'components/hero.css';
@@ -16,26 +22,20 @@
 @import 'layout/layout.css';
 @import 'layout/post-list.css';
 
-@import 'utilities/breakpoints.css';
-@import 'utilities/sizes.css';
-@import 'utilities/visibility.css';
-@import 'utilities/zindex.css';
-
-
 html {
   font-size: 62.5%;
   margin: 0;
 }
 
 body {
-  color: $color-black;
-  font-family: $font-primary;
+  color: var(--black);
+  font-family: var(--font-primary);
   font-size: 2rem;
-  line-height: 1.8;
+  line-height: var(--line-height-1-8);
 }
 
 a {
-  color: $color-black;
+  color: var(--black);
   text-decoration: underline;
 
   &:hover,

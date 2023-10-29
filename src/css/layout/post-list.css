@@ -1,10 +1,10 @@
 .post-list__items:nth-type(odd) {
-  background-color: $color-gray-light;
+  background-color: var(--gray-light);
 }
 
 .post-list__item {
-  border-bottom: 2px solid $color-gray-light;
-  margin-bottom: 4rem;
+  border-bottom: 2px solid var(--gray-light);
+  margin-block-end: 4rem;
   padding-bottom: 3rem;
 
   a {
@@ -18,11 +18,11 @@
 
 .post-list__item--title {
   font-size: 3rem;
-  margin-bottom: 2rem;
+  margin-block-end: 2rem;
 }
 
 .post-list__title {
-  line-height: 1.3;
+  line-height: var(--line-height-1-3);
 }
 
 .post-list__item-date {
@@ -34,16 +34,15 @@
   max-width: 960px;
 
   .post-list__title {
-    margin-bottom: 0.6rem;
+    margin-block-end: 0.6rem;
   }
 }
 
-// Listing pager
 .pager__items {
   display: flex;
   justify-content: space-between;
 
-  @media all and (min-width: 768px) {
+  @media (--tablet) {
     justify-content: space-around;
   }
 }

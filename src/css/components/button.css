@@ -2,22 +2,21 @@
 .button {
   display: inline-block;
   padding: 0.8rem 1.4rem;
-  border: 2px solid $color-black;
-  color: $color-black;
+  border: 2px solid var(--black);
+  color: var(--black);
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: var(--weight-700);
   text-align: center;
-  margin: 30px auto;
   letter-spacing: 0.2em;
   transition: background-color 0.25s, color 0.25s, border-color 0.25s;
 
   &:hover {
-    border-color: $color-black;
-    background: $color-black;
-    color: $color-white;
+    border-color: var(--black);
+    background-color: var(--black);
+    color: var(--white);
   }
 
   &.button--skip-link {
@@ -25,9 +24,8 @@
     top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 99;
+    z-index: var(--highest);
 
-    // @extends should be used with care, but this is a great example of them being hella useful
     &:not(:focus) {
       @include visually-hidden;
     }

@@ -7,19 +7,8 @@
   border-width: 0;
 }
 
-html {
-  accent-color: var(--accent-color, var(--ucla-blue));
-  background-color: var(--bg-color, var(--white));
-  caret-color: var(--caret-color, var(--ucla-blue));
-  color: var(--color, var(--gray-900));
-  font-family: var(--font-body);
-  font-size: 62.5%;
-}
-
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-primary);
-  line-height: var(--line-height-1-8);
   overflow-x: hidden;
   scrollbar-gutter: stable both-edges;
   word-wrap: break-word;

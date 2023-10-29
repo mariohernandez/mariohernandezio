@@ -1,17 +1,17 @@
 .hero {
   margin: 3rem 2rem;
 
-  @media all and (min-width: 768px) {
+  @media (--tablet) {
     margin: 6rem auto;
   }
 }
 
 .hero__heading {
   font-size: 6rem;
-  line-height: 1.4;
+  line-height: var(--line-height-1-4);
   text-align: center;
 
-  @media screen and (min-width: 768px) {
+  @media (--tablet) {
     font-size: 10rem;
   }
 }
@@ -19,11 +19,11 @@
 .hero__subheading {
   text-align: center;
   font-size: 2.5rem;
-  font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 2rem;
+  font-weight: var(--weight-400);
+  margin-block-start: 0;
+  margin-block-end: 2rem;
 
-  @media screen and (min-width: 768px) {
+  @media (--tablet) {
     font-size: 3.5rem;
   }
 }
