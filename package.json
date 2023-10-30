@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx gulp && concurrently \"npx gulp watch\" \"npx eleventy --serve\"",
     "production": "NODE_ENV=production npx gulp && NODE_ENV=production npx eleventy",
-    "postcss:watch": "postcss src/css/styles.css --dir public --watch"
+    "postcss:watch": "postcss src/css/default.css --dir dist/css --watch"
   },
   "keywords": [],
   "author": "Mario Hernandez",

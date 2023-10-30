@@ -8,6 +8,11 @@
 @import 'utilities/visibility.css';
 @import 'utilities/zindex.css';
 
+@import 'layout/footer.css';
+@import 'layout/header.css';
+@import 'layout/layout.css';
+@import 'layout/post-list.css';
+
 @import 'components/button.css';
 @import 'components/featured-post.css';
 @import 'components/hero.css';
@@ -16,11 +21,6 @@
 @import 'components/post.css';
 @import 'components/quote.css';
 @import 'components/social.css';
-
-@import 'layout/footer.css';
-@import 'layout/header.css';
-@import 'layout/layout.css';
-@import 'layout/post-list.css';
 
 html {
   font-size: 62.5%;
@@ -42,4 +42,8 @@ a {
   &:focus {
     text-decoration: none;
   }
+}
+
+h1 {
+  font-size: 6rem;
 }
