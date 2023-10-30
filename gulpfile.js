@@ -1,3 +1,5 @@
+'use strict';
+
 const {parallel, watch} = require('gulp');
 
 // Pull in each task
