@@ -1,8 +1,9 @@
-.header__logo {
+.site__logo {
   color: $color-gray-dark;
   display: block;
   font-size: 3rem;
   font-weight: var(--weight-400);
+  letter-spacing: -1px;
   line-height: var(--line-height-1);
   margin: 0 0 3rem;
   text-decoration: none;

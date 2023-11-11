@@ -4,8 +4,9 @@
  */
 :root {
   /* Font family. */
-  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen-Sans', Ubuntu, Cantarell, 'Fira Sans', Aria, 'Droid Sans', sans-serif;
-  --font-secondary: Georgia, 'Times New Roman', Times, serif;
+  /* --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen-Sans', Ubuntu, Cantarell, 'Fira Sans', Aria, 'Droid Sans', sans-serif; */
+  --font-primary: Helvetica,Roboto,Arial,sans-serif;
+  --font-secondary: Georgia,'Times New Roman',Times,serif;
 
   /* Font weight. */
   --weight-100: 100;

@@ -1,24 +1,24 @@
 /* Imports all existing css stylesheets. */
-@import 'reset.css';
-@import 'colors.css';
-@import 'typography.css';
+@import 'reset';
+@import 'colors';
+@import 'typography';
 
-@import '../utilities/breakpoints.css';
-@import '../utilities/sizes.css';
-@import '../utilities/props.css';
-@import '../utilities/visibility.css';
-@import '../utilities/zindex.css';
+@import '../utilities/breakpoints';
+@import '../utilities/sizes';
+@import '../utilities/props';
+@import '../utilities/visibility';
+@import '../utilities/zindex';
 
-@import '../layout/footer.css';
-@import '../layout/header.css';
-@import '../layout/layout.css';
-@import '../layout/post-list.css';
+@import '../layout/footer';
+@import '../layout/header';
+@import '../layout/layout';
+@import '../layout/post-list';
 
-@import '../components/button.css';
-@import '../components/featured-post.css';
-@import '../components/hero.css';
-@import '../components/logo.css';
-@import '../components/navigation.css';
-@import '../components/post.css';
-@import '../components/quote.css';
-@import '../components/social.css';
+@import '../components/button';
+@import '../components/featured-post';
+@import '../components/hero';
+@import '../components/logo';
+@import '../components/navigation';
+@import '../components/post';
+@import '../components/quote';
+@import '../components/social';

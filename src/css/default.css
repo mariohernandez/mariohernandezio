@@ -1,5 +1,5 @@
 /* Imports index.css which contains all other imports. */
-@import 'base/index.css';
+@import 'base/index';
 
 html {
   font-size: 62.5%;
@@ -15,7 +15,6 @@ body {
 
 a {
   color: var(--black);
-  text-decoration: underline;
 
   &:hover,
   &:focus {
