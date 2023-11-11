@@ -1,4 +1,4 @@
-<article class="featured-post">
+<section class="featured-post">
   <div class="featured-post__inner">
     {% for item in collections.featuredPost %}
       <div class="featured-post__image">
@@ -10,17 +10,17 @@
       </div>
 
       <article class="featured-post__article">
-        <h3 class="feature-post__article--heading">
-          {{ featuredPost.heading }}
-        </h3>
+        <p class="feature-post__tag">{{ featuredPost.heading }}</p>
         <div class="featured-post__article--date eyebrow">
           {{ item.date | dateFilter }}
         </div>
-        <h2 class="featured-post__article--title">
-          <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
-            {{ item.data.title }}
-          </a>
-        </h2>
+        <header role="header">
+          <h2 class="featured-post__article--title">
+            <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
+              {{ item.data.title }}
+            </a>
+          </h2>
+        </header>
         <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
         <div class="featured-post__cta" aria-label="{{ item.title }}">
           <a href="{{ item.url }}" class="button">Read the full article</a>
@@ -28,4 +28,4 @@
       </article>
     {% endfor %}
   </div>
-</article>
+</section>

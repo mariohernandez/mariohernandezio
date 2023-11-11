@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Featured post styles.
+ */
+
 .featured-post {
   background-color: var(--gray-light);
   margin: 0 -2rem 4rem -2rem;
@@ -29,10 +34,10 @@
 
   @media (--laptop) {
     left: -6rem;
-    position: absolute;
     padding: 6rem 3rem 3rem;
+    position: absolute;
     top: -6rem;
-    width: 500px;
+    width: 50rem;
   }
 }
 
@@ -67,8 +72,8 @@
   }
 }
 
-/* Featured article heading label. */
-.feature-post__article--heading {
+/* Featured article heading tag. */
+.feature-post__tag {
   background-color: var(--black);
   color: var(--white);
   display: inline-block;

@@ -1,33 +1,43 @@
+/**
+ * @file
+ * Button component styles.
+ */
 
 .button {
   display: inline-block;
   padding: 0.8rem 1.4rem;
   border: 2px solid var(--black);
   color: var(--black);
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
   font-size: 1.2rem;
   font-weight: var(--weight-700);
-  text-align: center;
   letter-spacing: 0.2em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
   transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+  white-space: nowrap;
 
   &:hover {
-    border-color: var(--black);
     background-color: var(--black);
+    border-color: var(--black);
     color: var(--white);
   }
 
   &.button--skip-link {
+    left: 50%;
     position: absolute;
     top: 0.5rem;
-    left: 50%;
     transform: translateX(-50%);
     z-index: var(--highest);
 
+    /* Hides the link when not in focus. */
     &:not(:focus) {
-      @include visually-hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+      word-wrap: normal;
     }
   }
 }
