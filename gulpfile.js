@@ -25,7 +25,8 @@ exports.default = parallel(images, manifest);
 // act accordingly
 exports.watch = watcher;
 
-// The task below watches for css changes using postcss.
+// The task below watches for css changes using postcss. Use it if you prefer
+// to use a Gulp task instead of the postcss task above.
 // const {src, dest, watch} = require ('gulp');
 // var postcss = require ('gulp-postcss');
 
