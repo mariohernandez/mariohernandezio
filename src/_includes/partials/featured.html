@@ -10,20 +10,22 @@
       </div>
 
       <article class="featured-post__article">
-        <p class="feature-post__tag">{{ featuredPost.heading }}</p>
-        <div class="featured-post__article--date eyebrow">
-          {{ item.date | dateFilter }}
-        </div>
-        <header role="header">
-          <h2 class="featured-post__article--title">
-            <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
-              {{ item.data.title }}
-            </a>
-          </h2>
-        </header>
-        <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
-        <div class="featured-post__cta" aria-label="{{ item.title }}">
-          <a href="{{ item.url }}" class="button">Read the full article</a>
+        <div class="featured-post__article--inner">
+          <p class="feature-post__tag">{{ featuredPost.heading }}</p>
+          <div class="featured-post__article--date date">
+            {{ item.date | dateFilter }}
+          </div>
+          <header role="header">
+            <h2 class="featured-post__article--title">
+              <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
+                {{ item.data.title }}
+              </a>
+            </h2>
+          </header>
+          <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
+          <div class="featured-post__cta" aria-label="{{ item.title }}">
+            <a href="{{ item.url }}" class="button">Read the full article</a>
+          </div>
         </div>
       </article>
     {% endfor %}

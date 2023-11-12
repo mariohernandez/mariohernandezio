@@ -1,11 +1,12 @@
+{% extends "layouts/base.html" %}
+
 <!--Tutorial used to build this site:
 https://piccalil.li/course/learn-eleventy-from-scratch/lesson/19/ -->
 
-{% extends "layouts/base.html" %}
 <!-- Grab random blog post for the 'more from the blog' feed -->
 {% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
 
-  {% block content %}
+{% block content %}
 
   {% include "partials/hero.html" %}
 

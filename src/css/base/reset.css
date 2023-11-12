@@ -14,6 +14,7 @@
 
 body {
   -webkit-font-smoothing: antialiased;
+  color: var(--black);
   overflow-x: hidden;
   scrollbar-gutter: stable both-edges;
   word-wrap: break-word;
@@ -25,16 +26,19 @@ hr {
   height: 0;
 }
 
+p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-size: inherit;
+  font-size: var(--font-size-18);
+  overflow-wrap: break-word;
 }
 
 a {
+  color: var(--black);
   text-decoration: underline;
 }
 
@@ -93,22 +97,16 @@ textarea {
   resize: vertical;
 }
 
-/* ::selection {
-  background-color: var(--selection-bg-color, var(--blue-900));
-  color: var(--selection-color, var(--white));
-} */
+::selection {
+  background-color: var(--purple);
+  color: var(--white);
+}
 
 :disabled {
   cursor: default;
 }
 
-svg {
-  block-size: auto;
-  fill: currentcolor;
-  max-inline-size: 100%;
-  stroke: none;
-
-  &:where(:not([width])) {
-    inline-size: var(--size-20);
-  }
+img {
+  display: block;
+  max-width: 100%;
 }
