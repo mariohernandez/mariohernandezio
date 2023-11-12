@@ -27,21 +27,24 @@
 .about-me__heading {
   font-size: var(--font-size-24);
   margin-block-end: 1rem;
-  /* text-align: center;
-
-  @media (--laptop) {
-    text-align: left;
-  } */
 }
-
-/* .about-me__bio {
-  margin-block-start: 1rem;
-} */
 
 .about-me__photo {
   left: -2rem;
   position: absolute;
   top: -20rem;
+
+  /* Purple frame around photo. */
+  &::before {
+    border: 0.8rem solid var(--purple);
+    content: '';
+    display: block;
+    height: 278px;
+    position: absolute;
+    right: -0.6rem;
+    top: -0.6rem;
+    width: 250px;
+  }
 
   @media (--tablet) {
     left: -5rem;
@@ -53,27 +56,8 @@
   }
 }
 
-/* .about-me__photo, */
-.about__headshot {
-  margin-bottom: 2rem;
-  width: 250px;
-  position: relative;
+/* .about full photo, */
 
-  img {
-    width: 250px !important;
-  }
-
-  &::before {
-    border: 8px solid --var(--purple);
-    content: '';
-    display: block;
-    height: 250px;
-    left: -0.5rem;
-    position: absolute;
-    top: -0.5rem;
-    width: 250px;
-  }
-}
 
 /* About full page. */
 .about__full {
@@ -88,13 +72,25 @@
     grid-column-gap: 3rem;
     margin: 0 auto;
     align-items: unset;
-
-
   }
 }
 
 .about__headshot {
-  max-width: 250px;
+  margin-bottom: 2rem;
+  position: relative;
+  width: 250px;
+
+  /* Purple frame around photo. */
+  &::before {
+    border: 0.8rem solid var(--purple);
+    content: '';
+    display: block;
+    height: 278px;
+    position: absolute;
+    right: -0.6rem;
+    top: -0.6rem;
+    width: 250px;
+  }
 
   .social__items {
     margin-top: 2rem;
