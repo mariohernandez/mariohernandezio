@@ -5,6 +5,7 @@
 @import 'typography';
 
 @import '../utilities/breakpoints';
+@import '../utilities/post-body';
 @import '../utilities/sizes';
 @import '../utilities/props';
 @import '../utilities/visibility';

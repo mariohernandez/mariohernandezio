@@ -4,8 +4,8 @@
 
 .post-list__item {
   border-bottom: 2px solid var(--gray-light);
-  margin-block-end: 4rem;
-  padding-bottom: 3rem;
+  margin-block-end: 2rem;
+  padding-block-end: 1rem;
 
   a {
     text-decoration: none;
