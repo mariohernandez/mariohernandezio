@@ -12,6 +12,8 @@
 body {
   -webkit-font-smoothing: antialiased;
   color: var(--black);
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-15);
   overflow-x: hidden;
   scrollbar-gutter: stable both-edges;
   word-wrap: break-word;
@@ -23,7 +25,6 @@ hr {
   height: 0;
 }
 
-p,
 h1,
 h2,
 h3,
@@ -31,7 +32,20 @@ h4,
 h5,
 h6 {
   font-size: var(--font-size-18);
+  line-height: var(--line-height-1-1);
   overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: var(--font-size-50);
+}
+
+h2 {
+  font-size: var(--font-size-30);
+}
+
+h3 {
+  font-size: var(--font-size-24);
 }
 
 a {

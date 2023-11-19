@@ -11,8 +11,6 @@
   }
 
   .page-header__title {
-    font-size: var(--font-size-50);
-    line-height: var(--line-height-1-2);
     margin-block-end: var(--size-20);
   }
 }

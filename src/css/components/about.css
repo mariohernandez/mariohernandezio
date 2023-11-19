@@ -58,22 +58,27 @@
 
 /* About full page. */
 .about__full {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   max-width: 960px;
 
-  @media (--laptop) {
+  @media (--mobile) {
+    margin: 0 auto;
+    align-items: unset;
+  }
+}
+
+.about__content--wrapper {
+  @media (--mobile) {
     display: grid;
     grid-template-columns: 250px auto;
     grid-column-gap: 3rem;
+    grid-gap: var(--size-50);
     margin: 0 auto;
     align-items: unset;
   }
 }
 
 .about__headshot {
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   position: relative;
   width: 250px;
 

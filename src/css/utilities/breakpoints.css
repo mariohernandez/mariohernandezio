@@ -4,7 +4,7 @@
  */
 /* TODO: https://github.com/csstools/postcss-custom-media
 Converting PX to REM: https://nekocalc.com/px-to-rem-converter */
-@custom-media --mobile (min-width: 30rem); /* 480px */
+@custom-media --mobile (min-width: 35rem); /* 560px */
 @custom-media --tablet (min-width: 48rem); /* 768px */
 @custom-media --tablet-large (min-width: 60rem); /* 960px */
 @custom-media --laptop (min-width: 75rem); /* 1200px */

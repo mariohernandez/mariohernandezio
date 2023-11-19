@@ -1,12 +1,12 @@
 .footer {
   align-items: center;
-  border-top: 1px solid $color-gray-mid;
+  border-top: 1px solid var(--gray-light);
   display: flex;
   flex-direction: column;
   margin-block-start: 10rem;
   padding: 2rem;
 
   .social__items {
-    margin-block-end: 2rem;
+    margin-block-end: 0;
   }
 }
