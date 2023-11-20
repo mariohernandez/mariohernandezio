@@ -2,7 +2,7 @@
   <div class="featured-post__inner">
     {% for item in collections.featuredPost %}
       <div class="featured-post__image">
-        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" />
+        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960px" height="450px" />
         <div class="featured-post__image--credit">
           <span>Photo by:</span>
           <a href="{{ item.data.featuredImageCreditUrl }}">{{ item.data.featuredImageCredit }}</a>
@@ -12,7 +12,7 @@
       <article class="featured-post__article">
         <div class="featured-post__article--inner">
           <p class="featured-post__tag">{{ featuredPost.heading }}</p>
-          <div class="featured-post__article--date date">
+          <div class="featured-post__article--date eyebrow">
             {{ item.date | dateFilter }}
           </div>
           <header role="header">
