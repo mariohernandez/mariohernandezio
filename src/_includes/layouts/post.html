@@ -45,11 +45,11 @@
     </div>
 
     {% if recommendedPosts %}
-      <footer class="recommended-posts">
+      <div class="recommended-posts">
         {% set postListItems = recommendedPosts %}
         {% set postListHeadline = 'Other recommended posts' %}
         {% include "partials/post-list.html" %}
-      </footer>
+      </div>
     {% endif %}
   </article>
 

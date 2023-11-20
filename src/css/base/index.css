@@ -1,7 +1,6 @@
 /* Imports all existing css stylesheets. */
 @import 'reset';
 @import 'colors';
-@import 'date';
 @import 'typography';
 
 @import '../utilities/breakpoints';
@@ -18,6 +17,7 @@
 
 @import '../components/about';
 @import '../components/button';
+@import '../components/eyebrow';
 @import '../components/featured-post';
 @import '../components/hero';
 @import '../components/logo';
