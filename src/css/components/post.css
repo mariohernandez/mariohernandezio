@@ -161,7 +161,7 @@
 }
 
 /* Removes the black bar/line under date on listings of blog posts. */
-.post-list__item--date.date {
+.post-list__item--date.eyebrow {
   &:after {
     display: none;
   }
