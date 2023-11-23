@@ -5,17 +5,17 @@
 
 .button {
   background-color: var(--white);
-  border: 2px solid var(--black);
+  border: var(--size-2) solid var(--black);
   color: var(--black);
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: var(--font-size-12);
   font-weight: var(--weight-700);
   letter-spacing: 0.2em;
-  padding: 0.8rem 1.4rem;
+  padding: var(--size-8) var(--size-14);
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+  transition: var(--transition-background-color-04s), var(--transition-color-04s), var(--transition-border-color-04s);
   white-space: nowrap;
 
   &:hover {
@@ -24,6 +24,7 @@
     color: var(--white);
   }
 
+  /* Skip to content link for accessibility. */
   &.button--skip-link {
     left: 50%;
     position: absolute;
