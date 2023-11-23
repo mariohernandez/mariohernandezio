@@ -4,61 +4,72 @@
  */
 
 .about-me {
-  margin: 0;
-  margin-block-start: 30rem;
-  max-width: 640px;
-  position: relative;
 
   @media (--tablet) {
-    margin: 12rem auto 8rem;
+    margin-inline: auto;
+    max-width: var(--size-720);
   }
 }
 
 .about-me__content {
   background-color: var(--gray-light);
-  padding: 7rem 2rem 2rem;
+  padding: var(--size-70) var(--size-30) var(--size-30);
 
-  @media (--tablet) {
-    padding-block-start: 2rem;
-    padding-inline-start: 250px;
+  @media (--tablet-large) {
+    padding-block-start: var(--size-20);
+    padding-inline-start: var(--size-250);
   }
 }
 
 .about-me__heading {
   font-size: var(--font-size-24);
-  margin-block-end: 1rem;
+  margin-block-end: var(--size-10);
 }
 
 .about-me__photo {
-  position: absolute;
-  right: 0;
-  top: -20rem;
+  margin: 0 auto -5rem;
+  position: relative;
+  width: var(--size-180);
+
+  @media (--tablet-large) {
+    margin: 0 0 -20rem -4rem;
+    width: var(--size-250);
+  }
 
   /* Purple frame around photo. */
   &::before {
-    border: 0.8rem solid var(--purple);
+    border: var(--size-4) solid var(--purple);
     content: '';
     display: block;
-    height: 278px;
+    height: var(--size-200);
     left: -0.3rem;
     position: absolute;
-    top: 0.3rem;
-    width: 250px;
-  }
+    top: var(--size-3);
+    width: var(--size-180);
 
-  @media (--tablet) {
-    left: -5rem;
-    top: 5rem;
+    @media (--tablet-large) {
+      border-width: var(--size-6);
+      height: var(--size-278);
+      width: var(--size-250);
+    }
   }
 
   img {
-    border-radius: 0.5rem;
+    height: var(--size-200);
+    margin: 0 auto;
+    width: var(--size-180);
+
+    @media (--tablet-large) {
+      height: var(--size-278);
+      margin: unset;
+      width: var(--size-250);
+    }
   }
 }
 
 /* About full page. */
 .about__full {
-  max-width: 960px;
+  max-width: var(--size-960);
 
   @media (--mobile) {
     margin: 0 auto;
@@ -87,7 +98,7 @@
     border: 0.8rem solid var(--purple);
     content: '';
     display: block;
-    height: 278px;
+    height: var(--size-278);
     position: absolute;
     right: -0.6rem;
     top: -0.6rem;

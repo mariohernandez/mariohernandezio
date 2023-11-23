@@ -3,7 +3,7 @@
 
   @media (--tablet) {
     margin: var(--size-60) auto;
-    max-width: 960px;
+    max-width: var(--size-960);
   }
 
   .page-header__summary {

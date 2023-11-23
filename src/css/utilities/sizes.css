@@ -1,6 +1,6 @@
 /**
  * @file
- * Sizes variables.
+ * Sizes and spacing variables.
  */
 :root {
   --size-1: 1px;      /* 1px */
@@ -15,6 +15,7 @@
   --size-20: 2rem;    /* 20px */
   --size-24: 2.4rem;  /* 24px */
   --size-28: 2.8rem;  /* 28px */
+  --size-30: 3rem;    /* 30px */
   --size-32: 3.2rem;  /* 32px */
   --size-36: 3.6rem;  /* 36px */
   --size-40: 4rem;    /* 40px */
@@ -26,6 +27,7 @@
   --size-60: 6rem;    /* 60px */
   --size-64: 6.4rem;  /* 64px */
   --size-68: 6.8rem;  /* 68px */
+  --size-70: 7rem;    /* 70px */
   --size-72: 7.2rem;  /* 72px */
   --size-76: 7.6rem;  /* 76px */
   --size-80: 8rem;    /* 80px */
@@ -34,4 +36,45 @@
   --size-92: 9.2rem;  /* 92px */
   --size-96: 9.6rem;  /* 96px */
   --size-100: 10rem;  /* 100px */
+  --size-180: 18rem;  /* 180px */
+  --size-200: 20rem;  /* 200px */
+  --size-250: 25rem;  /* 250px */
+  --size-278: 27.8rem;  /* 278px */
+  --size-720: 72rem; /* 720px */
+  --size-960: 96rem; /* 960px */
+}
+
+/* Utility classes for spacing. */
+/* margin-bottom: */
+.mb-20 {
+  margin-block-end: var(--size-20);
+}
+
+.mb-40 {
+  margin-block-end: var(--size-40);
+}
+
+.mb-60 {
+  margin-block-end: var(--size-60);
+}
+
+.mb-80 {
+  margin-block-end: var(--size-80);
+}
+
+/* margin-top: */
+.mt-20 {
+  margin-block-start: var(--size-20);
+}
+
+.mt-40 {
+  margin-block-start: var(--size-40);
+}
+
+.mt-60 {
+  margin-block-start: var(--size-60);
+}
+
+.mt-80 {
+  margin-block-start: var(--size-80);
 }
