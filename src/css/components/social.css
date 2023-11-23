@@ -1,18 +1,23 @@
+/**
+ * @file
+ * Styles for social media icons.
+ */
+
 .social__items {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0;
+  margin: var(--size-20) 0;
 }
 
 .social__item {
-  margin: 0 1rem;
+  margin: 0 var(--size-10);
 }
 
 .social__item--icon {
 
   img {
-    height: 3.2rem;
-    width: 3.2rem;
+    height: var(--size-32);
+    width: var(--size-32);
   }
 }
