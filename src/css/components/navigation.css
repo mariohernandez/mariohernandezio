@@ -2,25 +2,25 @@
   display: flex;
   justify-content: center;
   list-style: none;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .navigation__item {
-  margin: 0 1rem;
-  padding: 0.4rem 1rem;
+  margin: 0 var(--size-10);
+  padding: var(--size-5) var(--size-10);
 
   a {
     text-decoration: none;
     text-transform: lowercase;
     color: var(--black);
-    font-size: 2.2rem;
-    font-weight: normal;
-    transition: color 0.3s ease-in-out;
+    font-size: var(--font-size-22);
+    font-weight: var(--weight-700);
+    transition: var(--transition-color-03s);
 
     &[data-state="active"],
     &:hover {
-      border-bottom: 4px solid var(--black);
-      color: $color-gray-dark;
+      border-block-end: var(--size-4) solid var(--black);
+      color: var(--gray-dark);
       padding-block-end: var(--size-2);
     }
   }

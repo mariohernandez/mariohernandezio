@@ -1,0 +1,9 @@
+/**
+ * @file
+ * CSS Transitions and animations.
+ */
+
+:root {
+  /* Transitions. */
+  --transition-color-03s: color 0.3s ease-in-out;
+}

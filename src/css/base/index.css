@@ -4,6 +4,7 @@
 @import 'typography';
 @import 'base';
 
+@import '../utilities/animations';
 @import '../utilities/breakpoints';
 @import '../utilities/post-body';
 @import '../utilities/sizes';
