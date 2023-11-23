@@ -30,8 +30,8 @@
 }
 
 .about-me__photo {
-  left: -2rem;
   position: absolute;
+  right: 0;
   top: -20rem;
 
   /* Purple frame around photo. */
@@ -40,15 +40,15 @@
     content: '';
     display: block;
     height: 278px;
+    left: -0.3rem;
     position: absolute;
-    right: -0.6rem;
-    top: -0.6rem;
+    top: 0.3rem;
     width: 250px;
   }
 
   @media (--tablet) {
     left: -5rem;
-    top: -5rem;
+    top: 5rem;
   }
 
   img {

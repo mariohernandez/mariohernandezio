@@ -1,27 +1,2 @@
 /* Imports index.css which contains all other imports. */
 @import 'base/index';
-
-html {
-  font-size: 62.5%;
-  margin: 0;
-}
-
-body {
-  color: var(--black);
-  font-family: var(--font-primary);
-  font-size: 2rem;
-  line-height: var(--line-height-1-8);
-}
-
-a {
-  color: var(--black);
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-}
-
-h1 {
-  font-size: 6rem;
-}

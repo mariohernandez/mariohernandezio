@@ -1,22 +1,44 @@
 /**
  * @file
  * This is the site's reset stylesheet.
+ * These styles were inspired in part by
+ * https://andy-bell.co.uk/a-more-modern-css-reset/
  */
 
+/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Set core body defaults */
 body {
   -webkit-font-smoothing: antialiased;
-  color: var(--black);
-  font-size: var(--font-size-18);
-  line-height: var(--line-height-15);
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
   overflow-x: hidden;
   scrollbar-gutter: stable both-edges;
   word-wrap: break-word;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+* {
+  margin: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
 }
 
 hr {
@@ -25,32 +47,18 @@ hr {
   height: 0;
 }
 
+/* Set shorter line heights on headings and interactive elements */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+input,
+label {
   font-size: var(--font-size-18);
   line-height: var(--line-height-1-1);
   overflow-wrap: break-word;
-}
-
-h1 {
-  font-size: var(--font-size-50);
-}
-
-h2 {
-  font-size: var(--font-size-30);
-}
-
-h3 {
-  font-size: var(--font-size-24);
-}
-
-a {
-  color: var(--black);
-  text-decoration: underline;
 }
 
 table {
@@ -66,13 +74,7 @@ select,
 textarea {
   color: inherit;
   font-weight: inherit;
-  line-height: inherit;
   padding: 0;
-}
-
-button,
-select {
-  text-transform: none;
 }
 
 button,
@@ -82,11 +84,23 @@ button,
   appearance: button;
   background-color: transparent;
   background-image: none;
+  cursor: pointer;
 }
 
-button,
-[role="button"] {
-  cursor: pointer;
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+  text-transform: none;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+textarea {
+  resize: vertical;
 }
 
 summary {
@@ -97,18 +111,15 @@ fieldset {
   padding: 0;
 }
 
-ol,
-ul,
-dd {
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'],
+dd[role='list'] {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
-textarea {
-  resize: vertical;
-}
-
+/* Adds background color when text is selected. */
 ::selection {
   background-color: var(--purple);
   color: var(--white);

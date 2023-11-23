@@ -2,6 +2,7 @@
 @import 'reset';
 @import 'colors';
 @import 'typography';
+@import 'base';
 
 @import '../utilities/breakpoints';
 @import '../utilities/post-body';
