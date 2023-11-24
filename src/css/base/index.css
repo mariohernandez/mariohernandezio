@@ -13,7 +13,6 @@
 @import '../utilities/visibility';
 @import '../utilities/zindex';
 
-@import '../layout/footer';
 @import '../layout/header';
 @import '../layout/layout';
 @import '../layout/post-list';
@@ -22,6 +21,7 @@
 @import '../components/button';
 @import '../components/eyebrow';
 @import '../components/featured-post';
+@import '../components/footer';
 @import '../components/hero';
 @import '../components/logo';
 @import '../components/navigation';

@@ -1,5 +1,5 @@
 blockquote {
-  color: $color-gray-dark;
+  color: var(--gray-darker);
   font-size: 2.2rem;
   font-style: italic;
   line-height: var(--line-height-14);

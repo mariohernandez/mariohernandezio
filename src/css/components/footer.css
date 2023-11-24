@@ -1,0 +1,18 @@
+.footer {
+  align-items: center;
+  border-top: 1px solid var(--gray-medium);
+  display: flex;
+  flex-direction: column;
+  padding: var(--size-20);
+
+  .social__items {
+    margin: 0;
+  }
+}
+
+.footer__legal {
+  p {
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-1);
+  }
+}

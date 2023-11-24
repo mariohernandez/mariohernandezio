@@ -145,7 +145,7 @@
   .post-list__heading {
     font-size: var(--font-size-24);
     margin-block-end: var(--size-20);
-    border-bottom: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-medium);
   }
 
   .post-list__title {
