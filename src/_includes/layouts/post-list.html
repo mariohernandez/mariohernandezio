@@ -11,7 +11,7 @@
 {% endif %}
 
 {% block content %}
-  <article class="post-list">
+  <section class="post-list">
     {% include "partials/page-header.html" %}
     {% include "partials/post-list.html" %}
 
@@ -20,6 +20,6 @@
     {% if not tag %}
       {% include "partials/pagination.html" %}
     {% endif %}
-  </article>
+  </section>
 
 {% endblock %}

@@ -1,26 +1,26 @@
 blockquote {
   color: var(--gray-darker);
-  font-size: 2.2rem;
+  font-size: var(--font-size-22);
   font-style: italic;
   line-height: var(--line-height-14);
-  margin: 4rem auto;
-  padding: 2rem;
+  margin: var(--size-40) auto;
+  padding: var(--size-20);
   position: relative;
-  border-left: 4px solid $color-purple;
-  margin-block-start: 6rem;
-  max-width: 768px;
-  padding: 2rem 0 2rem 8rem;
+  border-left: var(--size-4) solid var(--purple);
+  margin-block-start: var(--size-60);
+  max-width: var(--size-720);
+  padding: var(--size-20) 0 var(--size-20) var(--size-80);
   text-align: left;
 
   &::before {
-    color: $color-purple;
+    color: var(--purple);
     content: '"';
     display: block;
     font-family: cursive,serif;
-    font-size: 14rem;
+    font-size: var(--font-size-140);
     font-weight: var(--weight-700);
-    left: -1rem;
+    left: calc(var(--size-1) * -1); /* Negative value */
     position: absolute;
-    top: -8rem;
+    top: calc(var(--size-80) * -1); /* Negative value */
   }
 }
