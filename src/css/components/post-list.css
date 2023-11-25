@@ -10,7 +10,7 @@
   }
 }
 
-.post-list__item {
+.post-list__item:not(:last-child) {
   border-bottom: var(--size-2) solid var(--gray-light);
   margin-block-end: var(--size-20);
   padding-block-end: var(--size-20);

@@ -5,7 +5,7 @@
 
 .header {
   margin: var(--size-20);
-  max-width: var(--size-1200); /* 1200px */
+  max-width: var(--size-960);
 
   @media (--laptop) {
     margin: var(--size-30) auto;

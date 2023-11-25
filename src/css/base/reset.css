@@ -128,8 +128,3 @@ dd[role='list'] {
 :disabled {
   cursor: default;
 }
-
-img {
-  display: block;
-  max-width: 100%;
-}

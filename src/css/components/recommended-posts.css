@@ -7,7 +7,7 @@
   background-color: var(--gray-light);
   margin: 0 auto;
   max-width: var(--size-960);
-  padding: var(--size-20);
+  padding: var(--size-30) var(--size-20);
 
   /* Component heading. */
   .post-list__heading {

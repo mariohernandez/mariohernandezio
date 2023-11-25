@@ -35,3 +35,8 @@ h3 {
 h4 {
   font-size: var(--font-size-20);
 }
+
+img {
+  display: block;
+  max-width: 100%;
+}

@@ -57,10 +57,9 @@
 
 /* This ensures post image resizes proportional
 keeping its original aspect ratio. */
-.blog-post__content--image {
+.blog-post__image {
 
   img {
-    width: 960px;
     height: auto;
   }
 }
