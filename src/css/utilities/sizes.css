@@ -33,7 +33,7 @@
   --size-76: 7.6rem;  /* 76px */
   --size-80: 8rem;    /* 80px */
   --size-84: 8.4rem;  /* 84px */
-  --size-88: 8.8rem;  /* 8.8px */
+  --size-88: 8.8rem;  /* 88px */
   --size-92: 9.2rem;  /* 92px */
   --size-96: 9.6rem;  /* 96px */
   --size-100: 10rem;  /* 100px */
@@ -44,6 +44,7 @@
   --size-650: 6.5rem; /* 650px */
   --size-720: 72rem; /* 720px */
   --size-960: 96rem; /* 960px */
+  --size-1200: 120rem; /* 1200px */
 }
 
 /* Utility classes for spacing. */

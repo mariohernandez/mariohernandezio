@@ -1,16 +1,26 @@
+/**
+ * @file
+ * Layout for all blog post pages.
+ */
+
 .main-content {
-  margin: 4rem 2rem 0;
+  margin: var(--size-40) var(--size-20) 0;
+  min-height: 100vh;
 
   @media (--laptop) {
-    margin: 10rem auto 0;
+    margin: var(--size-100) auto 0;
+  }
+}
+
+.blog-post__full {
+  margin-block: var(--size-40);
+
+  @media (--tablet) {
+    margin: var(--size-60) auto;
+    max-width: var(--size-960);
   }
 }
 
 .post-list {
-  margin: 0;
-  max-width: 960px;
-
-  @media (--tablet) {
-    margin: 0 auto;
-  }
+  max-width: var(--size-960);
 }

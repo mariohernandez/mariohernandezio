@@ -1,9 +1,14 @@
+/**
+ * @file
+ * Layout styles for the header section.
+ */
+
 .header {
-  margin: 2rem;
-  max-width: 1200px;
+  margin: var(--size-20);
+  max-width: var(--size-1200); /* 1200px */
 
   @media (--laptop) {
-    margin: 3rem auto;
+    margin: var(--size-30) auto;
   }
 }
 
