@@ -1,0 +1,15 @@
+<div class="tags">
+  <div class="tags__icon" id="tags-desc">
+    <span class="visually-hidden">Tags for this post</span>
+    <span class="tags__icon--icon" aria-hidden="true">
+      {% include '../../images/icons/tag.svg' %}
+    </span>
+  </div>
+  <ul class="tags__items" aria-describedby="tags-desc" role="list">
+    {% for tag in tags %}
+      <li class="tags__item">
+        <a href="/tag/{{ tag | slug }}/" class="tags__link">{{ tag | title | replace(' ', '') }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

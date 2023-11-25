@@ -1,0 +1,47 @@
+/**
+ * @file
+ * Blog post tags styles.
+ */
+
+.tags {
+  align-items: center;
+  display: flex;
+  margin-block-end: var(--size-30);
+
+  @media (--tablet) {
+    margin-block-end: 0;
+  }
+}
+
+.tags__items {
+  align-items: center;
+  display: flex;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.tags__item {
+  margin-inline-end: var(--size-10);
+}
+
+/* Tag icon wrapper. */
+.tags__icon--icon {
+  align-items: center;
+  display: flex;
+  margin-inline-end: var(--size-10);
+}
+
+.tags__link {
+  display: block;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: var(--weight-500);
+  line-height: var(--line-height-1);
+  text-decoration: underline;
+  text-transform: lowercase;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
