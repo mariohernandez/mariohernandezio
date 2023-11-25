@@ -1,0 +1,25 @@
+/**
+ * @file
+ * Recommended posts component styles.
+ */
+
+.recommended-posts {
+  background-color: var(--gray-light);
+  margin: 0 auto;
+  max-width: var(--size-960);
+  padding: var(--size-20);
+
+  /* Component heading. */
+  .post-list__heading {
+    border-block-end: 1px solid var(--gray-medium);
+    font-size: var(--font-size-24);
+    margin-block-end: var(--size-20);
+    padding-block-end: var(--size-5);
+  }
+
+  /* Article title in recommended posts list is smaller than
+  Article title in the post listing landing page (/blog). */
+  .post-list__title {
+    font-size: var(--font-size-18);
+  }
+}

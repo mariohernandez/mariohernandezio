@@ -1,0 +1,10 @@
+{# Grab other posts that aren’t the current one as 'recommended posts' #}
+{% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
+
+{% if recommendedPosts %}
+  <section class="recommended-posts">
+    {% set postListItems = recommendedPosts %}
+    {% set postListHeadline = 'Other recommended posts' %}
+    {% include "partials/post-list.html" %}
+  </section>
+{% endif %}
