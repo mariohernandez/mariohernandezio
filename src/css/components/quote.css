@@ -1,5 +1,11 @@
+/**
+ * @file
+ * Blockquote styles.
+ */
+
 blockquote {
   color: var(--gray-darker);
+  font-family: var(--font-secondary);
   font-size: var(--font-size-22);
   font-style: italic;
   line-height: var(--line-height-14);
@@ -16,7 +22,7 @@ blockquote {
     color: var(--purple);
     content: '"';
     display: block;
-    font-family: cursive,serif;
+    font-family: cursive, serif;
     font-size: var(--font-size-140);
     font-weight: var(--weight-700);
     left: calc(var(--size-1) * -1); /* Negative value */
