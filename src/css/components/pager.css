@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Blog list pager styles.
+ */
+
+.pager__items {
+  display: flex;
+  justify-content: space-between;
+
+  @media (--tablet) {
+    justify-content: space-around;
+  }
+}

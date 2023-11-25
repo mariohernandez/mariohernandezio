@@ -15,7 +15,6 @@
 
 @import '../layout/header';
 @import '../layout/layout';
-@import '../layout/post-list';
 
 @import '../components/about';
 @import '../components/button';
@@ -25,6 +24,11 @@
 @import '../components/hero';
 @import '../components/logo';
 @import '../components/navigation';
+@import '../components/pager';
 @import '../components/post';
+@import '../components/post-list';
 @import '../components/quote';
+@import '../components/recommended-posts';
 @import '../components/social';
+@import '../components/social-share';
+@import '../components/tags';

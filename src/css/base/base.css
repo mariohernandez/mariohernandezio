@@ -21,7 +21,7 @@ a {
 }
 
 h1 {
-  font-size: var(--font-size-60);
+  font-size: var(--font-size-50);
 }
 
 h2 {
@@ -32,6 +32,6 @@ h3 {
   font-size: var(--font-size-24);
 }
 
-h3 {
+h4 {
   font-size: var(--font-size-20);
 }

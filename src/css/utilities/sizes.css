@@ -6,6 +6,7 @@
   --size-1: 1px;      /* 1px */
   --size-2: 2px;      /* 2px */
   --size-4: 4px;      /* 4px */
+  --size-5: 5px;      /* 5px */
   --size-6: 6px;      /* 6px */
   --size-8: 8px;      /* 8px */
   --size-10: 1rem;    /* 10px */
@@ -40,6 +41,7 @@
   --size-200: 20rem;  /* 200px */
   --size-250: 25rem;  /* 250px */
   --size-278: 27.8rem;  /* 278px */
+  --size-650: 6.5rem; /* 650px */
   --size-720: 72rem; /* 720px */
   --size-960: 96rem; /* 960px */
 }
