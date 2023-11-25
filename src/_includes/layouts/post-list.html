@@ -7,11 +7,11 @@
 {# If this is a tag, grab those items instead as one large collection #}
 {% if tag %}
   {% set postListItems = collections[tag] %}
-  {% set pageHeaderTitle = 'Blog posts tagged with “' + tag + '”' %}
+  {% set pageHeaderTitle = 'Posts tagged with “' + tag + '”' %}
 {% endif %}
 
 {% block content %}
-  <section class="post-list">
+  <section class="post-list" id="post-list">
     {% include "partials/page-header.html" %}
     {% include "partials/post-list.html" %}
 

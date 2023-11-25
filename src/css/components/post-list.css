@@ -1,0 +1,43 @@
+/**
+ * @file
+ * Blog landing page and Recommended post listing styles.
+ */
+
+.post-list {
+
+  .page-header__title {
+    margin-block-end: var(--size-60);
+  }
+}
+
+.post-list__item {
+  border-bottom: var(--size-2) solid var(--gray-light);
+  margin-block-end: var(--size-20);
+  padding-block-end: var(--size-20);
+}
+
+.post-list__title {
+  line-height: var(--line-height-1-2);
+  margin-block-end: var(--size-10);
+}
+
+.post-list__link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Removes the black bar/line under date on listings of blog posts. */
+.post-list__item--date.eyebrow {
+
+  &:after {
+    display: none;
+  }
+}
+
+.post-list__teaser {
+  font-size: var(--font-size-16);
+  margin-block-start: var(--size-8);
+}
