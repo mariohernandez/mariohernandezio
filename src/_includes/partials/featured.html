@@ -4,8 +4,7 @@
       <div class="featured-post__image">
         <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960px" height="450px" />
         <div class="featured-post__image--credit">
-          <span>Photo by:</span>
-          <a href="{{ item.data.featuredImageCreditUrl }}">{{ item.data.featuredImageCredit }}</a>
+          <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
         </div>
       </div>
 

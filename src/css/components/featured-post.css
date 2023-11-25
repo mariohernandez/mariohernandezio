@@ -62,12 +62,13 @@
 }
 
 .featured-post__image,
-.blog-post__content--image {
+.blog-post__image {
   position: relative;
   overflow: hidden;
 
   img {
     transition: all 0.6s ease-in-out 0s !important;
+    height: auto;
 
     &:hover {
       transform: scale(1.1);
@@ -112,6 +113,10 @@ common styles. */
     font-size: 1.2rem;
     text-decoration: none;
     text-transform: uppercase;
+
+    span {
+      text-transform: none;
+    }
   }
 }
 
