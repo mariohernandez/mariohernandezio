@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Blog post full view styles.
+ */
+
 .blog-post__full {
   margin: var(--size-40) 0;
 
@@ -5,101 +10,22 @@
     margin: var(--size-60) auto;
     max-width: var(--size-960);
   }
+}
 
-  .page-header__summary {
-    margin-block-end: 0.5rem
-  }
+.page-header__summary {
+  margin-block-end: 0.5rem
+}
 
-  .page-header__title {
-    margin-block-end: var(--size-20);
-  }
+.page-header__title {
+  margin-block-end: var(--size-20);
+  line-height: var(--line-height-1-2);
 }
 
 .blog-post__date {
   margin-block-end: var(--size-40);
 }
 
-.blog-post__tags--wrapper {
-  align-items: center;
-  display: flex;
-  margin-block-end: var(--size-30);
-
-  @media (--tablet) {
-    margin-block-end: 0;
-  }
-}
-
-.tags-and-social-share {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-
-  @media (--tablet) {
-    align-items: unset;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.blog-post__tags {
-  align-items: center;
-  display: flex;
-  margin-left: 0;
-  padding-left: 0;
-
-  li {
-    margin-inline-end: var(--size-10);
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: var(--weight-500);
-    line-height: var(--line-height-1);
-    text-decoration: underline;
-    text-transform: lowercase;
-    white-space: nowrap;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.tag-icon__tag {
-  align-items: center;
-  display: flex;
-  margin-inline-end: var(--size-10);
-}
-
-.blog-post__social-share {
-  align-items: center;
-  display: flex;
-
-  li {
-    margin: 0 0 0 0.5rem;
-
-    a {
-      display: block;
-      padding: var(--size-10);
-    }
-  }
-}
-
-.social-share__icon {
-  align-items: center;
-  display: flex;
-}
-
-.social-share__label {
-  font-size: 1.2rem;
-  font-weight: var(--weight-600);
-  margin-left: var(--size-20);
-  text-transform: uppercase;
-}
-
-.blog-post__content--image {
+.blog-post__image {
   margin-block-end: var(--size-20);
 
   @media (--laptop) {
@@ -107,21 +33,22 @@
   }
 }
 
-.blog-post__content--body {
+.blog-post__body {
 
   p {
     margin-block-end: 1.5rem;
   }
 
+  /* Drop cap styles. */
   > p:first-child:first-letter {
     color: var(--black);
     float: left;
-    font-family: $font-secondary;
-    font-size: 6.5rem;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-65);
     line-height: var(--size-60);
     margin-block-end: 0;
-    padding-block-start: 0.4rem;
-    padding-inline-end: 0.8rem;
+    padding-block-start: var(--size-4);
+    padding-inline-end: var(--size-8);
     padding-inline-start: 0;
   }
 
@@ -137,32 +64,25 @@
   }
 }
 
-.recommended-posts {
-  background-color: var(--gray-light);
-  margin-block-start: var(--size-40);
-  padding: var(--size-20);
+/* This ensures post image resizes proportional
+keeping its original aspect ratio. */
+.blog-post__content--image {
 
-  .post-list__heading {
-    font-size: var(--font-size-24);
-    margin-block-end: var(--size-20);
-    border-bottom: 1px solid var(--gray-medium);
-  }
-
-  .post-list__title {
-    font-size: var(--font-size-18);
-  }
-
-  .post-list__item--date {
-
-    &:after {
-      display: none;
-    }
+  img {
+    width: 960px;
+    height: auto;
   }
 }
 
-/* Removes the black bar/line under date on listings of blog posts. */
-.post-list__item--date.eyebrow {
-  &:after {
-    display: none;
+/* Wrapper for tags and social-share components on each blog post. */
+.tags-and-social-share {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  @media (--tablet) {
+    align-items: unset;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
