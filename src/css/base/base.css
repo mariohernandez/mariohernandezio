@@ -36,7 +36,10 @@ h4 {
   font-size: var(--font-size-20);
 }
 
+/* The 'height: auto' ensures post image resizes proportional
+keeping its original aspect ratio. */
 img {
   display: block;
+  height: auto;
   max-width: 100%;
 }

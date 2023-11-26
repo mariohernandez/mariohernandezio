@@ -44,21 +44,11 @@
   }
 }
 
+/* Makes button look like a link. */
 .button--link {
   align-items: center;
   display: flex;
   font-size: var(--font-size-18);
   font-weight: var(--weight-600);
   text-decoration: none;
-
-  span {
-    margin-block-start: var(--size-2);
-    margin-left: var(--size-4);
-  }
-
-  svg {
-    display: block;
-    height: 16px;
-    width: 16px;
-  }
 }

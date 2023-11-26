@@ -1,7 +1,7 @@
 <section class="featured-post">
   <div class="featured-post__inner">
     {% for item in collections.featuredPost %}
-      <div class="featured-post__image blog-post__image">
+      <div class="featured-post__image image-zoom">
         <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960px" height="450px" />
         <div class="featured-post__image--credit">
           <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
@@ -11,9 +11,6 @@
       <article class="featured-post__article">
         <div class="featured-post__article--inner">
           <p class="featured-post__tag">{{ featuredPost.heading }}</p>
-          <div class="featured-post__article--date eyebrow">
-            {{ item.date | dateFilter }}
-          </div>
           <header role="header">
             <h2 class="featured-post__article--title">
               <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
@@ -21,10 +18,13 @@
               </a>
             </h2>
           </header>
+          <div class="featured-post__article--date eyebrow">
+            {{ item.date | dateFilter }}
+          </div>
           <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
           <div class="featured-post__cta" aria-label="{{ item.title }}">
-            <a href="{{ item.url }}" class="button button--link">Read the full article
-              <span>{% include '../../images/icons/arrow.svg' %}</span>
+            <a href="{{ item.url }}" class="button button--link" data-link="arrow">Read the full article
+              <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
             </a>
           </div>
         </div>

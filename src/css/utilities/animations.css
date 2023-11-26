@@ -9,3 +9,17 @@
   --transition-background-color-04s: background-color 0.4s ease-in-out;
   --transition-border-color-04s: border-color 0.4s ease-in-out;
 }
+
+/* Zoom effect on image when hovering over them. */
+.image-zoom {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    transition: all 0.6s ease-in-out 0s !important;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

@@ -6,9 +6,10 @@
 
 @import '../utilities/animations';
 @import '../utilities/breakpoints';
+@import '../utilities/eyebrow';
+@import '../utilities/link-arrow';
 @import '../utilities/post-body';
 @import '../utilities/sizes';
-@import '../utilities/props';
 @import '../utilities/tables';
 @import '../utilities/visibility';
 @import '../utilities/zindex';

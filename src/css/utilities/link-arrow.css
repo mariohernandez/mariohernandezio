@@ -1,0 +1,26 @@
+/**
+ * @file
+ * Styles links by adding an arrow icon.
+ */
+
+a[data-link="arrow"] {
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+
+  .link-arrow {
+    margin-block-start: var(--size-2);
+    margin-inline-start: var(--size-4);
+
+    &.link-arrow--left {
+      margin-inline: 0 var(--size-4);
+      transform: rotate(-180deg);
+    }
+  }
+
+  svg {
+    display: block;
+    height: 16px;
+    width: 16px;
+  }
+}

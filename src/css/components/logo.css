@@ -9,10 +9,6 @@
   text-decoration: none;
   text-transform: lowercase;
 
-  @media (--tablet) {
-    font-size: var(--font-size-35);
-  }
-
   @media (--laptop) {
     margin: 0;
   }

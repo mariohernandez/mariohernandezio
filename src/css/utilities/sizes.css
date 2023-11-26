@@ -37,6 +37,7 @@
   --size-92: 9.2rem;  /* 92px */
   --size-96: 9.6rem;  /* 96px */
   --size-100: 10rem;  /* 100px */
+  --size-120: 12rem;  /* 120px */
   --size-180: 18rem;  /* 180px */
   --size-200: 20rem;  /* 200px */
   --size-250: 25rem;  /* 250px */
@@ -44,7 +45,7 @@
   --size-650: 6.5rem; /* 650px */
   --size-720: 72rem; /* 720px */
   --size-960: 96rem; /* 960px */
-  --size-1200: 120rem; /* 1200px */
+  --size-1200: 12rem; /* 1200px */
 }
 
 /* Utility classes for spacing. */

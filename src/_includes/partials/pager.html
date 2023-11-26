@@ -4,13 +4,15 @@
     <div class="pager__inner">
       <nav class="pager__items" aria-label="Pagination links">
         {% if pagination.href.previous %}
-          <a href="{{ pagination.href.previous }}{{ paginationAnchor }}" data-direction="backwards">
+          <a href="{{ pagination.href.previous }}{{ paginationAnchor }}" class="pager__link" data-link="arrow" data-direction="backwards">
+            <span class="link-arrow link-arrow--left">{% include '../../images/icons/arrow.svg' %}</span>
             <span>{{ paginationPrevText if paginationPrevText else 'Previous' }}</span>
           </a>
         {% endif %}
         {% if pagination.href.next %}
-          <a href="{{ pagination.href.next }}{{ paginationAnchor }}" data-direction="forwards">
+          <a href="{{ pagination.href.next }}{{ paginationAnchor }}" class="pager__link" data-link="arrow" data-direction="forwards">
             <span>{{ paginationNextText if paginationNextText else 'Next' }}</span>
+            <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
           </a>
         {% endif %}
       </nav>
