@@ -3,7 +3,7 @@ date: "2019-04-20"
 title: "Our best training yet"
 tags: ['training', 'drupalcon',]
 featured: false
-featuredImage: "/images/students.jpg"
+featuredImage: "/images/students.webp"
 featuredImageAlt: "Team members conducting training workshop"
 featuredCredit: "Mario Hernandez"
 featuredCreditUrl: "https://twitter.com/imariohernandez"

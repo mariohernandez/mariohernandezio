@@ -3,7 +3,7 @@ date: '2021-09-04'
 title: 'Five principles for building better components'
 tags: ['patterns', 'components']
 featured: false
-featuredImage: '/images/wireframes.jpg'
+featuredImage: '/images/wireframes.webp'
 featuredImageAlt: 'Hand drawing website wireframes'
 featuredImageCredit: 'Sigmund'
 featuredImageCreditUrl: 'https://unsplash.com/@sigmund'

@@ -3,10 +3,10 @@ date: "2020-03-30"
 title: "Building a Drupal Theme with the Theme Generator"
 tags: ['drupal', 'drupal theme']
 featured: false
-featuredImage: "/images/scaffold.jpg"
+featuredImage: "/images/scaffold.webp"
 featuredImageAlt: "Construction building with dust covers"
-featuredImageCredit: "Unsplash.com"
-featuredImageCreditUrl: "https://unsplash.com/"
+featuredImageCredit: "Dan Gold"
+featuredImageCreditUrl: "https://unsplash.com/@danielcgold"
 summary: "The Mediacurrent Theme Generator is a scaffolding tool to help you build production-ready Drupal 8 themes that are component-based-ready out of the box."
 ---
 

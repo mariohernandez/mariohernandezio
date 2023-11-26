@@ -3,7 +3,7 @@ date: "2020-12-13"
 title: "Styling Forms Elements"
 tags: ['css', 'forms']
 featured: false
-featuredImage: "/images/frames.jpg"
+featuredImage: "/images/frames.webp"
 featuredImageAlt: "Four black wall arts on brown wall"
 featuredImageCredit: "Leonardo Yip"
 featuredImageCreditUrl: "https://unsplash.com/@yipleonardo"

@@ -3,7 +3,7 @@ date: "2018-05-20"
 title: "Running a training workshop"
 tags: ['training']
 featured: false
-featuredImage: "/images/training-workshop.jpg"
+featuredImage: "/images/training-workshop.webp"
 featuredImageAlt: "Developers looking at computer screen"
 featuredImageCredit: "Unsplash.com"
 featuredImageCreditUrl: "https://unsplash.com/"

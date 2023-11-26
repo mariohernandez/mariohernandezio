@@ -3,7 +3,7 @@ date: "2018-06-08"
 title: "Getting started with Gatsby"
 tags: ['gatsby', 'react']
 featured: false
-featuredImage: "/images/gatsby-intro.jpg"
+featuredImage: "/images/gatsby-intro.webp"
 featuredImageAlt: "Cyclist going very fast producing blur"
 featuredImageCredit: "Unsplash.com"
 featuredImageCreditUrl: "https://unsplash.com/"
@@ -17,9 +17,7 @@ Static Site Generators are nothing new.  If you search for SSG you will find man
 
 Gatsby's primarily objective is to build static sites, but as you will learn, that's just the tip of the iceberg.
 
-<blockquote>
-Gatsby is a blazing-fast static site generator for React.
-</blockquote>
+> Gatsby is a blazing-fast static site generator for React.
 
 ## How does Gatsby work?
 

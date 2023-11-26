@@ -3,16 +3,14 @@ date: "2018-07-21"
 title: "Flexible Headings with Twig"
 tags: ['components', 'twig']
 featured: false
-featuredImage: "/images/flexible-headings-hero.jpg"
-featuredImageAlt: "Stacked rocks"
-featuredCredit: "Unsplash.com"
-featuredCreditUrl: "https://unsplash.com/"
+featuredImage: "/images/flexible-headings.webp"
+featuredImageAlt: "Stacked rocks by the beach"
+featuredCredit: "Jeremy Thomas"
+featuredCreditUrl: "https://unsplash.com/@jeremythomasphoto"
 summary: "Headings are normally used for page or section titles and are a big part of making your website SEO friendly and more accessible. For these reasons, headings need to be carefully planned."
 ---
 
-<blockquote>
-  Proper use of headings h1-h6 in your project presents many advantages incuding semantic markup, better SEO ranking and better accesibility.
-</blockquote>
+> Proper use of headings h1-h6 in your project presents many advantages incuding semantic markup, better SEO ranking and better accesibility.
 
 
 **_Updated April 3, 2020_**

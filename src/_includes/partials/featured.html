@@ -2,7 +2,7 @@
   <div class="featured-post__inner">
     {% for item in collections.featuredPost %}
       <div class="featured-post__image image-zoom">
-        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960px" height="450px" />
+        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960" height="450" />
         <div class="featured-post__image--credit">
           <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
         </div>

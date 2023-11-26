@@ -3,7 +3,7 @@ date: "2021-06-17"
 title: "Demystifying components integration with Drupal"
 tags: ['components', 'integration', 'drupal']
 featured: false
-featuredImage: "/images/integrate.jpg"
+featuredImage: "/images/integrate.webp"
 featuredImageAlt: "Image of a net showing interlaced mesh"
 featuredImageCredit: "JJ ying"
 featuredImageCreditUrl: "https://unsplash.com/@jjying"

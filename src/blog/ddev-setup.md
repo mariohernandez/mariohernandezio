@@ -3,7 +3,7 @@ date: "2020-06-29"
 title: "Building an automated DDEV-based Drupal environment"
 tags: ['drupal', 'ddev', 'training']
 featured: false
-featuredImage: "/images/rocks.jpg"
+featuredImage: "/images/rocks.webp"
 featuredImageAlt: "Rocks stack from big to small"
 featuredImageCredit: "Markus Spiske"
 featuredImageCreditUrl: "https://unsplash.com/photos/IiEFmIXZWSw"

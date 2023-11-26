@@ -4,7 +4,7 @@ title: "Drupal base path"
 tags: ['drupal','twig']
 draft: false
 featured: false
-featuredImage: "/images/paths.jpg"
+featuredImage: "/images/paths.webp"
 featuredImageAlt: "Person confronted with two paths to choose from"
 featuredImageCredit: "Caleb Jones"
 featuredImageCreditUrl: "https://unsplash.com/@gcalebjones"
