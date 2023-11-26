@@ -18,9 +18,20 @@
 
 .blog-post__image {
   margin-block-end: var(--size-20);
+  position: relative;
+  overflow: hidden;
 
   @media (--laptop) {
     margin-block-end: var(--size-40);
+  }
+
+  img {
+    transition: all 0.6s ease-in-out 0s !important;
+    height: auto;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 

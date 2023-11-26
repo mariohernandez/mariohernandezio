@@ -1,7 +1,7 @@
 <section class="featured-post">
   <div class="featured-post__inner">
     {% for item in collections.featuredPost %}
-      <div class="featured-post__image">
+      <div class="featured-post__image blog-post__image">
         <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960px" height="450px" />
         <div class="featured-post__image--credit">
           <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
@@ -23,7 +23,9 @@
           </header>
           <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
           <div class="featured-post__cta" aria-label="{{ item.title }}">
-            <a href="{{ item.url }}" class="button">Read the full article</a>
+            <a href="{{ item.url }}" class="button button--link">Read the full article
+              <span>{% include '../../images/icons/arrow.svg' %}</span>
+            </a>
           </div>
         </div>
       </article>

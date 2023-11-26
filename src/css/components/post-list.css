@@ -22,10 +22,23 @@
 }
 
 .post-list__link {
+  align-items: center;
+  display: flex;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
+  }
+
+  span {
+    margin-block-start: var(--size-2);
+    margin-inline-start: var(--size-4);
+  }
+
+  svg {
+    display: block;
+    height: 16px;
+    width: 16px;
   }
 }
 

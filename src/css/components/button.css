@@ -3,7 +3,7 @@
  * Button component styles.
  */
 
-.button {
+.button:not(.button--link) {
   background-color: var(--white);
   border: var(--size-2) solid var(--black);
   color: var(--black);
@@ -41,5 +41,24 @@
       width: 1px;
       word-wrap: normal;
     }
+  }
+}
+
+.button--link {
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size-18);
+  font-weight: var(--weight-600);
+  text-decoration: none;
+
+  span {
+    margin-block-start: var(--size-2);
+    margin-left: var(--size-4);
+  }
+
+  svg {
+    display: block;
+    height: 16px;
+    width: 16px;
   }
 }
