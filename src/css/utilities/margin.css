@@ -1,0 +1,54 @@
+/**
+ * @file
+ * Utility classes for spacing and margins.
+ */
+
+.margin-inline-flex {
+  margin-inline: var(--size-20);
+
+  @media (--tablet-large) {
+    margin-inline: auto;
+  }
+}
+
+.margin-block-80 {
+  margin-block: var(--size-80);
+}
+
+.margin-inline-20 {
+  margin-inline: var(--size-20);
+}
+
+/* margin-bottom: */
+.mb-20 {
+  margin-block-end: var(--size-20);
+}
+
+.mb-40 {
+  margin-block-end: var(--size-40);
+}
+
+.mb-60 {
+  margin-block-end: var(--size-60);
+}
+
+.mb-80 {
+  margin-block-end: var(--size-80);
+}
+
+/* margin-top: */
+.mt-20 {
+  margin-block-start: var(--size-20);
+}
+
+.mt-40 {
+  margin-block-start: var(--size-40);
+}
+
+.mt-60 {
+  margin-block-start: var(--size-60);
+}
+
+.mt-80 {
+  margin-block-start: var(--size-80);
+}
