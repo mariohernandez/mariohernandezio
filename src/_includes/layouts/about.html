@@ -2,14 +2,14 @@
 
 {% set pageHeaderTitle = title %}
 
-<!-- Grab random blog post for the 'more from the blog' feed -->
+<!-- Grab random blog post for the 'Other recommended posts' block -->
 {% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
 
 {% block content %}
   <article class="about__full">
     <div class="about__inner">
-      <header>
-        <h1 class="page__title" data-highlight="dark">{{ title }}</h1>
+      <header class="page-header">
+        <h1 class="page-header__title" data-highlight="dark">{{ title }}</h1>
       </header>
       <div class="about__content--wrapper">
         <div class="about__headshot">
@@ -17,20 +17,18 @@
           {% include "partials/social.html" %}
         </div>
         <div class="about__body">
-            <div>
-              {{ content | safe }}
-              {% if recommendedPosts %}
-                <footer class="recommended-posts">
-                  {% set postListItems = recommendedPosts %}
-                  {% set postListHeadline = 'Recommended blog posts' %}
-                  {% include "partials/post-list.html" %}
-                </footer>
-              {% endif %}
-            </div>
+          {{ content | safe }}
         </div>
       </div>
-      </div>
-
+    </div>
   </article>
 
+  {# Recommended blog posts block. #}
+  {% if recommendedPosts %}
+    <section class="recommended-posts mt-60">
+      {% set postListItems = recommendedPosts %}
+      {% set postListHeadline = 'Recommended blog posts' %}
+      {% include "partials/post-list.html" %}
+    </section>
+  {% endif %}
 {% endblock %}
