@@ -15,11 +15,11 @@ https://piccalil.li/course/learn-eleventy-from-scratch/lesson/19/ -->
   {% include "partials/about-teaser.html" %}
 
   {% if recommendedPosts %}
-    <footer class="recommended-posts">
+    <section class="recommended-posts">
       {% set postListItems = recommendedPosts %}
       {% set postListHeadline = 'Recommended blog posts' %}
       {% include "partials/post-list.html" %}
-    </footer>
+    </section>
   {% endif %}
 
 {% endblock %}
