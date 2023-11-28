@@ -4,11 +4,7 @@
  */
 
 .hero {
-  margin-inline: 2rem;
-
-  @media (--tablet) {
-    margin-inline: auto;
-  }
+  max-width: var(--size-960);
 }
 
 .hero__heading {

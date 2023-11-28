@@ -62,7 +62,7 @@ The CSS rule above will in fact make your images responsive (images will automat
 
 In the next post of this series, we will begin the process of implementing a solution for handling responsive images the right way.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

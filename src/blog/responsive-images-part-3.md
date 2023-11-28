@@ -70,7 +70,7 @@ A quick story for you. I recently did an experiment that 100% proves the power o
 
 My second display is nice but it's not a 4K display.  It's double the physical size of my mac's screen, but the mac's screen resolution is higher by almost double (twice the number of pixels).  When I look at the image in the large display, and inspect the page, I see the browser selects an image that is 720px which makes complete sense.  However, I unplugged the second display and this time I view the page on my mac's scrren (higher resolution), and when inspecting the page, I noticed the browser has selected an image that is double the size.  This is exactly the behavior I would expect.  Also, this will make a lot more sense when we cover image multipliers later in this series.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

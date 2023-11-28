@@ -6,13 +6,13 @@
 {% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
 
 {% block content %}
-  <article class="about__full">
+  <article class="about__full margin-inline-flex">
     <div class="about__inner">
       <header class="page-header">
         <h1 class="page-header__title" data-highlight="dark">{{ title }}</h1>
       </header>
       <div class="about__content--wrapper">
-        <div class="about__headshot">
+        <div class="about-me__photo">
           <img src="{{ about.headshot }}" alt="Portrait of Mario Hernandez" width="250px" height="278px" />
           {% include "partials/social.html" %}
         </div>
@@ -25,7 +25,7 @@
 
   {# Recommended blog posts block. #}
   {% if recommendedPosts %}
-    <section class="recommended-posts mt-60">
+    <section class="recommended-posts mt-60 margin-inline-flex">
       {% set postListItems = recommendedPosts %}
       {% set postListHeadline = 'Recommended blog posts' %}
       {% include "partials/post-list.html" %}

@@ -92,7 +92,7 @@ Then why use the picture element?  Well, when developing a website, the develope
 
 You may be wondering: "_Why did you get us all excited about the `<picture>` element if we can't really use it?_" well, if you are trying to achieve art direction, then you use the `<picture>` element.  It's the recommended approach for that use case.  If you are looking for resolution switching, a use case for most images in the web, you need to use the `srcset` and `sizes` attributes approach.  In the next post we'll dive deep into this technique.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

@@ -117,7 +117,7 @@ The same way you created the original image style above for 16:9 (Max 320px), go
 With our custom image styles in place, we can now make use of them, but before we do, let's go over another very important concept within Drupal, **Responsive image styles** ...whaaaaatttt?
 We'll comeback to Drupal in a bit but first, we'll talk about responsive image styles in the next post.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

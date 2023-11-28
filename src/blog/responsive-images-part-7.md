@@ -128,7 +128,7 @@ Based on the breakpoints found in `*.breakpoints.yml`, you should see an image s
 
 Once the responsive image style above is ready to go, You can repeat the process of creating a new view mode for your Media image and configuring it to use the new responsive image style you created above (Banner).
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

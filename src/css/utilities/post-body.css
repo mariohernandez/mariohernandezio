@@ -1,7 +1,6 @@
 /* Blog series pager styles. */
 .post-pager {
   background-color: var(--gray-light);
-  margin: 4rem 0 6rem;
   padding: 2rem;
 
   p {

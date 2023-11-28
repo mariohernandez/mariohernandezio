@@ -5,7 +5,6 @@
 
 .recommended-posts {
   background-color: var(--gray-light);
-  margin-inline: auto;
   max-width: var(--size-960);
   padding: var(--size-30) var(--size-20);
 

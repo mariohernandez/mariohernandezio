@@ -121,7 +121,7 @@ Before we can see the responsive images, let's create a couple of news articles 
 
 In the next post, we will complete the configuration and display of responsive images.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

@@ -3,6 +3,7 @@
  * Utility classes for spacing and margins.
  */
 
+/* This class makes any component responsive. */
 .margin-inline-flex {
   margin-inline: var(--size-20);
 
@@ -11,8 +12,8 @@
   }
 }
 
-.margin-block-80 {
-  margin-block: var(--size-80);
+.margin-block-40 {
+  margin-block: var(--size-40);
 }
 
 .margin-inline-20 {
