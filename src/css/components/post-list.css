@@ -4,13 +4,8 @@
  */
 
 .post-list {
-  margin: var(--size-40) var(--size-20) 0;
   max-width: var(--size-960);
   min-height: 100vh;
-
-  @media (--laptop) {
-    margin: var(--size-100) auto 0;
-  }
 }
 
 .page-header__title {
@@ -45,8 +40,8 @@
 
   svg {
     display: block;
-    height: 16px;
-    width: 16px;
+    height: var(--size-16);
+    width: var(--size-16);
   }
 }
 
