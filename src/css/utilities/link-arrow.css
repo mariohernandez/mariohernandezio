@@ -3,6 +3,8 @@
  * Styles links by adding an arrow icon.
  */
 
+/* Add this data attribute to any link that is the parent of the
+arrow icon include. */
 a[data-link="arrow"] {
   align-items: center;
   display: flex;

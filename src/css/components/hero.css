@@ -17,6 +17,14 @@
   text-align: center;
 
   @media (--tablet) {
+    font-size: var(--font-size-60);
+  }
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-80);
+  }
+
+  @media (--laptop) {
     font-size: var(--font-size-100);
   }
 }
@@ -29,6 +37,10 @@
   margin-block-end: var(--size-20);
 
   @media (--tablet) {
+    font-size: var(--font-size-30);
+  }
+
+  @media (--tablet-large) {
     font-size: var(--font-size-35);
   }
 }

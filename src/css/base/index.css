@@ -15,7 +15,6 @@
 @import '../utilities/visibility';
 @import '../utilities/zindex';
 
-@import '../layout/header';
 @import '../layout/layout';
 
 @import '../components/about';
@@ -23,6 +22,7 @@
 @import '../components/eyebrow';
 @import '../components/featured-post';
 @import '../components/footer';
+@import '../components/header';
 @import '../components/hero';
 @import '../components/logo';
 @import '../components/navigation';
