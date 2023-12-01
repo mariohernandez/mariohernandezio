@@ -1,9 +1,11 @@
 ---
-title: 'About'
+title: I love building Drupal websites, speaking at tech conferences, training teams, and writing about it all
+intro: About me
 layout: 'layouts/about.html'
 permalink: '/about/index.html'
 about:
-  headshot: '/images/headshot.jpg'
+  image: '/images/mario.webp'
+  alt: Mario standing under a huge red fedora
 ---
 
 Thank you for visiting my blog.  I hope you find its content engaging and most of all, helpful.

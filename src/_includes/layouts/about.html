@@ -7,18 +7,18 @@
 
 {% block content %}
   <article class="about__full margin-inline-flex">
-    <div class="about__inner">
-      <header class="page-header">
-        <h1 class="page-header__title" data-highlight="dark">{{ title }}</h1>
-      </header>
-      <div class="about__content--wrapper">
-        <div class="about-me__photo">
-          <img src="{{ about.headshot }}" alt="Portrait of Mario Hernandez" width="250px" height="278px" />
-          {% include "partials/social.html" %}
-        </div>
-        <div class="about__body">
-          {{ content | safe }}
-        </div>
+    <div class="about__intro">
+      {{ intro }}
+    </div>
+    <header class="page-header">
+      <h1 class="page-header__title" data-highlight="dark">{{ title }}</h1>
+    </header>
+    <div class="about__content">
+      <div class="about__body">
+        {{ content | safe }}
+      </div>
+      <div class="about__image">
+        <img src="{{ about.image }}" alt="{{ about.alt }}" width="540" height="720" />
       </div>
     </div>
   </article>
