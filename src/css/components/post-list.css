@@ -8,10 +8,6 @@
   min-height: 100vh;
 }
 
-.page-header__title {
-  margin-block-end: var(--size-60);
-}
-
 .post-list__item:not(:last-child) {
   border-bottom: var(--size-2) solid var(--gray-light);
   margin-block-end: var(--size-20);

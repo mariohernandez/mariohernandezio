@@ -4,11 +4,11 @@
  */
 
 .main-content {
-  margin: var(--size-40) var(--size-20) 0;
+  margin-inline: var(--size-20);
   min-height: 100vh;
 
-  @media (--laptop) {
-    margin: var(--size-100) auto 0;
+  @media (--tablet-large) {
+    margin-inline: auto;
   }
 }
 
@@ -16,7 +16,7 @@
   margin-block: var(--size-40);
 
   @media (--tablet) {
-    margin: var(--size-60) auto;
+    margin-block: var(--size-60);
     max-width: var(--size-960);
   }
 }
