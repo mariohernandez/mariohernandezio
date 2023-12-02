@@ -4,7 +4,7 @@
  */
 
 .featured-post {
-  margin: var(--size-60) -2rem var(--size-40) -2rem;
+  /* margin: var(--size-60) -2rem var(--size-40) -2rem; */
   width: 100%;
 
   @media (--laptop) {

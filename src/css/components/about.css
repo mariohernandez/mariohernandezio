@@ -30,31 +30,28 @@
   margin: 0 auto -5rem;
   position: relative;
   width: var(--size-180);
+  z-index: var(--ground);
 
   @media (--tablet-large) {
     margin: 0 0 -20rem -4rem;
     width: var(--size-250);
   }
 
-  /* Purple frame around photo. */
+  /* Purple shadow behind photo. */
   &::before {
-    border: var(--size-4) solid var(--purple);
+    background-color: var(--purple);
+    bottom: -0.5rem;
     content: '';
     display: block;
-    height: var(--size-200);
-    left: -0.5rem;
+    left: var(--size-5);
     position: absolute;
-    top: -0.5rem;
-    width: var(--size-180);
-
-    @media (--tablet-large) {
-      border-width: var(--size-6);
-      height: var(--size-278);
-      width: var(--size-250);
-    }
+    right: -0.5rem;
+    top: var(--size-5);
+    z-index: var(--below);
   }
 
   img {
+    border: 1px solid var(--gray-dark);
     height: var(--size-200);
     margin: 0 auto;
     width: var(--size-180);
@@ -99,7 +96,7 @@
   position: relative;
   z-index: var(--ground);
 
-  /* Purple frame around photo. */
+  /* Purple shadow behind image. */
   &::before {
     background-color: var(--purple);
     bottom: -1rem;

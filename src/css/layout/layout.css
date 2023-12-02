@@ -4,12 +4,7 @@
  */
 
 .main-content {
-  margin-inline: var(--size-20);
   min-height: 100vh;
-
-  @media (--tablet-large) {
-    margin-inline: auto;
-  }
 }
 
 .blog-post__full {
