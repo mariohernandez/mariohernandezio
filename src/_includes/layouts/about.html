@@ -21,9 +21,13 @@
         <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
       </a>
     </div>
-    <div class="about__image">
-      <img src="{{ about.image }}" class="about__image--first" alt="{{ about.alt }}" width="540" height="720" />
-      <img src="{{ about.image }}" class="about__image--second" alt="{{ about.alt2 }}" width="540" height="720" />
+    <div class="about__images">
+      <div class="about__image about__image--first">
+        <img src="{{ about.image }}" alt="{{ about.alt }}" width="540" height="720" />
+      </div>
+      <div class="about__image about__image--second">
+        <img src="{{ about.image_second }}" alt="{{ about.alt2 }}" width="960" height="720" />
+      </div>
     </div>
   </article>
 

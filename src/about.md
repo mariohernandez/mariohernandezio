@@ -7,7 +7,7 @@ blog_url: '/blog'
 about:
   image: '/images/mario.webp'
   alt: Mario standing under a huge red fedora
-  image_second: '/images/mario-second.webp'
+  image_second: '/images/mario-punch.webp'
   alt2: Mario punching video game's blocks
 ---
 

@@ -75,7 +75,7 @@
     display: grid;
     grid-template-columns: auto var(--size-360);
     grid-gap: var(--size-50);
-    margin: 0 auto;
+    margin: 0 auto var(--size-80);
   }
 }
 
@@ -84,53 +84,52 @@
   text-transform: uppercase;
 }
 
-/* Uses same styles as photo above and overrides some of them
-to match the full about page better. */
-.about__image {
-  position: relative;
-  /* width: var(--size-180); */
+.about__images {
+  display: flex;
+  gap: var(--size-50);
+  margin-block-start: var(--size-40);
 
   @media (--tablet-large) {
-    margin-block-start: var(--size-40);
-    width: var(--size-360);
+    flex-direction: column;
+    gap: var(--size-60);
   }
+}
+
+.about__image {
+  position: relative;
+  z-index: var(--ground);
 
   /* Purple frame around photo. */
   &::before {
     background-color: var(--purple);
+    bottom: -1rem;
     content: '';
     display: block;
-    /* height: var(--size-200); */
+    left: var(--size-10);
     position: absolute;
     right: -1rem;
+    top: var(--size-10);
     z-index: var(--below);
-    top: 1rem;
-    /* width: var(--size-180); */
-
-    @media (--tablet-large) {
-      /* border-width: var(--size-6); */
-      height: var(--size-480);
-      width: var(--size-360);
-    }
   }
 
   img {
     border: 1px solid var(--gray-dark);
-    height: var(--size-200);
-    margin: 0 auto;
-    position: relative;
-    width: var(--size-180);
-    z-index: var(--ground);
-
-    @media (--tablet-large) {
-      height: var(--size-480);
-      margin: unset;
-      width: var(--size-360);
-    }
   }
+}
 
-  .about__image--second {
-    margin-block-start: var(--size-40);
+.about__image--first {
+
+  @media (--tablet-large) {
+    height: var(--size-480);
+    width: var(--size-360);
+  }
+}
+
+.about__image--second {
+
+  @media (--tablet-large) {
+    height: auto;
+    width: var(--size-360);
   }
 }
 
