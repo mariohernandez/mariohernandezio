@@ -8,16 +8,12 @@
   min-height: 100vh;
 }
 
-.post-list__item:not(:last-child) {
-  border-bottom: var(--size-2) solid var(--gray-light);
-  margin-block-end: var(--size-20);
-  padding-block-end: var(--size-20);
-}
-
-.post-list__title {
-  font-size: var(--font-size-20);
-  line-height: var(--line-height-1-2);
-  margin-block-end: var(--size-10);
+.post-list__items {
+  display: grid;
+  grid-column-gap: var(--size-20);
+  grid-row-gap: var(--size-50);
+  /* min() with 100% prevents overflow in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-250)), 1fr));
 }
 
 .post-list__link {
@@ -39,17 +35,4 @@
     height: var(--size-16);
     width: var(--size-16);
   }
-}
-
-/* Removes the black bar/line under date on listings of blog posts. */
-.post-list__item--date.eyebrow {
-
-  &:after {
-    display: none;
-  }
-}
-
-.post-list__teaser {
-  font-size: var(--font-size-16);
-  margin-block-start: var(--size-8);
 }

@@ -1,0 +1,17 @@
+{# Card for blog posts articles. #}
+<article class="card">
+  <div class="card__image">
+    <img src="{{ item.data.featuredImage }}" alt="" width="280" height="130" />
+  </div>
+  <div class="card__content">
+    <header>
+      <h3 class="card__title">
+        <a href="{{ item.url }}" class="card__link" data-link="arrow">{{ item.data.title }}
+        <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
+        </a>
+      </h3>
+    </header>
+    <p class="card__date eyebrow eyebrow--small eyebrow--no-margin">{{ item.date | dateFilter }}</p>
+    <p class="card__teaser">{{ item.data.summary | safe }}</p>
+  </div>
+</article>

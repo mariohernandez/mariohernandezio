@@ -8,17 +8,7 @@
 <ul class="post-list__items" role="list">
   {% for item in postListItems %}
     <li class="post-list__item">
-      <article class="post-list__article">
-        <header>
-          <h3 class="post-list__title">
-            <a href="{{ item.url }}" class="post-list__link" data-link="arrow">{{ item.data.title }}
-            <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
-            </a>
-          </h3>
-        </header>
-        <p class="post-list__item--date eyebrow eyebrow--small eyebrow--no-margin">{{ item.date | dateFilter }}</p>
-        <p class="post-list__teaser">{{ item.data.summary | safe }}</p>
-      </article>
+      {% include "partials/card.html" %}
     </li>
   {% endfor %}
 </ul>

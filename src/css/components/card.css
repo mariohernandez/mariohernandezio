@@ -1,0 +1,32 @@
+/**
+ * @file
+ * Styles for article card component.
+ */
+
+.post-list__item {
+  border: 1px solid var(--gray-medium);
+  border-radius: var(--size-4);
+  max-width: var(--size-300);
+  padding: var(--size-10);
+}
+
+.card {
+  .card__image {
+    margin-block-end: var(--size-10);
+  }
+
+  img {
+    border-radius: var(--size-4) var(--size-4) 0 0;
+  }
+
+  .card__title {
+    font-size: var(--size-18);
+    line-height: var(--line-height-1-4);
+    margin-block-end: var(--size-8);
+  }
+
+  .card__teaser {
+    font-size: var(--size-16);
+    line-height: var(--line-height-1.5);
+  }
+}
