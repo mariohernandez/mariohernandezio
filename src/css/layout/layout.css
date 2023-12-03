@@ -8,10 +8,5 @@
 }
 
 .blog-post__full {
-  margin-block: var(--size-40);
-
-  @media (--tablet) {
-    margin-block: var(--size-60);
-    max-width: var(--size-960);
-  }
+  max-width: var(--size-960);
 }
