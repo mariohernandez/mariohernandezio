@@ -17,6 +17,7 @@
 
 @import '../layout/layout';
 
+@import '../components/404';
 @import '../components/about';
 @import '../components/button';
 @import '../components/card';

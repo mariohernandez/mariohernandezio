@@ -1,0 +1,18 @@
+/**
+ * @file
+ * Styles for page not found page.
+ */
+
+.not-found {
+  max-width: var(--size-960);
+}
+
+.not-found__body {
+  margin-block-end: var(--size-60);
+}
+
+.not-found__image {
+  align-item: center;
+  display: flex;
+  justify-content: center;
+}
