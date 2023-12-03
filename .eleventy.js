@@ -24,7 +24,34 @@ const markdownItOptions = {
 };
 const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs);
 
+// ---------- Start of postcss compiling -------------
+// https://zenzes.me/eleventy-integrate-postcss-and-tailwind-css/
+const postCss = require('postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+
+const postcssFilter = (cssCode, done) => {
+	// we call PostCSS here.
+	postCss([autoprefixer(), cssnano({ preset: 'default' })])
+		.process(cssCode, {
+			// path to our CSS file
+			from: './src/css/**/*.css'
+		})
+		.then(
+			(r) => done(null, r.css),
+			(e) => done(e, null)
+		);
+};
+// ---------- End of postcss compiling -------------
+
+
 module.exports = config => {
+
+  // ---------- Part of postcss compiling above -------------
+  config.addWatchTarget('./src/css/**/*.css');
+	config.addNunjucksAsyncFilter('postcss', postcssFilter);
+  // -------------------------------------
+
   // Enables html attributes in markdown
   config.setLibrary('md', markdownLib);
 
