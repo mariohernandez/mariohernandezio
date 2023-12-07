@@ -1,17 +1,14 @@
 // Filters
 const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
-
+// RSS Feed plugin.
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
-
+// Code highlight.
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-
 // Transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
-
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
-
 // Enable the use of HTML attributes in markdown
 // https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/
 // https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
@@ -35,7 +32,7 @@ const postcssFilter = (cssCode, done) => {
 	postCss([autoprefixer(), cssnano({ preset: 'default' })])
 		.process(cssCode, {
 			// path to our CSS file
-			from: './src/css/**/*.css'
+			from: './src/_includes/styles/styles.css'
 		})
 		.then(
 			(r) => done(null, r.css),
@@ -48,7 +45,7 @@ const postcssFilter = (cssCode, done) => {
 module.exports = config => {
 
   // ---------- Part of postcss compiling above -------------
-  config.addWatchTarget('./src/css/**/*.css');
+  config.addWatchTarget('./src/_includes/styles/styles.css');
 	config.addNunjucksAsyncFilter('postcss', postcssFilter);
   // -------------------------------------
 

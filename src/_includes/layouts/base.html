@@ -33,14 +33,13 @@
       {% endfor %}
     {% endif %} #}
 
-    <link rel="stylesheet" media="print" href="../../../css/default.css?{{ assetHash }}" onload="this.media='all'" />
-
-    {# <style>
+    {# <link rel="stylesheet" media="print" href="../../../css/default.css?{{ assetHash }}" onload="this.media='all'" /> #}
+    <style>
       {% set css %}
-      {% include "../../../dist/css/default.css" %}
+      {% include '../../../dist/css/styles.css' %}
       {% endset %}
       {{css | postcss | safe}}
-    </style> #}
+    </style>
 
     {# Add facility for pages to declare an array of stylesheet paths #}
     {# {% if pageStylesheets %}
