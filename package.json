@@ -5,7 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "npx gulp && concurrently \"npx gulp watch\" \"npx eleventy --serve\"",
-    "production": "ELEVENTY_PRODUCTION=true eleventy && NODE_ENV=production postcss src/css/style.css --o dist/css/style.css",
+    "production": "NODE_ENV=production npx gulp && NODE_ENV=production npx eleventy",
     "watch:css": "postcss src/css/styles.css --dir dist/css -w",
     "build:css": "postcss src/css/styles.css --dir dist/css"
   },
