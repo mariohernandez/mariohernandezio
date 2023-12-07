@@ -17,5 +17,4 @@ As of November 11, 2023, the site requires two commands to run simultaneously in
 
 TODO:
 
-* Remove all Sass/SCSS files as these are no longer being used.
 * Clean up the base.html page once all Sass and critical styles have been completely removed and are no longer needed.
