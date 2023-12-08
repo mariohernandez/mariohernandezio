@@ -5,6 +5,7 @@ tags: ['family', 'nature', 'support']
 featured: false
 featuredImage: "/images/fire.webp"
 featuredImageAlt: "Hills in flames"
+imageThumb: "/images/thumbs/fire.webp"
 featuredImageCredit: "Mario Hernandez"
 featuredImageCreditUrl: "https://twitter.com/imariohernandez"
 summary: "Waking up to knocks on the door by the Fire Department and the smell of smoke is still a surreal experience."

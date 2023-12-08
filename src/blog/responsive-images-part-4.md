@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/image-styles.webp"
 featuredImageAlt: "A person rowin behind a water color painted sky"
+imageThumb: "/images/thumbs/image-styles.webp"
 featuredImageCredit: "Ngoc Mai Pham"
 featuredImageCreditUrl: "https://unsplash.com/@potatonori"
 summary: "I'd like to think of Drupal's image styles as templates for cropping and sizing images."

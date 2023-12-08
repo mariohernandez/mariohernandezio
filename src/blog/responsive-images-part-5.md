@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/picture-frames.webp"
 featuredImageAlt: "Two picture frames on a counter"
+imageThumb: "/images/thumbs/picture-frames.webp"
 featuredImageCredit: "Sincerely Media"
 featuredImageCreditUrl: "https://unsplash.com/@sincerelymedia"
 summary: "Responsive image styles in Drupal are bundles that contain one or more image styles."

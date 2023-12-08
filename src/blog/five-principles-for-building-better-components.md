@@ -5,6 +5,7 @@ tags: ['patterns', 'components']
 featured: false
 featuredImage: '/images/wireframes.webp'
 featuredImageAlt: 'Hand drawing website wireframes'
+imageThumb: '/images/thumbs/wireframes.webp'
 featuredImageCredit: 'Sigmund'
 featuredImageCreditUrl: 'https://unsplash.com/@sigmund'
 summary: 'With great power comes great responsibility.'

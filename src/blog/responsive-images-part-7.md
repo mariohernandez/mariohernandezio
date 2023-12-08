@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/wrap.webp"
 featuredImageAlt: "Person holding a wrapped gift box"
+imageThumb: "/images/thumbs/wrap.webp"
 featuredImageCredit: "Kira auf der Heide"
 featuredImageCreditUrl: "https://unsplash.com/@kadh"
 summary: "In Drupal, the core Media module manages the creation, editing, deletion, settings, and display of media entities."

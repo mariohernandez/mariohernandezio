@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/media.webp"
 featuredImageAlt: "Watter color mountains"
+imageThumb: "/images/thumbs/media.webp"
 featuredImageCredit: "Simon Berger"
 featuredImageCreditUrl: "https://unsplash.com/@8moments"
 summary: "In Drupal, the core Media module manages the creation, editing, deletion, settings, and display of media entities."

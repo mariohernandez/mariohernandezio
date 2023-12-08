@@ -5,6 +5,7 @@ tags: ['drupal', 'ddev', 'training']
 featured: false
 featuredImage: "/images/rocks.webp"
 featuredImageAlt: "Rocks stack from big to small"
+imageThumb: "/images/thumbs/rocks.webp"
 featuredImageCredit: "Markus Spiske"
 featuredImageCreditUrl: "https://unsplash.com/photos/IiEFmIXZWSw"
 summary: "As a trainer, having an environment that is easy to setup to achieve consistency among all students is key for a successful training workshop."

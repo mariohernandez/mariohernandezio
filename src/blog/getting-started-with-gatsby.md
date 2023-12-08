@@ -5,6 +5,7 @@ tags: ['gatsby', 'react']
 featured: false
 featuredImage: "/images/gatsby-intro.webp"
 featuredImageAlt: "Cyclist going very fast producing blur"
+imageThumb: "/images/thumbs/gatsby-intro.webp"
 featuredImageCredit: "Unsplash.com"
 featuredImageCreditUrl: "https://unsplash.com/"
 summary: "Your next website could very well be a static website with the power of React and the latest technologies.  Read on..."

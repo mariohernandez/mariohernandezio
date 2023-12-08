@@ -6,6 +6,7 @@ draft: false
 featured: true
 featuredImage: "/images/emily-bernal.webp"
 featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
+imageThumb: "/images/thumbs/emily-bernal.webp"
 featuredImageCredit: "Emily Bernal"
 featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
 summary: "In this seven-part guide I cover everything you need to know about responsive images and how to manage them in a Drupal site."

@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/picture-element.webp"
 featuredImageAlt: "A person rowing during sunset"
+imageThumb: "/images/thumbs/picture-element.webp"
 featuredImageCredit: "Rhys Moult"
 featuredImageCreditUrl: "https://unsplash.com/@rhysatwork"
 summary: "In the context of responsive images, art direction is the ability to display differently-cropped images based on the device size."

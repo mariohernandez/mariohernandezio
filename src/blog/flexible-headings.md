@@ -5,6 +5,7 @@ tags: ['components', 'twig']
 featured: false
 featuredImage: "/images/flexible-headings.webp"
 featuredImageAlt: "Stacked rocks by the beach"
+imageThumb: "/images/thumbs/flexible-headings.webp"
 featuredCredit: "Jeremy Thomas"
 featuredCreditUrl: "https://unsplash.com/@jeremythomasphoto"
 summary: "Headings are normally used for page or section titles and are a big part of making your website SEO friendly and more accessible. For these reasons, headings need to be carefully planned."

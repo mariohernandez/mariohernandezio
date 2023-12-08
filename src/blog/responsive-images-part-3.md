@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/srcset-sizes.webp"
 featuredImageAlt: "A person rowin behind a water color painted sky"
+imageThumb: "/images/thumbs/srcset-sizes.webp"
 featuredImageCredit: "Robin GAILLOT-DREVON"
 featuredImageCreditUrl: "https://unsplash.com/@robingaillotdrevon"
 summary: "Resolution switching uses identical images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings."

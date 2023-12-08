@@ -5,6 +5,7 @@ tags: ['training']
 featured: false
 featuredImage: "/images/training-workshop.webp"
 featuredImageAlt: "Developers looking at computer screen"
+imageThumb: "/images/thumbs/training-workshop.webp"
 featuredImageCredit: "Unsplash.com"
 featuredImageCreditUrl: "https://unsplash.com/"
 summary: "For the past couple of years I have been running private and community driven training workshops and I'd like to share my experiences and lessons learned."

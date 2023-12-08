@@ -5,6 +5,7 @@ tags: ['twig', 'drupal',]
 featured: false
 featuredImage: '/images/attributes.webp'
 featuredImageAlt: 'Train tracks surrounded by tree lines'
+imageThumb: '/images/thumbs/attributes.webp'
 featuredImageCredit: 'Antoine Beauvillain'
 featuredImageCreditUrl: 'https://unsplash.com/@antoinebeauvillain'
 summary: 'As a Front-End developer, working with Twig and Drupal is a pretty liberating thing which presents all kinds of posibilies, but it can also open the doors to breaking things Drupal counts on.'

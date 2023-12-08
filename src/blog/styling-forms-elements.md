@@ -5,6 +5,7 @@ tags: ['css', 'forms']
 featured: false
 featuredImage: "/images/frames.webp"
 featuredImageAlt: "Four black wall arts on brown wall"
+imageThumb: "/images/thumbs/frames.webp"
 featuredImageCredit: "Leonardo Yip"
 featuredImageCreditUrl: "https://unsplash.com/@yipleonardo"
 summary: "Styling web forms is not the most exciting thing when working on a project but they are essensial to most websites and is important to give them the attention they deserve."

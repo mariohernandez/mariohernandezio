@@ -5,6 +5,7 @@ tags: ['drupal', 'drupal theme']
 featured: false
 featuredImage: "/images/scaffold.webp"
 featuredImageAlt: "Construction building with dust covers"
+imageThumb: "/images/thumbs/scaffold.webp"
 featuredImageCredit: "Dan Gold"
 featuredImageCreditUrl: "https://unsplash.com/@danielcgold"
 summary: "The Mediacurrent Theme Generator is a scaffolding tool to help you build production-ready Drupal 8 themes that are component-based-ready out of the box."

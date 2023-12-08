@@ -5,6 +5,7 @@ tags: ['components', 'integration', 'drupal']
 featured: false
 featuredImage: "/images/integrate.webp"
 featuredImageAlt: "Image of a net showing interlaced mesh"
+imageThumb: "/images/thumbs/integrate.webp"
 featuredImageCredit: "JJ ying"
 featuredImageCreditUrl: "https://unsplash.com/@jjying"
 summary: "Components integration with Drupal can be a complicated task, but there are also ways in which this task can be simplified.  This post shows you how."
