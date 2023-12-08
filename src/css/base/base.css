@@ -21,7 +21,15 @@ a {
 }
 
 h1 {
-  font-size: var(--font-size-50);
+  font-size: var(--font-size-24);
+
+  @media (--tablet) {
+    font-size: var(--font-size-40);
+  }
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-50);
+  }
 }
 
 h2 {
