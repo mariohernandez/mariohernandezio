@@ -48,6 +48,14 @@
     margin-block-start: var(--size-20);
   }
 
+  h2 {
+    font-size: var(--font-size-22);
+  }
+
+  h3 {
+    font-size: var(--font-size-20);
+  }
+
   ol {
     p {
       margin: 0;
