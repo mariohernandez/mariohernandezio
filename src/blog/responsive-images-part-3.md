@@ -5,10 +5,10 @@ tags: ['drupal','responsive-images','srcset','sizes']
 draft: false
 featured: false
 featuredImage: "/images/srcset-sizes.webp"
-featuredImageAlt: "A person rowin behind a water color painted sky"
+featuredImageAlt: "White measuring tape on a yellow background"
 imageThumb: "/images/thumbs/srcset-sizes.webp"
-featuredImageCredit: "Robin GAILLOT-DREVON"
-featuredImageCreditUrl: "https://unsplash.com/@robingaillotdrevon"
+featuredImageCredit: "Diana Polekhina"
+featuredImageCreditUrl: "https://unsplash.com/@diana_pole"
 summary: "Resolution switching uses identical images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings."
 ---
 In the [previous article](../responsive-images-and-the-picture-html-element) we defined what art direction is and how to address it using the `<picture>` element.  In this post, the focus will be how to address responsive images when the requirement is image resolution switching.  Resolution switching, in the context of responsive images, is rendering identical image content on all devices.  Unlike art direction where each device gets a differently cropped image that may vary on aspect ratio, resolution switching uses images that are simply larger or smaller based on the device but retain the same aspect ratio and cropping settings.  Resolution switching is how most images are rendered (the rule), the `<picture>` element approach is the exception to the rule. Take a look at an example of resolution switching below.

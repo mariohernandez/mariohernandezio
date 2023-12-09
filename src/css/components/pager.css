@@ -4,14 +4,10 @@
  */
 
 .pager {
-  border-top: 1px solid var(--gray-medium);
-  margin-block-start: var(--size-40);
-  padding-block-start: var(--size-20);
-}
-
-.pager__items {
   display: flex;
   justify-content: space-between;
+  margin-block-start: var(--size-40);
+  padding-block-start: var(--size-20);
 
   @media (--tablet) {
     justify-content: space-around;
