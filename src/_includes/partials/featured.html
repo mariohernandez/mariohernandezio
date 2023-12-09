@@ -1,31 +1,34 @@
-<article class="featured-post">
+<section class="featured-post">
   <div class="featured-post__inner">
     {% for item in collections.featuredPost %}
-      <div class="featured-post__image">
-        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" />
+      <div class="featured-post__image image-zoom">
+        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960" height="450" />
         <div class="featured-post__image--credit">
-          <span>Photo by:</span>
-          <a href="{{ item.data.featuredImageCreditUrl }}">{{ item.data.featuredImageCredit }}</a>
+          <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
         </div>
       </div>
 
       <article class="featured-post__article">
-        <h3 class="feature-post__article--heading">
-          {{ featuredPost.heading }}
-        </h3>
-        <div class="featured-post__article--date">
-          {{ item.date | dateFilter }}
-        </div>
-        <h2 class="featured-post__article--title">
-          <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
-            {{ item.data.title }}
-          </a>
-        </h2>
-        <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
-        <div class="featured-post__cta" aria-label="{{ item.title }}">
-          <a href="{{ item.url }}" class="button">Read the full article</a>
+        <div class="featured-post__article--inner">
+          <p class="featured-post__tag">{{ featuredPost.heading }}</p>
+          <header role="header">
+            <h2 class="featured-post__article--title">
+              <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
+                {{ item.data.title }}
+              </a>
+            </h2>
+          </header>
+          <div class="featured-post__article--date eyebrow">
+            {{ item.date | dateFilter }}
+          </div>
+          <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
+          <div class="featured-post__cta" aria-label="{{ item.title }}">
+            <a href="{{ item.url }}" class="button button--link" data-link="arrow">Read the full article
+              <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
+            </a>
+          </div>
         </div>
       </article>
     {% endfor %}
   </div>
-</article>
+</section>

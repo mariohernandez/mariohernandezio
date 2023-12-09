@@ -1,0 +1,53 @@
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--black);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-1-8);
+}
+
+a {
+  color: var(--black);
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+h1 {
+  font-size: var(--font-size-24);
+
+  @media (--tablet) {
+    font-size: var(--font-size-40);
+  }
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-50);
+  }
+}
+
+h2 {
+  font-size: var(--font-size-30);
+}
+
+h3 {
+  font-size: var(--font-size-24);
+}
+
+h4 {
+  font-size: var(--font-size-20);
+}
+
+/* The 'height: auto' ensures post image resizes proportional
+keeping its original aspect ratio. */
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}

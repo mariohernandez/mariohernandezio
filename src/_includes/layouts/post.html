@@ -2,55 +2,37 @@
 
 {% set pageHeaderTitle = title %}
 
-{# Grab other posts that aren’t this one for the 'more from the blog' feed #}
-{% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
-
-
-{# Render post date and any tags that this post has been filed under #}
+{# Render post date and any tags that this post has been tagged with. #}
 {% set pageHeaderSummary %}
-  <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
-  {% if tags %}
-    <div class="tags-and-social-share">
-      <div class="blog-post__tags--wrapper">
-        <div class="tags-icon" id="tags-desc">
-          <span class="visually-hidden">Tags for this post</span>
-          <span class="tag-icon__tag" aria-hidden="true">
-            {% include '../../images/tag.svg' %}
-          </span>
-        </div>
-        <ul class="blog-post__tags" aria-describedby="tags-desc" role="list">
-          {% for tag in tags %}
-            <li>
-              <a href="/tag/{{ tag | slug }}/">{{ tag | title | replace(' ', '') }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+  <time class="blog-post__date eyebrow" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
+  <div class="tags-and-social-share">
+    {# Post tags. #}
+    {% if tags %}
+      {% include "partials/tags.html" %}
     {% endif %}
-      {% include 'partials/social-share.html' %}
-    </div> <!-- This is the closing for 'tags-and-social-share' div. -->
+
+    {# Social media share. #}
+    {% include 'partials/social-share.html' %}
+  </div>
 {% endset %}
 
 {% block content %}
-  <article class="blog-post__full">
+  <article class="blog-post__full mb-60 margin-inline-flex">
     {% include "partials/page-header.html" %}
 
     <div class="blog-post__content">
-      <div class="blog-post__content--image">
-        <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" load="lazy" width="960px" />
+      <div class="blog-post__image image-zoom">
+        <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" width="960" height="450" />
+        <div class="featured-post__image--credit">
+          <a href="{{ featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ featuredImageCredit }}</a>
+        </div>
       </div>
-      <div class="blog-post__content--body">
+      <div class="blog-post__body">
         {{ content | safe }}
       </div>
     </div>
-
-    {% if recommendedPosts %}
-      <footer class="recommended-posts">
-        {% set postListItems = recommendedPosts %}
-        {% set postListHeadline = 'Other recommended posts' %}
-        {% include "partials/post-list.html" %}
-      </footer>
-    {% endif %}
   </article>
 
+  {# Recommended posts block. #}
+  {% include "partials/recommended-posts.html" %}
 {% endblock %}

@@ -1,0 +1,17 @@
+{# Only renders this section if there are links to render #}
+{% if pagination.href.next or pagination.href.previous %}
+  <nav class="pager" aria-label="Pagination links">
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}{{ paginationAnchor }}" class="pager__link" data-link="arrow" data-direction="backwards">
+        <span class="link-arrow link-arrow--left">{% include '../../images/icons/arrow.svg' %}</span>
+        <span>{{ paginationPrevText if paginationPrevText else 'Previous' }}</span>
+      </a>
+    {% endif %}
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}{{ paginationAnchor }}" class="pager__link" data-link="arrow" data-direction="forwards">
+        <span>{{ paginationNextText if paginationNextText else 'Next' }}</span>
+        <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}

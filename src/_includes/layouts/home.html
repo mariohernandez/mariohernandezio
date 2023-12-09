@@ -1,34 +1,25 @@
+{% extends "layouts/base.html" %}
+
 <!--Tutorial used to build this site:
 https://piccalil.li/course/learn-eleventy-from-scratch/lesson/19/ -->
 
-{% extends "layouts/base.html" %}
-<!-- Grab random blog post for the 'more from the blog' feed -->
+<!-- Grab random blog post for the 'Recommended posts' feed -->
 {% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
 
-  {% block content %}
-  <article class="hero">
-    <h1 class="hero__heading">
-      {{ hero.heading }}
-    </h1>
-    <h2 class="hero__subheading">
-      {{ hero.subheading }}
-    </h2>
-    {% include "partials/social.html" %}
+{% block content %}
 
-    <div class="hero__cta">
-      <a class="button" href="{{ hero.button.url }}">{{ hero.button.text }}</a>
-    </div>
-  </article>
+  {% include "partials/hero.html" %}
+
   {% include "partials/featured.html" %}
 
   {% include "partials/about-teaser.html" %}
 
   {% if recommendedPosts %}
-    <footer class="recommended-posts">
+    <section class="recommended-posts margin-inline-flex">
       {% set postListItems = recommendedPosts %}
       {% set postListHeadline = 'Recommended blog posts' %}
       {% include "partials/post-list.html" %}
-    </footer>
+    </section>
   {% endif %}
 
 {% endblock %}

@@ -1,0 +1,21 @@
+table {
+  border: 1px solid var(--gray-medium);
+  border-collapse: collapse;
+  color: var(--gray-darker);
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,liberation sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;
+  font-size: var(--font-size-18);
+  margin-block-end: var(--size-30);
+  width: 100%;
+
+  td {
+    border: 1px solid var(--gray-medium);
+    padding: 0.75rem;
+  }
+
+  thead th {
+    border: 1px solid var(--gray-medium);
+    border-bottom-width: 2px;
+    padding: 0.75rem;
+    vertical-align: bottom;
+  }
+}

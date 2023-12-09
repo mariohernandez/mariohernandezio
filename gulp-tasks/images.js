@@ -1,3 +1,5 @@
+'use strict';
+
 const {dest, src} = require('gulp');
 const imagemin = require('gulp-imagemin');
 

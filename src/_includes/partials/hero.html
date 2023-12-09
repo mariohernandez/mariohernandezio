@@ -1,0 +1,12 @@
+<section class="hero mb-60 margin-inline-flex">
+  <header role="header">
+    <h1 class="hero__heading">{{ hero.heading }}</h1>
+  </header>
+  <p class="hero__subheading">{{ hero.subheading }}</p>
+
+  {% include "partials/social.html" %}
+
+  <div class="hero__cta">
+    <a class="button" href="{{ hero.button.url }}">{{ hero.button.text }}</a>
+  </div>
+</section>

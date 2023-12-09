@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/image-styles.webp"
 featuredImageAlt: "A person rowin behind a water color painted sky"
+imageThumb: "/images/thumbs/image-styles.webp"
 featuredImageCredit: "Ngoc Mai Pham"
 featuredImageCreditUrl: "https://unsplash.com/@potatonori"
 summary: "I'd like to think of Drupal's image styles as templates for cropping and sizing images."
@@ -117,7 +118,7 @@ The same way you created the original image style above for 16:9 (Max 320px), go
 With our custom image styles in place, we can now make use of them, but before we do, let's go over another very important concept within Drupal, **Responsive image styles** ...whaaaaatttt?
 We'll comeback to Drupal in a bit but first, we'll talk about responsive image styles in the next post.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

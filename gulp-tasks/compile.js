@@ -1,3 +1,5 @@
+'use strict';
+
 const {dest, src} = require('gulp');
 const cleanCSS = require('gulp-clean-css');
 const sassProcessor = require('gulp-sass')(require('sass'));

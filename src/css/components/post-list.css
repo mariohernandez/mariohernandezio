@@ -1,0 +1,38 @@
+/**
+ * @file
+ * Blog landing page and Recommended post listing styles.
+ */
+
+.post-list {
+  max-width: var(--size-960);
+  min-height: 100vh;
+}
+
+.post-list__items {
+  display: grid;
+  grid-column-gap: var(--size-20);
+  grid-row-gap: var(--size-50);
+  /* min() with 100% prevents overflow in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-250)), 1fr));
+}
+
+.post-list__link {
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  span {
+    margin-block-start: var(--size-2);
+    margin-inline-start: var(--size-4);
+  }
+
+  svg {
+    display: block;
+    height: var(--size-16);
+    width: var(--size-16);
+  }
+}

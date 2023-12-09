@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/picture-frames.webp"
 featuredImageAlt: "Two picture frames on a counter"
+imageThumb: "/images/thumbs/picture-frames.webp"
 featuredImageCredit: "Sincerely Media"
 featuredImageCreditUrl: "https://unsplash.com/@sincerelymedia"
 summary: "Responsive image styles in Drupal are bundles that contain one or more image styles."
@@ -64,7 +65,7 @@ Since we are doing resolution switching and not art direction, we chose **Respon
 **Very important**: Remember in the [Responsive images using srcset and sizes attributes](../responsive-images-using-srcset-and-sizes-attributes) post our claim was that it's better to let the browser pick the best image possible as the browser is smarter than us?  This is exactly what we are doing here.  We are providing the browser with a collection of images to pick from.  Each image provides its dimensions. Then we tell the browser how big/small we want the images to be rendered.  One thing we are not doing is telling the browser which image to use, we let the browser make that decision.  This is the complete opposite of what we do when we use `<picture>`.  As a reminder, the method used above is what you would do in most of your images.  This is like the default configuration for your responsive images.  Only when you need to crop your images differently for each device size is when you would use the art direction approach.
 
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

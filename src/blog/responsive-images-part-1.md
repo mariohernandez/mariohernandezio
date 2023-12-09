@@ -6,6 +6,7 @@ draft: false
 featured: true
 featuredImage: "/images/emily-bernal.webp"
 featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
+imageThumb: "/images/thumbs/emily-bernal.webp"
 featuredImageCredit: "Emily Bernal"
 featuredImageCreditUrl: "https://unsplash.com/@emilybernal"
 summary: "In this seven-part guide I cover everything you need to know about responsive images and how to manage them in a Drupal site."
@@ -62,7 +63,7 @@ The CSS rule above will in fact make your images responsive (images will automat
 
 In the next post of this series, we will begin the process of implementing a solution for handling responsive images the right way.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

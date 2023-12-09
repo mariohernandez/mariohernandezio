@@ -1,0 +1,27 @@
+.navigation__items {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-inline-start: auto;
+}
+
+.navigation__item {
+  margin: 0 var(--size-10);
+  padding: var(--size-5) var(--size-10);
+
+  a {
+    text-decoration: none;
+    text-transform: lowercase;
+    color: var(--black);
+    font-size: var(--font-size-22);
+    font-weight: var(--weight-700);
+    transition: var(--transition-color-03s);
+
+    &[data-state="active"],
+    &:hover {
+      border-block-end: var(--size-4) solid var(--black);
+      color: var(--gray-darker);
+      padding-block-end: var(--size-2);
+    }
+  }
+}

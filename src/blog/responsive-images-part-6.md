@@ -6,6 +6,7 @@ draft: false
 featured: false
 featuredImage: "/images/media.webp"
 featuredImageAlt: "Watter color mountains"
+imageThumb: "/images/thumbs/media.webp"
 featuredImageCredit: "Simon Berger"
 featuredImageCreditUrl: "https://unsplash.com/@8moments"
 summary: "In Drupal, the core Media module manages the creation, editing, deletion, settings, and display of media entities."
@@ -121,7 +122,7 @@ Before we can see the responsive images, let's create a couple of news articles 
 
 In the next post, we will complete the configuration and display of responsive images.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

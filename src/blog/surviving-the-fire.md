@@ -3,10 +3,11 @@ date: "2018-11-11"
 title: "Surviving the fire"
 tags: ['family', 'nature', 'support']
 featured: false
-featuredImage: "/images/fire.jpg"
+featuredImage: "/images/fire.webp"
 featuredImageAlt: "Hills in flames"
-featuredImageCredit: "Unsplash.com"
-featuredImageCreditUrl: "https://unsplash.com/"
+imageThumb: "/images/thumbs/fire.webp"
+featuredImageCredit: "Mario Hernandez"
+featuredImageCreditUrl: "https://twitter.com/imariohernandez"
 summary: "Waking up to knocks on the door by the Fire Department and the smell of smoke is still a surreal experience."
 ---
 

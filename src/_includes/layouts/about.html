@@ -1,28 +1,42 @@
 {% extends "layouts/base.html" %}
 
-<!-- Grab random blog post for the 'more from the blog' feed -->
+{% set pageHeaderTitle = title %}
+
+<!-- Grab random blog post for the 'Other recommended posts' block -->
 {% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
 
 {% block content %}
-  <article class="about__full">
-    <div class="about__headshot">
-      <img src="{{ about.headshot }}" alt="Portrait of Mario Hernandez" />
-      {% include "partials/social.html" %}
+  <article class="about__full margin-inline-flex">
+    <div class="about__content">
+      <div class="about__intro">
+        {{ intro }}
+      </div>
+      <header class="page-header">
+        <h1 class="page-header__title" data-highlight="dark">{{ title }}</h1>
+      </header>
+      <div class="about__body">
+        {{ content | safe }}
+      </div>
+      <a href="{{ blog_url }}" class="button button--link mt-20" data-link="arrow">Read my blog
+        <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
+      </a>
     </div>
-    <div class="about__body">
-      <h2 class="about__heading" data-highlight="dark">Mario Hernandez</h2>
-        <div>
-          {{ content | safe }}
-          {% if recommendedPosts %}
-            <footer class="recommended-posts">
-              {% set postListItems = recommendedPosts %}
-              {% set postListHeadline = 'Recommended blog posts' %}
-              {% include "partials/post-list.html" %}
-            </footer>
-          {% endif %}
-        </div>
+    <div class="about__images">
+      <div class="about__image about__image--first">
+        <img src="{{ about.image }}" alt="{{ about.alt }}" width="540" height="720" />
+      </div>
+      <div class="about__image about__image--second">
+        <img src="{{ about.image_second }}" alt="{{ about.alt2 }}" width="960" height="720" />
+      </div>
     </div>
-
   </article>
 
+  {# Recommended blog posts block. #}
+  {% if recommendedPosts %}
+    <section class="recommended-posts mt-60 margin-inline-flex">
+      {% set postListItems = recommendedPosts %}
+      {% set postListHeadline = 'Recommended blog posts' %}
+      {% include "partials/post-list.html" %}
+    </section>
+  {% endif %}
 {% endblock %}

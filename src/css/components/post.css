@@ -1,0 +1,77 @@
+/**
+ * @file
+ * Blog post full view styles.
+ */
+
+.page-header__summary {
+  margin-block-end: 0.5rem
+}
+
+.page-header__title {
+  margin-block-end: var(--size-20);
+  line-height: var(--line-height-1-2);
+}
+
+.blog-post__date {
+  margin-block-end: var(--size-40);
+}
+
+.blog-post__image {
+  margin-block-end: var(--size-20);
+
+  @media (--laptop) {
+    margin-block-end: var(--size-40);
+  }
+}
+
+.blog-post__body {
+
+  p {
+    margin-block-end: 1.5rem;
+  }
+
+  /* Drop cap styles. */
+  > p:first-child:first-letter {
+    color: var(--black);
+    float: left;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-65);
+    line-height: var(--size-60);
+    margin-block-end: 0;
+    padding-block-start: var(--size-4);
+    padding-inline-end: var(--size-8);
+    padding-inline-start: 0;
+  }
+
+  h2,
+  h3 {
+    margin-block-start: var(--size-20);
+  }
+
+  h2 {
+    font-size: var(--font-size-22);
+  }
+
+  h3 {
+    font-size: var(--font-size-20);
+  }
+
+  ol {
+    p {
+      margin: 0;
+    }
+  }
+}
+
+/* Wrapper for tags and social-share components on each blog post. */
+.tags-and-social-share {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  @media (--tablet) {
+    align-items: unset;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

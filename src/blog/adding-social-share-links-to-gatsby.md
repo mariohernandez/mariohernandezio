@@ -4,8 +4,9 @@ date: "2018-09-10"
 title: "Adding Social Share Links to Gatsby"
 tags: ['gatsby', 'social share']
 featured: false
-featuredImage: "/images/beach.jpg"
+featuredImage: "/images/beach.webp"
 featuredImageAlt: "Beach waves coming to shore"
+imageThumb: "/images/thumbs/beach.webp"
 featuredCredit: "Unsplash.com"
 featuredCreditUrl: "https://unsplash.com/"
 summary: "Don't know about you but one of the first things I look for after reading a great article online is how to share it with others."

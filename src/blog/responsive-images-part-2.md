@@ -5,9 +5,10 @@ tags: ['drupal','responsive-images','picture-element']
 draft: false
 featured: false
 featuredImage: "/images/picture-element.webp"
-featuredImageAlt: "A person rowing during sunset"
-featuredImageCredit: "Rhys Moult"
-featuredImageCreditUrl: "https://unsplash.com/@rhysatwork"
+featuredImageAlt: "Pencils of different sizes over a blue background"
+imageThumb: "/images/thumbs/picture-element.webp"
+featuredImageCredit: "Markus Spiske"
+featuredImageCreditUrl: "https://unsplash.com/@markusspiske"
 summary: "In the context of responsive images, art direction is the ability to display differently-cropped images based on the device size."
 ---
 In the [previous article](../responsive-images-in-drupal-a-guide) of this guide we covered the concept of responsive images and some of the challenges that come with implementing an effective system for them.  In this article we will go in detail about the concept of "Art Direction" and how this applies to responsive images.
@@ -92,7 +93,7 @@ Then why use the picture element?  Well, when developing a website, the develope
 
 You may be wondering: "_Why did you get us all excited about the `<picture>` element if we can't really use it?_" well, if you are trying to achieve art direction, then you use the `<picture>` element.  It's the recommended approach for that use case.  If you are looking for resolution switching, a use case for most images in the web, you need to use the `srcset` and `sizes` attributes approach.  In the next post we'll dive deep into this technique.
 
-<div class="post-pager">
+<div class="post-pager margin-inline-flex margin-block-40">
 
 Navigate posts within this series
 

@@ -1,0 +1,23 @@
+/**
+ * @file
+ * Layout styles for the header section.
+ */
+
+.header {
+  margin-block: var(--size-20) var(--size-80);
+  max-width: var(--size-960);
+
+  @media (--laptop) {
+    margin-block: var(--size-30) var(--size-100);
+  }
+}
+
+.header__inner {
+  text-align: center;
+
+  @media (--tablet) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+}

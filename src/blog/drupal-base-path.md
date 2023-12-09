@@ -4,8 +4,9 @@ title: "Drupal base path"
 tags: ['drupal','twig']
 draft: false
 featured: false
-featuredImage: "/images/paths.jpg"
+featuredImage: "/images/paths.webp"
 featuredImageAlt: "Person confronted with two paths to choose from"
+imageThumb: "/images/thumbs/paths.webp"
 featuredImageCredit: "Caleb Jones"
 featuredImageCreditUrl: "https://unsplash.com/@gcalebjones"
 summary: "There are times when building a Drupal site you need to dynamically point to an asset or resource that may not be saved in the database but instead is located somewhere in the site's file system."

@@ -57,6 +57,18 @@ module.exports = {
     }
 
     return filteredItems;
-  }
+  },
 
+  /**
+   * Creates a dynamic date and returns the current year. Function is used
+   * in the `_includes/partials/footer.html`.
+   *
+   * @param {String} currentYear Name of the function
+   * @param {String} today Variable for checking today's date
+   * @returns {String} The output of today's date with the format of year only.
+   */
+  currentYear() {
+    const today = new Date();
+    return today.getFullYear();
+  }
 };

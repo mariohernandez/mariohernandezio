@@ -1,0 +1,20 @@
+.site__logo {
+  color: var(--gray-darker);
+  display: block;
+  font-size: var(--font-size-30);
+  font-weight: var(--weight-400);
+  letter-spacing: -1px;
+  line-height: var(--line-height-1);
+  margin-block-end: var(--size-30);
+  text-decoration: none;
+  text-transform: lowercase;
+
+  @media (--tablet) {
+    margin: 0;
+  }
+
+  span {
+    font-weight: var(--weight-700);
+    margin-inline-start: -6px;
+  }
+}

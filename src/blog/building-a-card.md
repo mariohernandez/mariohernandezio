@@ -4,10 +4,11 @@ title: "How to build a card component"
 tags: ['components']
 draft: false
 featured: false
-featuredImage: "/images/featured-image.jpg"
-featuredImageAlt: "Person holding a card with star"
-featuredCredit: "Unsplash.com"
-featuredCreditUrl: "https://unsplash.com/"
+featuredImage: "/images/featured-image.webp"
+featuredImageAlt: "Person holding a card"
+imageThumb: "/images/thumbs/featured-image.webp"
+featuredCredit: "Kelly Sikkema"
+featuredCreditUrl: "https://unsplash.com/@kellysikkema"
 summary: "Building components is a lot of fun but it takes good planning and attention to detail to build components which are flexible and reusable."
 ---
 

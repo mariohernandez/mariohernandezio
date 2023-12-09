@@ -1,0 +1,116 @@
+/**
+ * @file
+ * Featured post styles.
+ */
+
+.featured-post {
+  /* margin: var(--size-60) -2rem var(--size-40) -2rem; */
+  width: 100%;
+
+  @media (--laptop) {
+    background-color: var(--gray-light);
+    margin: 0 auto var(--size-60);
+    padding-block: var(--size-120);
+  }
+}
+
+.featured-post__inner {
+  margin: 0;
+  position: relative;
+
+  @media (--tablet) {
+    margin: 0 var(--size-20);
+    max-width: var(--size-960);
+  }
+
+  @media (--tablet-large) {
+    margin: 0 auto;
+  }
+}
+
+.featured-post__article {
+  background-color: var(--white);
+
+  @media (--laptop) {
+    left: -6rem;
+    position: absolute;
+    top: -6rem;
+    width: 55%;
+  }
+}
+
+.featured-post__article--inner {
+  padding: var(--size-20);
+
+  @media (--laptop) {
+    padding: var(--size-60) var(--size-30) var(--size-30);
+    position: relative;
+  }
+}
+
+.featured-post__article--title {
+  font-size: var(--font-size-24);
+  line-height: var(--line-height-1-4);
+  margin-block-end: var(--size-8);
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Featured article heading tag and photo credit tag
+common styles. */
+.featured-post__tag,
+.featured-post__image--credit {
+  background-color: var(--black);
+  color: var(--white);
+  display: inline-block;
+  font-size: var(--font-size-12);
+  font-weight: var(--weight-500);
+  letter-spacing: 0.1em;
+  line-height: var(--line-height-1);
+  margin: 0;
+  padding: var(--size-8) var(--size-20);
+  position: absolute;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.featured-post__tag {
+  left: 0;
+  top: 0;
+}
+
+/* Photo credit. */
+.featured-post__image--credit {
+  bottom: 0;
+  padding: var(--size-5) var(--size-10);
+  right: 0;
+  text-transform: none;
+
+  a {
+    color: var(--white);
+    display: inline-block;
+    font-size: var(--font-size-12);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    span {
+      letter-spacing: initial;
+      text-transform: none;
+    }
+  }
+}
+
+.featured-post__summary {
+  margin-block-start: var(--size-6);
+}
+
+.featured-post__cta {
+  margin-block-start: var(--size-12);
+}

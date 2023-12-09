@@ -1,0 +1,60 @@
+/**
+ * @file
+ * Font family, font weight, and line height variables.
+ */
+:root {
+  /* Font family. */
+  --font-primary: Helvetica,Roboto,Arial,sans-serif;
+  --font-secondary: Georgia,'Times New Roman',Times,serif;
+
+  /* Font size. */
+  --font-size-10: 1rem;
+  --font-size-12: 1.2rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-25: 2.5rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-30: 3rem;
+  --font-size-32: 3.2rem;
+  --font-size-34: 3.4rem;
+  --font-size-35: 3.5rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-44: 4.4rem;
+  --font-size-46: 4.6rem;
+  --font-size-48: 4.8rem;
+  --font-size-50: 5rem;
+  --font-size-60: 6rem;
+  --font-size-65: 6.5rem;
+  --font-size-80: 8rem;
+  --font-size-100: 10rem;
+  --font-size-140: 14rem;
+
+  /* Font weight. */
+  --weight-100: 100;
+  --weight-200: 200;
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+  --weight-800: 800;
+  --weight-900: 900;
+
+  /* Line height. */
+  --line-height-1: 1;
+  --line-height-1-1: 1.1;
+  --line-height-1-2: 1.2;
+  --line-height-1-4: 1.4;
+  --line-height-1-5: 1.5;
+  --line-height-1-8: 1.8;
+  --line-height-2: 2;
+  --line-height-2-4: 2.4;
+}

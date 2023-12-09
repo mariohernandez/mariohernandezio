@@ -1,0 +1,130 @@
+/**
+ * @file
+ * This is the site's reset stylesheet.
+ * These styles were inspired in part by
+ * https://andy-bell.co.uk/a-more-modern-css-reset/
+ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Set core body defaults */
+body {
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scrollbar-gutter: stable both-edges;
+  word-wrap: break-word;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+* {
+  margin: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+hr {
+  border-top-width: 1px;
+  color: inherit;
+  height: 0;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+label {
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-1-1);
+  overflow-wrap: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  border-color: inherit;
+  text-indent: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font-weight: inherit;
+  padding: 0;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+  text-transform: none;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+textarea {
+  resize: vertical;
+}
+
+summary {
+  display: list-item;
+}
+
+fieldset {
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'],
+dd[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Adds background color when text is selected. */
+::selection {
+  background-color: var(--purple);
+  color: var(--white);
+}
+
+:disabled {
+  cursor: default;
+}

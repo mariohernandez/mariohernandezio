@@ -1,0 +1,32 @@
+/**
+ * @file
+ * Blockquote styles.
+ */
+
+blockquote {
+  color: var(--gray-darker);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-22);
+  font-style: italic;
+  line-height: var(--line-height-14);
+  margin: var(--size-40) auto;
+  padding: var(--size-20);
+  position: relative;
+  border-left: var(--size-4) solid var(--purple);
+  margin-block-start: var(--size-60);
+  max-width: var(--size-720);
+  padding: var(--size-20) 0 var(--size-20) var(--size-80);
+  text-align: left;
+
+  &::before {
+    color: var(--purple);
+    content: '"';
+    display: block;
+    font-family: cursive, serif;
+    font-size: var(--font-size-140);
+    font-weight: var(--weight-700);
+    left: calc(var(--size-1) * -1); /* Negative value */
+    position: absolute;
+    top: calc(var(--size-80) * -1); /* Negative value */
+  }
+}

@@ -1,0 +1,17 @@
+/**
+ * @file
+ * Color variables.
+ * Light and Dark mode technique:
+ * https://www.bram.us/2023/10/09/the-future-of-css-easy-light-dark-mode-color-switching-with-light-dark/
+ */
+:root {
+  --black: #0e1e25;
+  --white: #ffffff;
+  --gray-darker: #414141;
+  --gray-dark: #bbbbbb;
+  --gray-medium: #dddddd;
+  --gray-light: #f5f5f5;
+  --purple: rebeccapurple;
+  --light-blue: #add8e6;
+  --text-color: --black; /* Value for Light mode */
+}

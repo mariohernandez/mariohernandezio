@@ -3,8 +3,9 @@ date: "2019-04-20"
 title: "Our best training yet"
 tags: ['training', 'drupalcon',]
 featured: false
-featuredImage: "/images/students.jpg"
+featuredImage: "/images/students.webp"
 featuredImageAlt: "Team members conducting training workshop"
+imageThumb: "/images/thumbs/students.webp"
 featuredCredit: "Mario Hernandez"
 featuredCreditUrl: "https://twitter.com/imariohernandez"
 summary: "DrupalCon Seattle 2019 proved to be our best experience yet at conducting a training workshop and would like to share the good and bad with you."

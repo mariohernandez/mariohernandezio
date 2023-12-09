@@ -1,0 +1,53 @@
+/**
+ * @file
+ * Sizes and spacing variables.
+ */
+:root {
+  --size-1: 1px;      /* 1px */
+  --size-2: 2px;      /* 2px */
+  --size-4: 4px;      /* 4px */
+  --size-5: 5px;      /* 5px */
+  --size-6: 6px;      /* 6px */
+  --size-8: 8px;      /* 8px */
+  --size-10: 1rem;    /* 10px */
+  --size-12: 1.2rem;  /* 12px */
+  --size-14: 1.4rem;  /* 14px */
+  --size-16: 1.6rem;  /* 16px */
+  --size-20: 2rem;    /* 20px */
+  --size-24: 2.4rem;  /* 24px */
+  --size-28: 2.8rem;  /* 28px */
+  --size-30: 3rem;    /* 30px */
+  --size-32: 3.2rem;  /* 32px */
+  --size-36: 3.6rem;  /* 36px */
+  --size-40: 4rem;    /* 40px */
+  --size-44: 4.4rem;  /* 44px */
+  --size-48: 4.8rem;  /* 48px */
+  --size-50: 5rem;    /* 50px */
+  --size-52: 5.2rem;  /* 52px */
+  --size-56: 5.6rem;  /* 56px */
+  --size-60: 6rem;    /* 60px */
+  --size-64: 6.4rem;  /* 64px */
+  --size-68: 6.8rem;  /* 68px */
+  --size-70: 7rem;    /* 70px */
+  --size-72: 7.2rem;  /* 72px */
+  --size-76: 7.6rem;  /* 76px */
+  --size-80: 8rem;    /* 80px */
+  --size-84: 8.4rem;  /* 84px */
+  --size-88: 8.8rem;  /* 88px */
+  --size-92: 9.2rem;  /* 92px */
+  --size-96: 9.6rem;  /* 96px */
+  --size-100: 10rem;  /* 100px */
+  --size-120: 12rem;  /* 120px */
+  --size-180: 18rem;  /* 180px */
+  --size-200: 20rem;  /* 200px */
+  --size-250: 25rem;  /* 250px */
+  --size-278: 27.8rem;  /* 278px */
+  --size-300: 30rem;  /* 300px */
+  --size-360: 36rem;  /* 360px */
+  --size-480: 48rem;  /* 480px */
+  --size-540: 54rem;  /* 540px */
+  --size-650: 6.5rem; /* 650px */
+  --size-720: 72rem; /* 720px */
+  --size-960: 96rem; /* 960px */
+  --size-1200: 12rem; /* 1200px */
+}

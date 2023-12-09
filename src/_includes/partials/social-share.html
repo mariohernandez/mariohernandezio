@@ -1,28 +1,28 @@
-<ul class="blog-post__social-share" role="list">
+<ul class="social-share" role="list">
   <li class="social-share__label">
     Share this post
   </li>
-  <li>
-    <a target="_blank" title="Tweet it" href="https://twitter.com/intent/tweet?text={{ tweet | urlencode }}+{{ title | urlencode }}&url=https://mariohernandez.io{{ page.url }}&hashtags={{ hashtags }}" rel="noopener noreferrer”">
+  <li class="social-share__item">
+    <a class="social-share__link" target="_blank" title="Tweet it" href="https://twitter.com/intent/tweet?text={{ tweet | urlencode }}+{{ title | urlencode }}&url=https://mariohernandez.io{{ page.url }}&hashtags={{ hashtags }}" rel="noopener noreferrer”">
       <span class="visually-hidden">Share on Twitter</span>
       <span class="social-share__icon" aria-hidden="true">
-        {% include '../../images/twitter.svg' %}
+        {% include '../../images/icons/x.svg' %}
       </span>
     </a>
   </li>
-  <li>
-    <a target="_blank" title="Post on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmariohernandez.io{{ page.url }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" rel="”noopener" noreferrer”>
+  <li class="social-share__item">
+    <a class="social-share__link" target="_blank" title="Post on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmariohernandez.io{{ page.url }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" rel="”noopener" noreferrer”>
       <span class="visually-hidden">Share on Facebook</span>
       <span class="social-share__icon" aria-hidden="true">
-        {% include '../../images/facebook.svg' %}
+        {% include '../../images/icons/facebook.svg' %}
       </span>
     </a>
   </li>
-  <li>
-    <a target="_blank" title="Share it on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://mariohernandez.io{{ page.url }}" rel="noopener noreferrer">
+  <li class="social-share__item">
+    <a class="social-share__link" target="_blank" title="Share it on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://mariohernandez.io{{ page.url }}" rel="noopener noreferrer">
       <span class="visually-hidden">Share on LinkedIn</span>
       <span class="social-share__icon" aria-hidden="true">
-        {% include '../../images/linkedin.svg' %}
+        {% include '../../images/icons/linkedin.svg' %}
       </span>
     </a>
   </li>

@@ -1,0 +1,23 @@
+/**
+ * @file
+ * Styles for eyebrow and date fields.
+ */
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-14);
+  font-weight: var(--weight-600);
+  letter-spacing: 0.15em;
+  line-height: var(--line-height-1);
+  margin-block-end: var(--size-16);
+  text-transform: uppercase;
+
+  &::after {
+    background: $color-black;
+    content: "";
+    display: block;
+    height: 0.4rem;
+    margin: 1rem 0;
+    width: 5rem;
+  }
+}
