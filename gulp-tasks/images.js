@@ -1,7 +1,8 @@
 'use strict';
 
 const {dest, src} = require('gulp');
-const imagemin = import('gulp-imagemin');
+const gulpImagemin = import('gulp-imagemin');
+// const imagemin = require('gulp-imagemin');
 
 // Grabs all images, runs them through imagemin
 // and plops them in the dist folder
@@ -10,9 +11,11 @@ const images = () => {
   // to really pull down asset sizes
   return src('./src/images/**/*')
     .pipe(
-      imagemin(
+      gulpImagemin(
         [
-          imagemin.mozjpeg({quality: 60, progressive: true}),
+          gulpImagemin.gifsicle({interlaced: true}),
+          gulpImagemin.mozjpeg({quality: 75, progressive: true}),
+          gulpImagemin.optipng({optimizationLevel: 5}),
           imagemin.optipng({optimizationLevel: 5, interlaced: null})
         ],
         {
@@ -20,7 +23,10 @@ const images = () => {
         }
       )
     )
-    .pipe(dest('./dist/images'));
+    .pipe(dest('./dist/images'))
+    .on('end', () => {
+     console.log('Successfully compressed images');
+  });
 };
 
 module.exports = images;
