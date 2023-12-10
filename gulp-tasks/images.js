@@ -1,7 +1,7 @@
 'use strict';
 
 const {dest, src} = require('gulp');
-const imagemin = require('gulp-imagemin');
+const imagemin = import('gulp-imagemin');
 
 // Grabs all images, runs them through imagemin
 // and plops them in the dist folder
