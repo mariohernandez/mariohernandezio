@@ -1,6 +1,6 @@
 'use strict';
 
-const { src, dest, series } = require('gulp');
+const { src, dest, series, watch } = require('gulp');
 const squoosh = require('gulp-libsquoosh');
 
 // Copy images into dist/images
@@ -12,7 +12,7 @@ function copyImages() {
 
 // Watch images and copy to dist/images.
 function watchImages() {
-  watch('./src/images/**/*', {ignoreInitial: true}, squoosh);
+  watch('./src/images/**/*');
   return src('src/images/**')
     .pipe(squoosh())
     .pipe(dest('dist/images'));
