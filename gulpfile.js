@@ -10,6 +10,8 @@ function copyImages() {
     .pipe(dest('dist/images'));
 };
 
+exports.default = series(copyImages);
+
 // Watch images and copy to dist/images.
 function watchImages() {
   watch('./src/images/**/*');
@@ -18,5 +20,4 @@ function watchImages() {
     .pipe(dest('dist/images'));
 };
 
-exports.default = series(copyImages);
 exports.watch = series(watchImages);
