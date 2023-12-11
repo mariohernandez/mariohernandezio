@@ -1,15 +1,12 @@
-'use strict';
-
-const { src, dest, series, watch } = require('gulp');
+const { src, dest, series } = require('gulp');
 const squoosh = require('gulp-libsquoosh');
 
-// Copies images from src to dist on demand.
+// Copy images to /dist/images.
 function copyImages(cb) {
-  return src('src/images/**')
+  return src('src/images/**/*')
     .pipe(squoosh())
     .pipe(dest('dist/images'));
-    console.log('Helloooooo world!');
   cb();
 };
 
-exports.default = copyImages;
+exports.default = series(copyImages);
