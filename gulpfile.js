@@ -11,13 +11,4 @@ function copyImages() {
 };
 
 exports.default = series(copyImages);
-
-// Watch images and copy to dist/images.
-function watchImages() {
-  watch('./src/images/**/*');
-  return src('src/images/**')
-    .pipe(squoosh())
-    .pipe(dest('dist/images'));
-};
-
-exports.watch = series(watchImages);
+exports.watch = series(copyImages);
