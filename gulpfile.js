@@ -1,12 +1,8 @@
-const { src, dest, series } = require('gulp');
-const squoosh = require('gulp-libsquoosh');
+const { src, dest } = require("gulp");
 
-// Copy images to /dist/images.
 function copyImages(cb) {
-  return src('src/images/**/*')
-    .pipe(squoosh())
-    .pipe(dest('dist/images'));
-  cb();
-};
-
-exports.default = series(copyImages);
+   src('./src/images/**/*')
+        .pipe(dest('./dist/images'));
+   cb();
+}
+exports.default = copyImages;
