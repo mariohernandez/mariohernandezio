@@ -1,26 +1,32 @@
 'use strict';
 
-const {dest, src} = require('gulp');
-const imagemin = require('gulp-imagemin');
+// Include gulp
+const { src, dest } = require('gulp');
 
-// Grabs all images, runs them through imagemin
-// and plops them in the dist folder
-const images = () => {
-  // We have specific configs for jpeg and png files to try
-  // to really pull down asset sizes
-  return src('./src/images/**/*')
-    .pipe(
-      imagemin(
-        [
-          imagemin.mozjpeg({quality: 60, progressive: true}),
-          imagemin.optipng({optimizationLevel: 5, interlaced: null})
-        ],
-        {
-          silent: true
-        }
-      )
+// Include Our Plugins
+const move = require('gulp-rename');
+
+// Export our tasks.
+module.exports = {
+  // Move any fonts to where Pattern Lab is lookinging for them.
+  moveImages: function() {
+    return src(
+      [
+        './src/images/**/*.gif',
+        './src/images/**/*.png',
+        './src/images/**/*.jpg',
+        './src/images/**/*.jpeg',
+        './src/images/**/*.svg',
+        './src/images/**/*.webp'
+      ],
+      { base: './' }
     )
-    .pipe(dest('./dist/images'));
+      .pipe(
+        move(function(path) {
+          path.dirname = '';
+          return path;
+        })
+      )
+      .pipe(dest('./dist/images'));
+  }
 };
-
-module.exports = images;
