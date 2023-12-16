@@ -37,7 +37,7 @@
     width: var(--size-250);
   }
 
-  /* Purple shadow behind photo. */
+  /* Purple drop shadow behind photo. */
   &::before {
     background-color: var(--purple);
     bottom: -0.5rem;
