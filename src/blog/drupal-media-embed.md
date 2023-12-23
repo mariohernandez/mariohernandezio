@@ -11,11 +11,9 @@ featuredImageCreditUrl: "https://unsplash.com/@grakozy"
 summary: "Take control of your image embeds in your site using Drupal's media."
 ---
 
-Allowing your content creators to embed images in text fields is a big risk if you don't have the right measures in place to get properly rendered images without jeopardizing your site's performance. We faced this issue first-hand with embedded images due to not using the right configuration and this lead to extremely large images being rendered.
+Allowing your content creators to embed images in text fields is a big risk if you don't have the right measures in place to get properly rendered images without jeopardizing your site's performance. We faced this issue first-hand with embedded images due to not using the right configuration and this lead to extremely large images being rendered. In this post I'll go over the techniques I took for addressing those issues and set up a system for image embeds that is solid and performant.
 
-I have made an effort to document the process I've taken hoping it could help others in the community.  I started by writing a seven-part guide on [how to setup responsive images](../responsive-images-in-drupal-a-guide).  In this post I'll focus on image embeds which require special attention.
-
-If you followed or read the responsive images guide, you should be able to take advantage of some of the work we did there in this post.  The guidelines covered here include:
+I started by writing a seven-part guide on [how to setup responsive images](../responsive-images-in-drupal-a-guide). In this post I'll focus on image embeds. If you followed or read the responsive images guide, you should be able to take advantage of some of the work we did there in this post.  The guidelines covered here include:
 
 * Defining requirements
 * Image styles
