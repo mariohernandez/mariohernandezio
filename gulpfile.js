@@ -12,11 +12,5 @@ function copyFonts(cb) {
   cb();
 }
 
-function copyCSS(cb) {
-  src('./src/css/**/*')
-    .pipe(dest('./dist/css'));
-  cb();
-}
-
-exports.default = series(copyImages, copyFonts, copyCSS);
-exports.watch = series(copyImages, copyCSS);
+exports.default = series(copyImages, copyFonts);
+exports.watch = series(copyImages);
