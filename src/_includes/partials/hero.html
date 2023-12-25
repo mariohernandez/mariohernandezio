@@ -1,12 +1,20 @@
 <section class="hero mb-60 margin-inline-flex">
-  <header role="header">
-    <h1 class="hero__heading">{{ hero.heading }}</h1>
-  </header>
-  <p class="hero__subheading">{{ hero.subheading }}</p>
+  <div class="hero__inner">
+    <div class="hero__image">
+      <img src="{{ hero.image }}" alt="Portrait of Mario Hernandez">
+    </div>
+    <div class="hero__content">
+      <header role="header">
+        <p>Hello, I'm</p>
+        <h1 class="hero__heading">{{ hero.heading }}</h1>
+      </header>
+      <p class="hero__subheading">{{ hero.subheading }}</p>
 
-  {% include "partials/social.html" %}
+      {% include "partials/social.html" %}
 
-  <div class="hero__cta">
-    <a class="button" href="{{ hero.button.url }}">{{ hero.button.text }}</a>
+      <div class="hero__cta">
+        <a class="button" href="{{ hero.button.url }}">{{ hero.button.text }}</a>
+      </div>
+    </div>
   </div>
 </section>

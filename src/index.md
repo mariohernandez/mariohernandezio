@@ -2,8 +2,9 @@
 title: 'Mario Hernandez Personal Blog'
 layout: 'layouts/home.html'
 hero:
-  heading: 'I build websites'
-  subheading: 'and write about it on this blog'
+  heading: 'Mario Hernandez'
+  subheading: 'Front-end Developer'
+  image: '/images/headshot.webp'
   button: {
     'text': 'More about me',
     'url': '#aboutme'
