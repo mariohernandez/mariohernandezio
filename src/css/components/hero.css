@@ -4,53 +4,40 @@
  */
 
 .hero {
-  text-align: center;
-}
-
-.hero__inner {
-  display: grid;
-  gap: var(--size-40);
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  margin-inline: auto;
   max-width: var(--size-960);
 }
 
-.hero__image {
-  justify-self: end;
-}
-
-.hero__content {
-  justify-self: start;
-}
-
 .hero__heading {
-  font-size: var(--font-size-25);
+  font-size: var(--font-size-40);
   line-height: var(--line-height-1-4);
+  margin-block-end: 0;
+  text-align: center;
 
   @media (--tablet) {
-    font-size: var(--font-size-40);
+    font-size: var(--font-size-60);
+  }
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-80);
+  }
+
+  @media (--laptop) {
+    font-size: var(--font-size-100);
   }
 }
 
 .hero__subheading {
+  text-align: center;
   font-size: var(--font-size-20);
   font-weight: var(--weight-400);
   margin-block: 0 var(--size-20);
 
   @media (--tablet) {
-    font-size: var(--font-size-25);
+    font-size: var(--font-size-30);
   }
-}
 
-.hero__image {
-  height: var(--size-300);
-  width: var(--size-300);
-
-  img {
-    border-radius: 50%;
-    height: var(--size-300);
-    width: var(--size-300);
+  @media (--tablet-large) {
+    font-size: var(--font-size-35);
   }
 }
 
