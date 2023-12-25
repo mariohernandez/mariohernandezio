@@ -1,8 +1,16 @@
-const { src, dest } = require("gulp");
+const { src, dest, series, watch } = require("gulp");
 
 function copyImages(cb) {
-   src('./src/images/**/*')
-        .pipe(dest('./dist/images'));
-   cb();
+  src('./src/images/**/*')
+    .pipe(dest('./dist/images'));
+  cb();
 }
-exports.default = copyImages;
+
+function copyFonts(cb) {
+  src('./src/fonts/*')
+    .pipe(dest('./dist/fonts'));
+  cb();
+}
+
+exports.default = series(copyImages, copyFonts);
+exports.watch = series(copyImages);

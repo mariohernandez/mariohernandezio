@@ -1,5 +1,6 @@
 /* Imports all existing css stylesheets. */
 @import './base/reset';
+@import './base/webfonts';
 @import './base/colors';
 @import './base/typography';
 @import './base/base';

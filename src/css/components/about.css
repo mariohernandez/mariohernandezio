@@ -11,6 +11,10 @@
   }
 }
 
+#aboutme {
+  scroll-margin-top: var(--size-24);
+}
+
 .about-me__content {
   background-color: var(--gray-light);
   padding: var(--size-70) var(--size-30) var(--size-30);
