@@ -51,3 +51,8 @@ img {
   height: auto;
   max-width: 100%;
 }
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: var(--font-size-16);
+}
