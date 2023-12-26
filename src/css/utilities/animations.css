@@ -8,6 +8,9 @@
   --transition-color-04s: color 0.4s ease-in-out;
   --transition-background-color-04s: background-color 0.4s ease-in-out;
   --transition-border-color-04s: border-color 0.4s ease-in-out;
+
+  /* Box shadoww. */
+  --box-shadow: 11px 11px 0 0 var(--purple);
 }
 
 /* Zoom effect on image when hovering over them. */

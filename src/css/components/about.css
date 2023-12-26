@@ -11,6 +11,7 @@
   }
 }
 
+/* Adds top margin to anchor scroll animation. */
 #aboutme {
   scroll-margin-top: var(--size-24);
 }
@@ -34,28 +35,14 @@
   margin: 0 auto -5rem;
   position: relative;
   width: var(--size-180);
-  z-index: var(--ground);
 
   @media (--tablet-large) {
     margin: 0 0 -20rem -4rem;
     width: var(--size-250);
   }
 
-  /* Purple drop shadow behind photo. */
-  &::before {
-    background-color: var(--purple);
-    bottom: -0.5rem;
-    content: '';
-    display: block;
-    left: var(--size-5);
-    position: absolute;
-    right: -0.5rem;
-    top: var(--size-5);
-    z-index: var(--below);
-  }
-
   img {
-    border: 1px solid var(--gray-dark);
+    box-shadow: var(--box-shadow);
     height: var(--size-200);
     margin: 0 auto;
     width: var(--size-180);
@@ -99,27 +86,10 @@
     flex-direction: column;
     gap: var(--size-60);
   }
-}
-
-.about__image {
-  position: relative;
-  z-index: var(--ground);
-
-  /* Purple shadow behind image. */
-  &::before {
-    background-color: var(--purple);
-    bottom: -1rem;
-    content: '';
-    display: block;
-    left: var(--size-10);
-    position: absolute;
-    right: -1rem;
-    top: var(--size-10);
-    z-index: var(--below);
-  }
 
   img {
     border: 1px solid var(--gray-dark);
+    box-shadow: var(--box-shadow);
   }
 }
 
