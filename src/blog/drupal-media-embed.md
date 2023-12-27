@@ -30,7 +30,7 @@ Before you write the first line of code or set the first drupal configuration fo
 
 * Users need to be able to choose the image size and aspect ratio when embedding images
 
-  We defined the image sizes and aspect ratios and defined names for each using layman's terms to make them user-friendly to non-technical users. We came up with name options we think our users will find easy to work with such as:
+  We defined the image sizes and aspect ratios and assigned names that were user-friendly for non-technical users. We came up with name options we think our users will find easy to work with such as:
 
   * Small square, Small portrait, Small rectangular
   * Medium square, Medium portrait, Medium rectangular, Medium rectangular wide
@@ -53,7 +53,7 @@ Before you write the first line of code or set the first drupal configuration fo
 
 It all starts with image styles.  I'm not going to go over how to create image styles, you can read my post [Image styles in Drupal](../image-styles-in-drupal).  The one thing I am going to repeat however is the importance of creating reusable image styles.  Reusable image styles can help you reduce the number of image styles you create while providing the flexibility you need with each use case.
 
-Image styles are key as each of the size options we defined above translate into image styles.  So Small square for example, is an image style that is defined as `1:1 (250px)`.  Medium rectangular would be something like `3:2 (720x480)`, etc.  You may be wondering, how do you plan on using fiendly names for your content editors when your image styles names are not very friendly?  Great question.  Since we are using Drupal's Media, content editors do not interact directly with image styles, they do with Media view modes.
+Image styles are key as each of the size options we defined above translate into image styles.  So Small square for example, is an image style that is defined as `1:1 (250px)`.  Medium rectangular would be something like `3:2 (720x480)`, etc.  You may be wondering, how do you plan on using fiendly names for your content editors when your image styles names are not very friendly?  Great question.  Since we are using Drupal's Media, content editors do not interact directly with image styles, they do with Media view modes and this is where we will use more friendly names.
 
 ## Media view modes
 
@@ -61,7 +61,7 @@ View modes are one of Drupal's powerful features.  Being able to display content
 
 ![Screenshot of a computer mouse in Amazon.com](/images/modes.webp){.body-image .body-image--wide}
 
-_The image above shows many ways in which a product can be displayed.  This is what view modes are_.
+_The image above shows many ways in which a product can be displayed.  I've numbered each display_.
 
 In Drupal, every entity such as content types, media types, blocks, etc., offer the ability to create view modes.  For the purpose of image embeds, we will create a Media type view mode for each image style we plan on using.  The view modes is what content editors will interact with when choosing an image size or aspect ratio during the image embed process.  This is where we will use the user-friendly names we defined earlier.  Let's go over how this relationship between view modes and image styles works for image embeds.
 
@@ -85,8 +85,8 @@ View modes and image styles are all configured.  Now let's configure the Text fo
 1. Ensure the right user roles are selected
 1. Within the **Toolbar configuration** section, drag the **Drupal media** button from the _Available buttons_ options to the _Active toolbar_ section. You could probably remove the original insert image button since you won't be using it.
 1. Scroll to the **Enabled filters** section and check the **Embed media** checkbox
-1. Scroll to the **Filter settings* section and set the following:
-   * **Default view mode**: This is the default display that will be used if content editors don't pick an option when embedding images.
+1. Scroll to the **Filter settings** section and set the following:
+   * **Default view mode**: This is the default display that will be used if content editors don't pick an option when embedding images. Select any of the view modes that represents the image size you want to use as default.
 
    * **Media types selectable in the Media Library**: Select the Media type you plan on using.  In my case is **Image**.
 
