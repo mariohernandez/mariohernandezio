@@ -13,6 +13,9 @@
     <link rel="apple-touch-icon" href="../../../dist/images/icons/apple-touch-icon.png"><!-- 180×180 -->
     <link rel="manifest" href="../../../manifest.webmanifest">
 
+    {# Syntax highlight using prism with the prism.css theme. #}
+    <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
+
     <style>
       {% set css %}
       {% include '../../../dist/css/styles.css' %}
@@ -32,8 +35,6 @@
       gtag('config', 'G-KFWBDSLVNK');
     </script>
 
-    {# Syntax highlight using prism with the prism.css theme. #}
-    <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
   </head>
   <body>
     {% include "partials/header.html" %}
