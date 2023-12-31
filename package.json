@@ -4,8 +4,8 @@
   "description": "A personal blog website built with Eleventy",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "npx gulp && concurrently \"npx gulp watch\" \"npx eleventy --serve\"",
-    "production": "NODE_ENV=production npx gulp && postcss src/css/styles.css --dir dist/css && NODE_ENV=production npx eleventy",
+    "start": "npx eleventy --serve",
+    "production": "NODE_ENV=production postcss src/css/styles.css --dir dist/css && NODE_ENV=production npx eleventy",
     "watch:css": "postcss src/css/styles.css --dir dist/css -w",
     "compile:css": "postcss src/css/styles.css --dir dist/css"
   },
@@ -19,9 +19,6 @@
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
     "cssnano": "^6.0.1",
-    "gulp": "^4.0.2",
-    "gulp-postcss": "^9.0.1",
-    "gulp-rename": "^2.0.0",
     "html-minifier": "^4.0.0",
     "markdown-it": "^14.0.0",
     "markdown-it-attrs": "^4.1.6",
