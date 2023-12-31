@@ -113,4 +113,4 @@ Now that we've completed all the configuration we should be able to take it for 
 
 Putting a system like this for your image embeds will give you the piece of mind that content editors have options to choose how big or small they would like images to be displayed, and from a performance point of view, if your image styles are done properly, you can rest assurred that bloated images will never be rendered because you have put the guard rails in place to avoid this from happening.
 
-I hope you found this article useful and can put these techniques to use in your own Drupal project.  Adios! 👋
+I hope you found this article useful and can put these techniques to use in your own Drupal project.  Happy New Year! 🎉 🎊 🎆 👋
