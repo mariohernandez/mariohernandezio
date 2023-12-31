@@ -1,5 +1,5 @@
 ---
-date: "2024-01-02"
+date: "2024-01-01"
 title: "Managing image embeds with Drupal media"
 tags: ['drupal', 'media']
 featured: true
