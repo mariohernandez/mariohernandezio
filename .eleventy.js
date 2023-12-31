@@ -42,47 +42,67 @@ const postcssFilter = (cssCode, done) => {
 // ---------- End of postcss compiling -------------
 
 
-module.exports = config => {
+module.exports = function(eleventyConfig) {
 
   // ---------- Part of postcss compiling above -------------
-  config.addWatchTarget('./src/_includes/styles/styles.css');
-	config.addNunjucksAsyncFilter('postcss', postcssFilter);
+  eleventyConfig.addWatchTarget('./src/_includes/styles/styles.css');
+	eleventyConfig.addNunjucksAsyncFilter('postcss', postcssFilter);
   // -------------------------------------
 
+  // ---------- Add a Watch method for CSS ---------------
+  // eleventyConfig.addWatchTarget("./src/css/");
+
+  // Enable quiet mode to stop seeing every file that gets processed during build.
+  eleventyConfig.setQuietMode(true);
+
+  // ---------- Copy files to dist -------------
+  eleventyConfig.addPassthroughCopy("./src/fonts");
+  eleventyConfig.addPassthroughCopy("./src/images");
+  // eleventyConfig.addPassthroughCopy("./src/css");
+
+  // Do not rebuild when README.md changes (You can use a glob here too)
+  eleventyConfig.watchIgnores.add("README.md");
+
+  // Or delete entries too
+  eleventyConfig.watchIgnores.delete("README.md");
+
   // Enables html attributes in markdown
-  config.setLibrary('md', markdownLib);
+  eleventyConfig.setLibrary('md', markdownLib);
 
   // Enables syntax highlighted for code snippets.
-  config.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // Only minify HTML if we are in production because it slows builds _right_ down
   if (isProduction) {
-    config.addTransform('htmlmin', htmlMinTransform);
+    eleventyConfig.addTransform('htmlmin', htmlMinTransform);
   }
 
   // Plugins
-  config.addPlugin(rssPlugin);
+  eleventyConfig.addPlugin(rssPlugin);
 
   // Add date filters
-  config.addFilter('dateFilter', dateFilter);
-  config.addFilter('w3DateFilter', w3DateFilter);
+  eleventyConfig.addFilter('dateFilter', dateFilter);
+  eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
 
   const sortByDisplayOrder = require('./src/utils/sort.js');
 
   // Returns blog items, sorted by display order
-  config.addCollection('blog', collection => {
+  eleventyConfig.addCollection('blog', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md'));
   });
 
   // Returns blog items, sorted by display order then filtered by featured
-  config.addCollection('featuredPost', collection => {
+  eleventyConfig.addCollection('featuredPost', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md')).filter(
       x => x.data.featured
     );
   });
 
+  // Watch JavaScript dependencies (turned off by default).
+  eleventyConfig.setWatchJavaScriptDependencies(false);
+
   // Tell 11ty to use the .eleventyignore and ignore our .gitignore file
-  config.setUseGitIgnore(false);
+  eleventyConfig.setUseGitIgnore(false);
 
   return {
     markdownTemplateEngine: 'njk',
