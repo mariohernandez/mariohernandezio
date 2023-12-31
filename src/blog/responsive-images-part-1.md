@@ -3,7 +3,7 @@ date: "2023-10-27"
 title: "Responsive images in Drupal - a guide"
 tags: ['drupal','responsive-images']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/emily-bernal.webp"
 featuredImageAlt: "A book, tablet, mouse, keyboard and monitor on a desktop"
 imageThumb: "/images/thumbs/emily-bernal.webp"
