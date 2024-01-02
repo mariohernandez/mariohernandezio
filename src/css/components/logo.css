@@ -5,16 +5,25 @@
   font-weight: var(--weight-400);
   letter-spacing: -1px;
   line-height: var(--line-height-1);
-  margin-block-end: var(--size-30);
   text-decoration: none;
   text-transform: lowercase;
 
   @media (--tablet) {
-    margin: 0;
+    margin-block-end: var(--size-30);
+    /* margin: 0; */
   }
 
   span {
     font-weight: var(--weight-700);
     margin-inline-start: -6px;
   }
+}
+
+/* Hamburger menu styles. */
+.header__logo {
+  align-items: center;
+  display: grid;
+  gap: var(--size-20);
+  grid-template-columns: 2fr 1fr;
+  justify-items: center;
 }

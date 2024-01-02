@@ -4,10 +4,10 @@
  */
 
 .header {
-  margin-block: var(--size-20) var(--size-80);
+  margin-block: var(--size-10) var(--size-40);
   max-width: var(--size-960);
 
-  @media (--laptop) {
+  @media (--tablet) {
     margin-block: var(--size-30) var(--size-100);
   }
 }
