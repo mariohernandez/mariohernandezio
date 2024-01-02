@@ -43,6 +43,9 @@ const postcssFilter = (cssCode, done) => {
 
 
 module.exports = function(eleventyConfig) {
+  // Shortcode for getting the current year.  See partials/footer.html for usage.
+  // Source: https://11ty.rocks/eleventyjs/dates/
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   // ---------- Part of postcss compiling above -------------
   eleventyConfig.addWatchTarget('./src/_includes/styles/styles.css');
