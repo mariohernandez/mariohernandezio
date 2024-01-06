@@ -4,11 +4,16 @@
  */
 
 .header {
-  margin-block-end: var(--size-40);
+  margin-block-end: var(--size-60);
   max-width: var(--size-960);
 
   @media (--tablet) {
-    margin-block: var(--size-30) var(--size-100);
+    margin-block: var(--size-30) var(--size-80);
+    margin-inline: var(--size-20);
+  }
+
+  @media (--tablet-large) {
+    margin-inline: auto;
   }
 }
 
@@ -20,11 +25,4 @@
     display: flex;
     justify-content: space-between;
   }
-}
-
-.header__logo {
-  background-color: var(--gray-darkest);
-  padding-block: var(--size-10);
-  position: relative;
-  z-index: var(--lower);
 }

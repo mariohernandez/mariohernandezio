@@ -5,7 +5,9 @@
 {# Render post date and any tags that this post has been tagged with. #}
 {% set pageHeaderSummary %}
   <time class="blog-post__date eyebrow" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
-  <div class="tags-and-social-share">
+  {# Hiding tags and social share for mobile and screen-readers for better UI.
+  Tags for mobile are available at the end of the article. #}
+  <div class="tags-and-social-share" aria-hidden="true">
     {# Post tags. #}
     {% if tags %}
       {% include "partials/tags.html" %}
@@ -30,6 +32,15 @@
       <div class="blog-post__body">
         {{ content | safe }}
       </div>
+    </div>
+    {# Tags here are only for mobile.  For all other devices they are shown
+    before the article for better UI. #}
+    <div class="article-tags-mobile">
+      <p class="tags__label">Tags for this post:</p>
+      {# Post tags for mobile. #}
+      {% if tags %}
+        {% include "partials/tags.html" %}
+      {% endif %}
     </div>
   </article>
 

@@ -64,13 +64,13 @@
 }
 
 /* Wrapper for tags and social-share components on each blog post. */
+/* Tags for mobile users are displayed at the end of the article, for all other
+users they are displayed before the article.  This is for better UI. */
 .tags-and-social-share {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  display: none;
 
   @media (--tablet) {
-    align-items: unset;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
   }

@@ -11,8 +11,6 @@
   @media (--tablet) {
     color: var(--gray-darker);
     font-size: var(--font-size-30);
-    margin-block-end: var(--size-30);
-    /* margin: 0; */
   }
 
   span {
@@ -24,8 +22,18 @@
 /* Hamburger menu styles. */
 .header__logo {
   align-items: center;
+  background-color: var(--gray-darkest);
   display: grid;
   gap: var(--size-20);
   grid-template-columns: 2fr 1fr;
   justify-items: center;
+  padding-block: var(--size-14);
+  position: relative;
+  z-index: var(--lower);
+
+  @media (--tablet) {
+    background-color: var(--white);
+    padding: 0;
+    z-index: initial;
+  }
 }

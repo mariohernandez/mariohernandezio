@@ -1,6 +1,6 @@
 .navigation {
-  background-color: var(--gray-medium);
-  border-block-end: var(--gray-dark);
+  background-color: var(--gray-light);
+  border-block-end: 1px solid var(--gray-medium);
   left: 0;
   padding-block: var(--size-10);
   position: absolute;
@@ -15,7 +15,12 @@
   }
 
   @media (--tablet) {
+    background-color: var(--white);
+    border: 0;
+    padding: 0;
+    position: static;
     width: initial;
+    z-index: initial;
   }
 }
 
@@ -43,7 +48,9 @@
     transition: var(--transition-color-03s);
 
     @media (--tablet) {
+      display: inline-block;
       font-size: var(--font-size-20);
+      transition: none;
 
       &[data-state="active"],
       &:hover {
@@ -52,6 +59,11 @@
         padding-block-end: var(--size-2);
       }
     }
+  }
+
+  @media (--tablet) {
+    margin: 0 var(--size-10);
+    padding: var(--size-5) var(--size-10);
   }
 }
 
@@ -72,5 +84,9 @@
       margin: 0 0 0 auto;
       width: 90%;
     }
+  }
+
+  @media (--tablet) {
+    display: none;
   }
 }
