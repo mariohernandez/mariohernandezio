@@ -4,7 +4,7 @@
  */
 
 .header {
-  margin-block: var(--size-10) var(--size-40);
+  margin-block-end: var(--size-40);
   max-width: var(--size-960);
 
   @media (--tablet) {
@@ -20,4 +20,11 @@
     display: flex;
     justify-content: space-between;
   }
+}
+
+.header__logo {
+  background-color: var(--gray-darkest);
+  padding-block: var(--size-10);
+  position: relative;
+  z-index: var(--lower);
 }

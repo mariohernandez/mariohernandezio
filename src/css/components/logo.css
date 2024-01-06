@@ -1,7 +1,7 @@
 .site__logo {
-  color: var(--gray-darker);
+  color: var(--white);
   display: block;
-  font-size: var(--font-size-30);
+  font-size: var(--font-size-24);
   font-weight: var(--weight-400);
   letter-spacing: -1px;
   line-height: var(--line-height-1);
@@ -9,6 +9,8 @@
   text-transform: lowercase;
 
   @media (--tablet) {
+    color: var(--gray-darker);
+    font-size: var(--font-size-30);
     margin-block-end: var(--size-30);
     /* margin: 0; */
   }

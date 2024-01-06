@@ -1,6 +1,18 @@
 .navigation {
-  position: relative;
+  background-color: var(--gray-medium);
+  border-block-end: var(--gray-dark);
+  left: 0;
+  padding-block: var(--size-10);
+  position: absolute;
+  top: -200px;
+  transition: var(--transition-top-1s);
+  right: 0;
   width: 100%;
+  z-index: var(--lowest);
+
+  .is-open & {
+    top: var(--size-44);
+  }
 
   @media (--tablet) {
     width: initial;
@@ -8,20 +20,9 @@
 }
 
 .navigation__items {
-  background-color: var(--gray-darker);
   display: flex;
   flex-direction: column;
   list-style: none;
-  max-width: var(--size-200);
-  position: absolute;
-  top: 0;
-  right: -205px;
-  transition: right 1s ease;
-  width: 200px;
-
-  .is-open & {
-    right: 0;
-  }
 
   @media (--tablet) {
     flex-direction: row;
@@ -31,22 +32,25 @@
 }
 
 .navigation__item {
-  margin: 0 var(--size-10);
-  padding: var(--size-5) var(--size-10);
-
   a {
+    color: var(--black);
+    display: block;
+    padding-block: var(--size-10);
     text-decoration: none;
     text-transform: lowercase;
-    color: var(--black);
-    font-size: var(--font-size-22);
+    font-size: var(--font-size-18);
     font-weight: var(--weight-700);
     transition: var(--transition-color-03s);
 
-    &[data-state="active"],
-    &:hover {
-      border-block-end: var(--size-4) solid var(--black);
-      color: var(--gray-darker);
-      padding-block-end: var(--size-2);
+    @media (--tablet) {
+      font-size: var(--font-size-20);
+
+      &[data-state="active"],
+      &:hover {
+        border-block-end: var(--size-4) solid var(--black);
+        color: var(--gray-darker);
+        padding-block-end: var(--size-2);
+      }
     }
   }
 }
@@ -54,18 +58,19 @@
 /* Mobile navigation */
 .mobile-nav-toggle {
   border: 0;
-  height: var(--size-12);
+  height: var(--size-24);
   width: var(--size-28);
 
   .nav-bar {
-    border: 1px solid var(--gray-darker);
+    border: 1px solid var(--white);
     display: block;
     height: var(--size-1);
     margin-block-end: var(--size-5);
     width: 100%;
 
     &:last-child {
-      margin: 0;
+      margin: 0 0 0 auto;
+      width: 90%;
     }
   }
 }
