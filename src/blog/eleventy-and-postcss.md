@@ -1,17 +1,19 @@
 ---
-date: "2024-01-01"
-title: "Managing image embeds with Drupal media"
-tags: ['drupal', 'media']
-featured: false
-featuredImage: "/images/media-embed.webp"
-featuredImageAlt: "Siluete of man in front of sphere"
-imageThumb: "/images/thumbs/media-embed-small.webp"
-featuredImageCredit: "Greg Rakozy"
-featuredImageCreditUrl: "https://unsplash.com/@grakozy"
-summary: "Take control of your image embeds in your site using Drupal's media."
+date: "2024-01-31"
+title: "Eleventy and postcss"
+tags: ['eleventy', 'postcss']
+featured: true
+featuredImage: "/images/origami.webp"
+featuredImageAlt: "Origami tsuru crane rainbow"
+imageThumb: "/images/thumbs/origami-thumb.webp"
+featuredImageCredit: "Carolina Garcia Tavizon"
+featuredImageCreditUrl: "https://unsplash.com/@karock12"
+summary: "Taking advantage of eleventy and postcss builds to reduce the number of npm dependencies."
 ---
 
-Allowing your content creators to embed images in text fields is a big risk if you don't have the right measures in place to get properly rendered images without jeopardizing your site's performance. We faced this issue first-hand with embedded images due to not using the right configuration and this lead to extremely large images being rendered. In this post I'll go over the techniques I took for addressing those issues and set up a system for image embeds that is solid and performant.
+I have been running my personal blog site (this site), for many years and I have used different stacks to build it during those years. I started with Drupal 6 lont time ago later upgraded to Drupal 7. But then I started experimenting with other software stacks and decided to migrate my site to Gatsby. Finally, for the past three years, I switched the site to Eleventy or 11ty.  I have really enjoyed using Eleventy because of its ease-of-use and its wide range of plugins and resources.
+
+Recently I upgraded to Eleventy 2.0 and decided to refactor all my previously Sass styles to plain CSS.  This would also allow me to remove dependencies of Sass.  As I began the refactoring process I realized I could actually shave off even more npm dependencies by relying on PostCSS and some of the new features of Elevent 2.  In this post I'll briefly describe and show some of the things I was able to do to completely remove Gulp as well as gulp-releated dependencies.  My goal has always been to simplify things and the less dependencies we deal with the better.
 
 I started by writing a seven-part guide on [how to setup responsive images](../responsive-images-in-drupal-a-guide). In this post I'll focus on image embeds. If you followed or read the responsive images guide, you should be able to take advantage of some of the work we did there in this post.  The guidelines covered here include:
 
