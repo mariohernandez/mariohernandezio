@@ -1,0 +1,63 @@
+---
+title: Oops! This is embarrasing 🫢
+permalink: /404/index.html
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include "partials/meta.html" %}
+    <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
+    <link rel="icon" href="../../../dist/images/icons/favicon.ico" sizes="32x32">
+    <link rel="icon" href="../../../dist/images/icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../dist/images/icons/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="../../../manifest.webmanifest">
+    <style>
+      body {
+        font-family: Wotfard,Helvetica,sans-serif;
+        margin: 20px auto;
+        max-width: 720px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+
+        a {
+          color: #141414;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      .site__logo {
+        color: #141414;
+        display: block;
+        font-size: 24px;
+        font-weight: normal;
+        margin-block-end: 40px;
+        text-decoration: none;
+
+        span {
+          font-weight: 600;
+          margin-inline-start: -5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+  <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
+    mario
+    <span>hernandez</span>
+  </a>
+    <h1 class="page-header__title">{{ title }}</h1>
+    <p>The page you are looking for can't be found.  It has either does not exist or it has moved. <a href="{{ "/" | url }}">Return to the home page.</a></p>
+  </body>
+</html>
