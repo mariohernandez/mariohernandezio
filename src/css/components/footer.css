@@ -12,7 +12,9 @@
 
 .footer__legal {
   p {
+    color: var(--gray-darker);
     font-size: var(--font-size-14);
     line-height: var(--line-height-1);
+    margin-block-start: var(--size-10);
   }
 }
