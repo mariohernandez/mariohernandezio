@@ -6,10 +6,10 @@
         Mario
         <span>Hernandez</span>
       </a>
-      <button class="mobile-nav-toggle">
-        <span class="nav-bar"></span>
-        <span class="nav-bar"></span>
-        <span class="nav-bar"></span>
+      <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Open Menu">
+        {# Hamburger and Close svg icons for mobile nav. #}
+        {% include '../../images/icons/hamburger.svg' %}
+        {% include '../../images/icons/close.svg' %}
       </button>
     </div>
     {% include "partials/nav.html" %}

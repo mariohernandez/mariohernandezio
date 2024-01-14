@@ -8,7 +8,7 @@
   --transition-color-04s: color 0.4s ease-in-out;
   --transition-background-color-04s: background-color 0.4s ease-in-out;
   --transition-border-color-04s: border-color 0.4s ease-in-out;
-  --transition-top-1s: top 1s ease-in-out;
+  --transition-top-05s: top 0.5s ease;
 
   /* Box shadoww. */
   --box-shadow: 11px 11px 0 0 var(--purple);

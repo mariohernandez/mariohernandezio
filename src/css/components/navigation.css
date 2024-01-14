@@ -1,16 +1,17 @@
 .navigation {
   background-color: var(--gray-light);
   border-block-end: 1px solid var(--gray-medium);
-  left: 0;
-  padding-block: var(--size-10);
+  border-inline-start: 1px solid var(--gray-medium);
+  border-radius: 0 0 0 var(--size-5);
+  padding-block: var(--size-40);
   position: absolute;
-  top: -200px;
-  transition: var(--transition-top-1s);
+  top: -245px;
+  transition: var(--transition-top-05s);
   right: 0;
-  width: 100%;
+  width: var(--size-200);
   z-index: var(--lowest);
 
-  .is-open & {
+  .nav-is-open & {
     top: var(--size-44);
   }
 
@@ -73,6 +74,7 @@
   height: var(--size-24);
   width: var(--size-28);
 
+
   .nav-bar {
     border: 1px solid var(--white);
     display: block;
@@ -88,5 +90,21 @@
 
   @media (--tablet) {
     display: none;
+  }
+}
+
+.icon--hamburger {
+  transform: rotate(-180deg);
+
+  .nav-is-open & {
+    display: none;
+  }
+}
+
+.icon--close {
+  display: none;
+
+  .nav-is-open & {
+    display: block;
   }
 }
