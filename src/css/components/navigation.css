@@ -40,9 +40,8 @@
 
 .navigation__item {
   a {
-    color: var(--black);
+    color: var(--gray-darker);
     display: block;
-    padding-block: var(--size-10);
     text-decoration: none;
     text-transform: lowercase;
     font-size: var(--font-size-18);
@@ -50,15 +49,13 @@
     transition: var(--transition-color-03s);
 
     @media (--tablet) {
-      display: inline-block;
       font-size: var(--font-size-20);
       transition: none;
 
       &[data-state="active"],
+      &[aria-current="page"],
       &:hover {
-        border-block-end: var(--size-4) solid var(--black);
-        color: var(--gray-darker);
-        padding-block-end: var(--size-2);
+        color: var(--purple);
       }
     }
   }
