@@ -18,8 +18,6 @@
 }
 
 .header__inner {
-  text-align: center;
-
   @media (--tablet) {
     align-items: center;
     display: flex;
