@@ -12,4 +12,19 @@ const siteHeader = document.querySelector('.header');
 
 navToggle.addEventListener('click', function() {
   siteHeader.classList.toggle('nav-is-open');
+
+  // Toggle the aria-expanded attribute based on menu open/close state..
+  if (navToggle.getAttribute('aria-expanded') === 'false') {
+    navToggle.setAttribute('aria-expanded', 'true');
+  } else {
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // Change aria-label text based on menu open/close state.
+  if (navToggle.getAttribute('aria-label') === 'Open menu') {
+    navToggle.setAttribute('aria-label', 'Close menu');
+  } else {
+    navToggle.setAttribute('aria-label', 'Open menu');
+  }
+
 });
