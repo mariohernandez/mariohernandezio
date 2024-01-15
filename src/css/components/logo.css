@@ -1,20 +1,39 @@
 .site__logo {
-  color: var(--gray-darker);
+  color: var(--white);
   display: block;
-  font-size: var(--font-size-30);
+  font-size: var(--font-size-24);
   font-weight: var(--weight-400);
   letter-spacing: -1px;
   line-height: var(--line-height-1);
-  margin-block-end: var(--size-30);
   text-decoration: none;
   text-transform: lowercase;
 
   @media (--tablet) {
-    margin: 0;
+    color: var(--gray-darker);
+    font-size: var(--font-size-30);
   }
 
   span {
     font-weight: var(--weight-700);
     margin-inline-start: -6px;
+  }
+}
+
+/* Hamburger menu styles. */
+.header__logo {
+  align-items: center;
+  background-color: var(--gray-darkest);
+  display: flex;
+  gap: var(--size-20);
+  grid-template-columns: 1fr var(--size-80);
+  justify-content: space-between;
+  padding: var(--size-14) var(--size-28) var(--size-18);
+  position: relative;
+  z-index: var(--lower);
+
+  @media (--tablet) {
+    background-color: var(--white);
+    padding: 0;
+    z-index: initial;
   }
 }

@@ -1,20 +1,17 @@
 <a class="button button--skip-link" href="#main-content">Skip to content</a>
-<header role="banner" class="header margin-inline-flex">
+<header role="banner" class="header">
   <div class="header__inner">
-    <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
-      Mario
-      <span>Hernandez</span>
-    </a>
-    <nav class="navigation" aria-label="Primary">
-      <ul class="navigation__items" role="list">
-        {% for item in navigation.items %}
-        <li class="navigation__item">
-          <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
-            {{ item.text }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
+    <div class="header__logo">
+      <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
+        Mario
+        <span>Hernandez</span>
+      </a>
+      <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Open menu">
+        {# Hamburger and Close svg icons for mobile nav. #}
+        {% include '../../images/icons/hamburger.svg' %}
+        {% include '../../images/icons/close.svg' %}
+      </button>
+    </div>
+    {% include "partials/nav.html" %}
   </div>
 </header>

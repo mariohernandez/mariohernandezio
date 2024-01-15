@@ -8,20 +8,24 @@
 }
 
 .hero__heading {
-  font-size: var(--font-size-40);
+  font-size: var(--font-size-28);
   line-height: var(--line-height-1-4);
   margin-block-end: 0;
   text-align: center;
 
   @media (--tablet) {
-    font-size: var(--font-size-60);
+    font-size: var(--font-size-50);
   }
 
   @media (--tablet-large) {
-    font-size: var(--font-size-80);
+    font-size: var(--font-size-60);
   }
 
   @media (--laptop) {
+    font-size: var(--font-size-80);
+  }
+
+  @media (--desktop) {
     font-size: var(--font-size-100);
   }
 }

@@ -4,17 +4,20 @@
  */
 
 .header {
-  margin-block: var(--size-20) var(--size-80);
+  margin-block-end: var(--size-60);
   max-width: var(--size-960);
 
-  @media (--laptop) {
-    margin-block: var(--size-30) var(--size-100);
+  @media (--tablet) {
+    margin-block: var(--size-30) var(--size-80);
+    margin-inline: var(--size-20);
+  }
+
+  @media (--tablet-large) {
+    margin-inline: auto;
   }
 }
 
 .header__inner {
-  text-align: center;
-
   @media (--tablet) {
     align-items: center;
     display: flex;
