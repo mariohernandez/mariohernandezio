@@ -1,6 +1,6 @@
 {
   "name": "Mario Hernandez Personal Blog",
   "url": "https://mariohernandez.io",
-  "authorName": "Mario Hernandez",
-  "authorEmail": "hello@mariohernandez.io"
+  "author": "Mario Hernandez",
+  "email": "hello@mariohernandez.io"
 }
