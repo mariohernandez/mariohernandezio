@@ -5,14 +5,14 @@
 
 .button:not(.button--link) {
   border-radius: var(--size-20);
-  background-color: var(--black);
+  background-color: var(--white);
   border: var(--size-1) solid var(--black);
-  color: var(--white);
+  color: var(--black);
   display: inline-block;
   font-size: var(--font-size-12);
   font-weight: var(--weight-700);
   letter-spacing: 0.2em;
-  padding: var(--size-8) var(--size-14);
+  padding: var(--size-8) var(--size-20);
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -20,18 +20,17 @@
   white-space: nowrap;
 
   &:hover {
-    background-color: var(--white);
-    border-color: var(--black);
-    color: var(--black);
+    background-color: var(--black);
+    color: var(--white);
   }
 
   &.button--reverse {
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--black);
+    color: var(--white);
 
     &:hover {
-      background-color: var(--black);
-      color: var(--white);
+      background-color: var(--white);
+      color: var(--black);
     }
   }
 

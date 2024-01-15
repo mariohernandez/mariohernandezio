@@ -112,5 +112,5 @@ common styles. */
 }
 
 .featured-post__cta {
-  margin-block-start: var(--size-12);
+  margin-block-start: var(--size-16);
 }
