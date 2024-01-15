@@ -113,6 +113,7 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.setQuietMode(true);
 
   // ---------- Copy files to dist -------------
+  eleventyConfig.addPassthroughCopy("./src/js");
   eleventyConfig.addPassthroughCopy("./src/fonts");
   eleventyConfig.addPassthroughCopy("./src/images");
   // eleventyConfig.addPassthroughCopy("./src/css");
