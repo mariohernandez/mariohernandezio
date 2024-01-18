@@ -12,6 +12,13 @@
   }
 }
 
+/* This is similar to the above but on mobile is full width. */
+.margin-inline {
+  @media (--tablet-large) {
+    margin-inline: auto;
+  }
+}
+
 .margin-block-40 {
   margin-block: var(--size-40);
 }
