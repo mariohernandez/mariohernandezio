@@ -29,9 +29,10 @@
 }
 
 .featured-post__article {
-  background-color: var(--white);
+  background-color: var(--gray-light);
 
   @media (--laptop) {
+    background-color: var(--white);
     left: -6rem;
     position: absolute;
     top: -6rem;
@@ -41,6 +42,7 @@
 
 .featured-post__article--inner {
   padding: var(--size-20);
+  padding-block-end: var(--size-30);
 
   @media (--laptop) {
     padding: var(--size-60) var(--size-30) var(--size-30);

@@ -42,12 +42,13 @@
   }
 
   img {
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-thin);
     height: var(--size-200);
     margin: 0 auto;
     width: var(--size-180);
 
     @media (--tablet-large) {
+      box-shadow: var(--box-shadow);
       height: var(--size-278);
       margin: unset;
       width: var(--size-250);
@@ -89,7 +90,11 @@
 
   img {
     border: 1px solid var(--gray-dark);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-thin);
+
+    @media (--tablet-large) {
+      box-shadow: var(--box-shadow);
+    }
   }
 }
 

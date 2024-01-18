@@ -2,7 +2,7 @@
 {% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
 
 {% if recommendedPosts %}
-  <section class="recommended-posts margin-inline-flex">
+  <section class="recommended-posts margin-inline">
     {% set postListItems = recommendedPosts %}
     {% set postListHeadline = 'Other recommended posts' %}
     {% include "partials/post-list.html" %}

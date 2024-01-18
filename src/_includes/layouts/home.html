@@ -15,7 +15,7 @@ https://piccalil.li/course/learn-eleventy-from-scratch/lesson/19/ -->
   {% include "partials/about-teaser.html" %}
 
   {% if recommendedPosts %}
-    <section class="recommended-posts margin-inline-flex">
+    <section class="recommended-posts margin-inline">
       {% set postListItems = recommendedPosts %}
       {% set postListHeadline = 'Recommended blog posts' %}
       {% include "partials/post-list.html" %}
