@@ -1,14 +1,23 @@
-{% if postListHeadline %}
-  <header>
-    <h2 class="post-list__heading" data-highlight="primary">
+<div class="blog__wrapper">
+  {% if postListHeadline %}
+    <h2 class="blog__heading" data-highlight="primary">
       {{ postListHeadline }}
     </h2>
-  </header>
-{% endif %}
-<ul class="post-list__items" role="list">
-  {% for item in postListItems %}
-    <li class="post-list__item">
-      {% include "partials/card.html" %}
-    </li>
-  {% endfor %}
-</ul>
+  {% endif %}
+  <ul class="blog__items" role="list">
+    {% for item in postListItems %}
+      <li class="blog__item">
+        <article class="blog__article">
+          <header class="blog__header">
+            <h3 class="blog__title">
+              <a href="{{ item.url }}" class="blog__link">{{ item.data.title }}</a>
+            </h3>
+          </header>
+          <p class="blog__teaser">{{ item.data.summary | safe }}</p>
+          <p class="blog__date">
+            <time datetime="{{ item.date | dateFilter }}">{{ item.date | dateFilter }}</time></p>
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

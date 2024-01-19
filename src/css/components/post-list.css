@@ -36,3 +36,28 @@
     width: var(--size-16);
   }
 }
+
+/* Styles blog landing page with blog list intead of cards. */
+.blog__item:not(:last-child) {
+  border-block-end: 1px solid var(--gray-medium);
+  margin-block-end: var(--size-20);
+  padding-block-end: var(--size-16);
+}
+
+.blog__link {
+  font-size: var(--font-size-20);
+  text-decoration: none;
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-22);
+  }
+}
+
+.blog__teaser,
+.blog__date {
+  font-size: var(--font-size-16);
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-18);
+  }
+}
