@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{% block content %}
+  <article class="not-found">
+    <header>
+      <h1 class="not-found__heading">{{ title }}</h1>
+    </header>
+    <div class="not-found__curved-container">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 1440 105"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        focusable="false">
+        <path d="M1440 97.315C716.52-78.932 182.417 23.879 0 97.315V105h1440v-7.685Z" />
+      </svg>
+      <div class="not-found__curved-container--content flow">
+        <p>{{ body }}</p>
+        <a class="not-found__btn" href="{{ cta.url }}">{{ cta.text }}</a>
+      </div>
+    </div>
+  </article>
+{% endblock %}
