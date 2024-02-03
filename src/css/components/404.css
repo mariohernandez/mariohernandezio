@@ -86,7 +86,11 @@
 
   > * {
     max-width: 45ch;
-    margin-inline: auto;
+    margin-inline: var(--size-20);
+
+    @media (--tablet-large) {
+      margin-inline: auto;
+    }
   }
 
   .button {
