@@ -3,16 +3,103 @@
  * Styles for page not found page.
  */
 
+:root {
+  --font-base: Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  --font-display: 'Rubik Mono One', monospace;
+  --color-dark: #363950;
+  --color-light: var(--white);
+  --color-light-shade: #f3f3f3;
+  --color-primary: var(--purple);
+  --gradient-primary: linear-gradient(111deg, #002846 0%, #ff7373 82.7%, #ffaf7b 97.2%);
+  --gradient-secondary: linear-gradient(180deg, #a25863 0%, #373950 100%);
+  --size-step-0: clamp(1rem, 0.9592rem + 0.2041vw, 1.125rem);
+  --size-step-1: clamp(1.44rem, 1.2576rem + 0.9122vw, 1.9988rem);
+  --size-step-2: clamp(2.4881rem, 1.7545rem + 3.6684vw, 4.735rem);
+  --size-mega: 45vw;
+  --space-m: clamp(1.5rem, 1.4388rem + 0.3061vw, 1.6875rem);
+  --gutter: var(--space-m);
+}
+
 .not-found {
-  max-width: var(--size-960);
-}
-
-.not-found__body {
-  margin-block-end: var(--size-60);
-}
-
-.not-found__image {
-  align-item: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  font-family: var(--font-base);
+  font-size: var(--size-step-0);
+  overflow-x: hidden;
+
+  h1 {
+    background-color: var(--color-dark);
+    background-image: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: var(--size-step-2);
+    max-width: 30ch;
+    font-family: var(--font-display);
+    font-size: var(--size-mega);
+    letter-spacing: -0.1ch;
+    line-height: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .flow > * + * {
+    margin-top: var(--flow-space, 1em);
+  }
+}
+
+.not-found__curved-container {
+  font-family: var(--font-display);
+  font-size: var(--size-mega);
+  background: var(--color-light);
+  position: relative;
+  margin-block-start: -0.45ex;
+
+  svg {
+    bottom: calc(100% - 1px);
+    display: block;
+    fill: var(--color-light);
+    filter: drop-shadow(0px -10px 18px rgb(0 0 0 / 25%));
+    font: inherit;
+    height: 0.2ex;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .not-found__curved-container svg {
+    display: none;
+  }
+}
+
+.not-found__curved-container--content {
+  font-family: var(--font-base);
+  font-size: var(--size-step-1);
+  text-align: center;
+  padding-block: var(--space-m);
+  position: relative;
+  z-index: 1;
+  background: var(--color-light);
+
+  > * {
+    max-width: 45ch;
+    margin-inline: var(--size-20);
+
+    @media (--tablet-large) {
+      margin-inline: auto;
+    }
+  }
+
+  .button {
+    margin-block-start: var(--size-40);
+  }
+}
+
+@media (min-width: 800px) {
+  .not-found__curved-container--content {
+    padding-block-start: 0;
+  }
 }
