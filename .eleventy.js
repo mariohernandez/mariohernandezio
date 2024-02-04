@@ -41,6 +41,9 @@ const postcssFilter = (cssCode, done) => {
 };
 // ---------- End of postcss compiling -------------
 
+// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+const { minify } = require("terser");
+
 const esbuild = require('esbuild');
 // const postcss = require('postcss');
 // const postcssImport = require('postcss-import');
@@ -94,6 +97,21 @@ module.exports = function(eleventyConfig) {
 
         return output.outputFiles[0].text;
       }
+    }
+  });
+
+  // Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
+    code,
+    callback
+  ) {
+    try {
+      const minified = await minify(code);
+      callback(null, minified.code);
+    } catch (err) {
+      console.error("Terser error: ", err);
+      // Fail gracefully.
+      callback(null, code);
     }
   });
 
