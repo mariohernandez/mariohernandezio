@@ -5,12 +5,11 @@
     { "src": "./images/icon-192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "./images/icon-512.png", "type": "image/png", "sizes": "512x512" }
   ],
-  "id": "/manifest.webmanifest",
   "start_url": "/",
-  "background_color": "#ffffff",
+  "background_color": "#141414",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#ffffff",
+  "theme_color": "#141414",
   "shortcuts": [
     {
       "name": "My blog posts",
