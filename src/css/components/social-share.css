@@ -25,6 +25,10 @@
 .social-share__label {
   font-size: 1.2rem;
   font-weight: var(--weight-600);
-  margin-left: var(--size-20);
   text-transform: uppercase;
+  white-space: nowrap;
+
+  @media (--tablet) {
+    margin-inline-start: var(--size-20);
+  }
 }
