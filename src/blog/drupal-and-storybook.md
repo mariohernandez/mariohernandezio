@@ -11,15 +11,14 @@ featuredImageCredit: "Markus Spiske"
 featuredImageCreditUrl: "https://unsplash.com/@markusspiske"
 summary: "Building a next generation Front-end environment for Drupal has drastically changed with the evolution of component-baded development."
 ---
-Building a custom Drupal theme nowadays is a more complicated process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need some kind of styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago and when I started my new job with [UCLA Health](https://medschool.ucla.edu){target=_blank rel=noopener} last year, I was glad to see they were also using Patternlab.
-
-New tools emerge all the time with better or more advanced features and capabilities and we at UCLA Health thought now is as good time as ever to see what's available and upgrade our front-end environment.
+Building a custom Drupal theme nowadays is a more complicated process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need some kind of styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago with great success.
+I recently started a new job where Patternlab was also their design system of choice, but one of my first tasks was to work on migrating from Patternlab to another design system. We have a small team but were very excited about the challenge and finding a new design system for our large Drupal environment.
 
 ## Enter Storybook
 
-[Storybook](https://storybook.js.org/){target=_blank rel=noopener} is a JavaScript-based design system which was originally released in 2014.  Since then it has gotten better and better and its most recent release, version 8, comes packed with great features.  In addition, Storybook has a pretty active community and a very healthy ecosystem which provides many plugins to extend its core functionality. As a Drupal developer these two things speak volumes of any tool.
+After looking a various options for a design system, [Storybook](https://storybook.js.org/){target=_blank rel=noopener} seemed to be the right choice for us for a couple of reasons: one, it has been around for about 10 years and during this time it has matured significantly, and two, it has become a very popular option in the Drupal ecosystem. In some ways, Storybook follows the same model as Drupal, it has a pretty active community and a very healthy ecosystem of plugins to extend its core functionality.
 
-Storybook has been very popular in the JavaScript world for many years and during this time, the Drupal community has been trying to successfully and seamenlessly integrate it with Drupal. In recent years a lot of progress has been made in this area and the future of Storybook in a Drupal environment looks primising.
+Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for front-end development.
 
 ## Our requirements
 
@@ -33,13 +32,13 @@ The first and non-negotiable requirement was to be able to migrate components fr
 
 ### 2. A new Front-end build workflow
 
-I am not the kind of developer who jumps on the latest technology that comes around just because.  As tempting as this may be, I first ask myself, will this new tool do something my current tools are not able to do?  Or, will this improve the way I am doing things?  I have been faithful to Gulp and its ecosystem for as long as I can remember because it did everything I needed done in a very efficient manner.  However, given that it has been so long since using Gulp, I thought I would look into what the next tooling looks like for a front-end project. The obvious choice seemed to be Webpack, but as I looked closer into this I discovered [Vite](https://vitejs.dev/), "_The Next Genration Frontend Tooling_".  Vite delivers on its promise of being "blazing fast" and its ecosystem is great and growing. It was quite the shift going from Gulp to a system like Vite, but after learning more about it the choice was clear.
+I personally have been faithful to Gulp and its ecosystem as a front-end build tool for as long as I can remember because it did everything I needed done in a very efficient manner.  The Drupal project we maintain also used Gulp, but as part of this migration, we wanted to see what other options are out there that could improve our workflow. The obvious choice seemed to be Webpack, but as we looked closer into this we learned about [Vite](https://vitejs.dev/), "_The Next Genration Frontend Tooling_".  Vite delivers on its promise of being "_blazing fast_" and its ecosystem is great and growing. It was quite the shift going from Gulp to a system like Vite, but after learning more about it the choice was clear.
 
 ### 3. No more Sass in favor of PostCSS
 
-CSS has drastically improved in recent years.  It is now possible with plain CSS, to do many of the things you used to only be able to with Sass or similar CSS Preprocessor.  Eliminating Sass from our workflow meant we would also be able to get rid off many other node dependencies related to Sass. The goal for this project was to use plain CSS in combination with PostCSS and one bonus of using Vite is that Vite offers PostCSS processing out of the box without additional plugins or dependencies. Ofcourse if you want to do more advance PostCSS processing you will probably need some external dependencies.
+CSS has drastically improved in recent years.  It is now possible with plain CSS, to do many of the things you used to only be able to with Sass or similar CSS Preprocessor.  Eliminating Sass from our workflow meant we would also be able to get rid of many other node dependencies related to Sass. The goal for this project was to use plain CSS in combination with PostCSS and one bonus of using Vite is that Vite offers PostCSS processing out of the box without additional plugins or dependencies. Ofcourse if you want to do more advance PostCSS processing you will probably need some external dependencies.
 
-## The new Storybook Drupal environment
+## Building the new Storybook Drupal environment
 
 We already had a catalog of components to migrate from Patternlab to Storybook. We wanted to switch design systems but not have to rebuild or refactor the components.  The main challenge was, how do we use all the markup and logic written in Twig, in Storybook? Let's go over how this was accomplished. This will be a high-level overview to callout only the most important and Drupal-related parts.
 
@@ -52,17 +51,17 @@ This too was something we originally selected the Vanilla edition for more simpl
 * **NodeJS v20+**
 The beauty of building a new system from scratch is that we can use the latest LTS version of NodeJS.  This will make things easier when installing other node dependencies.
 * **CSS & PostCSS**
-The advancements of CSS in recent years and the browser support made it possible to discontinue Sass and many of its node dependencies we had relied on for years. This automatically aleviates many of the issues we've faced lately with packages compatability with Github actions and other CI/CD tools.
-* **Plugins and extensions**
-The list of extensions below outlines the critical ones that are required to make Storybook work with Drupal:
+The advancements of CSS in recent years and the browser support made it possible to discontinue Sass and many of its node dependencies we had relied on for years. This automatically aleviates the issues we experienced lately with packages compatability with Github actions and other CI/CD tools.
+
+### Plugins and extensions
+
+The list of extensions below outlines the critical ones that are required to make Storybook work with Drupal, other extensions may be needed which will depend on the functionality and automation you wish to implement.
   * [Twig](https://www.npmjs.com/package/twig){target=_blank rel=noopener} or TwigJS: This is the JavaScript implementation of the Twig PHP templating language.  This allows Storybook to understand Twig.
   **Note**: TwigJS may not always be in sync with the version of Twig PHP in Drupal and you may run into bugs when using certain Twig functions or filters, however, we've tested all of the common twig functionality and so far it has worked well us. In fact, the next extension actually helps TwigJS be more compatible with Twig PHP.
   * [twig-drupal-filters](https://www.npmjs.com/package/twig-drupal-filters){target=_blank rel=noopener}: TwigJS implementation of Twig functions and filters.
   * [html-react-parser](https://www.npmjs.com/package/html-react-parser){target=_blank rel=noopener}: This extension is key for Storybook to parse HTML code into react elements.
   * [vite-plugin-twig-drupal](https://github.com/larowlan/vite-plugin-twig-drupal){target=_blank rel=noopener}: If you are using Vite like we are, this is a Vite plugin that handles transforming twig files into a Javascript function that can be used with Storybook.
   * [@modifi/vite-plugin-yaml](https://github.com/Modyfi/vite-plugin-yaml){target=_blank rel=noopener}: Transforms a YAML file into a JS object.  This is useful for passing the component's data to React as args.
-
-There are several other packages but those will depend on the functionality and automation you wish to implement.
 
 ## Anatomy of a typical component
 
