@@ -28,44 +28,45 @@ In choosing Storybook, we went through a rigorous research and testing process t
 
 ### 1. No components refactoring
 
-The first and non-negotiable requirement was to be able to migrate components from Patternlab to a new design system with the least amount of refactoring as possible.  We have a decent amount of components which have been built within the last year and the last thing we want is to have to rebuild them again because we are switching design system.
+The first and non-negotiable requirement was to be able to migrate components from Patternlab to a new design system with the least amount of refactoring as possible.  We have a decent amount of components which have been built within the last year and the last thing we wanted was to have to rebuild them again because we are switching design system.
 <!-- After testing [Emulsify](https://www.emulsify.info/){target=_blank rel=noopener}, [Gesso](https://github.com/forumone/gesso){target=_blank rel=noopener}, and other stand-alone implementations of Storybook I realized they all provided a lot of great features and potential, but ultimately I opted to build my own solution from scratch by using the best parts of all the systems I had tried. -->
 
 ### 2. A new Front-end build workflow
 
-I am not the kind of developer who jumps on the latest technology that comes around just because.  As tempting as this may be, I first ask myself, will this new tool do something my current tools are not able to do?  Or, will this improve the way I am doing things?  I have been faithful to Gulp and its ecosystem for as long as I can remember because it did everything I needed done in a very efficient manner.  However, given that it has been so long since using Gulp, I thought I would look into what the next tooling looks like for a front-end project. The obvious choice seemed to be Webpack, but as I looked closer into this I discovered [Vite](https://vitejs.dev/), "_The Next Genration Frontend Tooling_".  Vite delivers on its premise of being "blazing fast" and its ecosystem is great and growing. It was quite the shift going from Gulp to a system like Vite, but after learning more about it the choice was clear.
+I am not the kind of developer who jumps on the latest technology that comes around just because.  As tempting as this may be, I first ask myself, will this new tool do something my current tools are not able to do?  Or, will this improve the way I am doing things?  I have been faithful to Gulp and its ecosystem for as long as I can remember because it did everything I needed done in a very efficient manner.  However, given that it has been so long since using Gulp, I thought I would look into what the next tooling looks like for a front-end project. The obvious choice seemed to be Webpack, but as I looked closer into this I discovered [Vite](https://vitejs.dev/), "_The Next Genration Frontend Tooling_".  Vite delivers on its promise of being "blazing fast" and its ecosystem is great and growing. It was quite the shift going from Gulp to a system like Vite, but after learning more about it the choice was clear.
 
 ### 3. No more Sass in favor of PostCSS
 
-CSS has drastically improved in recent years.  It is now possible with plain CSS to do many of the things you used to only be able to with Sass or similar CSS Preprocessor.  Eliminating Sass from my workflow meant I would also be able to get rid off many other node dependencies related to Sass. The goal for this project was to use plain CSS in combination with PostCSS and one bonus of going in this direction is that Vite offers PostCSS processing out of the box without additional plugins or dependencies. Ofcourse if you want to do more advance PostCSS processing you will probably need some external dependencies.
+CSS has drastically improved in recent years.  It is now possible with plain CSS, to do many of the things you used to only be able to with Sass or similar CSS Preprocessor.  Eliminating Sass from our workflow meant we would also be able to get rid off many other node dependencies related to Sass. The goal for this project was to use plain CSS in combination with PostCSS and one bonus of using Vite is that Vite offers PostCSS processing out of the box without additional plugins or dependencies. Ofcourse if you want to do more advance PostCSS processing you will probably need some external dependencies.
 
 ## The new Storybook Drupal environment
 
-As I mentioned before, I already had a catalog of components I needed to migrate from Patternlab to Storybook. I wanted to switch design systems but not have to rebuild or refactor the components.  The main challenge was, how do I use all the markup and logic written in Twig, in Storybook? Let's go over how this was accomplished. This will be a high-level overview to callout only the most important and Drupal-related parts.
+We already had a catalog of components to migrate from Patternlab to Storybook. We wanted to switch design systems but not have to rebuild or refactor the components.  The main challenge was, how do we use all the markup and logic written in Twig, in Storybook? Let's go over how this was accomplished. This will be a high-level overview to callout only the most important and Drupal-related parts.
 
 ### Tooling
 
 * **Storybook, react edition**
-Originally I selected Storybook HTML edition as this is all is needed for the purpose of my project, but as I worked with it and referenced its documents for assistance, I started to see messages like "This feature is not yet available in React html".  For this reason I switched to Storybook React as this is the edition that is supported the best.
+Originally we tested Storybook HTML edition as this is all that is needed for the purpose of our project, but as I worked with it and referenced its documents for assistance, I started to see on their docs pages callouts like this: "This feature is not yet available in React html".  For this reason we switched to Storybook React as this is the edition best supported.
 * **Vite, react edition**
-This too was something I originally selected the Vanilla edition for more simplicity but I figured using the react edition would work best with Storybook's react edition.
+This too was something we originally selected the Vanilla edition for more simplicity but we figured using the react edition would work best with Storybook's react edition.
 * **NodeJS v20+**
-The beauty of building a new system from scratch is that I can use the latest LTS version of NodeJS.  This will make things easier when installing other node dependencies.
+The beauty of building a new system from scratch is that we can use the latest LTS version of NodeJS.  This will make things easier when installing other node dependencies.
 * **CSS & PostCSS**
-The advancements of CSS in recent years and the browser support for it made it possible to discontinue Sass and many of its node dependencies I had relied on for years. This automatically aleviates many of the issues I've faced lately with packages compatability with Github actions and other CI/CD tools.
+The advancements of CSS in recent years and the browser support made it possible to discontinue Sass and many of its node dependencies we had relied on for years. This automatically aleviates many of the issues we've faced lately with packages compatability with Github actions and other CI/CD tools.
 * **Plugins and extensions**
-I'm not going to mention all of them but some of the key plugins and extensions I've used to make Storybook work with Drupal include:
-  * [Twig](https://www.npmjs.com/package/twig){target=_blank rel=noopener}: This is the JavaScript implementation (TwigJS) of the Twig PHP templating language.  This allows Storybook to understand Twig. Note: TwigJS may not always be in sync with the version of Twig PHP in Drupal and you may bugs due to incompatability, but so far it has worked well me.
+The list of extensions below outlines the critical ones that are required to make Storybook work with Drupal:
+  * [Twig](https://www.npmjs.com/package/twig){target=_blank rel=noopener} or TwigJS: This is the JavaScript implementation of the Twig PHP templating language.  This allows Storybook to understand Twig.
+  **Note**: TwigJS may not always be in sync with the version of Twig PHP in Drupal and you may run into bugs when using certain Twig functions or filters, however, we've tested all of the common twig functionality and so far it has worked well us. In fact, the next extension actually helps TwigJS be more compatible with Twig PHP.
   * [twig-drupal-filters](https://www.npmjs.com/package/twig-drupal-filters){target=_blank rel=noopener}: TwigJS implementation of Twig functions and filters.
   * [html-react-parser](https://www.npmjs.com/package/html-react-parser){target=_blank rel=noopener}: This extension is key for Storybook to parse HTML code into react elements.
-  * [vite-plugin-twig-drupal](https://github.com/larowlan/vite-plugin-twig-drupal){target=_blank rel=noopener}: If you are using Vite like I am, this is a Vite plugin that handles transforming twig files into a Javascript function that can be used with Storybook.
+  * [vite-plugin-twig-drupal](https://github.com/larowlan/vite-plugin-twig-drupal){target=_blank rel=noopener}: If you are using Vite like we are, this is a Vite plugin that handles transforming twig files into a Javascript function that can be used with Storybook.
   * [@modifi/vite-plugin-yaml](https://github.com/Modyfi/vite-plugin-yaml){target=_blank rel=noopener}: Transforms a YAML file into a JS object.  This is useful for passing the component's data to React as args.
 
 There are several other packages but those will depend on the functionality and automation you wish to implement.
 
 ## Anatomy of a typical component
 
-Now let's go over how a component makes it from Drupal/Twig, to Storybook. A typical component for me is structured as follows:
+Now let's go over how a component makes it from Drupal/Twig, to Storybook. A typical component for us is structured as follows:
 
 ```php
 - card/
@@ -75,10 +76,8 @@ Now let's go over how a component makes it from Drupal/Twig, to Storybook. A typ
     - card.yml
 ```
 
-See the content of each of these files in the [attached repository below](https://github.com/mariohernandez/storybook).
-
-The above structure of a Card component works perfectly in Drupal, but how do we make this work in Storybook since the component's markup and logic is written in Twig?  Storybook calls each visual representation of a component, [a story](https://storybook.js.org/docs/writing-stories){target=_blank rel=noopener}, and to create stories out of your components you need to create a file with the following naming convention:
-`component-name.stories.jsx`.  In our case, a story for our Card component will be `card.stories.jsx`.
+The above structure of a Card component works perfectly in Drupal, but how do we make this work in Storybook since the component's markup and logic is written in Twig?  In Storybook, each visual representation of a component is called [a Story](https://storybook.js.org/docs/writing-stories){target=_blank rel=noopener}, and to create stories out of your components you need to create a file with the following naming convention:
+**component-name.stories.jsx**.  In our case, a story for the Card component would be `card.stories.jsx`. Story files can also use any of these extensions depending on your project's specifics: `js | ts | jsx | tsx`.
 
 ```php
 - card/
@@ -89,9 +88,11 @@ The above structure of a Card component works perfectly in Drupal, but how do we
     - card.yml
 ```
 
+See the content of each of these files in the [attached repository below](#repolink).
+
 ### Writing React for the Card component
 
-I have to admit, I don't know react that well and this was somethign that worried me when I decided to use Storybook.  In my mind I thought I would have to write a lot of react from scratch but luckily the extensions I outlined above eliminate the need of custom react code, instead I just write a small amount of react that can be reused over and over on each component.  Lets take a look at the react code needed for the Card.
+I have to admit, I don't know react that well and this was a concern for me when we decided to use Storybook.  In my mind I thought I would have to write a lot of react from scratch but luckily the extensions I outlined above eliminate the need of custom react code, instead I just write a small amount of react that can be reused over and over on each component.  Lets take a look at the react code needed for the Card.
 
 Inside `card.stories.jsx`:
 
@@ -142,11 +143,11 @@ export default component;;
 
 That's it! Notice that all we are doing is consuming the code we've written in each of the files inside the Card directory.  Storybook in combination with the extensions we've installed are doing all the heavy lifting.
 
-I'd like to mention that there are different ways in which the code above can be written and still have the same result.  I tried a couple of other formats in an effort to make the code easier to read and ultimately landed on the above.
+I'd like to mention that there are different ways in which the code above can be written and still have the same result.  We tried a couple of other formats in an effort to make the code easier to read and ultimately landed on the above.
 
-For a more complete example of the Card component, I've created a simple demo project.
+For a more complete example of the Card component, I've created a simple demo project.{id=repolink}
 
-[Grab the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
+[Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
 ## In closing
 
