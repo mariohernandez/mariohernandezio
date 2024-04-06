@@ -41,7 +41,7 @@ h3 {
 }
 
 h4 {
-  font-size: var(--font-size-20);
+  font-size: var(--font-size-18);
 }
 
 /* The 'height: auto' ensures post image resizes proportional
