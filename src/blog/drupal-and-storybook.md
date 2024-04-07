@@ -88,12 +88,13 @@ npm run storybook
 
 Twig templates are server-side templates which are normally rendered with TwigPHP to HTML by Drupal, but Storybook is a JS tool. TwigJS is the JS-equivalent of TwigPHP so that Storybook understands Twig. Let's install all dependencies needed for Storybook to work with Twig.
 
-* Istill within your newly created theme, run this command:
+* Istill within your newly created theme, press **Ctrl + C** to stop Storybook
+* Then run the following command:
 
 {% raw %}
 
 ```shell
-npm i -D vite-plugin-twig-drupal html-react-parser @modyfi/vite-plugin-yaml
+npm i -D vite-plugin-twig-drupal html-react-parser twig-drupal-filters @modyfi/vite-plugin-yaml
 ```
 
 {% endraw %}
@@ -101,8 +102,8 @@ npm i -D vite-plugin-twig-drupal html-react-parser @modyfi/vite-plugin-yaml
 * [vite-plugin-twig-drupal](https://github.com/larowlan/vite-plugin-twig-drupal){target=_blank rel=noopener}: If you are using Vite like we are, this is a Vite plugin that handles transforming twig files into a Javascript function that can be used with Storybook.  This plugin includes the following:
   * [Twig](https://www.npmjs.com/package/twig){target=_blank rel=noopener} or TwigJS: This is the JavaScript implementation of the Twig PHP templating language.  This allows Storybook to understand Twig.
     **Note**: TwigJS may not always be in sync with the version of Twig PHP in Drupal and you may run into issues when using certain Twig functions or filters, however, we are adding other extensions that may help with the incompatability issues.
-  * [twig-drupal-filters](https://www.npmjs.com/package/twig-drupal-filters){target=_blank rel=noopener}: TwigJS implementation of Twig functions and filters.
   * [drupal attribute](https://github.com/ericmorand/drupal-attribute){target=_blank rel=noopener}: Adds the ability to work with Drupal attributes.
+* [twig-drupal-filters](https://www.npmjs.com/package/twig-drupal-filters){target=_blank rel=noopener}: TwigJS implementation of Twig functions and filters.
 * [html-react-parser](https://www.npmjs.com/package/html-react-parser){target=_blank rel=noopener}: This extension is key for Storybook to parse HTML code into react elements.
 * [@modifi/vite-plugin-yaml](https://github.com/Modyfi/vite-plugin-yaml){target=_blank rel=noopener}: Transforms a YAML file into a JS object.  This is useful for passing the component's data to React as args.
 
@@ -275,11 +276,65 @@ export default component;
 
 {% endraw %}
 
-If Storybook is running you should be able to see your new title "Story" displaying the text, heading level, and modifier class (if any), that you specified in the yml file. See example below:
+* If Storybook is running you should see the title story. See example below:
+* Otherwise start Storybook by running:
+
+{% raw %}
+
+```shell
+npm run storybook
+```
+
+{% endraw %}
 
 ![Computer screenshot of a demo story in Storybook](/images/storybook-demo.webp)
 
 I wanted to show you how this works with the simplest of components, the title, because believe it or not, adopting this approach on larger and more complex components is not much different.  Even the React code we wrote does not change much for large components.
+
+### Storybook namespaces
+
+Part of Atomic Web Design is being able to build large components using smaller components. Since components are built in Twig, you would typically use Twig includes. Components will probably be organized in different directories such as Atoms, Molecules, Organisms, etc.  To make this work you will need namespaces that Storybook will understand.  Lucky for us, Vite provides the ability to create these namespaces.  Let's see how.
+
+{% raw %}
+
+* Inside **vite.config.js** add the following under the **Plugins[]** array.  Add a namespace for each component category. See example below:
+
+```js
+twig({
+  namespaces: {
+    atoms: join(__dirname, "./src/components/atoms"),
+    molecules: join(__dirname, "./src/components/molecules"),
+    organisms: join(__dirname, "./src/components/organisms"),
+  },
+}),
+```
+
+{% endraw %}
+
+### Extra things
+
+So the components part with Storybook is kind of done, of course this would not be a Drupal theme without the other Drupal things like **my_theme.info.yml** and **my_theme.libraries.yml**. If you don't have those files you should add them with your theme specific configurations.
+
+### Drupal namespaces
+
+Earlier we created namespaces for Storybook to be able to reference tested components.  Drupal needs the same type of functionality but the namespaces we created earlier only work in Storybook. The traditional manner to creating namespaces for components in Drupal if you are not using SDC, is by using the [Components Libraries](https://drupal.org/project/components/){target=_blank rel=noopener} module. Let's create some namespaces.
+
+* Install and enable the Components Libraries module
+* Inside **my_theme.info.yml** add the name spaces as shown below.
+
+{% raw %}
+
+```php
+components:
+  namespaces:
+    my_theme:
+      - src/patterns/global
+      - src/patterns/components
+      - src/patterns/pages
+      - src/templates
+```
+
+{% endraw %}
 
 In the next blog post, we will build a more complex component that includes or inherits smaller components. I hope you stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
 
@@ -287,13 +342,13 @@ In the next blog post, we will build a more complex component that includes or i
 
 ## Resources
 
-* Storybook docs
-* Storybook stories
-* Blog post to SDC and Storybook
-* [Blog post to nirvana](https://www.previousnext.com.au/blog/drupal-front-end-nirvana-vite-twig-and-storybook)
+* [Storybook docs](https://storybook.js.org/docs/get-started){target=_blank rel=noopener}
+* [How to write stories](https://storybook.js.org/docs/writing-stories){target=_blank rel=noopener}
+* [Single Directory Components](https://www.drupal.org/project/sdc){target=_blank rel=noopener}
+* [Storybook Drupal module](https://www.drupal.org/project/storybook){target=_blank rel=noopener}
 
 ## In closing
 
-I'd like to thank [Chaz Chumley](https://twitter.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer who did a lot of the configuration discussed in this post.  In addition, we are extremely thankful to the Emulsify and Gesso teams for letting us pick their brains during our research.
+I'd like to thank [Chaz Chumley](https://twitter.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
 
 I hope this was helpful and if there is anything I can help you with in your journey of a Storybook-friendly Drupal theme, feel free to reach out.

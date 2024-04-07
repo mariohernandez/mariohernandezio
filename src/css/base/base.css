@@ -55,4 +55,5 @@ img {
 code[class*="language-"],
 pre[class*="language-"] {
   font-size: var(--font-size-14);
+  margin-block-end: var(--size-16);
 }
