@@ -28,11 +28,145 @@ Just like we did when we built the **title** component in the [previous post](..
     * `card.yml`: for the component's demo data
     * `card.twig`: for the component's markup and logic
     * `card.css`: for the component's styles
-    * `card.stories.jsx`: for Storybook story
+    * `card.stories.jsx`: for Storybook's story
 1. Update **card.yml** as follows:
+    {% raw %}
+
+    ```yml
+    ---
+    modifier: ''
+    image: <img src="images/3-2.svg" alt="placeholder text" />
+    title:
+      level: 2
+      modifier: 'card__title'
+      text: 'Leaders in the Field Seminar featuring Dr. Marcel van den Brink'
+      url: 'https://mariohernandez.io'
+    date: 'October 31, 2024'
+    teaser: 'Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.'
+
+    ```
+
+    {% endraw %}
 1. Update **card.twig** as follows:
+    {% raw %}
+
+    ```php
+    {{ attach_library('my_theme/card') }}
+
+    <article class="card{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+      {% if image %}
+        <div class="card__image">
+          {{ image }}
+        </div>
+      {% endif %}
+
+      <div class="card__content">
+        {% if title %}
+          {% include "@components/title/title.twig" with {
+            'title': title
+          } only %}
+        {% endif %}
+
+        {% if date %}
+          <div class="card__date">
+            {% include '@components/date/date.twig' with {
+              'modifier': date.modifier,
+              'date': date.date,
+            } only %}
+          </div>
+        {% endif %}
+
+        {% if teaser %}
+          <p class="card__teaser">{{ teaser }}</p>
+        {% endif %}
+      </div>
+    </article>
+    ```
+
+    {% endraw %}
 1. Update **card.css** as follows:
+    {% raw %}
+
+    ```css
+    /**
+    * @file
+    * Content card component serves articles and events types of content.
+    */
+
+    .card {
+      display: flex;
+      flex: 1 1 var(--size-44);
+      flex-direction: column;
+      height: auto;
+      max-width: var(--size-80);
+      overflow: hidden;
+    }
+
+    /* Using flex-grow to allow date to be positioned at the bottom of the card by
+    using margin-top: auto in the date wrapper field below. */
+    .card__content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: var(--size-4);
+
+      /* For consistent top/bottom spacing for all fields in the card. */
+      > *:not(.date) {
+        margin-block-end: var(--size-3);
+      }
+    }
+
+    .card__title {
+      color: var(--ucla-blue);
+      font-family: var(--font-heading);
+      font-size: var(--font-size-2);
+      line-height: var(--leading-normal);
+
+      &:hover {
+        color: var(--gray-900);
+      }
+    }
+
+    .card__date {
+      align-items: center;
+      display: flex;
+      font-weight: var(--font-weight-600);
+
+      .date {
+        font-weight: var(--font-weight-600);
+
+        svg {
+          margin-inline-end: var(--size-2);
+        }
+      }
+    }
+    ```
+
+    {% endraw %}
 1. Update **card.stories.jsx** as follows:
+    {% raw %}
+
+    ```js
+    import parse from 'html-react-parser';
+
+    import card from './card.twig';
+    import data from './card.yml';
+
+    const settings = {
+      title: 'Components/Card',
+    };
+
+    export const EventCard = {
+      name: 'Card',
+      render: (args) => parse(card(args)),
+      args: { ...data },
+    };
+
+    export default settings;
+    ```
+
+    {% endraw %}
+
 
 
 Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8. We are hopeful the technical issues we ran into with SDC can be addressed in the future so we have an opportunity to incorporate it into our environment.
