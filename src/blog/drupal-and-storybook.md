@@ -337,6 +337,7 @@ components:
 {% endraw %}
 
 In the next blog post, we will build a more complex component that includes or inherits smaller components. I hope you stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
+In the [next blog post](../integrating-storybook-components-with-drupal), we will build a more complex component that includes or inherits smaller components. I hope you stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
 
 [Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
