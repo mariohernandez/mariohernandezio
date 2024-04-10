@@ -11,8 +11,7 @@ featuredImageCredit: "Markus Spiske"
 featuredImageCreditUrl: "https://unsplash.com/@markusspiske"
 summary: "Building a next generation Front-end environment for Drupal has drastically changed with the evolution of component-baded development."
 ---
-Building a custom Drupal theme nowadays is a more complicated process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need a styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago with great success.
-I recently started a new job where Patternlab was also their design system of choice, but one of my first tasks was to work on migrating from Patternlab to another design system. We have a small team but were very excited about the challenge and finding a more modern and robust design system for our large multi-site Drupal environment.
+Building a custom Drupal theme nowadays is a more complex process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need a styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago with great success. In addition, Patternlab has been the design system of choice at my place of work but one of my immediate tasks was to work on migrating to a different design system. We have a small team but were very excited about the challenge of finding and using a more modern and robust design system for our large multi-site Drupal environment.
 
 ## Enter Storybook
 
@@ -50,7 +49,8 @@ Let's go over the steps to building the base of your new Drupal theme with ViteJ
 {% raw %}
 
 ```shell
-npm create vite@latest my_theme // replace my_theme with your theme name.
+npm create vite@latest my_theme
+# replace my_theme with a name of your choice.
 ```
 
 {% endraw %}
@@ -88,7 +88,7 @@ npm run storybook
 
 Twig templates are server-side templates which are normally rendered with TwigPHP to HTML by Drupal, but Storybook is a JS tool. TwigJS is the JS-equivalent of TwigPHP so that Storybook understands Twig. Let's install all dependencies needed for Storybook to work with Twig.
 
-* Istill within your newly created theme, press **Ctrl + C** to stop Storybook
+* If Storybook is still running, press **Ctrl + C** to stop it
 * Then run the following command:
 
 {% raw %}
@@ -151,7 +151,7 @@ stories: [
 
 {% endraw %}
 
-* Inside **.storybook/preview.js**, add the following:
+* Inside **.storybook/preview.js**, update it as follows:
 
 {% raw %}
 
@@ -186,7 +186,7 @@ export default preview;
 
 #### Creating the components directory
 
-* If Storybook is still running, press `Ctrl + C` to stop it
+* If Storybook is still running, press **Ctrl + C** to stop it
 * Inside the **src** directory, create the **components** directory.  Alternatively, you could rename the existing **stories** directory to **components**.
 
 ## Creating your first component
@@ -289,55 +289,9 @@ npm run storybook
 
 ![Computer screenshot of a demo story in Storybook](/images/storybook-demo.webp)
 
-I wanted to show you how this works with the simplest of components, the title, because believe it or not, adopting this approach on larger and more complex components is not much different.  Even the React code we wrote does not change much for large components.
+I wanted to show you how this works with the simplest of components, the title, adopting this approach on larger and more complex components is not much different.  Even the React code we wrote does not change much for large components. Now let's do some more configuration to our environment.
 
-### Storybook namespaces
-
-Part of Atomic Web Design is being able to build large components using smaller components. Since components are built in Twig, you would typically use Twig includes. Components will probably be organized in different directories such as Atoms, Molecules, Organisms, etc.  To make this work you will need namespaces that Storybook will understand.  Lucky for us, Vite provides the ability to create these namespaces.  Let's see how.
-
-{% raw %}
-
-* Inside **vite.config.js** add the following under the **Plugins[]** array.  Add a namespace for each component category. See example below:
-
-```js
-twig({
-  namespaces: {
-    atoms: join(__dirname, "./src/components/atoms"),
-    molecules: join(__dirname, "./src/components/molecules"),
-    organisms: join(__dirname, "./src/components/organisms"),
-  },
-}),
-```
-
-{% endraw %}
-
-### Extra things
-
-So the components part with Storybook is kind of done, of course this would not be a Drupal theme without the other Drupal things like **my_theme.info.yml** and **my_theme.libraries.yml**. If you don't have those files you should add them with your theme specific configurations.
-
-### Drupal namespaces
-
-Earlier we created namespaces for Storybook to be able to reference tested components.  Drupal needs the same type of functionality but the namespaces we created earlier only work in Storybook. The traditional manner to creating namespaces for components in Drupal if you are not using SDC, is by using the [Components Libraries](https://drupal.org/project/components/){target=_blank rel=noopener} module. Let's create some namespaces.
-
-* Install and enable the Components Libraries module
-* Inside **my_theme.info.yml** add the name spaces as shown below.
-
-{% raw %}
-
-```php
-components:
-  namespaces:
-    my_theme:
-      - src/patterns/global
-      - src/patterns/components
-      - src/patterns/pages
-      - src/templates
-```
-
-{% endraw %}
-
-In the next blog post, we will build a more complex component that includes or inherits smaller components. I hope you stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
-In the [next blog post](../integrating-storybook-components-with-drupal), we will build a more complex component that includes or inherits smaller components. I hope you stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
+In the [next blog post](../integrating-storybook-components-with-drupal), we will build a more complex component that includes or nests smaller components. For now, if you want to grab a copy of all the code in this post, you can do so below.
 
 [Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
