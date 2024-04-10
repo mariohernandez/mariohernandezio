@@ -171,6 +171,55 @@ Just like we did when we built the **title** component in the [previous post](..
 
 Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8. We are hopeful the technical issues we ran into with SDC can be addressed in the future so we have an opportunity to incorporate it into our environment.
 
+### Storybook namespaces
+
+Part of Atomic Web Design is being able to build large components by using smaller ones. Since components are built in Twig, you would typically use Twig includes. Components will probably be organized in different directories such as Atoms, Molecules, Organisms, etc.  To make this work you will need namespaces that Storybook will understand.  Lucky for us, Vite provides the ability to create these namespaces.  Let's see how.
+
+{% raw %}
+
+* Inside **vite.config.js** add the following under the **Plugins[]** array.  Add a namespace for each component category. See example below:
+
+```js
+twig({
+  namespaces: {
+    components: join(__dirname, "./src/components/components"),
+    category2: join(__dirname, "./src/components/category2"),
+    category3: join(__dirname, "./src/components/category3"),
+  },
+}),
+```
+
+_Create as many namespaces as needed for your components categories._
+
+{% endraw %}
+
+### Extra things
+
+So the components part with Storybook is kind of done, of course this would not be a Drupal theme without the other Drupal things like **my_theme.info.yml** and **my_theme.libraries.yml**. If you don't have those files you should add them with your theme specific configurations.
+
+### Drupal namespaces
+
+The namespaces we created above will allow us to nest components in Storybook.  Drupal needs the same type of functionality, the traditional manner to creating namespaces for components in Drupal if you are not using SDC, is by using the [Components Libraries](https://drupal.org/project/components/){target=_blank rel=noopener} module. Let's create some namespaces.
+
+* Install and enable the Components Libraries module
+* Inside **my_theme.info.yml** add the name spaces as shown below.
+
+{% raw %}
+
+```php
+components:
+  namespaces:
+    my_theme:
+      - src/patterns/global
+      - src/patterns/components
+      - src/patterns/pages
+      - src/templates
+```
+
+{% endraw %}
+
+<!-- OLD CONTENT FROM PREVIOUS POST IS BELOW. -->
+
 ## Our process and requirements
 
 In choosing Storybook, we went through a rigorous research and testing process to ensure it will not only solve our immediate problems with our current environment, but it will be around as a long term solution. As part of this process, we also tested several available options like [Emulsify](https://www.emulsify.info/){target=_blank rel=noopener} and [Gesso](https://github.com/forumone/gesso){target=_blank rel=noopener} which would be great options for anyone looking for a ready-to-go system out of the box.  Some of our requirements included:
