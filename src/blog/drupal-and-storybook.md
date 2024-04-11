@@ -1,5 +1,5 @@
 ---
-date: "2024-04-08"
+date: "2024-04-11"
 title: "Building a modern Drupal theme with Storybook"
 tags: ['drupal','storybook']
 draft: false
@@ -13,11 +13,13 @@ summary: "Building a next generation Front-end environment for Drupal has drasti
 ---
 Building a custom Drupal theme nowadays is a more complex process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need a styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago with great success. In addition, Patternlab has been the design system of choice at my place of work but one of my immediate tasks was to work on migrating to a different design system. We have a small team but were very excited about the challenge of finding and using a more modern and robust design system for our large multi-site Drupal environment.
 
+**Disclaimer**: Due to technical restrictions and project requirements, we were not able to use [Single Directory Components or SDC](https://www.drupal.org/project/sdc), nor the [Storybook module](https://www.drupal.org/project/storybook). Our front-end environment was custom built from the ground up.
+
 ## Enter Storybook
 
 After looking a various options for a design system, [Storybook](https://storybook.js.org/){target=_blank rel=noopener} seemed to be the right choice for us for a couple of reasons: one, it has been around for about 10 years and during this time it has matured significantly, and two, it has become a very popular option in the Drupal ecosystem. In some ways, Storybook follows the same model as Drupal, it has a pretty active community and a very healthy ecosystem of plugins to extend its core functionality.
 
-Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8. We are hopeful the technical issues we ran into with SDC can be addressed in the future so we have an opportunity to incorporate it into our environment.
+Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8.
 
 ## Our process and requirements
 
@@ -207,6 +209,7 @@ With the current system in place we can start building components.  We'll start 
 level: 2
 modifier: 'title'
 text: 'Welcome to your new Drupal theme with Storybook!'
+url: 'https://mariohernandez.io'
 ```
 
 {% endraw %}
@@ -216,12 +219,18 @@ text: 'Welcome to your new Drupal theme with Storybook!'
 {% raw %}
 
 ```php
-<h{{ level }}{% if modifier %} class="{{ modifier }}"{% endif %}>{{ text }}</h{{ level }}>
+<h{{ level|default(2) }}{% if modifier %} class="{{ modifier }}"{% endif %}>
+  {% if url %}
+    <a href="{{ url }}">{{ text }}</a>
+  {% else %}
+    <span>{{ text }}</span>
+  {% endif %}
+</h{{ level|default(2) }}>
 ```
 
 {% endraw %}
 
-We have a simple title component that will print a title of anything you want.  The **level** key allows us to change the heading level of the title (i.e. h1, h2, h3, etc.), and the **modifier** key allows us to pass a modifier class to the component.
+We have a simple title component that will print a title of anything you want.  The **level** key allows us to change the heading level of the title (i.e. h1, h2, h3, etc.), and the **modifier** key allows us to pass a modifier class to the component, and the **url** will be helpful when our title needs to be a link to another page or component.
 
 Currently the title component is not available in storybook.  Storybook uses a special file to display each component as a story, the file name is **component-name.stories.jsx**.
 
@@ -287,11 +296,14 @@ npm run storybook
 
 {% endraw %}
 
+With Storybook running, the title component should look like the image below:
+
 ![Computer screenshot of a demo story in Storybook](/images/storybook-demo.webp)
+_The controls highlighted at the bottom of the title allow you to change the values of each of the fields for the title._
 
-I wanted to show you how this works with the simplest of components, the title, adopting this approach on larger and more complex components is not much different.  Even the React code we wrote does not change much for large components. Now let's do some more configuration to our environment.
+I wanted to start with the simplest of components, the title, to show how Storybook, with help from the extensions we installed, understands Twig. The good news is that the same approach we took with the title component works on even more complex components. Even the React code we wrote does not change much on large components.
 
-In the [next blog post](../integrating-storybook-components-with-drupal), we will build a more complex component that includes or nests smaller components. For now, if you want to grab a copy of all the code in this post, you can do so below.
+In the next blog post, we will build more components that nest smaller components, and we will also add Drupal related parts and configuration to our theme so we can begin using the theme in a Drupal site.  Finally, we will integrate the components we built in Storybook with Drupal so our content can be rendered using the component we're building. Stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
 
 [Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
@@ -304,6 +316,6 @@ In the [next blog post](../integrating-storybook-components-with-drupal), we wil
 
 ## In closing
 
-I'd like to thank [Chaz Chumley](https://twitter.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
+Getting to this point was a team effort and I'd like to thank [Chaz Chumley](https://twitter.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
 
 I hope this was helpful and if there is anything I can help you with in your journey of a Storybook-friendly Drupal theme, feel free to reach out.
