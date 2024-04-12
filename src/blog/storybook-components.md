@@ -1,5 +1,5 @@
 ---
-date: "2024-04-15"
+date: "2024-04-22"
 title: "Integrating Storybook components with Drupal"
 tags: ['drupal','storybook','components']
 draft: true
@@ -11,7 +11,7 @@ featuredImageCredit: "Gustavo"
 featuredImageCreditUrl: "https://unsplash.com/@natura_photos"
 summary: "In this post we'll go over the process of making Drupal aware of the components you have built in Storybook."
 ---
-In the [previous post](../building-a-modern-drupal-theme-with-storybook), we went into detail about how to build a new Drupal theme using Storybook as its design system.  We also built a simple component to demonstrate how using TwigJS we can allow Storybook to understand TwigPHP functions and logic.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
+In the [previous post](../building-a-modern-drupal-theme-with-storybook), we talked about how to build a custom Drupal theme using Storybook as its design system.  We also built a simple component to demonstrate how Storybook is able to understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
 
 ## What is Drupal integration?
 
@@ -19,155 +19,165 @@ In the context of Drupal development using the component-driven approach, Drupal
 
 The advantage of using a design system like Storybook is that you are in full control of the markup for each component.  This is extremely empowering because as we all know, Drupal is not known for producing the best markup when rendering content. In using Storybook, or any other design system for that matter, the markup we define when building the components is what Drupal will render making things look more semantic, accessible and easier to work with.
 
-## Building the component
+## Building more components
 
-Just like we did when we built the **title** component in the [previous post](../building-a-modern-drupal-theme-with-storybook/), we will follow the same process for the **Card** component, which is a more complex component. Let's start.
+Before we get into integrating Drupal with Storybook components, we will need to build more components.  The title component we built in the previous post may not be enough to demonstrate some of the advanced techniques when integrating components.  Just like we did when we built the **title** component in the [previous post](../building-a-modern-drupal-theme-with-storybook/), we will follow the same process for the **Card** component. Before we start, let's take a look at what the Card component looks like.
+
+![A couple standing on lobby of large building](/images/storybook-card.webp)
+
+Before building a component I always like to look at it in detail to take inventory of the different parts that make up the component. The card image above shows three parts: the image, the title, and the teaser text. Each of these parts becomes a field we need to create not only in Storybook but also in Drupal. This is important because each field is also of specific type which we need to consider when we define each fields in YAML and in Drupal.  Let's start.
 
 1. Inside the **components** directory create a new directory called **card**
 1. Inside the **card** directory add the following four files:
-    * `card.yml`: for the component's demo data
-    * `card.twig`: for the component's markup and logic
-    * `card.css`: for the component's styles
-    * `card.stories.jsx`: for Storybook's story
+    * **card.css**: for the component's styles
+    * **card.twig**: for the component's markup and logic
+    * **card.stories.jsx**: for Storybook's story
+    * **card.yml**: for the component's demo data
 1. Update **card.yml** as follows:
-    {% raw %}
+{% raw %}
 
-    ```yml
-    ---
-    modifier: ''
-    image: <img src="images/3-2.svg" alt="placeholder text" />
-    title:
-      level: 2
-      modifier: 'card__title'
-      text: 'Leaders in the Field Seminar featuring Dr. Marcel van den Brink'
-      url: 'https://mariohernandez.io'
-    date: 'October 31, 2024'
-    teaser: 'Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.'
+```yml
+---
+modifier: ''
+image: <img src="images/3-2.svg" alt="placeholder text" />
+title:
+  level: 2
+  modifier: 'card__title'
+  text: 'Leaders in the Field Seminar featuring Dr. Marcel van den Brink'
+  url: 'https://mariohernandez.io'
+teaser: 'Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.'
+```
 
-    ```
+{% endraw %}
 
-    {% endraw %}
 1. Update **card.twig** as follows:
-    {% raw %}
+{% raw %}
 
-    ```php
-    {{ attach_library('my_theme/card') }}
+```php
+{{ attach_library('storybook/card') }}
 
-    <article class="card{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
-      {% if image %}
-        <div class="card__image">
-          {{ image }}
-        </div>
-      {% endif %}
+<article class="card{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+  {% if image %}
+    <div class="card__image">
+      <figure>
+        {{ image }}
+      </figure>
+    </div>
+  {% endif %}
 
-      <div class="card__content">
-        {% if title %}
-          {% include "@components/title/title.twig" with {
-            'title': title
-          } only %}
-        {% endif %}
+  <div class="card__content">
+    {% if title %}
+      {% include "@components/title/title.twig" with {
+        'title': title
+      } only %}
+    {% endif %}
 
-        {% if date %}
-          <div class="card__date">
-            {% include '@components/date/date.twig' with {
-              'modifier': date.modifier,
-              'date': date.date,
-            } only %}
-          </div>
-        {% endif %}
+    {% if teaser %}
+      <p class="card__teaser">{{ teaser }}</p>
+    {% endif %}
+  </div>
+</article>
+```
 
-        {% if teaser %}
-          <p class="card__teaser">{{ teaser }}</p>
-        {% endif %}
-      </div>
-    </article>
-    ```
+{% endraw %}
 
-    {% endraw %}
 1. Update **card.css** as follows:
-    {% raw %}
+{% raw %}
 
-    ```css
-    /**
-    * @file
-    * Content card component serves articles and events types of content.
-    */
+```css
+/**
+* @file
+* Card component which includes title components.
+*/
 
-    .card {
-      display: flex;
-      flex: 1 1 var(--size-44);
-      flex-direction: column;
-      height: auto;
-      max-width: var(--size-80);
-      overflow: hidden;
+.card {
+  display: flex;
+  flex: 1 1 var(--size-44);
+  flex-direction: column;
+  height: auto;
+  max-width: var(--size-80);
+  overflow: hidden;
+}
+
+/* Using flex-grow to allow date to be positioned at the bottom of the card by
+using margin-top: auto in the date wrapper field below. */
+.card__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: var(--size-4);
+
+  /* For consistent top/bottom spacing for all fields in the card. */
+  > *:not(.date) {
+    margin-block-end: var(--size-3);
+  }
+}
+
+.card__title {
+  color: var(--ucla-blue);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2);
+  line-height: var(--leading-normal);
+
+  &:hover {
+    color: var(--gray-900);
+  }
+}
+
+.card__date {
+  align-items: center;
+  display: flex;
+  font-weight: var(--font-weight-600);
+
+  .date {
+    font-weight: var(--font-weight-600);
+
+    svg {
+      margin-inline-end: var(--size-2);
     }
+  }
+}
+```
 
-    /* Using flex-grow to allow date to be positioned at the bottom of the card by
-    using margin-top: auto in the date wrapper field below. */
-    .card__content {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      padding: var(--size-4);
+{% endraw %}
 
-      /* For consistent top/bottom spacing for all fields in the card. */
-      > *:not(.date) {
-        margin-block-end: var(--size-3);
-      }
-    }
-
-    .card__title {
-      color: var(--ucla-blue);
-      font-family: var(--font-heading);
-      font-size: var(--font-size-2);
-      line-height: var(--leading-normal);
-
-      &:hover {
-        color: var(--gray-900);
-      }
-    }
-
-    .card__date {
-      align-items: center;
-      display: flex;
-      font-weight: var(--font-weight-600);
-
-      .date {
-        font-weight: var(--font-weight-600);
-
-        svg {
-          margin-inline-end: var(--size-2);
-        }
-      }
-    }
-    ```
-
-    {% endraw %}
 1. Update **card.stories.jsx** as follows:
-    {% raw %}
+{% raw %}
 
-    ```js
-    import parse from 'html-react-parser';
+```js
+import parse from 'html-react-parser';
 
-    import card from './card.twig';
-    import data from './card.yml';
+import card from './card.twig';
+import data from './card.yml';
+import './card.css';
 
-    const settings = {
-      title: 'Components/Card',
-    };
+const settings = {
+  title: 'Components/Card',
+};
 
-    export const EventCard = {
-      name: 'Card',
-      render: (args) => parse(card(args)),
-      args: { ...data },
-    };
+export const Card = {
+  render: (args) => parse(card(args)),
+  args: { ...data },
+};
 
-    export default settings;
-    ```
+export default settings;
+```
 
-    {% endraw %}
+{% endraw %}
 
+Let's go over a few things regarding the code above:
 
+* The data structure in **card.yml** reflects the data structure and type we will use in Drupal later in the post. The image field uses the entire `<img>` element rather than just using the image `src` and `alt` image attributes.  The reason for this is when we get to Drupal, we can use Drupal's full image entity.
+* **card.twig** reuses the title component we created in the previous post. This is Atomic Design in action. Because we built a flexible title component, we can use it on anythin where a title is needed.
+* **card.stories.jsx** is the Storybook story for the Card.  Notice how the code in this file is very similar to the one in the title.stories.jsx.
+
+## Changing gears to Drupal
+
+With the Card component now in place, we can change our attention to Drupal. Here is what we are going to do to get the environment ready for integration:
+
+1. Build a basic Drupal site
+1. Build a Drupal View to create a list of news articles
+1. Integrate Drupal with the Card component so the list of news articles uses the card for each article
 
 Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8. We are hopeful the technical issues we ran into with SDC can be addressed in the future so we have an opportunity to incorporate it into our environment.
 
@@ -195,21 +205,21 @@ _Create as many namespaces as needed for your components categories._
 
 ### Extra things
 
-So the components part with Storybook is kind of done, of course this would not be a Drupal theme without the other Drupal things like **my_theme.info.yml** and **my_theme.libraries.yml**. If you don't have those files you should add them with your theme specific configurations.
+So the components part with Storybook is kind of done, of course this would not be a Drupal theme without the other Drupal things like **storybook.info.yml** and **storybook.libraries.yml**. If you don't have those files you should add them with your theme specific configurations.
 
 ### Drupal namespaces
 
 The namespaces we created above will allow us to nest components in Storybook.  Drupal needs the same type of functionality, the traditional manner to creating namespaces for components in Drupal if you are not using SDC, is by using the [Components Libraries](https://drupal.org/project/components/){target=_blank rel=noopener} module. Let's create some namespaces.
 
 * Install and enable the Components Libraries module
-* Inside **my_theme.info.yml** add the name spaces as shown below.
+* Inside **storybook.info.yml** add the name spaces as shown below.
 
 {% raw %}
 
 ```php
 components:
   namespaces:
-    my_theme:
+    storybook:
       - src/patterns/global
       - src/patterns/components
       - src/patterns/pages
@@ -250,7 +260,7 @@ Let's go over the steps to building the base of your new Drupal theme with ViteJ
 {% raw %}
 
 ```shell
-npm create vite@latest my_theme // replace my_theme with your theme name.
+npm create vite@latest storybook // replace storybook with your theme name.
 ```
 
 {% endraw %}
