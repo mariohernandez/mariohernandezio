@@ -2,8 +2,8 @@
 date: "2024-04-22"
 title: "Integrating Storybook components with Drupal"
 tags: ['drupal','storybook','components']
-draft: true
-featured: false
+draft: false
+featured: true
 featuredImage: "/images/wall.webp"
 featuredImageAlt: "A brick wall"
 imageThumb: "/images/thumbs/wall-thumb.webp"
@@ -17,16 +17,27 @@ In the [previous post](../building-a-modern-drupal-theme-with-storybook), we tal
 
 In the context of Drupal development using the component-driven approach, Drupal integration means connecting Drupal presenter templates such as node.html.twig, block.html.twig, paragraph.html.twig, etc. to Storybook by mapping Drupal fields to component fields in Storybook. This in turn allows for your Drupal content to be rendered wrapped in the components you built in Storybook.
 
-The advantage of using a design system like Storybook is that you are in full control of the markup for each component.  This is extremely empowering because as we all know, Drupal is not known for producing the best markup when rendering content. In using Storybook, or any other design system for that matter, the markup we define when building the components is what Drupal will render making things look more semantic, accessible and easier to work with.
+The advantage of using a design system like Storybook is that you are in full control of the markup for each component. As a result websites are more semantic, accessible and easier to work with.
+
+## Getting the Drupal environment ready
+
+To start let's get the Drupal environment ready so we can start interacting with Drupal and Storybook more easily.
+
+1. Create a basic Drupal 10 website. If you already have a site ready you can use it.
+1. Add the theme to your website. If you completed the excercise in the previous post, you can copy the theme you built into your site's **/themes/custom/**. Otherwise, you can clone [this repo](https://github.com/mariohernandez/storybook){target=_blank rel=nooperner} into the same location so it becomes your theme.
+1. No need to enable the theme just yet. We'll comeback to the theme shortly.
 
 ## Building more components
 
-Before we get into integrating Drupal with Storybook components, we will need to build more components.  The title component we built in the previous post may not be enough to demonstrate some of the advanced techniques when integrating components.  Just like we did when we built the **title** component in the [previous post](../building-a-modern-drupal-theme-with-storybook/), we will follow the same process for the **Card** component. Before we start, let's take a look at what the Card component looks like.
+The title component we built in the previous post may not be enough to demonstrate some of the advanced techniques when integrating components. We will need to build a larger component which will allow us to use more features and techniques of the component integration process. The component we will build is called **Card** but before we start, let's take a look at what the Card component looks like.
 
-![A couple standing on lobby of large building](/images/storybook-card.webp)
+![People standing on lobby of large building](/images/storybook-card.webp){.body-image .body-image--narrow}
 
-Before building a component I always like to look at it in detail to take inventory of the different parts that make up the component. The card image above shows three parts: the image, the title, and the teaser text. Each of these parts becomes a field we need to create not only in Storybook but also in Drupal. This is important because each field is also of specific type which we need to consider when we define each fields in YAML and in Drupal.  Let's start.
+I like to take inventory of the different parts that make up the components I'm building. The card image above shows three parts: the image, the title, and the teaser text. Each of these parts translate into fields when I am structuring the data for the component as well as building the entity in Drupal.
 
+### Building the Card component
+
+1. In your command line, navigate inside the **storybook** theme in your Drupal site
 1. Inside the **components** directory create a new directory called **card**
 1. Inside the **card** directory add the following four files:
     * **card.css**: for the component's styles
@@ -168,16 +179,32 @@ export default settings;
 Let's go over a few things regarding the code above:
 
 * The data structure in **card.yml** reflects the data structure and type we will use in Drupal later in the post. The image field uses the entire `<img>` element rather than just using the image `src` and `alt` image attributes.  The reason for this is when we get to Drupal, we can use Drupal's full image entity.
-* **card.twig** reuses the title component we created in the previous post. This is Atomic Design in action. Because we built a flexible title component, we can use it on anythin where a title is needed.
+* **card.twig** reuses the title component we created in the previous post. This is Atomic Design in action. Because we built a flexible title component, we can use it on anything where a title is needed.
 * **card.stories.jsx** is the Storybook story for the Card.  Notice how the code in this file is very similar to the one in the title.stories.jsx.
+
+Now let's take a look at the Card component in Storybook:
+
+* While in the **storybook** directory, run
+{% raw %}
+
+```shell
+nvm install
+npm install
+npm run storybook
+```
+
+{% endraw %}
+
+The Card component should be available in Storybook now.  The next part of the process is to get Drupal connected to Storybook so we can start making use of the Card with our Drupal content.
 
 ## Changing gears to Drupal
 
-With the Card component now in place, we can change our attention to Drupal. Here is what we are going to do to get the environment ready for integration:
+With the Card component now in place, we can change our attention back to Drupal.
 
-1. Build a basic Drupal site
-1. Build a Drupal View to create a list of news articles
-1. Integrate Drupal with the Card component so the list of news articles uses the card for each article
+* We will be using Drupal's Article content type to create 4 or 5 Article nodes.
+* Next we need to create a simple Drupal view to display Article nodes in a list using the **Teaser** view mode
+
+## Integrating the Card component
 
 Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8. We are hopeful the technical issues we ran into with SDC can be addressed in the future so we have an opportunity to incorporate it into our environment.
 
