@@ -1,14 +1,19 @@
 // Filters
 const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
+
 // RSS Feed plugin.
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
+
 // Code highlight.
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 // Transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
+
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
+
 // Enable the use of HTML attributes in markdown
 // https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/
 // https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
@@ -41,6 +46,10 @@ const postcssFilter = (cssCode, done) => {
 };
 // ---------- End of postcss compiling -------------
 
+// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+const { minify } = require("terser");
+
+// Process JS.
 const esbuild = require('esbuild');
 // const postcss = require('postcss');
 // const postcssImport = require('postcss-import');
@@ -97,17 +106,28 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  // Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
+    code,
+    callback
+  ) {
+    try {
+      const minified = await minify(code);
+      callback(null, minified.code);
+    } catch (err) {
+      console.error("Terser error: ", err);
+      // Fail gracefully.
+      callback(null, code);
+    }
+  });
+
   // Shortcode for getting the current year.  See partials/footer.html for usage.
   // Source: https://11ty.rocks/eleventyjs/dates/
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   // ---------- Part of postcss compiling above -------------
-  eleventyConfig.addWatchTarget('./src/_includes/styles/styles.css');
 	eleventyConfig.addNunjucksAsyncFilter('postcss', postcssFilter);
   // -------------------------------------
-
-  // ---------- Add a Watch method for CSS ---------------
-  // eleventyConfig.addWatchTarget("./src/css/");
 
   // Enable quiet mode to stop seeing every file that gets processed during build.
   // eleventyConfig.setQuietMode(true);
@@ -116,7 +136,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/js");
   eleventyConfig.addPassthroughCopy("./src/fonts");
   eleventyConfig.addPassthroughCopy("./src/images");
-  // eleventyConfig.addPassthroughCopy("./src/css");
+  eleventyConfig.addPassthroughCopy("./src/manifest.json");
 
   // Do not rebuild when README.md changes (You can use a glob here too)
   eleventyConfig.watchIgnores.add("README.md");
@@ -161,6 +181,8 @@ module.exports = function(eleventyConfig) {
 
   // Tell 11ty to use the .eleventyignore and ignore our .gitignore file
   eleventyConfig.setUseGitIgnore(false);
+
+  eleventyConfig.addWatchTarget("./src/css/");
 
   return {
     markdownTemplateEngine: 'njk',

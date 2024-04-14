@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{% block content %}
+  <article class="not-found">
+    <header>
+      <h1 class="not-found__heading">{{ title }}</h1>
+    </header>
+    <div class="not-found__curved-container">
+      {% include '../../images/icons/curve.svg' %}
+      <div class="not-found__curved-container--content flow">
+        <p>{{ body }}</p>
+        <a class="button" href="{{ cta.url }}">{{ cta.text }}</a>
+      </div>
+    </div>
+  </article>
+{% endblock %}

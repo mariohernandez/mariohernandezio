@@ -8,25 +8,26 @@
     <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
 
     {# Fav icons based on https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
-    <link rel="icon" href="../../../dist/images/favicon.ico" sizes="32x32">
-    <link rel="icon" href="../../../dist/images/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="../../../dist/images/apple-touch-icon.png"><!-- 180×180 -->
-    <link rel="manifest" href="../../../manifest.webmanifest">
+    <link rel="icon" href="/images/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/images/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.json">
 
     {# Syntax highlight using prism with the prism.css theme. #}
     <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
 
+    <!-- capture the CSS content as a Nunjucks variable -->
     <style>
       {% set css %}
       {% include '../../../dist/css/styles.css' %}
       {% endset %}
+      {# feed it through our jsmin filter to minify. #}
       {{css | postcss | safe}}
     </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KFWBDSLVNK"></script>
 
-    {# Minified inline styles for entire site. #}
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -41,8 +42,13 @@
       {% block content %}{% endblock %}
     </main>
     {% include "partials/footer.html" %}
-    <script async>
-      {% include '../../../dist/js/index.js' %}
+    <!-- capture the JS content as a Nunjucks variable -->
+    {% set js %}
+      {% include "../../../dist/js/index.js" %}
+    {% endset %}
+    <!-- feed it through our jsmin filter to minify -->
+    <script>
+      {{ js | jsmin | safe }}
     </script>
   </body>
 </html>
