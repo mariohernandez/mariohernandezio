@@ -25,6 +25,7 @@
 }
 
 .blog-post__body {
+  text-wrap: balance;
 
   p {
     margin-block-end: 1.5rem;
