@@ -25,6 +25,8 @@
 }
 
 .blog-post__body {
+  margin-inline: auto;
+  max-width: 65ch;
 
   p {
     margin-block-end: 1.5rem;
@@ -44,16 +46,18 @@
   }
 
   h2,
-  h3 {
-    margin-block-start: var(--size-20);
+  h3,
+  h4 {
+    margin-block-start: var(--size-30);
+    margin-block-end: var(--size-12);
   }
 
   h2 {
-    font-size: var(--font-size-22);
+    font-size: var(--font-size-20);
   }
 
   h3 {
-    font-size: var(--font-size-20);
+    font-size: var(--font-size-18);
   }
 
   ol {
