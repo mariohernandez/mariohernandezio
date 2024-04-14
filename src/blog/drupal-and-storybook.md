@@ -51,8 +51,8 @@ Let's go over the steps to building the base of your new Drupal theme with ViteJ
 {% raw %}
 
 ```shell
-npm create vite@latest my_theme
-# replace my_theme with a name of your choice.
+npm create vite@latest storybook
+# replace storybook with a name of your choice.
 ```
 
 {% endraw %}
