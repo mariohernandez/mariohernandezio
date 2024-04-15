@@ -51,8 +51,8 @@ Let's go over the steps to building the base of your new Drupal theme with ViteJ
 {% raw %}
 
 ```shell
-npm create vite@latest my_theme
-# replace my_theme with a name of your choice.
+npm create vite@latest storybook
+# replace storybook with a name of your choice.
 ```
 
 {% endraw %}
@@ -316,6 +316,6 @@ In the next blog post, we will build more components that nest smaller component
 
 ## In closing
 
-Getting to this point was a team effort and I'd like to thank [Chaz Chumley](https://twitter.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
+Getting to this point was a team effort and I'd like to thank [Chaz Chumley](https://github.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
 
 I hope this was helpful and if there is anything I can help you with in your journey of a Storybook-friendly Drupal theme, feel free to reach out.
