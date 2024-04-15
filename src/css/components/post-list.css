@@ -1,8 +1,9 @@
 /**
  * @file
- * Blog landing page and Recommended post listing styles.
+ * Blog landing page.
  */
 
+/* Styles for cards lists. */
 .post-list {
   max-width: var(--size-960);
   min-height: 100vh;
@@ -35,4 +36,39 @@
     height: var(--size-16);
     width: var(--size-16);
   }
+}
+
+/* Styles for list without cards. */
+.blog__item:not(:last-child) {
+  border-block-end: 1px solid var(--gray-medium);
+  margin-block-end: var(--size-20);
+  padding-block-end: var(--size-16);
+}
+
+.blog__link {
+  font-size: var(--font-size-18);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-20);
+  }
+}
+
+.blog__teaser {
+  font-size: var(--font-size-16);
+
+  @media (--tablet-large) {
+    font-size: var(--font-size-18);
+  }
+}
+
+.blog__date {
+  font-size: var(--font-size-12);
+  font-weight: var(--weight-600);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }

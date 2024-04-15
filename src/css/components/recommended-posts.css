@@ -11,12 +11,12 @@
   /* Component heading. */
   .post-list__heading {
     border-block-end: 1px solid var(--gray-medium);
-    font-size: var(--font-size-20);
+    font-size: var(--font-size-18);
     margin-block-end: var(--size-20);
     padding-block-end: var(--size-5);
 
     @media (--tablet-large) {
-      font-size: var(--font-size-24);
+      font-size: var(--font-size-20);
     }
   }
 
