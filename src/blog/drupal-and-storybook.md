@@ -3,7 +3,7 @@ date: "2024-04-14"
 title: "Building a modern Drupal theme with Storybook"
 tags: ['drupal','storybook']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/storybook.webp"
 featuredImageAlt: "Wooden hammer painted in yellow in a yellow background"
 imageThumb: "/images/thumbs/storybook-thumb.webp"
