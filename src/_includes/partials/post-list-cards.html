@@ -1,0 +1,14 @@
+{% if postListHeadline %}
+  <header>
+    <h2 class="post-list__heading" data-highlight="primary">
+      {{ postListHeadline }}
+    </h2>
+  </header>
+{% endif %}
+<ul class="post-list__items" role="list">
+  {% for item in postListItems %}
+    <li class="post-list__item">
+      {% include "partials/card.html" %}
+    </li>
+  {% endfor %}
+</ul>
