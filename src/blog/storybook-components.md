@@ -307,8 +307,9 @@ With this information on hand, it is clear to us the template suggestion we need
 By looking at the path of the template in the code inspector, we can see that the original template being used is located inside the Olivero core theme. It's best to create our template suggestion by copying a similar template to the one we want to create.
 
 * Copy **/core/themes/olivero/templates/content/node--teaser.html.twig** into your theme's **/storybook/templates/content/**. Create the directory if it does not exist.
+* Rename the newly copied template to **node--article--teaser.html.twig**.
 
-The template we just copied has a lot of information that may or may not be needed when integrating it with Storybook. If you recall, the Card component we built was made up of three parts: an image, a title, and teaser text.  Each of those are Drupal fields and these are the only fields we care about when integrating. Whenever I copy a template from Drupal core or a module into my theme, I like to leave the comments on the template untouched. This is helpful because this way you can reference all the details about the template as you override it.
+The template we just copied has a lot of information that may or may not be needed when integrating it with Storybook. If you recall, the Card component we built was made up of three parts: an image, a title, and teaser text.  Each of those are Drupal fields and these are the only fields we care about when integrating. Whenever when I copy a template from Drupal core or a module into my theme, I like to leave the comments on the template untouched. This is helpful because this way you can reference all the available variables in the template as you override it.
 
 ### The actual integration
 

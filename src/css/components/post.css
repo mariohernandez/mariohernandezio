@@ -29,6 +29,11 @@
   max-width: 65ch;
   text-wrap: balance;
 
+  /* Change links color to purple if they are inside the post body. */
+  a {
+    color: var(--purple);
+  }
+
   p {
     margin-block-end: 1.5rem;
   }
