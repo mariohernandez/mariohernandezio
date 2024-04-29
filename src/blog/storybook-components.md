@@ -11,7 +11,7 @@ featuredImageCredit: "Alex Shutin"
 featuredImageCreditUrl: "https://unsplash.com/@fiveamstories"
 summary: "In this post we'll go over the process of making Drupal aware of the components we have built in Storybook."
 ---
-Hey you're back! 🙂 In the [previous post](../building-a-modern-drupal-theme-with-storybook) we talked about how to build a custom Drupal theme using Storybook as the design system.  We also built a simple component to demonstrate how Storybook, through the use of custom extensions, is able to understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
+Hey you're back! 🙂 In the [previous post](../building-a-modern-drupal-theme-with-storybook) we talked about how to build a custom Drupal theme using Storybook as the design system.  We also built a simple component to demonstrate how Storybook, using custom extensions, can understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
 If you are following along, we will continue where we left off to take advantage of all the prep work we did in the previous post. Topics we will cover in this post include:
 
 1. What is Drupal integration
@@ -24,15 +24,15 @@ If you are following along, we will continue where we left off to take advantage
 
 In the context of Drupal development using the component-driven methodology, Drupal integration means connecting Drupal presenter templates such as node.html.twig, block.html.twig, paragraph.html.twig, etc. to Storybook by mapping Drupal fields to component fields in Storybook. This in turn allows for your Drupal content to be rendered wrapped in the Storybook components.
 
-The advantage of using a design system like Storybook is that you are in full control of the markup when building components, as a result your website is more semantic, accessible and easier to maintain.
+The advantage of using a design system like Storybook is that you are in full control of the markup when building components, as a result your website is more semantic, accessible, and easier to maintain.
 
 ## Getting a Drupal site ready
 
-In the previous post all the work we did was in a standalone project which did not require Drupal to run, In this post, we get to interact with Drupal so we need at the very least a basic Drupal site up and running. If you are following along and already have a Drupal 10 site ready, you can skip the first step below;
+In the previous post all the work we did was in a standalone project which did not require Drupal to run, In this post, we get to interact with Drupal so we need at the very least a basic Drupal site up and running. If you are following along and already have a Drupal 10 site ready, you can skip the first step below.
 
 1. Build a basic Drupal 10 website ([I recommend using DDEV](https://ddev.readthedocs.io/en/stable/users/quickstart/#drupal){target=_blank rel=noopener}).
 1. Add the **storybook** theme to your website. If you completed the excercise in the previous post, you can copy the theme you built into your site's **/themes/custom/** directory, Otherwise, you can clone [the previous post repo](https://github.com/mariohernandez/storybook){target=_blank rel=nooperner} into the same location so it becomes your theme. After this your theme's path should be **themes/custom/storybook**.
-1. No need to enable the theme just yet, we'll comeback to the theme shortly.
+1. No need to enable the theme just yet, we'll come back to the theme shortly.
 1. Finally, create a new Article post that includes a title, body content and an image of your choice. We'll use this article later in the process.
 
 ## Back to Storybook
@@ -41,7 +41,7 @@ The title component we built in the previous post may not be enough to demonstra
 
 ![Palm trees in front of city buildings](/images/storybook-card.webp){.body-image .body-image--narrow}
 
-When building components, I like to take inventory of the different parts that make up the components I'm building. The card image above shows three parts: the image, the title, and the teaser text. Each of these parts translates into fields when I am defining the data structurefor the component or building the entity in Drupal.
+When building components, I like to take inventory of the different parts that make up the components I'm building. The card image above shows three parts: the image, the title, and the teaser text. Each of these parts translates into fields when I am defining the data structure for the component or building the entity in Drupal.
 
 ## Building the Card component
 
@@ -88,7 +88,10 @@ teaser: 'Step inside for a tour. We offer a variety of tours and experiences to 
   <div class="card__content">
     {% if title %}
       {% include "@atoms/title/title.twig" with {
-        'title': title
+        'level': title.level,
+        'modifier': title.modifier,
+        'text': title.text,
+        'url': title.url,
       } only %}
     {% endif %}
 
@@ -136,11 +139,11 @@ Let's go over a few things regarding the code above:
 
 ### Before we preview the Card, some updates are needed
 
-You may have noticed in **card.twig** we used the namespace **@atoms** when nesting the **title** component. The namespace above does not exist and we need to create it now. In addition, we need to move the **title** component into the **01-atoms** directory:
+You may have noticed in **card.twig** we used the namespace **@atoms** when nesting the **title** component. The namespace above does not exist, and we need to create it now. In addition, we need to move the **title** component into the **01-atoms** directory:
 
 * In your code editor or command line (whichever is easier), move the **title** directory into the **01-atoms** directory
 * In your editor, open **title.stories.jsx** and change the line **title: 'Components/Title'** to **title: 'Atoms/Title'**. This will display the title component within the Atoms category in Storybook's sidebar.
-* Rather than have you make individual changes to **vite.config.js**, let's replace/overwrite all of its content with the following:
+* Rather than have you make individual changes to **vite.config.js**, let's replace/overwrite all its content with the following:
 
 {% raw %}
 
@@ -186,17 +189,17 @@ export default defineConfig({
 Let's go over some of the most noticeable updates inside **vite.config.js**:
 
 * We have defined a few things to improve the functionality of our Vite project, starting with using **src** as our app root directory and **public** for publicDir. This helps the app understand the project structure in a relative manner.
-* Next we defined a Build task which provides the app with defaults for things like where should it compiled code to (i.e. **/dist**), and rollupOptions for instructing the app which stylesheets to compile and what to call them.
-* As part of the rollupOptions we also defined two stylesheets for global styles (**reset.css** and **styles.css**). We'll create these next.
-**IMPORTANT** This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repeatitive tasks performed on a typical front-end project.
-* Under the Plugins section, we have defined two new namespaces, **@atoms** and **@molecules**, each of which points to specific path within our components directory. These are the namespaces Storybook understands when incuding/nesting components. You can have as many namespaces as needed.
+* Next, we defined a Build task which provides the app with defaults for things like where should it compiled code to (i.e. **/dist**), and [`rollupOptions`](https://rollupjs.org/configuration-options/){target=_blank rel=noopener} for instructing the app which stylesheets to compile and what to call them.
+* As part of the `rollupOptions` we also defined two stylesheets for global styles (**reset.css** and **styles.css**). We'll create these next.
+**IMPORTANT** This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repetitive tasks performed on a typical front-end project.
+* Under the Plugins section, we have defined two new namespaces, **@atoms** and **@molecules**, each of which points to specific path within our _components_ directory. These are the namespaces Storybook understands when nesting components. You can have as many namespaces as needed.
 
 ### Adding global styles
 
 * Inside the **src** directory, create a new directory called **css**
 * Inside the **css** directory, add two new files, **reset.css** and **styles.css**
 * Copy and paste the styles for [reset.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/reset.css){target=_blank rel=noopener} and [styles.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/styles.css){target=_blank rel=noopener}
-* Now in order for Storybook to use _reset.css_ and _styles.css_, we need to update **/.storybook/preview.js** by adding these two imports directly after the current imports, around line 4.
+* Now for Storybook to use _reset.css_ and _styles.css_, we need to update **/.storybook/preview.js** by adding these two imports directly after the current imports, around line 4.
 
 {% raw %}
 
@@ -336,21 +339,21 @@ The template we just copied has a lot of information that may or may not be need
 {% endraw %}
 
 * We set a variable with `content|render` as its value. The only purpose for this variable is to make Drupal aware of the entire content array for caching purposes.
-* Next we setup a variable called **article_title** which we structured the same way as the title component:
+* Next, we setup a variable called **article_title** which we structured the same way as the title component:
   * Notice how for the **text** and **url** properties we are using Drupal specific variables (**label** and **url**), accordingly. If you look in the comments in _node--article--teaser.html.twig_ you will see these two variables.
 * We are using a Twig **include** statement with the **@molecules** namespace to nest the Card component into the node template. The same way we nested the Title component into the Card.
 * We mapped Drupal's attributes into the component's attributes placeholder so Drupal can inject any attributes such as CSS classes, IDs, Data attributes, etc. into the component.  This is important because we want to make sure that although our markup is custom, our components still take advantage of everything Drupal has to offer.
-* Finally we mapped the image, title and teaser fields from Drupal to the component's equivalent fields.
+* Finally, we mapped the image, title and teaser fields from Drupal to the component's equivalent fields.
 * Save the changes to the template and clear Drupal's cache
 * Reload the homepage and you should see the article node being rendered using the Card component. See below:
 ![Example of twig debugging](/images/integrated-card.webp){.body-image .body-image--narrow}
 * If you right-click on the article and select **Inspect**, you will notice the following:
   * Drupal is now using our **node--article--teaser.html.twig**, we can tell because the filename with an **X** before its name is **node--article--teaser.html.twig** but if we look a little lower we will see **BEGIN OUTPUT From 'themes/custom/storybook/src/templates/content/node--article--teaser.html.twig'**.
-  * You will also noticed that the article is using the custom markup we wrote for the Card component which is more semantic, accessible, but in addition to this, the **`<article>`** tag is also inheriting several other attributes that were provided by Drupal through its Attributes variable. See below:
+  * You will also notice that the article is using the custom markup we wrote for the Card component which is more semantic, accessible, but in addition to this, the **`<article>`** tag is also inheriting several other attributes that were provided by Drupal through its Attributes variable. See below:
 
 ![Drupal template suggestions in code inspector](/images/attr.webp){.body-image .body-image--wide}
 
 
 ## In closing
 
-This is only a small example of how to build a simple component in Storybook using Twig and then integrate it with Drupal so content is rendered in a more semantic and accessible manner. There are many more advantages of implementing a system like this. I hope this was helpful and see the potential of a component-driven environment using Storybook. Thanks for visiting.
+This is only a small example of how to build a simple component in Storybook using Twig and then integrate it with Drupal, so content is rendered in a more semantic and accessible manner. There are many more advantages of implementing a system like this. I hope this was helpful and see the potential of a component-driven environment using Storybook. Thanks for visiting.
