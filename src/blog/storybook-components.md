@@ -291,25 +291,40 @@ All the pieces are in place to Integrate the Card component so Drupal can use it
   * While logged in with admin access, navigate to `/admin/config/development/settings` on your browser. This will bring up the Development settings page.
   * Check all the boxes on this page and click **Save settings**.  This will enable Twig debugging and disable caching.
 
-* With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page.
+* With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page. See example below.
+
 **NOTE**: If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
 
-![Code inspector showing Drupal debugging](/images/storybook-debug.webp)
-_Example of code inspector showing Drupal templates_
+![Code inspector showing Drupal debugging](/images/storybook-debug.webp){.body-image .body-image--wide}
 
-There are a lot of templates to see here but the ones we are interested in are the ones with the name **node...***. These are the templates used to display any type of node in Drupal. In addition to template names, Twig debugging also tells us where the template being used is located (Drupal core, a module, our theme, etc.).
-I have marked with an arrow the template **node.html.twig**, which is the one Drupal is currently using to render the Article node. The template with an **X** before its name is the one currently being used to render the article.
-Just above the active template see a list of more templates that start with **node...**. These are known as template suggestions. Drupal is basically telling us that if we want to override the way a node is rendered, we can create a template inside our theme with any of the names being suggested.  The higher the template appears on the list, the more specific it is to the piece of content being rendered. For example, changes made to **_**node.html.twig**_** would affect ALL nodes throughout the site, whereas changes made to **node--article--teaser.html.twig** will only affect nodes of type **article** when displayed in **teaser** view mode.
-With this information on hand, it is clear to us the template suggestion we need to create is **node--article--teaser.html.twig**.
+There are a lot of templates to see in the example above but the ones we are interested in are the ones that start with the name **node...***. These are the templates used to display any type of node in Drupal.
 
-#### Copy the template
+In the example above, we see a list of templates that start with **node...***. These are called template suggestions and are the names Drupal is suggesting we can assign our custom templates. The higher the template appears on the list, the more specific it is to the piece of content being rendered. For example, changes made to **_**node.html.twig**_** would affect ALL nodes throughout the site, whereas changes made to **node--article--teaser.html.twig** will only affect nodes of type **article** when displayed in **teaser** view mode.
 
-By looking at the path of the template in the code inspector, we can see that the original template being used is located inside the Olivero core theme. It's best to create our template suggestion by copying a similar template to the one we want to create.
+Notice I marked the template name Drupal is using to render the Article node. We know this is the template because it has an **X** before the template name.
+
+In addition, I also marked the template path which we will need to make a copy of this template.  As you can see the current template is located in **core/themes/olivero/templates/content/node--teaser.html.twig**.
+
+And finally, I marked examples of attributes Drupal is injecting in the markup. These attributes may not always be useful but it is a good practice to ensure they are available even when we are writing custom markup for our components.
+
+### Enable the Storybook theme
+
+Before we forget, let's enable the Storybook theme otherwise all the work we are doing in our custom markup will not be available.
+
+* Navigate to **/admin/appearance** and look for the Storybook theme
+* Install it and also make it the default theme
+* Clear Drupal's cache
+
+### Copy the template
+
+By looking at the path of the template in the code inspector, we can see that the original template being used is located inside the Olivero core theme. It's best to create our template suggestion by copying a similar template to the one we want to create and in this case **node--teaser.html.twig** makes sense.
 
 * Copy **/core/themes/olivero/templates/content/node--teaser.html.twig** into your theme's **/storybook/templates/content/**. Create the directory if it does not exist.
-* Rename the newly copied template to **node--article--teaser.html.twig**.
+* Now rename the newly copied template to **node--article--teaser.html.twig**.
 
-The template we just copied has a lot of information that may or may not be needed when integrating it with Storybook. If you recall, the Card component we built was made up of three parts: an image, a title, and teaser text.  Each of those are Drupal fields and these are the only fields we care about when integrating. Whenever when I copy a template from Drupal core or a module into my theme, I like to leave the comments on the template untouched. This is helpful because this way you can reference all the available variables in the template as you override it.
+As you can see, by renaming the template **node--article--teaser**, we are indicating that any changes we make to this template will only affect nodes of type Article which are displayed in Teaser view mode.
+
+The template has a lot of information that may or may not be needed when integrating it with Storybook. If you recall, the Card component we built was made up of three parts: an image, a title, and teaser text.  Each of those are Drupal fields and these are the only fields we care about when integrating. Whenever when I copy a template from Drupal core or a module into my theme, I like to keep the comments on the template untouched. This is helpful in case I need to reference any variables or elements of the template.
 
 ### The actual integration
 
@@ -340,16 +355,17 @@ The template we just copied has a lot of information that may or may not be need
 {% endraw %}
 
 * We set a variable with `content|render` as its value. The only purpose for this variable is to make Drupal aware of the entire content array for caching purposes.
-* Next, we setup a variable called **article_title** which we structured the same way as the title component:
+* Next, we setup a variable called **article_title** which we structured the same way as data inside **card.yml**. Having similar data structures between Drupal and our components provides many advantages during the integration process.
   * Notice how for the **text** and **url** properties we are using Drupal specific variables (**label** and **url**), accordingly. If you look in the comments in _node--article--teaser.html.twig_ you will see these two variables.
 * We are using a Twig **include** statement with the **@molecules** namespace to nest the Card component into the node template. The same way we nested the Title component into the Card.
-* We mapped Drupal's attributes into the component's attributes placeholder so Drupal can inject any attributes such as CSS classes, IDs, Data attributes, etc. into the component.  This is important because we want to make sure that although our markup is custom, our components still take advantage of everything Drupal has to offer.
+* We mapped Drupal's attributes into the component's attributes placeholder so Drupal can inject any attributes such as CSS classes, IDs, Data attributes, etc. into the component.
 * Finally, we mapped the image, title and teaser fields from Drupal to the component's equivalent fields.
 * Save the changes to the template and clear Drupal's cache
 * Reload the homepage and you should see the article node being rendered using the Card component. See below:
 ![Example of twig debugging](/images/integrated-card.webp){.body-image .body-image--narrow}
 * If you right-click on the article and select **Inspect**, you will notice the following:
-  * Drupal is now using our **node--article--teaser.html.twig**, we can tell because the filename with an **X** before its name is **node--article--teaser.html.twig** but if we look a little lower we will see **BEGIN OUTPUT From 'themes/custom/storybook/src/templates/content/node--article--teaser.html.twig'**.
+  * Drupal is now using **node--article--teaser.html.twig**. This is the template we copied.
+  * The template path is now **themes/custom/storybook/src/templates/content/**.
   * You will also notice that the article is using the custom markup we wrote for the Card component which is more semantic, accessible, but in addition to this, the **`<article>`** tag is also inheriting several other attributes that were provided by Drupal through its Attributes variable. See below:
 
 ![Drupal template suggestions in code inspector](/images/attr.webp){.body-image .body-image--wide}
