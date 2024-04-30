@@ -26,22 +26,13 @@ In the context of Drupal development using the component-driven methodology, Dru
 
 The advantage of using a design system like Storybook is that you are in full control of the markup when building components, as a result your website is more semantic, accessible, and easier to maintain.
 
-## Getting a Drupal site ready
-
-In the previous post all the work we did was in a standalone project which did not require Drupal to run, In this post, we get to interact with Drupal so we need at the very least a basic Drupal site up and running. If you are following along and already have a Drupal 10 site ready, you can skip the first step below.
-
-1. Build a basic Drupal 10 website ([I recommend using DDEV](https://ddev.readthedocs.io/en/stable/users/quickstart/#drupal){target=_blank rel=noopener}).
-1. Add the **storybook** theme to your website. If you completed the excercise in the previous post, you can copy the theme you built into your site's **/themes/custom/** directory, Otherwise, you can clone [the previous post repo](https://github.com/mariohernandez/storybook){target=_blank rel=nooperner} into the same location so it becomes your theme. After this your theme's path should be **themes/custom/storybook**.
-1. No need to enable the theme just yet, we'll come back to the theme shortly.
-1. Finally, create a new Article post that includes a title, body content and an image of your choice. We'll use this article later in the process.
-
-## Back to Storybook
+## Building more components in Storybook
 
 The title component we built in the previous post may not be enough to demonstrate some of the advanced techniques when integrating components. We will build a larger component to put these techniques in practice. The component we will build is called **Card** and it looks like this:
 
 ![Palm trees in front of city buildings](/images/storybook-card.webp){.body-image .body-image--narrow}
 
-When building components, I like to take inventory of the different parts that make up the components I'm building. The card image above shows three parts: the image, the title, and the teaser text. Each of these parts translates into fields when I am defining the data structure for the component or building the entity in Drupal.
+When building components, I like to take inventory of the different parts that make up the components I'm building. The card image above shows three parts: An image, a title, and teaser text. Each of these parts translates into fields when I am defining the data structure for the component or building the entity in Drupal.
 
 ## Building the Card component
 
@@ -104,7 +95,7 @@ teaser: 'Step inside for a tour. We offer a variety of tours and experiences to 
 
 {% endraw %}
 
-* Copy [these styles](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/components/02-molecules/card/card.css){target=_blank rel=noopener} into **card.css**.
+* Copy and paste [these styles](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/components/02-molecules/card/card.css){target=_blank rel=noopener} into **card.css**.
 
 * Finally, let's create the Storybook card story by adding the following to **card.stories.jsx**:
 {% raw %}
@@ -133,16 +124,17 @@ export default component;
 Let's go over a few things regarding the code above:
 
 * The data structure in **card.yml** reflects the data structure and type we will use in Drupal.
-  * The image field uses the entire `<img>` element rather than just using the image **src** and **alt** attributes.  The reason for this is so when we get to Drupal, we can use Drupal's full image entity. This is recommended for caching purposes.
-* **card.twig** reuses the title component we created in the previous post. This is Atomic Design in action. Because we built a flexible title component, we can use it on anything where a title is needed.
-* **card.stories.jsx** in the Storybook story for the Card, notice how the code in this file is very similar to the code in the **title.stories.jsx**. Even with complex components, when we port them into Storybook as stories, most times the code will be similar as what you see above because Storybook is simply rendering whatever is in **.twig** and **.yml** files. There are exceptions when the React code may have extra parameters or logic which typically happens when we're building stories variations.
+  * The image field uses the entire `<img>` element rather than just using the image **src** and **alt** attributes.  The reason for this is so when we get to Drupal, we can use Drupal's full image entity. This is a good practice for caching purposes.
+* **card.twig** reuses the title component we created in the previous post. Rather than build a title from scratch for the Card and repeat the code we already wrote, reusing the existing components keeps us DRY.
+* **card.stories.jsx** in the Storybook story for the Card, notice how the code in this file is very similar to the code in the **title.stories.jsx**. Even with complex components, when we port them into Storybook as stories, most times the code will be similar as what you see above because Storybook is simply parsing whatever is in **.twig** and **.yml** files. There are exceptions when the React code may have extra parameters or logic which typically happens when we're building stories variations. Maybe a topic for a different blog post. 😉
 
 ### Before we preview the Card, some updates are needed
 
-You may have noticed in **card.twig** we used the namespace **@atoms** when nesting the **title** component. The namespace above does not exist, and we need to create it now. In addition, we need to move the **title** component into the **01-atoms** directory:
+You may have noticed in **card.twig** we used the namespace **@atoms** when nesting the **title** component. This namespace does not exist, and we need to create it now. In addition, we need to move the **title** component into the **01-atoms** directory:
 
 * In your code editor or command line (whichever is easier), move the **title** directory into the **01-atoms** directory
-* In your editor, open **title.stories.jsx** and change the line **title: 'Components/Title'** to **title: 'Atoms/Title'**. This will display the title component within the Atoms category in Storybook's sidebar.
+* In your editor, open **title.stories.jsx** and change the line
+**title: 'Components/Title'** to **title: 'Atoms/Title'**. This will display the title component within the Atoms category in Storybook's sidebar.
 * Rather than have you make individual changes to **vite.config.js**, let's replace/overwrite all its content with the following:
 
 {% raw %}
@@ -196,9 +188,9 @@ Let's go over some of the most noticeable updates inside **vite.config.js**:
 
 ### Adding global styles
 
-* Inside the **src** directory, create a new directory called **css**
+* Inside **storybook/src**, create a new directory called **css**
 * Inside the **css** directory, add two new files, **reset.css** and **styles.css**
-* Copy and paste the styles for [reset.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/reset.css){target=_blank rel=noopener} and [styles.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/styles.css){target=_blank rel=noopener}
+* Here are the styles for [reset.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/reset.css){target=_blank rel=noopener} and [styles.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/styles.css){target=_blank rel=noopener}. Please copy them and paste them into each of the stylesheets.
 * Now for Storybook to use _reset.css_ and _styles.css_, we need to update **/.storybook/preview.js** by adding these two imports directly after the current imports, around line 4.
 
 {% raw %}
@@ -212,6 +204,7 @@ import '../dist/css/styles.css';
 
 ### Previewing the Card in Storybook
 
+_Remember, you need NodeJS v20 or higher as well as NVM installed on your machine_.
 
 * In your command line, navigate to the **storybook** directory and run:
 
@@ -225,20 +218,32 @@ npm run storybook
 ```
 
 {% endraw %}
-_Remember, you need NodeJS v20 or higher as well as NVM installed on your machine_.
 
-**NOTE**: The command `npm run build` is required the first time you are building your Storybook app and whenever major changes are made to the app's configuration. After that, you can simply run `npm run storybook`.
+A quick note about the commands above:
+
+* **nvm install** and **npm install** are typically only done once in your app. These commands will first install and use the node version specified in **.nvmrc**, and will install all the required node packages found in **package.json**. If you happen to be workign on another project that may use a different version of node, when you comeback to the Storybook project you will need to run **nvm use** in order to resume using the right node version.
+* **npm run build** is usually only ran when you have made configuration changes to the project or are introducing new files.
+* **npm run storybook** is the command you will use all the time when you want to run Storybook.
 
 After Storybook launches, you should see two story categories in Storybook's sidebar, **Atoms** and **Molecules**. The title component should be under Atoms and the Card under Molecules. See below:
 
 ![Palm trees near city buildings](/images/card-shot.webp){.body-image}
 
-## Prepping Drupal for integration
+## Installing Drupal and setting up the Storybook theme
 
-With the Card component now in place, let's change our attention back to Drupal. If you are following along, go ahead and complete the following tasks:
+We have completed all the prep work in Storybook and our attention now will be all in Drupal. In the previous post all the work we did was in a standalone project which did not require Drupal to run. In this post, we need a Drupal site to be able to do the integration with Storybook. If you are following along and already have a Drupal 10 site ready, you can skip the first step below.
 
-* Install and enable the [Components libraries](https://www.drupal.org/project/components){target=_blank rel=noopener} module
-* Add the following at the end of **storybook.info.yml** (mind your indentation):
+1. Build a basic Drupal 10 website ([I recommend using DDEV](https://ddev.readthedocs.io/en/stable/users/quickstart/#drupal){target=_blank rel=noopener}).
+1. Add the **storybook** theme to your website. If you completed the excercise in the previous post, you can copy the theme you built into your site's **/themes/custom/** directory, Otherwise, you can clone [the previous post repo](https://github.com/mariohernandez/storybook){target=_blank rel=nooperner} into the same location so it becomes your theme. After this your theme's path should be **themes/custom/storybook**.
+1. No need to enable the theme just yet, we'll come back to the theme shortly.
+1. Finally, create a new Article post that includes a title, body content and an image. We'll use this article later in the process.
+
+## Creating Drupal namespaces and adding Libraries
+
+Earlier we created namespaces for Storybook, now we will do the same but this time for Drupal. It is best if the namesapces' names between Storybook and Drupal match for consistency. In addition, we will create Drupal libraries to allow Drupal to use the CSS we've written.
+
+* Install and enable the [Components](https://www.drupal.org/project/components){target=_blank rel=noopener} module
+* Add the following namespaces at the end of **storybook.info.yml** (mind your indentation):
 
 {% raw %}
 
@@ -250,9 +255,8 @@ components:
 ```
 
 {% endraw %}
-_These are the same namespaces we created earlier for Storybook, but this time we are creating them for Drupal_.
 
-* Override all content in **storybook.libraries.yml** with the following:
+* Replace all content in **storybook.libraries.yml** with the following:
 
 {% raw %}
 
@@ -275,14 +279,10 @@ card:
 
 * Let's go over the changes to both, **storybook.info.yml** and **storybook.libraries.yml** files:
 
-  * The block of code we added in **storybook.info.yml** is critical for Drupal to find our components in Storybook.  Using the Components libraries module allows us to create namespaces. Namespaces make it easier for us to tell Drupal where to look for our components since each namespace (`@atoms`, `@molecules`, etc.), is associated with a specific path to the corresponding components. This is important because Drupal by default only looks for Twig templates inside the **/templates** directory.
-  * We added two CSS stylesheets (reset.css and styles.css), that handle base styles in our theme. Those stylesheets are included in the Global library.  In addition, if you recall when we created the Card component, the first line inside **card.twig** is a Twig attach library statement. Using libraries is the recommended way for adding CSS and JS to pages/components.  The library does not exist so in the second part of the code snippet in **storybook.libraries.yml** we add the library so Drupal can make use of the card's CSS and JS (if available).
+  * Using the Components module we created two namespaces: **@atoms** and **@molecules**. Each namespace is associated with a specific path to the corresponding components. This is important because Drupal by default only looks for Twig templates inside the **/templates** directory and without the Components module and the namespaces it would not know to look for our component's Twig templates inside the components directory.
+  * Then we created two Drupal libraries: **global** and **card**. The Global library includes two CSS stylesheets (reset.css and styles.css), which handle base styles in our theme. the Card library includes the styles we wrote for the Card component. If you noticed, when we created the Card component, the first line inside **card.twig** is a Twig attach library statement. Basically **card.twig** is expecting a Drupal library called **card**.
 
-* Enable the Storybook theme and make it the default theme.
-
-## Integrating the Card component
-
-### Template suggestions
+## Template suggestions
 
 All the pieces are in place to Integrate the Card component so Drupal can use it to render article nodes when viewed in teaser view mode.
 
@@ -293,13 +293,11 @@ All the pieces are in place to Integrate the Card component so Drupal can use it
 
 * With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page. See example below.
 
-**NOTE**: If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
+**NOTE**: I am using a new basic Drupal site with Olivero as the default theme. If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
 
 ![Code inspector showing Drupal debugging](/images/storybook-debug.webp){.body-image .body-image--wide}
 
-There are a lot of templates to see in the example above but the ones we are interested in are the ones that start with the name **node...***. These are the templates used to display any type of node in Drupal.
-
-In the example above, we see a list of templates that start with **node...***. These are called template suggestions and are the names Drupal is suggesting we can assign our custom templates. The higher the template appears on the list, the more specific it is to the piece of content being rendered. For example, changes made to **_**node.html.twig**_** would affect ALL nodes throughout the site, whereas changes made to **node--article--teaser.html.twig** will only affect nodes of type **article** when displayed in **teaser** view mode.
+In the example above, we see a list of templates that start with **node...***. These are called template suggestions and are the names Drupal is suggesting we can assign our custom templates. The higher the template appears on the list, the more specific it is to the piece of content being rendered. For example, changes made to **_**node.html.twig**_** would affect ALL nodes throughout the site, whereas changes made to **node--1--teaser.html.twig** will only affect the first node created on the site but only when it's viewed in **teaser** view mode.
 
 Notice I marked the template name Drupal is using to render the Article node. We know this is the template because it has an **X** before the template name.
 
@@ -307,26 +305,26 @@ In addition, I also marked the template path which we will need to make a copy o
 
 And finally, I marked examples of attributes Drupal is injecting in the markup. These attributes may not always be useful but it is a good practice to ensure they are available even when we are writing custom markup for our components.
 
-### Enable the Storybook theme
+## Enable the Storybook theme
 
-Before we forget, let's enable the Storybook theme otherwise all the work we are doing in our custom markup will not be available.
+Before we forget, let's enable the Storybook theme otherwise all the work we are doing will not be visible.
 
 * Navigate to **/admin/appearance** and look for the Storybook theme
 * Install it and also make it the default theme
 * Clear Drupal's cache
 
-### Copy the template
+## Create a template suggestion
 
-By looking at the path of the template in the code inspector, we can see that the original template being used is located inside the Olivero core theme. It's best to create our template suggestion by copying a similar template to the one we want to create and in this case **node--teaser.html.twig** makes sense.
+By looking at the path of the template in the code inspector, we can see that the original template being used is located inside the Olivero core theme. The debugging screenshot above shows a pretty extensive list of templates suggestions, and based on our requirements, copying the file **node--teaser.html.twig** makes sense since we are going to be working with a node in teaser view mode.
 
 * Copy **/core/themes/olivero/templates/content/node--teaser.html.twig** into your theme's **/storybook/templates/content/**. Create the directory if it does not exist.
 * Now rename the newly copied template to **node--article--teaser.html.twig**.
 
-As you can see, by renaming the template **node--article--teaser**, we are indicating that any changes we make to this template will only affect nodes of type Article which are displayed in Teaser view mode.
+As you can see, by renaming the template **node--article--teaser** (one of the names listed as a suggestion), we are indicating that any changes we make to this template will only affect nodes of type Article which are displayed in Teaser view mode. So whenever an Article node is displayed, if it is in teaser view mode, it will use the Card component to render it.
 
 The template has a lot of information that may or may not be needed when integrating it with Storybook. If you recall, the Card component we built was made up of three parts: an image, a title, and teaser text.  Each of those are Drupal fields and these are the only fields we care about when integrating. Whenever when I copy a template from Drupal core or a module into my theme, I like to keep the comments on the template untouched. This is helpful in case I need to reference any variables or elements of the template.
 
-### The actual integration
+## The actual integration ...Finally
 
 1. Delete everything from the newly copied template except the comments and the **classes** array variable
 1. At the bottom of what is left in the template add the following code snippet:
@@ -364,12 +362,20 @@ The template has a lot of information that may or may not be needed when integra
 * Reload the homepage and you should see the article node being rendered using the Card component. See below:
 ![Example of twig debugging](/images/integrated-card.webp){.body-image .body-image--narrow}
 * If you right-click on the article and select **Inspect**, you will notice the following:
-  * Drupal is now using **node--article--teaser.html.twig**. This is the template we copied.
+  * Drupal is now using **node--article--teaser.html.twig**. This is the template we created.
   * The template path is now **themes/custom/storybook/src/templates/content/**.
   * You will also notice that the article is using the custom markup we wrote for the Card component which is more semantic, accessible, but in addition to this, the **`<article>`** tag is also inheriting several other attributes that were provided by Drupal through its Attributes variable. See below:
 
 ![Drupal template suggestions in code inspector](/images/attr.webp){.body-image .body-image--wide}
 
+### Download the code
+
+If you want a full copy of the project which includes this post and the previous one, you can clone or download the repo.
+
+**main** branch: Includes the code for the [previous post](../building-a-modern-drupal-theme-with-storybook).
+**card** branch: Includes the full codebase for both posts.
+
+[Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
 ## In closing
 
