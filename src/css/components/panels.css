@@ -1,0 +1,30 @@
+/* Callout panels styles. */
+.panel {
+  background-color: var(--lighter-blue);
+  border-inline-start: 4px solid var(--light-blue);
+  display: block;
+  font-size: var(--font-size-16);
+  margin-block: var(--size-10) var(--size-24);
+  padding: var(--size-20);
+
+  &.panel--warning {
+    background-color: var(--lighter-yellow);
+    border-inline-start: 4px solid var(--light-yellow);
+  }
+
+  &.panel--danger {
+    background-color: var(--lighter-purple);
+    border-inline-start: 4px solid var(--light-purple);
+  }
+
+  a {
+    color: var(--black);
+  }
+
+  .panel__heading {
+    font-size: var(--font-size-16);
+    font-weight: 600;
+    margin-block-start: 0;
+    text-transform: uppercase;
+  }
+}
