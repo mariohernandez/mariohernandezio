@@ -17,6 +17,10 @@
     border-inline-start: 4px solid var(--light-purple);
   }
 
+  a {
+    color: var(--black);
+  }
+
   .panel__heading {
     font-size: var(--font-size-16);
     font-weight: 600;
