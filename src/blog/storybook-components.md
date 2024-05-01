@@ -1,5 +1,5 @@
 ---
-date: "2024-05-01"
+date: "2024-05-02"
 title: "Integrating Drupal with Storybook components"
 tags: ['drupal','storybook','components']
 draft: false
@@ -282,7 +282,7 @@ card:
   * Using the Components module we created two namespaces: **@atoms** and **@molecules**. Each namespace is associated with a specific path to the corresponding components. This is important because Drupal by default only looks for Twig templates inside the **/templates** directory and without the Components module and the namespaces it would not know to look for our component's Twig templates inside the components directory.
   * Then we created two Drupal libraries: **global** and **card**. The Global library includes two CSS stylesheets (reset.css and styles.css), which handle base styles in our theme. the Card library includes the styles we wrote for the Card component. If you noticed, when we created the Card component, the first line inside **card.twig** is a Twig attach library statement. Basically **card.twig** is expecting a Drupal library called **card**.
 
-## Template suggestions
+## Turn Twig debugging on
 
 All the pieces are in place to Integrate the Card component so Drupal can use it to render article nodes when viewed in teaser view mode.
 
@@ -290,6 +290,9 @@ All the pieces are in place to Integrate the Card component so Drupal can use it
 
   * While logged in with admin access, navigate to `/admin/config/development/settings` on your browser. This will bring up the Development settings page.
   * Check all the boxes on this page and click **Save settings**.  This will enable Twig debugging and disable caching.
+  * Now navigate to `/admin/config/development/performance` so we can turn CSS and JS aggregation off.
+  * Under **Bandwidth optimization** cleared the two boxes for CSS and Javascript aggregation then click on **Save configuration**.
+  * Lastly, click the **Clear all caches** button. This will ensure any CSS or JS we write will be available without having to clear caches.
 
 * With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page. See example below.
 
@@ -301,17 +304,10 @@ In the example above, we see a list of templates that start with **node...***. T
 
 Notice I marked the template name Drupal is using to render the Article node. We know this is the template because it has an **X** before the template name.
 
-In addition, I also marked the template path which we will need to make a copy of this template.  As you can see the current template is located in **core/themes/olivero/templates/content/node--teaser.html.twig**.
+In addition, I also marked the template path.  As you can see the current template is located in **core/themes/olivero/templates/content/node--teaser.html.twig**.
 
 And finally, I marked examples of attributes Drupal is injecting in the markup. These attributes may not always be useful but it is a good practice to ensure they are available even when we are writing custom markup for our components.
 
-## Enable the Storybook theme
-
-Before we forget, let's enable the Storybook theme otherwise all the work we are doing will not be visible.
-
-* Navigate to **/admin/appearance** and look for the Storybook theme
-* Install it and also make it the default theme
-* Clear Drupal's cache
 
 ## Create a template suggestion
 
@@ -319,6 +315,7 @@ By looking at the path of the template in the code inspector, we can see that th
 
 * Copy **/core/themes/olivero/templates/content/node--teaser.html.twig** into your theme's **/storybook/templates/content/**. Create the directory if it does not exist.
 * Now rename the newly copied template to **node--article--teaser.html.twig**.
+* Clear Drupal's cache since we are introducing a new Twig template.
 
 As you can see, by renaming the template **node--article--teaser** (one of the names listed as a suggestion), we are indicating that any changes we make to this template will only affect nodes of type Article which are displayed in Teaser view mode. So whenever an Article node is displayed, if it is in teaser view mode, it will use the Card component to render it.
 
@@ -352,15 +349,23 @@ The template has a lot of information that may or may not be needed when integra
 
 {% endraw %}
 
-* We set a variable with `content|render` as its value. The only purpose for this variable is to make Drupal aware of the entire content array for caching purposes.
+* We set a variable with `content|render` as its value. The only purpose for this variable is to make Drupal aware of the entire content array for caching purposes. [More info here](https://www.previousnext.com.au/blog/ensuring-drupal-8-block-cache-tags-bubble-up-page){target=_blank rel=noopener}.
 * Next, we setup a variable called **article_title** which we structured the same way as data inside **card.yml**. Having similar data structures between Drupal and our components provides many advantages during the integration process.
   * Notice how for the **text** and **url** properties we are using Drupal specific variables (**label** and **url**), accordingly. If you look in the comments in _node--article--teaser.html.twig_ you will see these two variables.
 * We are using a Twig **include** statement with the **@molecules** namespace to nest the Card component into the node template. The same way we nested the Title component into the Card.
 * We mapped Drupal's attributes into the component's attributes placeholder so Drupal can inject any attributes such as CSS classes, IDs, Data attributes, etc. into the component.
 * Finally, we mapped the image, title and teaser fields from Drupal to the component's equivalent fields.
-* Save the changes to the template and clear Drupal's cache
-* Reload the homepage and you should see the article node being rendered using the Card component. See below:
+* Save the changes to the template and clear Drupal's cache.
+
+## Enable the Storybook theme
+
+Before we forget, let's enable the Storybook theme an also make it your default theme, otherwise all the work we are doing will not be visible since we are currently using Olivero as the default theme. Clear caches after this is done.
+
+## Previewing the Article node as a Card
+
+Integration is done and we switched our default theme to Storybook. After clearing caches if you reload the homepage you should be able to see the Article node you wrote but this time displayed as a card. See below:
 ![Example of twig debugging](/images/integrated-card.webp){.body-image .body-image--narrow}
+
 * If you right-click on the article and select **Inspect**, you will notice the following:
   * Drupal is now using **node--article--teaser.html.twig**. This is the template we created.
   * The template path is now **themes/custom/storybook/src/templates/content/**.
@@ -368,15 +373,22 @@ The template has a lot of information that may or may not be needed when integra
 
 ![Drupal template suggestions in code inspector](/images/attr.webp){.body-image .body-image--wide}
 
-### Download the code
+**NOTE**: If your card's image size or aspect ratio does not look as the one in Storybook, this is probably due to the image style being used in the Article Teaser view mode.  You can address this by:
 
-If you want a full copy of the project which includes this post and the previous one, you can clone or download the repo.
+* Go to the **Manage display** tab of the Article's Teaser view mode (`/admin/structure/types/manage/article/display/teaser`).
+* For the Image field, change the image style being used to one that better fits your image.
+* Preview the article again on the homepage to see if this looks better.
 
-**main** branch: Includes the code for the [previous post](../building-a-modern-drupal-theme-with-storybook).
-**card** branch: Includes the full codebase for both posts.
-
-[Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
 ## In closing
 
 This is only a small example of how to build a simple component in Storybook using Twig and then integrate it with Drupal, so content is rendered in a more semantic and accessible manner. There are many more advantages of implementing a system like this. I hope this was helpful and see the potential of a component-driven environment using Storybook. Thanks for visiting.
+
+### Download the code
+
+**main** branch: Includes only the code for the [previous post](../building-a-modern-drupal-theme-with-storybook).
+**card** branch: Includes the full codebase for both posts.
+
+If you want a full copy of the project which includes this post and the previous one, you can clone or download the repo and switch to the **card** branch.
+
+[Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
