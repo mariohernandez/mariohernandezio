@@ -2,7 +2,7 @@
 .panel {
   background-color: var(--lighter-blue);
   border-inline-start: 4px solid var(--light-blue);
-  display: block;
+  display: inline-block;
   font-size: var(--font-size-16);
   margin-block: var(--size-10) var(--size-24);
   padding: var(--size-20);
@@ -17,8 +17,22 @@
     border-inline-start: 4px solid var(--light-purple);
   }
 
-  a {
-    color: var(--black);
+  &.panel--top-border {
+    background-color: var(--gray-light);
+    border: 0;
+    border-block-start: 6px solid var(--gray-darkest);
+  }
+
+  &.panel--narrow {
+    max-width: 30%;
+  }
+
+  &.panel--wide {
+    max-width: 70%;
+  }
+
+  .button {
+    margin-block-start: var(--size-14);
   }
 
   .panel__heading {

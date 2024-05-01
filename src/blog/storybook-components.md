@@ -183,7 +183,14 @@ Let's go over some of the most noticeable updates inside **vite.config.js**:
 * We have defined a few things to improve the functionality of our Vite project, starting with using **src** as our app root directory and **public** for publicDir. This helps the app understand the project structure in a relative manner.
 * Next, we defined a Build task which provides the app with defaults for things like where should it compiled code to (i.e. **/dist**), and [`rollupOptions`](https://rollupjs.org/configuration-options/){target=_blank rel=noopener} for instructing the app which stylesheets to compile and what to call them.
 * As part of the `rollupOptions` we also defined two stylesheets for global styles (**reset.css** and **styles.css**). We'll create these next.
-**IMPORTANT** This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repetitive tasks performed on a typical front-end project.
+
+    {% raw %}
+    <span class="panel">
+    <h4 class="panel__heading">Important</h4>
+    This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repetitive tasks performed on a typical front-end project.
+    </span>
+    {% endraw %}
+
 * Under the Plugins section, we have defined two new namespaces, **@atoms** and **@molecules**, each of which points to specific path within our _components_ directory. These are the namespaces Storybook understands when nesting components. You can have as many namespaces as needed.
 
 ### Adding global styles
@@ -296,7 +303,12 @@ All the pieces are in place to Integrate the Card component so Drupal can use it
 
 * With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page. See example below.
 
-**NOTE**: I am using a new basic Drupal site with Olivero as the default theme. If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
+    {% raw %}
+    <span class="panel">
+    <h4 class="panel__heading">Note</h4>
+    I am using a new basic Drupal site with Olivero as the default theme. If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
+    </span>
+    {% endraw %}
 
 ![Code inspector showing Drupal debugging](/images/storybook-debug.webp){.body-image .body-image--wide}
 
@@ -373,22 +385,21 @@ Integration is done and we switched our default theme to Storybook. After cleari
 
 ![Drupal template suggestions in code inspector](/images/attr.webp){.body-image .body-image--wide}
 
-**NOTE**: If your card's image size or aspect ratio does not look as the one in Storybook, this is probably due to the image style being used in the Article Teaser view mode.  You can address this by:
+If your card's image size or aspect ratio does not look as the one in Storybook, this is probably due to the image style being used in the Article Teaser view mode.  You can address this by:
 
-* Go to the **Manage display** tab of the Article's Teaser view mode (`/admin/structure/types/manage/article/display/teaser`).
-* For the Image field, change the image style being used to one that better fits your image.
+* Going to the **Manage display** tab of the Article's Teaser view mode (`/admin/structure/types/manage/article/display/teaser`).
+* Changing the image style for the Image field for one that may work better for your image.
 * Preview the article again on the homepage to see if this looks better.
-
 
 ## In closing
 
 This is only a small example of how to build a simple component in Storybook using Twig and then integrate it with Drupal, so content is rendered in a more semantic and accessible manner. There are many more advantages of implementing a system like this. I hope this was helpful and see the potential of a component-driven environment using Storybook. Thanks for visiting.
 
-### Download the code
+{% raw %}
+<span class="panel panel--top-border panel--wide">
+<h4 class="panel__heading">Download the code</h4>
+For a full copy of the code base which includes the work in this and the <a href="../building-a-modern-drupal-theme-with-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
 
-**main** branch: Includes only the code for the [previous post](../building-a-modern-drupal-theme-with-storybook).
-**card** branch: Includes the full codebase for both posts.
-
-If you want a full copy of the project which includes this post and the previous one, you can clone or download the repo and switch to the **card** branch.
-
-[Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
+<a href="https://github.com/mariohernandez/storybook" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
+</span>
+{% endraw %}
