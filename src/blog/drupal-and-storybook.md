@@ -13,7 +13,14 @@ summary: "Storybook has emerged as a promising tool for building a modern front-
 ---
 Building a custom Drupal theme nowadays is a more complex process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need a styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago with great success. In addition, Patternlab has been the design system of choice at my place of work but one of my immediate tasks was to work on migrating to a different design system. We have a small team but were very excited about the challenge of finding and using a more modern and robust design system for our large multi-site Drupal environment.
 
-**Disclaimer**: Due to technical restrictions and project requirements, we were not able to use [Single Directory Components or SDC](https://www.drupal.org/project/sdc), nor the [Storybook module](https://www.drupal.org/project/storybook). Our front-end environment was custom built from the ground up.
+{% raw %}
+
+<span class="panel panel--warning">
+<h4 class="panel__heading">Disclaimer:</h4>
+Due to technical restrictions and project requirements at the time of our implementation, we were not able to use <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">Single Directory Components</a> or SDC, nor the <a href="https://www.drupal.org/project/storybook" target="_blank" rel="noopener">Storybook module</a>. Our front-end environment was custom built.
+</span>
+
+{% endraw%}
 
 ## Enter Storybook
 

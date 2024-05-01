@@ -30,6 +30,7 @@
 @import './components/logo';
 @import './components/navigation';
 @import './components/pager';
+@import './components/panels';
 @import './components/post';
 @import './components/post-list';
 @import './components/quote';
