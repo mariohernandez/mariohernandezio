@@ -27,6 +27,12 @@
 .blog-post__body {
   margin-inline: auto;
   max-width: 65ch;
+  text-wrap: balance;
+
+  /* Change links color to purple if they are inside the post body. */
+  a {
+    color: var(--purple);
+  }
 
   p {
     margin-block-end: 1.5rem;
@@ -48,22 +54,26 @@
   h2,
   h3,
   h4 {
-    margin-block-start: var(--size-30);
+    margin-block-start: var(--size-34);
     margin-block-end: var(--size-12);
   }
 
   h2 {
-    font-size: var(--font-size-20);
+    font-size: var(--font-size-22);
   }
 
   h3 {
-    font-size: var(--font-size-18);
+    font-size: var(--font-size-20);
   }
 
   ol {
     p {
       margin: 0;
     }
+  }
+
+  ul li ul {
+    margin-block-end: var(--size-24);
   }
 }
 

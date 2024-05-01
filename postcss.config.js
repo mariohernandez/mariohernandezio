@@ -5,7 +5,7 @@ module.exports = {
     require('postcss-nested')(),
     require('autoprefixer')(),
     require('postcss-preset-env')({
-      stage: 1,
+      stage: 4,
       features: {
         'custom-media-queries': { preserve: true },
       }

@@ -3,7 +3,7 @@ date: "2024-04-14"
 title: "Building a modern Drupal theme with Storybook"
 tags: ['drupal','storybook']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/storybook.webp"
 featuredImageAlt: "Wooden hammer painted in yellow in a yellow background"
 imageThumb: "/images/thumbs/storybook-thumb.webp"
@@ -310,7 +310,7 @@ _The controls highlighted at the bottom of the title allow you to change the val
 
 I wanted to start with the simplest of components, the title, to show how Storybook, with help from the extensions we installed, understands Twig. The good news is that the same approach we took with the title component works on even more complex components. Even the React code we wrote does not change much on large components.
 
-In the next blog post, we will build more components that nest smaller components, and we will also add Drupal related parts and configuration to our theme so we can begin using the theme in a Drupal site.  Finally, we will integrate the components we built in Storybook with Drupal so our content can be rendered using the component we're building. Stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
+In the [next blog post](../integrating-drupal-with-storybook-components), we will build more components that nest smaller components, and we will also add Drupal related parts and configuration to our theme so we can begin using the theme in a Drupal site.  Finally, we will integrate the components we built in Storybook with Drupal so our content can be rendered using the component we're building. Stay tuned. For now, if you want to grab a copy of all the code in this post, you can do so below.
 
 [Download the code](https://github.com/mariohernandez/storybook){.button .button--reverse target=_blank rel=noopener}
 
