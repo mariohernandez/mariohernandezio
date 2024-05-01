@@ -14,5 +14,10 @@
   --gray-light: #f5f5f5;
   --purple: rebeccapurple;
   --light-blue: #add8e6;
+  --lighter-blue: #f4f6fc;
+  --light-yellow: #fbe5ba;
+  --lighter-yellow: #fdf5e2;
+  --light-purple: #d8bfd8;
+  --lighter-purple: #fff0f5;
   --text-color: --black; /* Value for Light mode. */
 }
