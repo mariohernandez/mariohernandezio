@@ -1,14 +1,14 @@
 ---
-date: "2024-04-14"
+date: "2024-06-02"
 title: "Components variations in Storybook"
-tags: ['components','storybook']
+tags: ['components','variations','storybook']
 draft: false
 featured: true
-featuredImage: "/images/storybook.webp"
-featuredImageAlt: "Wooden hammer painted in yellow in a yellow background"
-imageThumb: "/images/thumbs/storybook-thumb.webp"
-featuredImageCredit: "Markus Spiske"
-featuredImageCreditUrl: "https://unsplash.com/@markusspiske"
+featuredImage: "/images/variations-featured.webp"
+featuredImageAlt: "Pink and blue heart lollipops"
+imageThumb: "/images/thumbs/variations-thumb.webp"
+featuredImageCredit: "Alexander Grey"
+featuredImageCreditUrl: "https://unsplash.com/@sharonmccutcheon"
 summary: "Component variations inherit the attributes of a component and "
 ---
 
