@@ -12,10 +12,46 @@ featuredImageCreditUrl: "https://unsplash.com/@scottwebb"
 summary: "Component variations inherit the attributes of a component and "
 ---
 
-One great way to enhance your components catalog is by creating components variations. Variations of a component reduce the need to building more components while still providing alternative ways for displaying a component. A component can be displayed in one way on a full page and in a different way when placed on the sidebar of page.
-The screenshot below shows how a simple card component can be built and displayed in so many ways.
+One great way to enhance your catalog of components is by creating components variations. Variations, in the context of component-driven development, refers to creating alternative displays of existing components in an effort to enhance your site's UI/UX, as well as to find creative ways to display the same content. Variations of a component reduce the need of building new components.
+
+The image below shows how a card component can be displayed in so many ways.
 
 ![Card with multiple variations](/images/variations.webp)
+
+## Principles of building components
+
+Sometimes when building a new component, we are not able to see beyond the use case of the component we are tasked with building. A few years ago I wrote a blog post about [principles for building components](../five-principles-for-building-better-components/). Rather than repeating myself, take a quick look at the article and comeback here when you are done. You will find those principles not only apply to building new components, but also to building variations of components.
+
+## Building component variations in Storybook
+
+Depending on the design system you are using or the platform you work with, creating components variations may vary. When I used Patternlab, a variation was created by adding a new file to your component's directory with the following naming convention: **componentName~variationName.json**. If the case of a Card component, my variations would be something like **card~horizontal.json**.
+
+In Storybook this is different. We don't need to create additional files for variations (well, maybe sometimes), instead, we add the variations inside the same ***.stories.jsx** file.  Each variation in Storybook is called a **Story**, hence the name Storybook.  Let's take a look how we can build a couple of variations for a Card similar to the image above.
+
+First off, I am going with the assumption that you already know how Storybook stories are created and that you have a Storybook project running.  If that's not the case, [read my blog post](../building-a-modern-drupal-theme-with-storybook/) on how to get everything setup so you can follow along here.. Ignore the fact that it says Drupal theme.
+
+## The Card component
+
+Another assumption I am making is that we will build the new component and variations for a Drupal site. For this reason, we will build the component in Twig then make it available to Storybook.
+
+In the interest of time, I have a repo that already includes the base of the Card component so we can focus only on building the variations.
+
+1. [Clone the repo](https://github.com/mariohernandez/storybook){target=_blank rel=noopener} where the base of the card is already in place
+1. Switch to the **variations** branch by running `git checkout variations`
+1. Run the project as instructed in the **README** of the repo
+
+## Variations time
+
+With the Storybook project up and running and the card component in place, it's time to begin building variations. Here are the variations we will be building:
+
+* Horizontal
+* With CTA
+* Minimal
+
+
+Ideally, you want to keep your catalog of components to a minimum but when the boss asks for a new component or functionality on the site, try to avoid your impulse to start creating a new component, instead, look around and determine if maybe just tweaking an existing component may get you the results you want.
+
+I have seen projects where there are so many components that is hard to maintain them. In addition, I have also seen developers creating a number of components that essentially do the same thing. Coming into a project like that I was able to consolidate 8-10 components into 2 or 3 without loosing the current functionality or content editing flexibility. This was done by creating variations of existing components and removing duplicate components.
 
 ## Ways to create components variations
 

@@ -52,8 +52,23 @@ img {
   max-width: 100%;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  font-size: var(--font-size-14);
-  margin-block-end: var(--size-16);
+/* Code snippets.
+ * If code snippet is inline with text.
+ */
+.blog-post__body {
+  ul,
+  ol,
+  p {
+    code {
+      background-color: var(--lighter-yellow);
+      border-radius: 5px;
+      color: var(--gray-darkest);
+      display: inline-block;
+      font-family: var(--font-monospace);
+      font-size: var(--font-size-16);
+      line-height: 1;
+      padding: var(--size-4) var(--size-5);
+      vertical-align: middle;
+    }
+  }
 }
