@@ -147,8 +147,10 @@ module.exports = function(eleventyConfig) {
   // Enables html attributes in markdown
   eleventyConfig.setLibrary('md', markdownLib);
 
-  // Enables syntax highlighted for code snippets.
-  eleventyConfig.addPlugin(syntaxHighlight);
+  // Enables syntax highlight & line numbers for code blocks.
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    alwaysWrapLineHighlights: true,
+  });
 
   // Only minify HTML if we are in production because it slows builds _right_ down
   if (isProduction) {
