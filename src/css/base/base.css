@@ -52,8 +52,53 @@ img {
   max-width: 100%;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
+/* Code snippets styles.
+ * If code snippet is inline with text.
+ */
+.blog-post__body {
+  ul,
+  ol,
+  p {
+    code {
+      background-color: var(--gray-lighten);
+      border: 1px solid var(--gray-medium);
+      border-radius: 5px;
+      color: var(--gray-darkest);
+      display: inline-block;
+      font-family: var(--font-monospace);
+      font-size: var(--font-size-16);
+      line-height: 1;
+      padding-block: var(--size-3);
+      padding-inline: var(--size-5);
+      vertical-align: middle;
+    }
+  }
+}
+
+code[class*="language-"] {
   font-size: var(--font-size-14);
-  margin-block-end: var(--size-16);
+  line-height: 1.3;
+}
+
+/* Styles for code blocks line numbers */
+pre {
+  counter-reset: lineNumber;
+}
+
+pre[class*="language-"] {
+  margin-block-end: var(--size-30);
+}
+
+code .highlight-line:before {
+  -webkit-user-select: none;
+  border-right: 1px solid #404040;
+  color: #858585;
+  content: counter(lineNumber);
+  counter-increment: lineNumber;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  margin-right: 1.2em;
+  padding-right: 1.2em;
+  text-align: right;
+  width: 2.4em;
 }

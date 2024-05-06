@@ -6,6 +6,7 @@
   /* Font family. */
   --font-primary: Wotfard,Helvetica,sans-serif;
   --font-secondary: Georgia,'Times New Roman',Times,serif;
+  --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Font size. */
   --font-size-10: 1rem;
