@@ -400,6 +400,6 @@ This is only a small example of how to build a simple component in Storybook usi
 <h4 class="panel__heading">Download the code</h4>
 For a full copy of the code base which includes the work in this and the <a href="../building-a-modern-drupal-theme-with-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
 
-<a href="https://github.com/mariohernandez/storybook" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
+<a href="https://github.com/mariohernandez/storybook/tree/card" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
 </span>
 {% endraw %}
