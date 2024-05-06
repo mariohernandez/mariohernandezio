@@ -3,7 +3,7 @@ date: "2024-05-02"
 title: "Integrating Drupal with Storybook components"
 tags: ['drupal','storybook','components']
 draft: false
-featured: false
+featured: true
 featuredImage: "/images/mountains.webp"
 featuredImageAlt: "Overlapped mountains painted with water colors"
 imageThumb: "/images/thumbs/mountains-thumb.webp"
