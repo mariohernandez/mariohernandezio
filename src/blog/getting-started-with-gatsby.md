@@ -2,6 +2,7 @@
 date: "2018-06-08"
 title: "Getting started with Gatsby"
 tags: ['gatsby', 'react']
+draft: false
 featured: false
 featuredImage: "/images/gatsby-intro.webp"
 featuredImageAlt: "Cyclist going very fast producing blur"

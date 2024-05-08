@@ -2,6 +2,7 @@
 date: "2019-04-20"
 title: "Our best training yet"
 tags: ['training', 'drupalcon',]
+draft: false
 featured: false
 featuredImage: "/images/students.webp"
 featuredImageAlt: "Team members conducting training workshop"

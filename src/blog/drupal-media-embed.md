@@ -2,6 +2,7 @@
 date: "2024-01-01"
 title: "Managing image embeds with Drupal media"
 tags: ['drupal', 'media']
+draft: false
 featured: false
 featuredImage: "/images/media-embed.webp"
 featuredImageAlt: "Siluete of man in front of sphere"
