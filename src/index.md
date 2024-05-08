@@ -1,5 +1,5 @@
 ---
-title: 'Mario Hernandez Personal Blog'
+title: 'Mario Hernandez'
 layout: 'layouts/home.html'
 hero:
   heading: 'I build websites'

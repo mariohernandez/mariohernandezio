@@ -3,6 +3,7 @@ path: "/blog/adding-social-share-links-to-gatsby"
 date: "2018-09-10"
 title: "Adding Social Share Links to Gatsby"
 tags: ['gatsby', 'social share']
+draft: false
 featured: false
 featuredImage: "/images/beach.webp"
 featuredImageAlt: "Beach waves coming to shore"

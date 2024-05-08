@@ -1,7 +1,8 @@
 ---
 date: '2019-01-10'
 title: 'Handling Drupal attributes in components'
-tags: ['twig', 'drupal',]
+tags: ['twig', 'drupal']
+draft: false
 featured: false
 featuredImage: '/images/attributes.webp'
 featuredImageAlt: 'Train tracks surrounded by tree lines'

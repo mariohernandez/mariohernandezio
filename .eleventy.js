@@ -166,9 +166,11 @@ module.exports = function(eleventyConfig) {
 
   const sortByDisplayOrder = require('./src/utils/sort.js');
 
-  // Returns blog items, sorted by display order
+  // Returns blog items that are not in draft mode, sorted by display order
   eleventyConfig.addCollection('blog', collection => {
-    return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md'));
+    return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md')).filter(
+      x => x.data.draft == false
+    );
   });
 
   // Returns blog items, sorted by display order then filtered by featured
