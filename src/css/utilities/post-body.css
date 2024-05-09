@@ -44,7 +44,7 @@
   }
 }
 
-/* Info panel styles. */
+/* Info callout styles. */
 .post-hint {
   background-color: lighten($color-light-blue, 15%);
   border-left: 3px solid $color-purple;
@@ -52,7 +52,6 @@
   margin: 2rem 0 4rem;
   padding: 2rem;
   padding-inline-start: 4rem;
-
 }
 
 /* Body images */
