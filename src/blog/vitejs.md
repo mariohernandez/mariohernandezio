@@ -1,43 +1,53 @@
 ---
-date: "2024-06-02"
+date: "2024-05-20"
 title: "Using ViteJS for your Drupal front-end builds"
-tags: ['drupal','storybook','components']
-draft: true
-featured: false
+tags: ['drupal','front-end']
+draft: false
+featured: true
 featuredImage: "/images/mountains.webp"
 featuredImageAlt: "Overlapped mountains painted with water colors"
 imageThumb: "/images/thumbs/mountains-thumb.webp"
 featuredImageCredit: "Alex Shutin"
 featuredImageCreditUrl: "https://unsplash.com/@fiveamstories"
-summary: "If you are looking for the next front-end build tool for your Drupal project, or any project, you need to try ViteJS. "
+summary: "If you are searching for the next front-end build tool for your Drupal project, or any project, you need to try ViteJS. "
 ---
-<!-- I consider myself pretty loyal to the tools I use on a daily basis as a web developer. I am not the kind of dev who jumps on the new and shiny stuff just because it looks cool or out of peer pressure. I learned early on in my career that if the tools you use do exactly what you need and do it well, there is no need to switch to the latest tools. Don't get me wrong, I try things and experiment with them but if at the end of the day I am not getting any more value than what I am getting out of my current tools, I keep using the tools I am familiar with. -->
+Recently at my work we decided to move out of the current design system, Patternlab, and into a more modern one, Storybook. We also took this opportunity to look at other tools that could be replaced to improve our current front-end workflow. Professionally and personally I have been using Gulp for almost 10 years. We knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
 
-Recently at my work we decided to move out of the current design system, Patternlab, and into a more modern one, Storybook. We also took this opportunity to look at other tools that could be replaced to improve our current front-end workflow. We had been using Gulp for a while as the build tool, and at a personal level, I have been using Gulp for almost 10 years. We knew swithing design systems would require us to change to a different build tool. We thought the obvious choice was Webpack, but as I looked deeper into build tools I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
-
-Vite is considered the _Next Generation Frontend Tooling_, and during our testing we were extremely impressed not only with how fast it is, but also with its plugins ecosystem as well as its community support. Compared to other build tools, Vite is relatively new, but it has been around for a few years now and it has matured to the point I feel confident using it on any project I work on. I'll let you [read about Vite's features](https://vitejs.dev/guide/){target=_blank rel=noopener} on your own and how it compares to other build tools, but for now I am going to focus on building an automated workflow for a Drupal front-end environment or theme. Mind you, most of the things we'll cover apply to any project type, not just Drupal.
+Vite is considered the _Next Generation Frontend Tooling_, and during our testing we were extremely impressed not only with how fast Vite is, but also with its plugins ecosystem and its community support. Compared to other build tools, Vite is relatively new, but it has been around for a few years now and it has matured to the point I feel confident using it on any project I work on. I'll let you [read about Vite's features](https://vitejs.dev/guide/){target=_blank rel=noopener} on your own and how it compares to other build tools, but for now I am going to focus on building an automated workflow for a Drupal front-end environment or theme. Mind you, most of the things we'll cover apply to any project type, not just Drupal.
 
 ## Tasks to automate
 
-Build tools like Vite make it possible to automate repeatitive tasks to run in the background without getting in the way of our work. Here are some of the tasks we will setup to run automatically:
+Build tools like Vite make it possible to automate repeatitive tasks to run in the background without getting in the way of our work. At the end of this post, our automated workflow will be able to perform the following tasks:
 
-* Compile, lint, concatenate, and minify code
+* Watch, compile, lint, concatenate, and minify code
 * Optimize static assets such as images
 * Copy assets such as CSS, JS, and Images from `/src` to `/dist`
-* Watch for changes to code and automatically perform the appropriate tasks
 
-### Watch task
+## Setup the environment
 
-One task we all are used to running while we work is the **watch** task. Being able to make changes to CSS, JS, and even Twig, then automatically compile our code is not only efficient but also productive.
+If you've followed along in previous post, you should have an environment ready to follow along in this post. If you need an environment, you can grab the codebase from the previous post which will get you all you need to complete the tasks in this post.
+
+{% raw %}
+<span class="callout callout--top-border">
+<p>The repo below contains everything you need to follow along. Be sure you switch to the **card** branch.</p>
+
+<a href="https://github.com/mariohernandez/storybook/tree/card" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
+</span>
+{% endraw %}
+
+
+## Watch task
+
+One task we are all familiar with is the **watch** task. Being able to make changes to CSS, JS, and even Twig, then automatically compile our code is not only efficient but also productive.
 
 Most of the work we will be doing today will be inside `vite.config.js` in combination with adding some extentions or packages in `package.json`.
 
-* We will install two packages, **path** and **vite-plugin-watch-and-run** by running:
+* To start, let's install the first package, **vite-plugin-watch-and-run** by running:
 
 {% raw %}
 
 ```bash
-npm i -D path vite-plugin-watch-and-run
+npm i -D vite-plugin-watch-and-run
 ```
 
 {% endraw %}
