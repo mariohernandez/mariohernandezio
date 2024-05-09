@@ -15,8 +15,8 @@ Building a custom Drupal theme nowadays is a more complex process than it used t
 
 {% raw %}
 
-<span class="panel panel--warning">
-<h4 class="panel__heading">Disclaimer:</h4>
+<span class="callout callout--warning">
+<h4 class="callout__heading">Disclaimer:</h4>
 Due to technical restrictions and project requirements at the time of our implementation, we were not able to use <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">Single Directory Components</a> or SDC, nor the <a href="https://www.drupal.org/project/storybook" target="_blank" rel="noopener">Storybook module</a>. Our front-end environment was custom built.
 </span>
 
@@ -59,7 +59,6 @@ Let's go over the steps to building the base of your new Drupal theme with ViteJ
 
 ```shell
 npm create vite@latest storybook
-# replace storybook with a name of your choice.
 ```
 
 {% endraw %}

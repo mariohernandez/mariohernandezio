@@ -21,7 +21,9 @@
 @import './components/404';
 @import './components/about';
 @import './components/button';
+@import './components/callout';
 @import './components/card';
+@import './components/caption';
 @import './components/eyebrow';
 @import './components/featured-post';
 @import './components/footer';
@@ -30,7 +32,6 @@
 @import './components/logo';
 @import './components/navigation';
 @import './components/pager';
-@import './components/panels';
 @import './components/post';
 @import './components/post-list';
 @import './components/quote';

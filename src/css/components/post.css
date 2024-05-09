@@ -10,6 +10,7 @@
 .page-header__title {
   margin-block-end: var(--size-20);
   line-height: var(--line-height-1-2);
+  text-wrap: pretty;
 }
 
 .blog-post__date {
@@ -27,11 +28,12 @@
 .blog-post__body {
   margin-inline: auto;
   max-width: 65ch;
-  text-wrap: balance;
+  text-wrap: pretty;
 
   /* Change links color to purple if they are inside the post body. */
   a {
     color: var(--purple);
+    font-weight: 600;
   }
 
   p {
@@ -72,7 +74,7 @@
     }
   }
 
-  ul li ul {
+  ul {
     margin-block-end: var(--size-24);
   }
 }

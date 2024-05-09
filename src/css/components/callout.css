@@ -1,5 +1,5 @@
-/* Callout panels styles. */
-.panel {
+/* Callouts styles. */
+.callout {
   background-color: var(--lighter-blue);
   border-inline-start: 4px solid var(--light-blue);
   display: inline-block;
@@ -7,27 +7,27 @@
   margin-block: var(--size-10) var(--size-24);
   padding: var(--size-20);
 
-  &.panel--warning {
+  &.callout--warning {
     background-color: var(--lighter-yellow);
     border-inline-start: 4px solid var(--light-yellow);
   }
 
-  &.panel--danger {
+  &.callout--danger {
     background-color: var(--lighter-purple);
     border-inline-start: 4px solid var(--light-purple);
   }
 
-  &.panel--top-border {
+  &.callout--top-border {
     background-color: var(--gray-light);
     border: 0;
     border-block-start: 6px solid var(--gray-darkest);
   }
 
-  &.panel--narrow {
+  &.callout--narrow {
     max-width: 30%;
   }
 
-  &.panel--wide {
+  &.callout--wide {
     max-width: 70%;
   }
 
@@ -35,7 +35,7 @@
     margin-block-start: var(--size-14);
   }
 
-  .panel__heading {
+  .callout__heading {
     font-size: var(--font-size-16);
     font-weight: 600;
     margin-block-start: 0;

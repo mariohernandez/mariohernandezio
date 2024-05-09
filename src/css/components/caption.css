@@ -1,0 +1,12 @@
+.caption {
+  display: flex;
+  font-size: var(--font-size-16);
+  justify-content: flex-start;
+  margin-block-end: var(--size-40) !important;
+  margin-block-start: calc(var(--size-28) * -1);
+  font-style: italic;
+
+  &.caption--center {
+    justify-content: center;
+  }
+}
