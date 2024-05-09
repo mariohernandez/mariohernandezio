@@ -10,7 +10,6 @@
 @import './utilities/eyebrow';
 @import './utilities/link-arrow';
 @import './utilities/margins';
-@import './utilities/post-body';
 @import './utilities/sizes';
 @import './utilities/tables';
 @import './utilities/visibility';
@@ -39,3 +38,4 @@
 @import './components/social';
 @import './components/social-share';
 @import './components/tags';
+@import './components/callout'; /* Positioned here to override body styles */

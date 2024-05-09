@@ -27,7 +27,7 @@
 
 .blog-post__body {
   margin-inline: auto;
-  max-width: 65ch;
+  max-width: 60ch;
   text-wrap: pretty;
 
   /* Change links color to purple if they are inside the post body. */
@@ -42,12 +42,15 @@
 
   /* Drop cap styles. */
   > p:first-child:first-letter {
-    color: var(--black);
+    color: var(--purple);
     float: left;
     font-family: var(--font-secondary);
     font-size: var(--font-size-65);
-    line-height: var(--size-60);
+    font-style: italic;
+    line-height: 1;
     margin-block-end: 0;
+    margin-block-start: var(--size-4);
+    margin-inline-end: var(--size-6);
     padding-block-start: var(--size-4);
     padding-inline-end: var(--size-8);
     padding-inline-start: 0;
@@ -98,4 +101,64 @@ users they are displayed before the article.  This is for better UI. */
       justify-content: space-between;
     }
   }
+}
+
+/* Blog series pager styles. */
+.post-pager {
+  background-color: var(--gray-light);
+  padding: 2rem;
+
+  p {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: var(--weight-700);
+    letter-spacing: 0.10em;
+    line-height: var(--line-height-1);
+    margin-block-end: 1.6rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+
+     @media (--tablet) {
+      flex-direction: row;
+    }
+  }
+
+  li:first-child {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Body images */
+.body-image {
+  margin: 3rem auto;
+}
+
+.body-image--wide {
+  max-width: 75%;
+}
+
+.body-image--narrow {
+  max-width: 50%;
 }
