@@ -22,7 +22,7 @@ Storybook looks very promising as a design system for Drupal projects and with t
 {% raw %}
 
 <span class="callout callout--warning">
-<strong>INFO</strong>: At the time of our implementation, TwigJS did not have the capability to resolve <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">SDC's</a> namespace. It appears this has been addressed since this post was published and using SDC should now be possible with this custom setup, however, I have not tested using SDC and therefore I can't confirm.
+<strong>INFO</strong>: At the time of our implementation, TwigJS did not have the capability to resolve <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">SDC's</a> namespace. It appears this has been addressed and using SDC should now be possible with this custom setup. I haven't personally tried it and therefore I can't confirm.
 </span>
 
 {% endraw%}
