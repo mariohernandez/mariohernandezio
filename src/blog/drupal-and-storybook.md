@@ -16,8 +16,7 @@ Building a custom Drupal theme nowadays is a more complex process than it used t
 {% raw %}
 
 <span class="callout callout--warning">
-<h4 class="callout__heading">Disclaimer:</h4>
-Due to technical restrictions with TwigJS, and project requirements at the time of our implementation, we were not able to use <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">Single Directory Components</a> or SDC, nor the <a href="https://www.drupal.org/project/storybook" target="_blank" rel="noopener">Storybook module</a>. Our front-end environment was custom built.
+<strong>INFO</strong>: At the time of our implementation, TwigJS did not have the capability to resolve <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">SDC's</a> namespace. It appears this has been addressed since this post was published and using SDC should now be possible with this custom setup, however, I have not tested using SDC and therefore I can't confirm.
 </span>
 
 {% endraw%}
