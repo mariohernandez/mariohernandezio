@@ -1,3 +1,9 @@
 [build]
   command = "npm run production"
   publish = "dist"
+
+# Redirect with a 301
+[[redirects]]
+from = "/blog/building-a-modern-drupal-theme-with-storybook"
+to = "/blog/migrating-from-patternlab-to-storybook"
+status = 301
