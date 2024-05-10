@@ -11,7 +11,7 @@ featuredImageCredit: "Alex Shutin"
 featuredImageCreditUrl: "https://unsplash.com/@fiveamstories"
 summary: "In this post we'll go over the process of making Drupal aware of the components we have built in Storybook."
 ---
-Hey you're back! 🙂 In the [previous post](../building-a-modern-drupal-theme-with-storybook) we talked about how to build a custom Drupal theme using Storybook as the design system.  We also built a simple component to demonstrate how Storybook, using custom extensions, can understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
+Hey you're back! 🙂 In the [previous post](../migrating-from-patternlab-to-storybook) we talked about how to build a custom Drupal theme using Storybook as the design system.  We also built a simple component to demonstrate how Storybook, using custom extensions, can understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
 If you are following along, we will continue where we left off to take advantage of all the prep work we did in the previous post. Topics we will cover in this post include:
 
 1. What is Drupal integration
@@ -404,7 +404,7 @@ This is only a small example of how to build a simple component in Storybook usi
 {% raw %}
 <span class="callout callout--top-border callout--wide">
 <h4 class="callout__heading">Download the code</h4>
-For a full copy of the code base which includes the work in this and the <a href="../building-a-modern-drupal-theme-with-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
+For a full copy of the code base which includes the work in this and the <a href="../migrating-from-patternlab-to-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
 
 <a href="https://github.com/mariohernandez/storybook/tree/card" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
 </span>
