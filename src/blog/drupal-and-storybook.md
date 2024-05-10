@@ -1,6 +1,6 @@
 ---
 date: "2024-04-14"
-title: "Building a modern Drupal theme with Storybook"
+title: "Migrating from Patternlab to Storybook"
 tags: ['drupal','storybook']
 draft: false
 featured: false
@@ -9,7 +9,7 @@ featuredImageAlt: "Wooden hammer painted in yellow in a yellow background"
 imageThumb: "/images/thumbs/storybook-thumb.webp"
 featuredImageCredit: "Markus Spiske"
 featuredImageCreditUrl: "https://unsplash.com/@markusspiske"
-summary: "Storybook has emerged as a promising tool for building a modern front-end Drupal environment in recent years. Let's take it for a test drive."
+summary: "Storybook has emerged as a promising tool for building a modern front-end Drupal environment in recent years. In this post we are going to build a Drupal theme with Storybook as its design system."
 ---
 Building a custom Drupal theme nowadays is a more complex process than it used to be.  Most themes require some kind of build tool such as Gulp, Grunt, Webpack or others to automate many of the repeatitive tasks we perform when working on the front-end.  Tasks like compiling and minifying code, compressing images, linting code, and many more.  As Atomic Web Design became a thing, things got more complicated because now if you are building components you need a styleguide or Design System to showcase and maintain those components. One of those design systems for me has been Patternlab. I started using Patternlab in all my Drupal projects almost ten years ago with great success. In addition, Patternlab has been the design system of choice at my place of work but one of my immediate tasks was to work on migrating to a different design system. We have a small team but were very excited about the challenge of finding and using a more modern and robust design system for our large multi-site Drupal environment.
 
@@ -17,7 +17,7 @@ Building a custom Drupal theme nowadays is a more complex process than it used t
 
 <span class="callout callout--warning">
 <h4 class="callout__heading">Disclaimer:</h4>
-Due to technical restrictions and project requirements at the time of our implementation, we were not able to use <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">Single Directory Components</a> or SDC, nor the <a href="https://www.drupal.org/project/storybook" target="_blank" rel="noopener">Storybook module</a>. Our front-end environment was custom built.
+Due to technical restrictions with TwigJS, and project requirements at the time of our implementation, we were not able to use <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">Single Directory Components</a> or SDC, nor the <a href="https://www.drupal.org/project/storybook" target="_blank" rel="noopener">Storybook module</a>. Our front-end environment was custom built.
 </span>
 
 {% endraw%}
