@@ -152,10 +152,6 @@ The random 8 character string is gone and notice that this time the build job is
 
 ## Project restructure
 
-So far we've been working with Vite's and Storybook's default project structure, but we need update it to reflect the structure of a typical front-end or drupal theme project.
-
-
-
 Let's quickly review the structure of our environment so we can more effectively plan for where source code will live and where production code will be compiled/copied into.
 
 The project structure below only lists the most important files and directories.
@@ -181,6 +177,35 @@ Fig. 3: Basic structure of a Vite project.{.caption}
 * **> src** is where all the code we write is typically stored. Within this directory you will have all our components or patterns as well as CSs, and JS we are writing.
 * **package.json** tracks all the different node packages we install for our app to run.
 * **vite.config.js** is Vite's main configuration file. This is probably where we will spend most of our time.
+
+Now let's make some changes to the environment so it reflects the structure of a typical Drupal theme or front-end environment.
+
+* Let's start by creating a new directory inside _src_ called **components**.
+* Inside **components** create these three directories: **01-atoms**, **02-molecules**, and **03-organisms**
+* As our environment grows we will have components inside those folders, for now, grab two pre-built components we can use to test the automation we are working on.
+
+<< Add download link here >>
+
+Our little project is growing and we can continue automating 💪
+
+* Let's build the project again now that we have new components:
+
+{% raw %}
+
+```shell
+npm run build
+```
+
+{% endraw %}
+
+At this point any CSS files in our project should be compiling into `dist/css/` as individual, minified stylesheets. This is perfect for Drupal because as we create libraries for each component, we can individually select the appropriate stylesheet, however, Storybook does not know about the stylesheets unless we tell it about it.
+
+* We can import each component's CSS and JS files inside the component's `*.stories.jsx`.
+* We could import each stylesheet in `.storybook/preview.js`
+
+Either of the two options above would be a manual task every time a new stylesheet or javascript is added. That's no fun. Let's think of a way to automate this process.
+
+
 
 ## Let's start
 
