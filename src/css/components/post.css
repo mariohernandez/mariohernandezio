@@ -153,6 +153,11 @@ users they are displayed before the article.  This is for better UI. */
 /* Body images */
 .body-image {
   margin: 3rem auto;
+
+  &.body-image--left {
+    margin-inline-start: 0;
+    margin-inline-end: initial;
+  }
 }
 
 .body-image--wide {

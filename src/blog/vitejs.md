@@ -11,7 +11,7 @@ featuredImageCredit: "Joshua Reddekopp"
 featuredImageCreditUrl: "https://unsplash.com/@joshuaryanphoto"
 summary: "If you are searching for the next front-end build tool for your Drupal project, or any project, you need to try ViteJS. "
 ---
-Recently at my place of work we made the decision to switch our current design system to Storybook. We knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
+Recently I worked on a large Drupal project that needed to migrate from Patternlab to Storybook. I knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
 
 Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugins ecosystem and its community support. Vite is relatively new, but it is pretty solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
 
@@ -21,9 +21,15 @@ Vite is considered the _Next Generation Frontend Tooling_, and when tested, we w
 </span>
 {% endraw %}
 
-## Setup the environment
+The first part of our ultimate goal includes the following tasks:
 
-In a [previous post](../building-a-modern-drupal-theme-with-storybook) I wrote in detail how to build a front-end environment with Vite, I am going to spare you those details here but you can refernce them from the original post. To keep things simple, we will keep Drupal out of the picture. We can integrate it later.
+1. [Seting up the Storybook environment](#setup)
+1. [Testing the default build](#testing)
+1. [Updating the project's structure](#updating)
+
+## Setting up the environment {id=setup}
+
+In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite, I am going to spare you those details here but you can refernce them from the original post. To keep things simple, we will keep Drupal out of the picture. We can integrate it later.
 
 1. In your command line, navigate to the directory where you wish to build your environment
 1. Run the following commands:
@@ -40,9 +46,11 @@ npx storybook@latest init --type react
 
 Fig. 1: The first command builds the Vite project, and the last one integrates Storybook into it.{.caption}
 
-### Reviewing the out of the box Vite's & Storybook's scripts
+After Storybook is installed, it should automatically launch in your default browser.
 
-Before we start writing tasks, let's take a look at the ones that Vite and Storybook include out the box. We may find that those tasks already do what we want or may only need minor tweaks to make them our own.
+### Reviewing Vite's and Storybook's out of the box build scripts
+
+Vite and Storybook ship with a handful of useful build scripts. We may find some of them already do what we want or may only need minor tweaks to make them our own.
 
 * In your code editor, open `package.json` from your newly built project.
 * Look in the **scripts** section and you should see something similar to this:
@@ -64,21 +72,19 @@ Before we start writing tasks, let's take a look at the ones that Vite and Story
 
 Fig. 2: Example of app tasks out of the box.{.caption}
 
-To run any of those scripts append `npm run` and the name of the script, for example: `npm run build`, `npm run lint`, etc.
-Let's take a quick look at each of the tasks.
+To run any of those scripts prefix them with `npm run`. For example: `npm run build`, `npm run lint`, etc.
+Let's review the scripts above.
 
 * **dev**: This is a Vite-specific command which runs the Vite app we just build for local development
-* **build**: This is the "do it all" command. Running `npm run build` on a project should run every task and build every part of your app. CI/CD runners run this command to build your full app for production. Run this command locally to build your app for the first time or after making configuration updates to your app.
-* **lint**: Very self explanatory. In this case, this command will lint your JavaScript code as long as your files extensions are `.js` or `.jsx`.
+* **build**: This is the "do it all" command. Running `npm run build` on a project runs every task defined in the build job we will create later. CI/CD runners run this command to build your app for production. Run this command locally to build your app for the first time or after making configuration updates to your app.
+* **lint**: Will lint your JavaScript code inside `.js` or `.jsx` files.
 * **preview**: This is also another Vite-specific command which runs your app in preview mode.
 * **storybook**: This is the command you run to launch and keep Storybook running while you code.
-* **build-storybok**: To build a static version of Storybook to package it and share it or to make it available on a server independently of your website.
+* **build-storybok**: To build a static version of Storybook to package it or share it, or to run it as a static version of your project.
 
 The scripts or commands above are pretty standard in most front-end projects and we will keep most of them, but will probably change or extend what they do.
 
-## Testing the commands
-
-One thing that makes Vite different from other build tools is that it automatically names the compiled assets in such a way to help with caching issues. This may work well for you but in some cases, you may want to change this behavior as it will not work with Drupal since Drupal expects specific file names for your CSS and JavaScript.  Let's take a look by running the build command.
+## Testing the commands {id=testing}
 
 * In your command line, navigate to the **storybook** directory
 * Run the build command:
@@ -90,27 +96,27 @@ npm run build
 
 {% endraw %}
 
-In my case, the build command resulted in something like this:
+Your returned output should look similar to this:
 
-![Output of build command](/images/blog-images/build.webp){.body-image .body-image--wide}
+![Output of build command](/images/blog-images/build.webp){.body-image .body-image--narrow .body-image--left}
 
-Fig. 4: Screenshot of files compiled by the build command with random string in name.{.caption .caption--center}
+Fig. 4: Screenshot of files compiled by the build command.{.caption}
 
-Notice how each file that was compiled and placed inside the `dist/assets/` directory has been named by adding a random 8 character string after the original file name and before the extension? The random string may change making its name very unpredictable. Vite is smart enough to dynamically update any references to these files even if their random string changes. However, if we were to create a Drupal library where we need to specify the path to our CSS or JS files, we need to know exactly what that name is and that the name will not change.  For this reason I made a configuration change to my app to ensure the filenames for CSS and JavaScript don't use the random string but instead keep their original name when placed inside the dist/assets directory.
+Vite compiles the CSS into `dist/assets/`, and names the files by appending a random 8 character string to the original file name. For a React/Vite app like ours, when the random string changes, Vite is smart enough to automatically and dynamically update any reference to the files. However, Drupal libraries expect CSS and JS file names to stay consistent and not change. Let's change Vite's original behavior so compiled assets are consistently named.
 
 * Open `vite.config.js` in your code editor
-* Add these two imports directly after the last import
+* Add these two imports around line 3 or directly after the last import in the file
 
 {% raw %}
 
 ```js
 import path from 'path';
-import { glob } from 'glob'
+import { glob } from 'glob';
 ```
 
 {% endraw %}
 
-* Then add a build config to set a few critical settings:
+* Then add a build object where our tasks will be set:
 
 {% raw %}
 
@@ -118,7 +124,6 @@ import { glob } from 'glob'
   plugins: [react()],
   build: {
     emptyOutDir: true,
-    minify: true,
     outDir: 'dist',
     rollupOptions: {
       input: glob.sync(path.resolve(__dirname,'src/**/**/*.css')),
@@ -131,30 +136,27 @@ import { glob } from 'glob'
 
 {% endraw %}
 
-Fig. 5: Build object to modify where files are rendered as well as their name preferences.{.caption}
+Fig. 5: Build object to modify where files are compiled as well as their name preferences.{.caption}
 
-* First we imported `path`, part of Vite, and `{ glob }`, an external extension, in order to be able to resolve our file's path and capture all CSS files together by globbing.
+* First we imported `path` and `{ glob }`, both Vite's core features. We'll see these in action soon.
 * Then we added a **build** configuration in which we defined several settings:
   * `emptyOutDir`: This means when the build job runs, the `dist` directory will be emptied before the new compiled code is added. This ensure any old code that no longer belongs, will be removed in favor of the new code.
-  * `minify`: Self explanatory.
-  * `outDir`: Defines what the App's output directory is.
-  * `rollupOptions`: This is pretty powerful because you can include a lot of neat configuration in it:
-    * `input`: The directory where we want Vite to look for our files. Here's where **path** and **glob** are being used. By using `src/**/**/*.css`, we are instructing Vite to look three directories deep inside the `src` directory, and find any file that ends with **.css**. You will see shortly why we did this.
-    * `output`: The destination for where our CSS code will be compiled. In addition, we are telling Vite that our files should be placed inside `css`, which will automatically be created inside `dist` since this is our output directory, and the file names should retain their original names plus the extension. This allows the removal of the random 8 digit string from file names.
+  * `outDir`: Defines the App's output directory.
+  * `rollupOptions`: This is Vite's system for bundleing code and within it we can include neat configurations:
+    * `input`: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier, are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the `src` directory, and find any file that ends with **.css**.
+    * `output`: The destination for where our CSS code will be compiled (`dist/css`), and the file names should retain their original names. This allows the removal of the random 8 digit string from file names.
 
 Now if we run `npm run build` again, the output should be similar to this:
 
-![Second output of build command](/images/blog-images/build-after.webp){.body-image .body-image--wide}
+![Second output of build command](/images/blog-images/build-after.webp){.body-image .body-image--wide .body-image--left}
 
-Fig. 6: Screenshot of files compiled by the build command with original file names.{.caption .caption--center}
+Fig. 6: Screenshot of compiled code using the original file names.{.caption}
 
-The random 8 character string is gone and notice that this time the build job is pulling CSS files from `src/stories` directory because we configured Vite to go a few levels deeper into the `src` directory.
+The random 8 character string is gone and notice that this time the build job is pulling more CSS files. Since we configured the input to go three levels deep, the `src/stories` directory was included as part of the input path.
 
-## Project restructure
+## Updating the structure of the project {id=updating}
 
-Let's quickly review the structure of our environment so we can more effectively plan for where source code will live and where production code will be compiled/copied into.
-
-The project structure below only lists the most important files and directories.
+Let's quickly review the structure of the project as we need to make some changes to integrate an Atomic Design workflow. This means we will need to add a new directory structure. At a high level, the current structure is as follows:
 
 {% raw %}
 
@@ -169,26 +171,151 @@ vite.config.js
 
 {% endraw %}
 
-Fig. 3: Basic structure of a Vite project.{.caption}
+Fig. 3: Basic structure of a Vite project listing only the most important parts.{.caption}
 
-* **> .storybook** is a key location for Storybook to store all its configuration files. We may interact with this directory and its files as part of this post.
-* **> dist** is where all compiled code eventually is copied into. This directory is where your app or website looks for CSS, JS, Images, etc. when running in production. We  never edit or modify any code inside `dist`.
-* **> public** is where we can store things like images we need to reference from our site. Similar to Drupal's `/sites/default/files/`.
-* **> src** is where all the code we write is typically stored. Within this directory you will have all our components or patterns as well as CSs, and JS we are writing.
-* **package.json** tracks all the different node packages we install for our app to run.
+* **> .storybook** is the main location for Storybook's configuration.
+* **> dist** is where all compiled code is copied into and where the production app looks for all code. We  never update any code inside `dist`.
+* **> public** is where we can store images and other static assets we need to reference from our site. Similar to Drupal's `/sites/default/files/`.
+* **> src** is the directory we work out of. We will update the structure of this directory next.
+* **package.json** tracks all the different node packages we install for our app as well as the scripts we can run in our app.
 * **vite.config.js** is Vite's main configuration file. This is probably where we will spend most of our time.
 
-Now let's make some changes to the environment so it reflects the structure of a typical Drupal theme or front-end environment.
+### Restructure the project
 
-* Let's start by creating a new directory inside _src_ called **components**.
-* Inside **components** create these three directories: **01-atoms**, **02-molecules**, and **03-organisms**
-* As our environment grows we will have components inside those folders, for now, grab two pre-built components we can use to test the automation we are working on.
+Now let's update the environment so it reflects the structure of a typical Drupal theme or front-end environment that uses an Atomic Design methodology.
 
-<< Add download link here >>
+* First stop Storybook from running by pressing **Ctrl + C** on your keyboard.
+* Next, create a new directory inside **src**, called **components**.
+* Inside **components**, create two directories: **01-atoms** and **02-molecules**.
 
-Our little project is growing and we can continue automating 💪
+As our environment grows we will have components inside those folders, for now, download the following pre-built components:
 
-* Let's build the project again now that we have new components:
+* **01-atoms/button & title** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-atoms){target=_blank rel=noopener}
+* **02-molecules/card** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener}
+* Save them all in their contentpart directories in your project.
+
+## Configuring postCSS and TwigJS
+
+With the project now restructured we can begin setting up the ground for processing CSS using postCSS and getting Storybook to understand Twig. Doing this will require the following tasks:
+
+1. [Install all the required node packages](#install-packages)
+1. [Configure postCSS](#configure-postcss)
+1. [Configure TwigJS](#configure-twigjs)
+1. [Global CSS and JS workflow](#css-and-js-workflow)
+
+### Install all the node packages {id=install-packages}
+
+Now we are getting to the point where we will start interacting with CSS as well as Twig. For this reason, we need to install several node packages related to postCSS and Twig. In the interest of time, I won't get into each package but I will try to describe them as we interact with them. If you want to learn more about each package, you can google their names for more details. The project we are building will use plain CSS combined with postCSS, and our components will be built with Twig. This project does not use Sass.
+
+* In your command line and inside the **storybook** directory, run this very long command:
+
+{% raw %}
+
+```shell
+npm i -D postcss postcss-import postcss-import-ext-glob postcss-nested postcss-preset-env html-react-parser twig twig-drupal-filters vite-plugin-twig-drupal
+```
+
+{% endraw %}
+
+* At the root of the **storybook** directory, create a new file called **postcss.config.js**, and in it, add the following:
+
+#### Configure PostCSS {id=configure-postcss}
+
+{% raw %}
+
+```js
+import postcssImport from 'postcss-import';
+import postcssImportExtGlob from 'postcss-import-ext-glob';
+import postcssNested from 'postcss-nested';
+import postcssPresetEnv from 'postcss-preset-env';
+
+export default {
+  plugins: [
+    postcssImportExtGlob(),
+    postcssImport(),
+    postcssNested(),
+    postcssPresetEnv({
+      stage: 4,
+    }),
+  ],
+};
+```
+
+{% endraw %}
+
+One really cool thing about Vite is that it comes with postCSS functionality built-in. In the code above we are importing several of the packages we just installed and then we are adding several plugin related to those packages. Notice how we are not doing much configuration for those plugins, that's because Vite provides all functionality needed for those plugins.
+
+To review what we did above:
+
+* `postcss-import` the base to be able to import CSS stylesheets into other stylesheets.
+* `postcss-import-ext-glob` to import all CSS content in a folder at once versus importing one stylesheet at a time.
+* `postcss-nested` makes it possible to nest in CSS the same way we typically do it in Sass.
+* `postcss-preset-env` allows us to define the type of environment we need for CSS mostly around the type of browser support we need. [Stage 4](https://cssdb.org/#the-staging-process){target=_blank rel=noopener} means we want the "standards" level of support.
+
+Since we included a couple of components which were built in Twig, we also need to configure the environment with TwigJS. This will help Storybook understand Twig.
+
+#### Configure TwigJS {id=configure-twigjs}
+
+* Inside `.storybook/preview.js`, move all existing content down, and at the very top of the file add the following:
+
+{% raw %}
+
+```js
+import Twig from 'twig';
+import twigDrupal from 'twig-drupal-filters';
+
+function setupTwig(twig) {
+  twig.cache();
+  twigDrupal(twig);
+  return twig;
+}
+
+setupTwig(Twig);
+```
+
+{% raw %}
+
+The `twig` and `twig-drupal-filters` extensions make it possible for Storybook to first understand Twig code, and second also understand any Drupal filters we may use in Twig.
+The `setupTwig` function is simply what makes all of this work in Storybook.
+
+* Now open `vite.config.js` and override any imports at the top of the file with the following:
+
+{% raw %}
+
+```js
+import { defineConfig } from 'vite'
+import { join } from 'node:path'
+import twig from 'vite-plugin-twig-drupal';
+import path from 'path';
+import { glob } from 'glob'
+import yml from '@modyfi/vite-plugin-yaml';
+```
+
+{% endraw %}
+
+* `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
+* `@modyfi/vite-plugin-yaml` let's us use `.yml` to provide demo data to our Twig components.
+
+With all the configuration updates we just made, we need to rebuild the project in order for all the changes to take effect. Run the following commands (inside the **storybook** directory):
+
+{% raw %}
+
+```shell
+npm run build
+npm run storybook
+```
+
+{% endraw %}
+
+If all was done properly, you should see the Button, Title, and Card components in Storybook.  If you do, great job! otherwise you may want to review the instructions above to see if you missed something.
+
+The components are available in Storybook but they don't look like they are styled despite the fact that each component has a CSS stylesheet in its directory.  The reason for this is because we haven't told Storybook where those styles are and how to consume them.  Let's do that now.
+
+### Global CSS and JS workflow {id=css-and-js-workflow}
+
+
+
+* After saving the components, build your project again.
 
 {% raw %}
 
@@ -198,12 +325,70 @@ npm run build
 
 {% endraw %}
 
-At this point any CSS files in our project should be compiling into `dist/css/` as individual, minified stylesheets. This is perfect for Drupal because as we create libraries for each component, we can individually select the appropriate stylesheet, however, Storybook does not know about the stylesheets unless we tell it about it.
+Having individual CSS and JS files with consistent names is perfect for when we create Drupal libraries, however, Storybook does not know about the stylesheets unless we tell it about it and there are several ways we can do this. Of course, whichever way we come up with, has to be automated so when new CSS or JS files are added to our project, Storybook will automatically know about them.
 
-* We can import each component's CSS and JS files inside the component's `*.stories.jsx`.
-* We could import each stylesheet in `.storybook/preview.js`
+1. We could `@import` each component's CSS and JS files inside the component's `*.stories.jsx`. This seems reasonable and very low overhead, but if we are working on a large component that is made up of several smaller components, we would need to import all the CSS and JS files for all the smaller components. Doesn't seem to reasonable after all, does it?
+1. We could import each stylesheet in `.storybook/preview.js`, which also seems doable but as our catalog of components grows, the list of imports in preview.js will get pretty long. In addition, this is also a manual task which we try to avoid.
+1. We could create a single CSS (all.css), and JS (all.js), files in which we import all CSS and JS files accordingly, and then we would only need to import these two files once in `preview.js`. We could ensure that importing new CSS or JS files is done automatically by setting up some kind of globbing import.
 
-Either of the two options above would be a manual task every time a new stylesheet or javascript is added. That's no fun. Let's think of a way to automate this process.
+The option you pick above pretty much depends on your unique requirements, but for me, I think option 3 is the one that makes the most sense.  Let's get this in place next.
+
+{% raw %}
+<span class="callout callout--warning">
+<strong>NOTE</strong>: The system we are putting in place uses plain CSS in combination with postCSS. This is not a Sass workflow.
+</span>
+{% endraw %}
+
+To start, we need to prepare our environment for **postCSS**, by installing the **postcss** node package. Then we need to install two additional packages to import all CSS files using globbing, **postcss-import**" and **postcss-import-ext-glob**. Let's install all three together.
+
+{% raw %}
+
+```shell
+npm i -D postcss postcss-import postcss-import-ext-glob
+```
+
+{% endraw %}
+
+* With the required packages now in place, create a new stylesheet inside `src/components/`, called **all.css**.
+* Inside `all.css`, add the following:
+
+{% raw %}
+
+```shell
+@import-glob '01-atoms/**/*.css';
+@import-glob '02-molecules/**/*.css';
+@import-glob '03-organisms/**/*.css';
+```
+
+{% endraw %}
+
+* Now inside `.storybook/preview.js` (somewhere at the top or after any other imports), add the following:
+
+{% raw %}
+
+```js
+// Imports the CSS for all components combined into a single stylesheet.
+import '../dist/css/all.css';
+```
+
+{% endraw %}
+
+* Finally, run the build command again to see if our new updates are working.
+
+{% raw %}
+
+```shell
+npm run build
+```
+
+{% endraw %}
+
+
+1. Install all postcss packages
+1. Install other Twig related packages
+1. Add and configure `postcss.config.js`
+
+
 
 
 
