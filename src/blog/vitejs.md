@@ -324,70 +324,89 @@ We need to plan for worst-case scenario which is our component's catalog growing
 
 #### Single stylesheet compiling
 
-This should be a one-time thing and once in place and new stylesheets are created, our system will automatically get updated.
+This should be a one-time setup and once in place and new stylesheets are created, our system will automatically get updated.
 
 1. Global styles
 
 * Inside **patterns/base**, create stylesheets related to base/global styles such as **reset.css**, **colors.css**, **typography.css**, etc.
 * Inside **patterns/utilities**, create other stylesheets for utilities you will use as you code such as **layout.css**, **media-queries.css**, **z-index.css**, etc.
 
-  * Inside `src/patterns`, create a new file called `global.css`
-  * Inside `src/patterns`, create a new file called `utils.css`
-  * Inside **global.css**, add the following imports:
+  * Inside `src/patterns`, create these two new stylesheets `global.css` and `utils.css`.
+  * Inside **global.css**, add the following import:
 
-  {% raw %}
+{% raw %}
 
-  ```css
-  @import-glob 'base/*.css';
-  ```
+```css
+@import-glob 'base/*.css';
+```
 
-  {% endraw %}
+{% endraw %}
 
-  * Inside **utils.css**, add the following imports:
+  * Inside **utils.css**, add the following import:
 
-  {% raw %}
+{% raw %}
 
-  ```css
-  @import-glob 'utilities/*.css';
-  ```
+```css
+@import-glob 'utilities/*.css';
+```
 
-  {% endraw %}
+{% endraw %}
+
+* Now, inside `.storybook/preview.js` add these imports somewhere after the existing imports. Don't worry, we will create `all.css` shortly.
+
+{% raw %}
+
+```js
+// Imports all global and utilities CSS
+import '../dist/css/global.css';
+import '../dist/css/utils.css';
+
+// Import all components CSS.
+import '../dist/css/all.css';
+```
+
+{% endraw %}
+
+Fig. 6: Snippet showing importing of all CSS inside preview.js.{.caption}
 
 1. Components styles
 
   * Inside `src/components`, create a new file called `all.css`
   * Inside **all.css**, add the following imports:
 
-  {% raw %}
+{% raw %}
 
-  ```css
-  @import-glob 'base/global.css';
-  @import-glob 'base/utilities.css';
-  @import-glob '01-atoms/**/*.css';
-  @import-glob '02-molecules/**/*.css';
-  @import-glob '03-organisms/**/*.css';
-  @import-glob '04-layouts/**/*.css';
-  @import-glob '05-pages/**/*.css';
-  ```
+```css
+@import-glob 'base/global.css';
+@import-glob 'base/utilities.css';
+@import-glob '01-atoms/**/*.css';
+@import-glob '02-molecules/**/*.css';
+@import-glob '03-organisms/**/*.css';
+@import-glob '04-layouts/**/*.css';
+@import-glob '05-pages/**/*.css';
+```
 
-  {% endraw %}
+{% endraw %}
 
 Fig. 7: Snippet showing several CSS imports using a globbing approach.{.caption}
 
 In the snippet above we are making use of the **postcss-import** and **postcss-import-ext-glob** plugins we installed earlier. Through globbing we are able to automatically capture any CSS stylesheets that exist in either of those folders.
 
- * Inside `.storybook/preview.js`, add the following import:
+#### JavaScript compiling
 
- {% raw %}
+In the case of JS, we don't need such an elaborate system since JS code is very little compared to CSS. For JS we actually import the components ***.js** files directly into the component where the JS is being used.
 
-```js
-// Imports the CSS for all components combined into a single stylesheet.
-import '../dist/css/all.css';
+### Build the project again
+
+Now that our system for CSS and JS is in place, let's build the project to ensure everything is working as we expect it.
+
+{% raw %}
+
+```shell
+npm run build
+npm run storybook
 ```
 
 {% endraw %}
 
-#### Single JavaScript compiling
-
-* Components scripts
-* Third party libraries scripts
+You may notice that now the components in Storybook look styled. This tells us things are working and we can move on.
