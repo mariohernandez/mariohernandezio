@@ -185,8 +185,15 @@ Fig. 3: Basic structure of a Vite project listing only the most important parts.
 Now let's update the environment so it reflects the structure of a typical Drupal theme or front-end environment that uses an Atomic Design methodology.
 
 * First stop Storybook from running by pressing **Ctrl + C** on your keyboard.
-* Next, create a new directory inside **src**, called **components**.
-* Inside **components**, create two directories: **01-atoms** and **02-molecules**.
+* Next, create a new directory inside **src**, called **patterns**.
+* Inside **patterns**, create these directories: **base**, **components**, and **utilities**.
+* Inside **components**, create these directories: **01-atoms**, **02-molecules**, **03-organisms**, **04-layouts**, and **05-pages**.
+
+{% raw %}
+<span class="callout">
+<strong>NOTE</strong>: We will not use all these directories in this tutorial, but we created them siply to be aware of which folders you will ultimately need.
+</span>
+{% endraw %}
 
 As our environment grows we will have components inside those folders, for now, download the following pre-built components:
 
@@ -219,7 +226,7 @@ npm i -D postcss postcss-import postcss-import-ext-glob postcss-nested postcss-p
 
 * At the root of the **storybook** directory, create a new file called **postcss.config.js**, and in it, add the following:
 
-#### Configure PostCSS {id=configure-postcss}
+### Configure PostCSS {id=configure-postcss}
 
 {% raw %}
 
@@ -254,7 +261,7 @@ To review what we did above:
 
 Since we included a couple of components which were built in Twig, we also need to configure the environment with TwigJS. This will help Storybook understand Twig.
 
-#### Configure TwigJS {id=configure-twigjs}
+### Configure TwigJS {id=configure-twigjs}
 
 * Inside `.storybook/preview.js`, move all existing content down, and at the very top of the file add the following:
 
@@ -313,58 +320,65 @@ The components are available in Storybook but they don't look like they are styl
 
 ### Global CSS and JS workflow {id=css-and-js-workflow}
 
+We need to plan for worst-case scenario which is our component's catalog growing with tens of components. Ideally the system we put in place will automatically recognize new CSS and JS files as they are created. By the way, this workflow is only for Storybook, for Drupal we already have the workflow we need, which is manually adding static assets from dist to each Drupal library as we create them.
 
+#### Single stylesheet compiling
 
-* After saving the components, build your project again.
+This should be a one-time thing and once in place and new stylesheets are created, our system will automatically get updated.
 
-{% raw %}
+1. Global styles
 
-```shell
-npm run build
-```
+* Inside **patterns/base**, create stylesheets related to base/global styles such as **reset.css**, **colors.css**, **typography.css**, etc.
+* Inside **patterns/utilities**, create other stylesheets for utilities you will use as you code such as **layout.css**, **media-queries.css**, **z-index.css**, etc.
 
-{% endraw %}
+  * Inside `src/patterns`, create a new file called `global.css`
+  * Inside `src/patterns`, create a new file called `utils.css`
+  * Inside **global.css**, add the following imports:
 
-Having individual CSS and JS files with consistent names is perfect for when we create Drupal libraries, however, Storybook does not know about the stylesheets unless we tell it about it and there are several ways we can do this. Of course, whichever way we come up with, has to be automated so when new CSS or JS files are added to our project, Storybook will automatically know about them.
+  {% raw %}
 
-1. We could `@import` each component's CSS and JS files inside the component's `*.stories.jsx`. This seems reasonable and very low overhead, but if we are working on a large component that is made up of several smaller components, we would need to import all the CSS and JS files for all the smaller components. Doesn't seem to reasonable after all, does it?
-1. We could import each stylesheet in `.storybook/preview.js`, which also seems doable but as our catalog of components grows, the list of imports in preview.js will get pretty long. In addition, this is also a manual task which we try to avoid.
-1. We could create a single CSS (all.css), and JS (all.js), files in which we import all CSS and JS files accordingly, and then we would only need to import these two files once in `preview.js`. We could ensure that importing new CSS or JS files is done automatically by setting up some kind of globbing import.
+  ```css
+  @import-glob 'base/*.css';
+  ```
 
-The option you pick above pretty much depends on your unique requirements, but for me, I think option 3 is the one that makes the most sense.  Let's get this in place next.
+  {% endraw %}
 
-{% raw %}
-<span class="callout callout--warning">
-<strong>NOTE</strong>: The system we are putting in place uses plain CSS in combination with postCSS. This is not a Sass workflow.
-</span>
-{% endraw %}
+  * Inside **utils.css**, add the following imports:
 
-To start, we need to prepare our environment for **postCSS**, by installing the **postcss** node package. Then we need to install two additional packages to import all CSS files using globbing, **postcss-import**" and **postcss-import-ext-glob**. Let's install all three together.
+  {% raw %}
 
-{% raw %}
+  ```css
+  @import-glob 'utilities/*.css';
+  ```
 
-```shell
-npm i -D postcss postcss-import postcss-import-ext-glob
-```
+  {% endraw %}
 
-{% endraw %}
+1. Components styles
 
-* With the required packages now in place, create a new stylesheet inside `src/components/`, called **all.css**.
-* Inside `all.css`, add the following:
+  * Inside `src/components`, create a new file called `all.css`
+  * Inside **all.css**, add the following imports:
 
-{% raw %}
+  {% raw %}
 
-```shell
-@import-glob '01-atoms/**/*.css';
-@import-glob '02-molecules/**/*.css';
-@import-glob '03-organisms/**/*.css';
-```
+  ```css
+  @import-glob 'base/global.css';
+  @import-glob 'base/utilities.css';
+  @import-glob '01-atoms/**/*.css';
+  @import-glob '02-molecules/**/*.css';
+  @import-glob '03-organisms/**/*.css';
+  @import-glob '04-layouts/**/*.css';
+  @import-glob '05-pages/**/*.css';
+  ```
 
-{% endraw %}
+  {% endraw %}
 
-* Now inside `.storybook/preview.js` (somewhere at the top or after any other imports), add the following:
+Fig. 7: Snippet showing several CSS imports using a globbing approach.{.caption}
 
-{% raw %}
+In the snippet above we are making use of the **postcss-import** and **postcss-import-ext-glob** plugins we installed earlier. Through globbing we are able to automatically capture any CSS stylesheets that exist in either of those folders.
+
+ * Inside `.storybook/preview.js`, add the following import:
+
+ {% raw %}
 
 ```js
 // Imports the CSS for all components combined into a single stylesheet.
@@ -373,80 +387,7 @@ import '../dist/css/all.css';
 
 {% endraw %}
 
-* Finally, run the build command again to see if our new updates are working.
+#### Single JavaScript compiling
 
-{% raw %}
-
-```shell
-npm run build
-```
-
-{% endraw %}
-
-
-1. Install all postcss packages
-1. Install other Twig related packages
-1. Add and configure `postcss.config.js`
-
-
-
-
-
-## Let's start
-
-For this post we will focus on the **watch** task (which does not yet exist), but is the one developers use the most while working on a project.
-In general, a _watch_ task would normally **compile, lint, concatenate,** and **minify** code. In some cases it may also include things like copy assets from the `/src` directory to `/dist`. For more specific functions additional tasks can be created.
-
-Most of the work we will be done in `vite.config.js` in combination with adding extentions in `package.json`.
-
-* To start, let's install the first package, **vite-plugin-watch-and-run** by running:
-
-{% raw %}
-
-```bash
-npm i -D vite-plugin-watch-and-run
-```
-
-{% endraw %}
-
-* Next we will set the configuration to put these packages to work. Inside `vite.config.js` add the following:
-
-{% raw %}
-
-```js
-import path from 'path'
-import { watchAndRun } from 'vite-plugin-watch-and-run'
-
-/** @type {import('vite').UserConfig} */
-const config = {
-  plugins: [
-    watchAndRun([
-      {
-        name: 'css',
-        watchKind: ['add', 'change', 'unlink'],
-        watch: path.resolve('source/patterns/**/*.css'),
-        run: 'npm run vite:build',
-        delay: 300,
-      },
-      {
-        name: 'js',
-        watchKind: ['add', 'change', 'unlink'],
-        watch: path.resolve('source/patterns/**/*.js'),
-        run: 'npm run vite:build',
-        delay: 300,
-      },
-      {
-        name: 'images',
-        watchKind: ['add', 'change', 'unlink'],
-        watch: path.resolve('source/patterns/**/*.{png,jpg,jpeg,svg,webp,mp4}'),
-        run: 'npm run vite:build',
-        delay: 300,
-      },
-    ])
-  ]
-}
-
-export default config
-```
-
-{% endraw %}
+* Components scripts
+* Third party libraries scripts
