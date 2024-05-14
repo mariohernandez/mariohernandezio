@@ -303,6 +303,45 @@ import yml from '@modyfi/vite-plugin-yaml';
 * `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
 * `@modyfi/vite-plugin-yaml` let's us use `.yml` to provide demo data to our Twig components.
 
+* Still inside `vite.config.js`, add these two plugin:
+
+{% raw %}
+
+```js
+export default defineConfig({
+  plugins: [
+    twig({
+      namespaces: {
+        atoms: join(__dirname, './src/components/01-atoms'),
+        molecules: join(__dirname, './src/components/02-molecules'),
+        organisms: join(__dirname, './src/components/03-organisms'),
+        layouts: join(__dirname, './src/components/04-layouts'),
+        pages: join(__dirname, './src/components/05-pages'),
+      },
+    }),
+    yml(),
+  ],
+  build: {
+    emptyOutDir: true,
+    outDir: 'dist',
+    rollupOptions: {
+      input: glob.sync(path.resolve(__dirname,'src/components/**/*.css')),
+      output: {
+        assetFileNames: 'css/[name].css',
+      },
+    },
+    sourcemap: true,
+    manifest: false,
+  },
+})
+```
+
+{% endraw %}
+
+* Within the **twig** plugin above, we have created the namespaces we will use when nesting components in Storybook. We also added the **yml()** plugin pass data from *.yml* to Twig.
+* Next, we added a build task/job which will be responsible for pulling all CSS files from our components and process them while ensuring they keep their original file names.
+
+
 With all the configuration updates we just made, we need to rebuild the project in order for all the changes to take effect. Run the following commands (inside the **storybook** directory):
 
 {% raw %}
@@ -371,8 +410,8 @@ Fig. 6: Snippet showing importing of all CSS inside preview.js.{.caption}
 
 1. Components styles
 
-  * Inside `src/components`, create a new file called `all.css`
-  * Inside **all.css**, add the following imports:
+* Inside `src/components`, create a new file called `all.css`
+* Inside **all.css**, add the following imports:
 
 {% raw %}
 
