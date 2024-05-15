@@ -21,7 +21,7 @@ Vite is considered the _Next Generation Frontend Tooling_, and when tested, we w
 </span>
 {% endraw %}
 
-The first part of our ultimate goal includes the following tasks:
+This post is broken down in 3 parts. Part 1 focuses on these tasks:
 
 1. [Seting up the Storybook environment](#setup)
 1. [Testing the default build](#testing)
@@ -205,14 +205,14 @@ As our environment grows we will have components inside those folders, for now, 
 
 With the project now restructured we can begin setting up the ground for processing CSS using postCSS and getting Storybook to understand Twig. Doing this will require the following tasks:
 
-1. [Install all the required node packages](#install-packages)
+1. [Install the required node packages](#install-packages)
 1. [Configure postCSS](#configure-postcss)
 1. [Configure TwigJS](#configure-twigjs)
 1. [Global CSS and JS workflow](#css-and-js-workflow)
 
-### Install all the node packages {id=install-packages}
+### Install the required node packages {id=install-packages}
 
-Now we are getting to the point where we will start interacting with CSS as well as Twig. For this reason, we need to install several node packages related to postCSS and Twig. In the interest of time, I won't get into each package but I will try to describe them as we interact with them. If you want to learn more about each package, you can google their names for more details. The project we are building will use plain CSS combined with postCSS, and our components will be built with Twig. This project does not use Sass.
+Now we are getting to the point where we will start interacting with CSS as well as Twig. For this reason, we need to install several node packages related to postCSS and Twig.
 
 * In your command line and inside the **storybook** directory, run this very long command:
 
@@ -221,6 +221,8 @@ Now we are getting to the point where we will start interacting with CSS as well
 ```shell
 npm i -D postcss postcss-import postcss-import-ext-glob postcss-nested postcss-preset-env html-react-parser twig twig-drupal-filters vite-plugin-twig-drupal
 ```
+
+About half of those packages are for postCSS and the other half are for Twig. I'll try to describe each of the packages we just installed as we interact with them.
 
 {% endraw %}
 
@@ -250,14 +252,14 @@ export default {
 
 {% endraw %}
 
-One really cool thing about Vite is that it comes with postCSS functionality built-in. In the code above we are importing several of the packages we just installed and then we are adding several plugin related to those packages. Notice how we are not doing much configuration for those plugins, that's because Vite provides all functionality needed for those plugins.
+One really cool thing about Vite is that it comes with postCSS functionality built-in. This means that as long as a `postcss.config.js` file in the root of your project, Vite will take care of any plugins you may have added. Notice how we are not doing much configuration for those plugins except for defining them.
 
 To review what we did above:
 
 * `postcss-import` the base to be able to import CSS stylesheets into other stylesheets.
-* `postcss-import-ext-glob` to import all CSS content in a folder at once versus importing one stylesheet at a time.
+* `postcss-import-ext-glob` to define a single `@import` for all CSS content in a folder, versus individual imports for each file.
 * `postcss-nested` makes it possible to nest in CSS the same way we typically do it in Sass.
-* `postcss-preset-env` allows us to define the type of environment we need for CSS mostly around the type of browser support we need. [Stage 4](https://cssdb.org/#the-staging-process){target=_blank rel=noopener} means we want the "standards" level of support.
+* `postcss-preset-env` allows us to define the type of environment we need for CSS mostly around the type of browser support we need. [Stage 4](https://cssdb.org/#the-staging-process){target=_blank rel=noopener} means we want the "web standards" level of support.
 
 Since we included a couple of components which were built in Twig, we also need to configure the environment with TwigJS. This will help Storybook understand Twig.
 
@@ -283,7 +285,6 @@ setupTwig(Twig);
 {% raw %}
 
 The `twig` and `twig-drupal-filters` extensions make it possible for Storybook to first understand Twig code, and second also understand any Drupal filters we may use in Twig.
-The `setupTwig` function is simply what makes all of this work in Storybook.
 
 * Now open `vite.config.js` and override any imports at the top of the file with the following:
 
@@ -303,44 +304,35 @@ import yml from '@modyfi/vite-plugin-yaml';
 * `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
 * `@modyfi/vite-plugin-yaml` let's us use `.yml` to provide demo data to our Twig components.
 
-* Still inside `vite.config.js`, add these two plugin:
+The next piece is adding two plugins to `vite.config.js`.
+
+* Replace the existing `plugins: []` array in  `vite.config.js` with the snippet below:
 
 {% raw %}
 
 ```js
-export default defineConfig({
-  plugins: [
-    twig({
-      namespaces: {
-        atoms: join(__dirname, './src/components/01-atoms'),
-        molecules: join(__dirname, './src/components/02-molecules'),
-        organisms: join(__dirname, './src/components/03-organisms'),
-        layouts: join(__dirname, './src/components/04-layouts'),
-        pages: join(__dirname, './src/components/05-pages'),
-      },
-    }),
-    yml(),
-  ],
-  build: {
-    emptyOutDir: true,
-    outDir: 'dist',
-    rollupOptions: {
-      input: glob.sync(path.resolve(__dirname,'src/components/**/*.css')),
-      output: {
-        assetFileNames: 'css/[name].css',
-      },
+plugins: [
+  twig({
+    namespaces: {
+      atoms: join(__dirname, './src/components/01-atoms'),
+      molecules: join(__dirname, './src/components/02-molecules'),
+      organisms: join(__dirname, './src/components/03-organisms'),
+      layouts: join(__dirname, './src/components/04-layouts'),
+      pages: join(__dirname, './src/components/05-pages'),
     },
-    sourcemap: true,
-    manifest: false,
-  },
-})
+  }),
+  yml(),
+],
 ```
 
 {% endraw %}
 
-* Within the **twig** plugin above, we have created the namespaces we will use when nesting components in Storybook. We also added the **yml()** plugin pass data from *.yml* to Twig.
-* Next, we added a build task/job which will be responsible for pulling all CSS files from our components and process them while ensuring they keep their original file names.
+Fig. 8: Example of updated vite.config.js with plugins and build jobs.{.caption}
 
+The above configuration shows two plugins, **twig** and **yml()**.
+
+* In the Twig plugin, we have defined the namespaces we will use when nesting components in Storybook (`@atoms`, `@molecules`, etc.).
+* The `yml()` plugin is simply so we can use data from our yml file to pass to the component in Twig.
 
 With all the configuration updates we just made, we need to rebuild the project in order for all the changes to take effect. Run the following commands (inside the **storybook** directory):
 
@@ -353,25 +345,34 @@ npm run storybook
 
 {% endraw %}
 
-If all was done properly, you should see the Button, Title, and Card components in Storybook.  If you do, great job! otherwise you may want to review the instructions above to see if you missed something.
-
-The components are available in Storybook but they don't look like they are styled despite the fact that each component has a CSS stylesheet in its directory.  The reason for this is because we haven't told Storybook where those styles are and how to consume them.  Let's do that now.
+If all was done properly, you should see the Button, Title, and Card components in Storybook. Great job! 🎉
+If you don't see the expected components or got errors, please carefully review the instructions.
 
 ### Global CSS and JS workflow {id=css-and-js-workflow}
 
-We need to plan for worst-case scenario which is our component's catalog growing with tens of components. Ideally the system we put in place will automatically recognize new CSS and JS files as they are created. By the way, this workflow is only for Storybook, for Drupal we already have the workflow we need, which is manually adding static assets from dist to each Drupal library as we create them.
+The components are available but are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is we haven't told Storybook where those styles are and how to consume them.  Let's do that now.
 
-#### Single stylesheet compiling
+We need to plan for worst-case scenario which is our component's catalog growing with tens of components. Ideally the system we put in place will automatically recognize new CSS and JS files as they are created.
 
-This should be a one-time setup and once in place and new stylesheets are created, our system will automatically get updated.
+{% raw %}
 
-1. Global styles
+<span class="callout">
+<strong>NOTE</strong>: This workflow is only for Storybook, for Drupal we will use Drupal libraries in which we will include any CSS/JS required for each component.
+</span>
+
+{% endraw %}
+
+### Single stylesheet compiling
+
+This should be a one-time setup and once in place and new stylesheets are created, they will automatically be included in our new workflow.
+
+#### Global styles
 
 * Inside **patterns/base**, create stylesheets related to base/global styles such as **reset.css**, **colors.css**, **typography.css**, etc.
 * Inside **patterns/utilities**, create other stylesheets for utilities you will use as you code such as **layout.css**, **media-queries.css**, **z-index.css**, etc.
 
-  * Inside `src/patterns`, create these two new stylesheets `global.css` and `utils.css`.
-  * Inside **global.css**, add the following import:
+* Inside **src/patterns**, create two new stylesheets: `global.css` and `utils.css`.
+* Inside **global.css**, add the following import:
 
 {% raw %}
 
@@ -381,7 +382,7 @@ This should be a one-time setup and once in place and new stylesheets are create
 
 {% endraw %}
 
-  * Inside **utils.css**, add the following import:
+* Inside **utils.css**, add the following import:
 
 {% raw %}
 
@@ -408,9 +409,9 @@ import '../dist/css/all.css';
 
 Fig. 6: Snippet showing importing of all CSS inside preview.js.{.caption}
 
-1. Components styles
+#### Components styles
 
-* Inside `src/components`, create a new file called `all.css`
+* Inside **src/patterns/components**, create a new file called `all.css`
 * Inside **all.css**, add the following imports:
 
 {% raw %}
@@ -429,11 +430,11 @@ Fig. 6: Snippet showing importing of all CSS inside preview.js.{.caption}
 
 Fig. 7: Snippet showing several CSS imports using a globbing approach.{.caption}
 
-In the snippet above we are making use of the **postcss-import** and **postcss-import-ext-glob** plugins we installed earlier. Through globbing we are able to automatically capture any CSS stylesheets that exist in either of those folders.
+In the snippet above we are making use of the **postcss-import** and **postcss-import-ext-glob** plugins we installed earlier. Through globbing we are able to automatically capture any CSS stylesheets that exist in either of those directories.
 
-#### JavaScript compiling
+### JavaScript compiling
 
-In the case of JS, we don't need such an elaborate system since JS code is very little compared to CSS. For JS we actually import the components ***.js** files directly into the component where the JS is being used.
+For JavaScript, we don't need such an elaborate system since JS code is very little compared to CSS. For JS we actually import the components ***.js** files directly into the component where the JS is being used. The components we are using for this post don't use JS, but if you look inside `card.stories.jsx`, I have commented near the top of the file how the component's JS file would be imported if JS was needed.
 
 ### Build the project again
 
@@ -448,4 +449,11 @@ npm run storybook
 
 {% endraw %}
 
-You may notice that now the components in Storybook look styled. This tells us things are working and we can move on.
+You may notice that now the components in Storybook look styled. This tells us things are working and we can continue.
+
+## Remaining sections of the post
+
+* Create a task to copy assets
+* Create tasks for linting code
+* Redefine the Build command
+* Create a new Watch task
