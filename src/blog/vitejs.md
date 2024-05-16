@@ -27,7 +27,7 @@ This post is broken down in 3 parts. Part 1 focuses on these tasks:
 1. [Testing the default build](#testing)
 1. [Updating the project's structure](#updating)
 
-## Setting up the environment {id=setup}
+## Seting up the Storybook environment {id=setup}
 
 In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite, I am going to spare you those details here but you can refernce them from the original post. To keep things simple, we will keep Drupal out of the picture. We can integrate it later.
 
@@ -86,7 +86,7 @@ The scripts or commands above are pretty standard in most front-end projects and
 
 ## Testing the commands {id=testing}
 
-* In your command line, navigate to the **storybook** directory
+* Stop Storybook by pressing **Ctrl + C**
 * Run the build command:
 {% raw %}
 
@@ -116,7 +116,17 @@ import { glob } from 'glob';
 
 {% endraw %}
 
-* Then add a build object where our tasks will be set:
+* Install the **glob** extension:
+
+{% raw %}
+
+```shell
+npm i -D glob
+```
+
+{% endraw %}
+
+* Then add a build configuration where our tasks will be set:
 
 {% raw %}
 
@@ -138,9 +148,9 @@ import { glob } from 'glob';
 
 Fig. 5: Build object to modify where files are compiled as well as their name preferences.{.caption}
 
-* First we imported `path` and `{ glob }`, both Vite's core features. We'll see these in action soon.
+* First we imported `path` and `{ glob }`. We'll see these in action soon.
 * Then we added a **build** configuration in which we defined several settings:
-  * `emptyOutDir`: This means when the build job runs, the `dist` directory will be emptied before the new compiled code is added. This ensure any old code that no longer belongs, will be removed in favor of the new code.
+  * `emptyOutDir`: When the build job runs, the `dist` directory will be emptied before the new compiled code is added. This ensure any old code that no longer belongs, will be removed in favor of the new code.
   * `outDir`: Defines the App's output directory.
   * `rollupOptions`: This is Vite's system for bundleing code and within it we can include neat configurations:
     * `input`: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier, are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the `src` directory, and find any file that ends with **.css**.
@@ -156,7 +166,7 @@ The random 8 character string is gone and notice that this time the build job is
 
 ## Updating the structure of the project {id=updating}
 
-Let's quickly review the structure of the project as we need to make some changes to integrate an Atomic Design workflow. This means we will need to add a new directory structure. At a high level, the current structure is as follows:
+Let's quickly review the structure of the project as we need to make some changes to integrate an Atomic Design workflow. At a high level, the current structure is as follows:
 
 {% raw %}
 
@@ -174,7 +184,7 @@ vite.config.js
 Fig. 3: Basic structure of a Vite project listing only the most important parts.{.caption}
 
 * **> .storybook** is the main location for Storybook's configuration.
-* **> dist** is where all compiled code is copied into and where the production app looks for all code. We  never update any code inside `dist`.
+* **> dist** is where all compiled code is copied into and where the production app looks for all code.
 * **> public** is where we can store images and other static assets we need to reference from our site. Similar to Drupal's `/sites/default/files/`.
 * **> src** is the directory we work out of. We will update the structure of this directory next.
 * **package.json** tracks all the different node packages we install for our app as well as the scripts we can run in our app.
@@ -188,6 +198,7 @@ Now let's update the environment so it reflects the structure of a typical Drupa
 * Next, create a new directory inside **src**, called **patterns**.
 * Inside **patterns**, create these directories: **base**, **components**, and **utilities**.
 * Inside **components**, create these directories: **01-atoms**, **02-molecules**, **03-organisms**, **04-layouts**, and **05-pages**.
+* While we're at it, delete the **stories** directory inside **src**, as we won't be using it.
 
 {% raw %}
 <span class="callout">
@@ -195,7 +206,7 @@ Now let's update the environment so it reflects the structure of a typical Drupa
 </span>
 {% endraw %}
 
-As our environment grows we will have components inside those folders, for now, download the following pre-built components:
+As our environment grows we will have components inside those folders, for now, download the following pre-built components so we have something to test our environment with:
 
 * **01-atoms/button & title** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-atoms){target=_blank rel=noopener}
 * **02-molecules/card** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener}
@@ -212,23 +223,23 @@ With the project now restructured we can begin setting up the ground for process
 
 ### Install the required node packages {id=install-packages}
 
-Now we are getting to the point where we will start interacting with CSS as well as Twig. For this reason, we need to install several node packages related to postCSS and Twig.
+As we start interacting with CSS as well as Twig, we need to install several node packages. In the interest of time, let's install them all at once.
 
 * In your command line and inside the **storybook** directory, run this very long command:
 
 {% raw %}
 
 ```shell
-npm i -D postcss postcss-import postcss-import-ext-glob postcss-nested postcss-preset-env html-react-parser twig twig-drupal-filters vite-plugin-twig-drupal
+npm i -D postcss postcss-import postcss-import-ext-glob postcss-nested postcss-preset-env html-react-parser twig twig-drupal-filters vite-plugin-twig-drupal @modyfi/vite-plugin-yaml vite-plugin-twig-drupal
 ```
 
-About half of those packages are for postCSS and the other half are for Twig. I'll try to describe each of the packages we just installed as we interact with them.
+About half of those packages are for postCSS and the other half are for Twig. I'll try to describe them as we interact with them.
 
 {% endraw %}
 
-* At the root of the **storybook** directory, create a new file called **postcss.config.js**, and in it, add the following:
-
 ### Configure PostCSS {id=configure-postcss}
+
+* At the root of the **storybook** directory, create a new file called **postcss.config.js**, and in it, add the following:
 
 {% raw %}
 
@@ -252,18 +263,16 @@ export default {
 
 {% endraw %}
 
-One really cool thing about Vite is that it comes with postCSS functionality built-in. This means that as long as a `postcss.config.js` file in the root of your project, Vite will take care of any plugins you may have added. Notice how we are not doing much configuration for those plugins except for defining them.
+One really cool thing about Vite is that it comes with postCSS functionality built-in. As long as a `postcss.config.js` file exists in the root of your project, Vite will take care of any plugins you may have added. Notice how we are not doing much configuration for those plugins except for defining them. Let's review the code above:
 
-To review what we did above:
-
-* `postcss-import` the base to be able to import CSS stylesheets into other stylesheets.
-* `postcss-import-ext-glob` to define a single `@import` for all CSS content in a folder, versus individual imports for each file.
-* `postcss-nested` makes it possible to nest in CSS the same way we typically do it in Sass.
-* `postcss-preset-env` allows us to define the type of environment we need for CSS mostly around the type of browser support we need. [Stage 4](https://cssdb.org/#the-staging-process){target=_blank rel=noopener} means we want the "web standards" level of support.
-
-Since we included a couple of components which were built in Twig, we also need to configure the environment with TwigJS. This will help Storybook understand Twig.
+* `postcss-import` the base for importing CSS stylesheets.
+* `postcss-import-ext-glob` to do bulk `@import` of all CSS content in a folder, versus individual imports for each file.
+* `postcss-nested` makes it possible to nest in CSS.
+* `postcss-preset-env` defines the CSS browser support level we need. [Stage 4](https://cssdb.org/#the-staging-process){target=_blank rel=noopener} means we want the "web standards" level of support.
 
 ### Configure TwigJS {id=configure-twigjs}
+
+Now we need to configure the environment with TwigJS. This will help Storybook understand Twig.
 
 * Inside `.storybook/preview.js`, move all existing content down, and at the very top of the file add the following:
 
@@ -284,7 +293,7 @@ setupTwig(Twig);
 
 {% raw %}
 
-The `twig` and `twig-drupal-filters` extensions make it possible for Storybook to first understand Twig code, and second also understand any Drupal filters we may use in Twig.
+The `twig` and `twig-drupal-filters` extensions make it possible for Storybook to understand Twig code, and also understand Drupal filters we may use.
 
 * Now open `vite.config.js` and override all of its content with the following:
 
@@ -304,11 +313,11 @@ export default defineConfig({
   plugins: [
     twig({
       namespaces: {
-        atoms: join(__dirname, './src/components/01-atoms'),
-        molecules: join(__dirname, './src/components/02-molecules'),
-        organisms: join(__dirname, './src/components/03-organisms'),
-        layouts: join(__dirname, './src/components/04-layouts'),
-        pages: join(__dirname, './src/components/05-pages'),
+        atoms: join(__dirname, './src/patterns/components/01-atoms'),
+        molecules: join(__dirname, './src/patterns/components/02-molecules'),
+        organisms: join(__dirname, './src/patterns/components/03-organisms'),
+        layouts: join(__dirname, './src/patterns/components/04-layouts'),
+        pages: join(__dirname, './src/patterns/components/05-pages'),
       },
     }),
     yml(),
@@ -317,7 +326,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: 'dist',
     rollupOptions: {
-      input: glob.sync(path.resolve(__dirname,'src/components/**/*.css')),
+      input: glob.sync(path.resolve(__dirname,'./src/patterns/components/**/*.css')),
       output: {
         assetFileNames: 'css/[name].css',
       },
@@ -337,7 +346,7 @@ Since we are making several changes to the Vite configuration, it is easier to o
   * `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
   * `@modyfi/vite-plugin-yaml` let's us use `.yml` to provide demo data to our Twig components.
 
-* Since we restructured our environment earlier, I updated the `rollupOptions` in the **build** object to reflect the new environment structure (`src/components/**/*.css`).
+* Since we restructured our environment earlier, I updated the `rollupOptions` in the **build** object to reflect the new environment structure (`./src/patterns/components/**/*.css`).
 * Lastly, we added two new plugins: `twig` and `yml[]`:
   * In the **twig** plugin we redefined our namespaces to include all of the ones we anticipate.
   * The **yml()** plugin is simply to be able to pass demo data to our components using yml.
@@ -393,17 +402,32 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 {% raw %}
 
+* Add the following plugin in `vite.config.js`:
+
 ```js
-viteStaticCopy({
-  targets: [{
-    src: 'src/components/**/*.js',
-    dest: 'js',
+watchAndRun([
+  {
+    name: 'css',
+    watchKind: ['add', 'change', 'unlink'],
+    watch: path.resolve('.src/patterns/components/**/*.css'),
+    run: 'npm run vite:build',
+    delay: 300,
   },
   {
-    src: 'src/components/**/*.{png,jpg,jpeg,svg,webp,mp4}',
-    dest: 'images',
-  }],
-}),
+    name: 'js',
+    watchKind: ['add', 'change', 'unlink'],
+    watch: path.resolve('.src/patterns/components/**/*.js'),
+    run: 'npm run vite:build',
+    delay: 300,
+  },
+  {
+    name: 'images',
+    watchKind: ['add', 'unlink'],
+    watch: path.resolve('.src/patterns/components/**/*.{png,jpg,jpeg,svg,webp,mp4}'),
+    run: 'npm run vite:build',
+    delay: 300,
+  },
+]),
 ```
 
 {% endraw %}
