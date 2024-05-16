@@ -286,53 +286,61 @@ setupTwig(Twig);
 
 The `twig` and `twig-drupal-filters` extensions make it possible for Storybook to first understand Twig code, and second also understand any Drupal filters we may use in Twig.
 
-* Now open `vite.config.js` and override any imports at the top of the file with the following:
+* Now open `vite.config.js` and override all of its content with the following:
 
 {% raw %}
 
 ```js
+/* eslint-disable */
 import { defineConfig } from 'vite'
 import { join } from 'node:path'
 import twig from 'vite-plugin-twig-drupal';
 import path from 'path';
 import { glob } from 'glob'
 import yml from '@modyfi/vite-plugin-yaml';
-```
 
-{% endraw %}
-
-* `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
-* `@modyfi/vite-plugin-yaml` let's us use `.yml` to provide demo data to our Twig components.
-
-The next piece is adding two plugins to `vite.config.js`.
-
-* Replace the existing `plugins: []` array in  `vite.config.js` with the snippet below:
-
-{% raw %}
-
-```js
-plugins: [
-  twig({
-    namespaces: {
-      atoms: join(__dirname, './src/components/01-atoms'),
-      molecules: join(__dirname, './src/components/02-molecules'),
-      organisms: join(__dirname, './src/components/03-organisms'),
-      layouts: join(__dirname, './src/components/04-layouts'),
-      pages: join(__dirname, './src/components/05-pages'),
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    twig({
+      namespaces: {
+        atoms: join(__dirname, './src/components/01-atoms'),
+        molecules: join(__dirname, './src/components/02-molecules'),
+        organisms: join(__dirname, './src/components/03-organisms'),
+        layouts: join(__dirname, './src/components/04-layouts'),
+        pages: join(__dirname, './src/components/05-pages'),
+      },
+    }),
+    yml(),
+  ],
+  build: {
+    emptyOutDir: true,
+    outDir: 'dist',
+    rollupOptions: {
+      input: glob.sync(path.resolve(__dirname,'src/components/**/*.css')),
+      output: {
+        assetFileNames: 'css/[name].css',
+      },
     },
-  }),
-  yml(),
-],
+    sourcemap: true,
+    manifest: false,
+  },
+})
 ```
 
 {% endraw %}
 
-Fig. 8: Example of updated vite.config.js with plugins and build jobs.{.caption}
+Since we are making several changes to the Vite configuration, it is easier to override everything and I can explain what was added.
 
-The above configuration shows two plugins, **twig** and **yml()**.
+* Added two new `import`s which are used by Storybook to understand Twig:
 
-* In the Twig plugin, we have defined the namespaces we will use when nesting components in Storybook (`@atoms`, `@molecules`, etc.).
-* The `yml()` plugin is simply so we can use data from our yml file to pass to the component in Twig.
+  * `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
+  * `@modyfi/vite-plugin-yaml` let's us use `.yml` to provide demo data to our Twig components.
+
+* Since we restructured our environment earlier, I updated the `rollupOptions` in the **build** object to reflect the new environment structure (`src/components/**/*.css`).
+* Lastly, we added two new plugins: `twig` and `yml[]`:
+  * In the **twig** plugin we redefined our namespaces to include all of the ones we anticipate.
+  * The **yml()** plugin is simply to be able to pass demo data to our components using yml.
 
 With all the configuration updates we just made, we need to rebuild the project in order for all the changes to take effect. Run the following commands (inside the **storybook** directory):
 
@@ -348,7 +356,148 @@ npm run storybook
 If all was done properly, you should see the Button, Title, and Card components in Storybook. Great job! 🎉
 If you don't see the expected components or got errors, please carefully review the instructions.
 
-### Global CSS and JS workflow {id=css-and-js-workflow}
+So the bulk of the work for our environment is done. Let's resume what we've accomplished thus far:
+
+1. We built a new Vite project and integrated Storybook into it.
+1. Updated the structure of the project so it works for our needs and requirements.
+1. Configured Storybook so it understand Twig which our components are built with.
+1. Implemented an automated workflow for compiling all CSS code
+
+## What's next?
+
+One thing most projects have the need for is copying static assets like images, icons, and other files from `src` into `dist`. Vite comes with built-in functionality to do this as long as you place those assets inside the `public` directory. However, sometimes we may have those assets alongside our components or other directories within our project.  Let's setup a quick task to do the copying when running the build command.
+
+Like anything else in Vite, there are many ways to do one thing. In our case we will use a nice plugin called `vite-plugin-static-copy`. Let's set it up.
+
+* In your command line and inside the **storybook** directory, install the plugin:
+
+{% raw %}
+
+```shell
+npm i -D vite-plugin-static-copy
+```
+
+{% endraw %}
+
+* Next, at the top of `vite.config.js`, right after all the existing imports, import our new extension:
+
+{% raw %}
+
+```js
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+```
+
+{% endraw %}
+
+* Lastly, still in `vite.config.js`, add the plugin configuration inside the `plugins: []` array:
+
+{% raw %}
+
+```js
+viteStaticCopy({
+  targets: [{
+    src: 'src/components/**/*.js',
+    dest: 'js',
+  },
+  {
+    src: 'src/components/**/*.{png,jpg,jpeg,svg,webp,mp4}',
+    dest: 'images',
+  }],
+}),
+```
+
+{% endraw %}
+
+We added two targets, one to copy JavaScript files from within our components directory into `dist/js`, and the other one to copy any type of image from our components directory into `dist/images`. As you can imagine you can add as many targets as needed.
+
+If you run `npm run build`, any images or JS files inside any of your components will be copied into the respective directory in `dist`.
+
+## Watch task
+
+We have pretty much everything we planned for, done. However, so far if we want any of jobs we've configured to run, we need to run `npm run build`. This is great, but ideally, we want for those jobs to run automatically without us running a command. We can setup a watch plugin so every time we update any of the files we work on the appropriate tasks will run.  Let's do it.
+
+Again, if you want to do something in Vite, there's an extension for that!  In this case, that extension is `vite-plugin-watch-and-run`. Just like we did before, we are going to first install the package, import it into our project, setup the cofiguration for it, and finally, create the watch task in package.json. This will be done in `vite.config.js`.
+
+{% raw %}
+
+```shell
+npm i -D vite-plugin-watch-and-run
+```
+
+{% endraw %}
+
+* Next, at the top of `vite.config.js`, right after all the existing imports, import our new extension:
+
+{% raw %}
+
+```js
+import { watchAndRun } from 'vite-plugin-watch-and-run';
+```
+
+{% endraw %}
+
+{% raw %}
+
+```js
+watchAndRun([
+  {
+    name: 'css',
+    watchKind: ['add', 'change', 'unlink'],
+    watch: path.resolve('src/components/**/*.css'),
+    run: 'npm run vite:build',
+    delay: 300,
+  },
+  {
+    name: 'js',
+    watchKind: ['add', 'change', 'unlink'],
+    watch: path.resolve('src/components/**/*.js'),
+    run: 'npm run vite:build',
+    delay: 300,
+  },
+  {
+    name: 'images',
+    watchKind: ['add', 'unlink'],
+    watch: path.resolve('src/components/**/*.{png,jpg,jpeg,svg,webp,mp4}'),
+    run: 'npm run vite:build',
+    delay: 300,
+  },
+]),
+```
+
+{% endraw %}
+
+* Open `package.json` and within the **scripts** section, add the following:
+
+{% raw %}
+
+```json
+"vite:build": "vite build",
+"vite:watch": "vite build --watch",
+"watch": "npm run vite:watch & npm run storybook:dev",
+```
+
+{% endraw %}
+
+The new watch task above is actually a combination of two other tasks: `vite:watch` and `storybook:dev`.
+When the new watch task is evoked (`npm run watch`), the following happens:
+
+1. Vite runs with a **watch** flag which means it will stay running until it is manually stopped, and will listen for any changes to CSS, JS and images.
+1. It will build Storybook and will launch it on your default browser.
+1. When changes are saved, the watch task runs again and storybook automatically reflects the changes.
+
+Let's briefly go over the configuration in **watchAndRun**:
+
+* `name` is an arbitrary name you wish to assign to the task
+* `watchKind` is the type of change (add, delete, and change). For the images task we only react to add and delete.
+* `watch` is the task to run when changes occurred
+* `run` is the command to run when changes do happen
+* `delay` is a little pause from doing anything in the event that many files are added or removed at once.
+
+## In closing
+
+I realize this was a very long post, but I hope I was able cover the topic so it is useful to you. Automation in a font-end project is of essence to be productive and focus on the actual work, coding. There are so many ways to do everything I covered here and I challenge you to find better and more efficient ways. Until next time, thanks for visiting.
+
+
 
 The components are available but are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is we haven't told Storybook where those styles are and how to consume them.  Let's do that now.
 
