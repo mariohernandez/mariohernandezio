@@ -467,21 +467,14 @@ watchAndRun([
   {
     name: 'css',
     watchKind: ['add', 'change', 'unlink'],
-    watch: path.resolve('src/components/**/*.css'),
+    watch: path.resolve('./src/patterns/components/**/*.css'),
     run: 'npm run vite:build',
     delay: 300,
   },
   {
     name: 'js',
     watchKind: ['add', 'change', 'unlink'],
-    watch: path.resolve('src/components/**/*.js'),
-    run: 'npm run vite:build',
-    delay: 300,
-  },
-  {
-    name: 'images',
-    watchKind: ['add', 'unlink'],
-    watch: path.resolve('src/components/**/*.{png,jpg,jpeg,svg,webp,mp4}'),
+    watch: path.resolve('./src/patterns/components/**/*.js'),
     run: 'npm run vite:build',
     delay: 300,
   },
@@ -495,27 +488,97 @@ watchAndRun([
 {% raw %}
 
 ```json
-"vite:build": "vite build",
 "vite:watch": "vite build --watch",
-"watch": "npm run vite:watch & npm run storybook:dev",
+"watch": "npm run vite:watch & npm run storybook",
 ```
 
 {% endraw %}
 
-The new watch task above is actually a combination of two other tasks: `vite:watch` and `storybook:dev`.
+The new watch task above is actually a combination of two other tasks: `vite:watch` and `storybook`.
 When the new watch task is evoked (`npm run watch`), the following happens:
 
-1. Vite runs with a **watch** flag which means it will stay running until it is manually stopped, and will listen for any changes to CSS, JS and images.
+1. Vite runs with a **--watch** flag which will stay running until it is manually stopped, and will listen for any changes to CSS and JS.
 1. It will build Storybook and will launch it on your default browser.
-1. When changes are saved, the watch task runs again and storybook automatically reflects the changes.
+1. When changes are saved, the watch task recompiles the code and storybook does a Hot Module Reload, or HMR, to reflect the changes.
 
 Let's briefly go over the configuration in **watchAndRun**:
 
 * `name` is an arbitrary name you wish to assign to the task
-* `watchKind` is the type of change (add, delete, and change). For the images task we only react to add and delete.
-* `watch` is the task to run when changes occurred
+* `watchKind` is the type of change (add, delete, and change).
+* `watch` is the path to watch for changes
 * `run` is the command to run when changes do happen
 * `delay` is a little pause from doing anything in the event that many files are added or removed at once.
+
+
+
+## Linting, to end things clean
+
+Our workflow is coming along nicely. There are many other things we can do but for now, we will end with one last task: CSS and JS linting.
+
+* Install the required packages
+
+{% raw %}
+
+```shell
+npm i -D eslint stylelint vite-plugin-checker stylelint-config-standard stylelint-order stylelint-selector-pseudo-class-lvhfa
+```
+
+{% endraw %}
+
+* Next, after the last import in `vite.config.js`, add one more:
+
+{% raw %}
+
+```js
+import checker from 'vite-plugin-checker';
+```
+
+{% endraw %}
+
+* Then, let's add one more plugin anywhere inside the `plugins: []` array:
+
+{% raw %}
+
+```js
+checker({
+  eslint: {
+    lintCommand: 'eslint "./src/patterns/components/**/*.{js,jsx}"',
+  },
+  stylelint: {
+    lintCommand: 'stylelint "./src/patterns/components/**/*.css"',
+  },
+}),
+```
+
+{% endraw %}
+
+* Finally, let's add two new commands to `package.json` to be able to execute the two checks above on demand:
+
+{% raw %}
+
+```json
+"eslint": "eslint --ext .js,.jsx,.ts,.tsx .",
+"stylelint": "stylelint './src/patterns/components/**/*.css'",
+```
+
+{% endraw %}
+
+* We installed a series of packages related to ESLint and Stylelint.
+* `vite-plugin-checker` is a plugin that can run TypeScript, VLS, vue-tsc, ESLint, and Stylelint in worker thread.
+* We imported `vite-plugin-checker` and also created a new plugin with two checks, one for ESLint and the other for Stylelint.
+* By default the new checks will run when we execute `npm run build`, but we also added them as individual commands so we can run them on demand.
+
+To test all the functionality we've implemented, run the commands below and then try updating any of the CSS in the project to ensure the changes are reflected in Storybook. You could also try writing some bad CSS or JS and you should see the linters warning you about the issues.
+
+{% raw %}
+
+```shell
+npm run build
+npm run watch
+```
+
+{% endraw %}
+
 
 ## In closing
 
@@ -630,3 +693,5 @@ You may notice that now the components in Storybook look styled. This tells us t
 * Create tasks for linting code
 * Redefine the Build command
 * Create a new Watch task
+* Add `.nvmrc`
+* Add `.eslintrc` & `.stylelint.yml`

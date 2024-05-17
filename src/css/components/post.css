@@ -77,7 +77,8 @@
     }
   }
 
-  ul {
+  ul,
+  ol {
     margin-block-end: var(--size-24);
   }
 }
