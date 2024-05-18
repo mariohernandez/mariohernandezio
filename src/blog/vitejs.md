@@ -21,11 +21,15 @@ Vite is considered the _Next Generation Frontend Tooling_, and when tested, we w
 </span>
 {% endraw %}
 
-This post is broken down in 3 parts. Part 1 focuses on these tasks:
+This will be quite a lengty post, but feel free to jump to a specific section:
 
 1. [Seting up the Storybook environment](#setup)
-1. [Testing the default build](#testing)
+1. [Testing the default commands](#testing)
 1. [Updating the project's structure](#updating)
+1. [Configure postCSS & TwigJS](#postcss-twigjs)
+1. [Copying static assets](#copying)
+1. [Building a watch task](#watch)
+1. [Linting CSS and JavaScript](#linting)
 
 ## Seting up the Storybook environment {id=setup}
 
@@ -84,7 +88,7 @@ Let's review the scripts above.
 
 The scripts or commands above are pretty standard in most front-end projects and we will keep most of them, but will probably change or extend what they do.
 
-## Testing the commands {id=testing}
+## Testing the default commands {id=testing}
 
 * Stop Storybook by pressing **Ctrl + C**
 * Run the build command:
@@ -212,14 +216,9 @@ As our environment grows we will have components inside those folders, for now, 
 * **02-molecules/card** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener}
 * Save them all in their contentpart directories in your project.
 
-## Configuring postCSS and TwigJS
+## Configuring postCSS and TwigJS {id=postcss-twigjs}
 
-With the project now restructured we can begin setting up the ground for processing CSS using postCSS and getting Storybook to understand Twig. Doing this will require the following tasks:
-
-1. [Install the required node packages](#install-packages)
-1. [Configure postCSS](#configure-postcss)
-1. [Configure TwigJS](#configure-twigjs)
-1. [Global CSS and JS workflow](#css-and-js-workflow)
+With the project now restructured we can begin setting up the ground for processing CSS using postCSS and getting Storybook to understand Twig.
 
 ### Install the required node packages {id=install-packages}
 
@@ -372,7 +371,7 @@ So the bulk of the work for our environment is done. Let's resume what we've acc
 1. Configured Storybook so it understand Twig which our components are built with.
 1. Implemented an automated workflow for compiling all CSS code
 
-## What's next?
+## Copying static assets {id=copying}
 
 One thing most projects have the need for is copying static assets like images, icons, and other files from `src` into `dist`. Vite comes with built-in functionality to do this as long as you place those assets inside the `public` directory. However, sometimes we may have those assets alongside our components or other directories within our project.  Let's setup a quick task to do the copying when running the build command.
 
@@ -436,7 +435,7 @@ We added two targets, one to copy JavaScript files from within our components di
 
 If you run `npm run build`, any images or JS files inside any of your components will be copied into the respective directory in `dist`.
 
-## Watch task
+## Building a watch task {id=watch}
 
 We have pretty much everything we planned for, done. However, so far if we want any of jobs we've configured to run, we need to run `npm run build`. This is great, but ideally, we want for those jobs to run automatically without us running a command. We can setup a watch plugin so every time we update any of the files we work on the appropriate tasks will run.  Let's do it.
 
@@ -511,7 +510,7 @@ Let's briefly go over the configuration in **watchAndRun**:
 
 
 
-## Linting, to end things clean
+## Linting CSS and JavaScript {id=linting}
 
 Our workflow is coming along nicely. There are many other things we can do but for now, we will end with one last task: CSS and JS linting.
 
@@ -583,8 +582,6 @@ npm run watch
 ## In closing
 
 I realize this was a very long post, but I hope I was able cover the topic so it is useful to you. Automation in a font-end project is of essence to be productive and focus on the actual work, coding. There are so many ways to do everything I covered here and I challenge you to find better and more efficient ways. Until next time, thanks for visiting.
-
-
 
 The components are available but are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is we haven't told Storybook where those styles are and how to consume them.  Let's do that now.
 
