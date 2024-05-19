@@ -26,6 +26,7 @@ Topics covered in this post include:
 1. [Seting up the Vite & Storybook environment](#setup)
 1. [Building the app for the first time](#building-app)
 1. [Updating the project's structure](#updating)
+1. [Storybook's CSS configuration](#global-css)
 1. [Configure postCSS & TwigJS](#postcss-twigjs)
 1. [Copying static assets](#copying)
 1. [Building a watch task](#watch)
@@ -230,14 +231,14 @@ npm run storybook
 
 The components are available but are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is we haven't told Storybook where those styles are and how to consume them.  Let's do that next.
 
-## Global CSS and JavaScript Storybook configuration
+## Storybook's CSS configuration {id=global-css}
 
-To start, we will setup site-wide, or global styles, which should be available anywhere on the site. For components styles, ideally the system we put in place will automatically recognize the CSS and JS as new components are added.
+To start, we will setup site-wide, or global styles, which should be available anywhere on the site. For components styles, ideally the system we put in place will automatically recognize the CSS as new components are added.
 
 {% raw %}
 
 <span class="callout">
-<strong>NOTE</strong>: This workflow is only for Storybook, for Drupal we will use Drupal libraries in which we will include any CSS/JS required for each component.
+<strong>NOTE</strong>: This workflow is only for Storybook, for Drupal we will use Drupal libraries in which we will include any CSS required for each component.
 </span>
 
 {% endraw %}
@@ -269,9 +270,11 @@ The order in which we have imported our stylesheets is on purpose as the cascadi
 * `utilities/*.css` are all custom utilities we use as we style elements such as spacing, sizing, z-index, etc.
 * Lastly, all other styles come next such as components, layouts, etc.
 
-### Updating Storybook's Preview with all styles above
+### Updating Storybook's Preview
 
-* Inside `.storybook/preview.js` add these imports somewhere after the existing imports. By doing this the styles above will be available in Storybook's preview.
+The best place for CSS Styles to be available while we build or update components is in **.storybook/preview.js**.
+
+* Inside `.storybook/preview.js` add these imports somewhere after the existing imports.
 
 {% raw %}
 
@@ -281,7 +284,7 @@ import '../dist/css/global.css';
 import '../dist/css/utils.css';
 
 // Import all components CSS.
-import '../dist/css/all.css';
+import '../dist/css/components.css';
 ```
 
 {% endraw %}
