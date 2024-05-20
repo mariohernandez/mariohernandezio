@@ -27,7 +27,7 @@ Topics covered in this post include:
 1. [Building the app for the first time](#building-app)
 1. [Updating the project's structure](#updating)
 1. [Storybook's CSS configuration](#global-css)
-1. [Configure postCSS & TwigJS](#postcss-twigjs)
+1. [Configuring postCSS & TwigJS](#postcss-twigjs)
 1. [Copying static assets](#copying)
 1. [Building a watch task](#watch)
 1. [Linting CSS and JavaScript](#linting)
@@ -233,7 +233,7 @@ The components are available but are not styled despite the fact that each compo
 
 ## Storybook's CSS configuration {id=global-css}
 
-To start, we will setup site-wide, or global styles, which should be available anywhere on the site. For components styles, ideally the system we put in place will automatically recognize the CSS as new components are added.
+To start, we will setup global styles for Storybook. Then we will configure components styles, which ideally the system we put in place will automatically recognize the CSS as new components are added.
 
 {% raw %}
 
@@ -245,9 +245,7 @@ To start, we will setup site-wide, or global styles, which should be available a
 
 ### Global styles
 
-* Inside **patterns/base**, Add these pre-built **reset.css** and **styles.css** stylesheets. Going forward, this will be the place for creating styles for colors, typography, etc.
-* Inside **patterns/utilities** is where you will add stylesheets for different utilities we may use such as media-queries, grid, backgrounds, etc.
-
+* Inside **patterns/base**, Add these pre-built **reset.css** and **styles.css** stylesheets.
 * Inside **src/patterns**, create a new stylesheet called `global.css`.
 * Inside **global.css**, add the following imports:
 
@@ -255,7 +253,7 @@ To start, we will setup site-wide, or global styles, which should be available a
 
 ```css
 @import 'base/reset.css';
-@import 'base/base.css';
+@import 'base/styles.css';
 @import-glob 'base/*.css';
 @import-glob 'utilities/*.css';
 ```
@@ -351,7 +349,7 @@ Fig. 8: A long list of node packages that allow postCSS and Twig functionality i
 
 About half of those packages are for postCSS and the other half are for Twig. I'll try to describe them as we interact with them.
 
-### Configure PostCSS {id=configure-postcss}
+### Configuring PostCSS {id=configure-postcss}
 
 Native CSS has come a long way to the point that I am no longer using Sass as a CSS preprocessor. Plain CSS and postCSS can do almost everything I used to only be able to do with Sass.  So far this has worked great for me.
 
