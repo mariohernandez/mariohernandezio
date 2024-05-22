@@ -86,7 +86,7 @@ Let's review the scripts above.
 * **storybook**: This is the command you run to launch and keep Storybook running while you code.
 * **build-storybok**: To build a static version of Storybook to package it or share it, or to run it as a static version of your project.
 
-Most commands above are pretty standard in most front-end projects, and we will keep most of them, but will change or extend what they do.
+Several commands above are pretty standard in most front-end projects, and we will keep most of them, but will change or extend what they do.
 
 ## Building your app for the first time {id=building-app}
 
@@ -100,13 +100,13 @@ npm run build
 
 {% endraw %}
 
-Your returned output should look similar to this:
+The output in the command line should look similar to this:
 
 ![Output of build command](/images/blog-images/build.webp){.body-image .body-image--narrow .body-image--left}
 
 Fig. 4: Screenshot of files compiled by the build command.{.caption}
 
-By default, Vite compiles the CSS into `dist/assets/`, and names the files by appending a random 8 character string to the original file name. For a React/Vite app like ours, when the random string changes, Vite is smart enough to automatically and dynamically update any reference to the files. However, Drupal libraries expect CSS and JS file names to stay consistent and not change. Let's change Vite's original behavior so compiled assets are consistently named.
+By default, Vite compiles the CSS into `dist/assets/`, and names the files by appending a random 8 character string to the original file name. For a traditional React/Vite app, when the random string changes, Vite is smart enough to automatically and dynamically update any reference to the files. However, in Drupal, the libraries we create expect for CSS and JS file names to stay consistent and not change. Let's change Vite's original behavior so compiled assets are consistently named.
 
 * First, install the **glob** extension. We'll use this shortly to import multiple CSS files in a single import.
 
@@ -158,7 +158,7 @@ Fig. 5: Build object to modify where files are compiled as well as their name pr
   * `outDir`: Defines the App's output directory.
   * `rollupOptions`: This is Vite's system for bundleing code and within it we can include neat configurations:
     * `input`: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier, are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the `src` directory, and find any file that ends with **.css**.
-    * `output`: The destination for where our CSS code will be compiled (`dist/css`), and the file names should retain their original names. This allows the removal of the random 8 digit string from file names.
+    * `output`: The destination for where our CSS code will be compiled (`dist/css`), and the file names should retain their original names (`assetFileNames: 'css/[name].css'`). This allows the removal of the random 8 digit string from file names.
 
 Now if we run `npm run build` again, the output should be similar to this:
 
@@ -204,11 +204,11 @@ Let's update the environment so it reflects the structure of a typical Drupal th
 * Inside **components**, create these directories: **01-atoms**, **02-molecules**, **03-organisms**, **04-layouts**, and **05-pages**.
 * While we're at it, delete the **stories** directory inside **src**, since we won't be using it.
 * Also while at it, create a new file named **.nvmrc** in the root of your project
-    * Inside `.nvmrc` add the following: `v20.12.2` (This is the node version the project uses).
+    * Inside `.nvmrc` add the following: `v20.12.2` (This is the node version the project uses). This ensures everyone working in the project uses the same version of node.
 
 {% raw %}
 <span class="callout">
-<strong>NOTE</strong>: We will not use all these directories in this tutorial, but we created them simply to be aware of which folders you will ultimately need.
+<strong>NOTE</strong>: We will not use all these directories in this tutorial, but we created them simply to make you aware of which folders you will ultimately need.
 </span>
 {% endraw %}
 
@@ -218,7 +218,7 @@ As our environment grows we will have components inside those folders, for now, 
 
 * **01-atoms/button & title** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-atoms){target=_blank rel=noopener}
 * **02-molecules/card** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener}
-* Save them all in their contentpart directories in your project. Now run:
+* Save them all in their contentpart directories in your project. Then run:
 
 {% raw %}
 
@@ -233,7 +233,7 @@ The components are available but are not styled despite the fact that each compo
 
 ## Storybook's CSS configuration {id=global-css}
 
-To start, we will setup global styles for Storybook. Then we will configure components styles, which ideally the system we put in place will automatically recognize the CSS as new components are added.
+To start, we will setup global styles for Storybook. Then we will configure components styles, which ideally, the system we put in place will automatically recognize as new components are added.
 
 {% raw %}
 
@@ -333,7 +333,7 @@ With the project now restructured we can begin setting up the ground for process
 
 ### Install the required node packages {id=install-packages}
 
-As we start interacting with CSS as well as Twig, we need to install several node packages to enable functionality we would not have otherwise. In the interest of time, let's install them all at once.
+As we start interacting with CSS and Twig, we need to install several node packages to enable functionality we would not have otherwise. In the interest of time, let's install them all at once.
 
 * In your command line and inside the **storybook** directory, run this very long command:
 
@@ -492,7 +492,7 @@ The bulk of the work for our environment is done, but we're only halfway there. 
 1. Configured Storybook so it understand Twig which our components are built with.
 1. Updated the CSS compiling process to generate consistent file names.
 
-The second half of this post will focus on creating specific task for copying static assets, building a watch task, and finally linting our code.
+The second half of this post will focus on creating specific tasks for copying static assets, building a watch task, and finally linting our code.
 
 ## Copying static assets {id=copying}
 
@@ -547,7 +547,7 @@ If you run `npm run build`, any images or JS files inside any of your components
 
 ## Building a watch task {id=watch}
 
-So far if we want any of the tasks we've configured to run, we need to run `npm run build`. Ideally, we want for those tasks to run automatically as we work on the project without us running a command. We can setup a watch task so every time we update any of the files we work on the task will be triggered and run.
+So far if we want any of the tasks we've configured to run, we need to run `npm run build`. Ideally, we want for those tasks to run automatically as we work on the project without us running a command. We can setup a watch task so every time we update and save a file, the task will be triggered and run.
 
 Again, if you want to do something in Vite, there's an extension for that!  In this case, that extension is `vite-plugin-watch-and-run`. You know the drill.
 
@@ -684,6 +684,10 @@ Fig. 17: Two new npm commands to lint CSS and JavaScript.{.caption}
 * `vite-plugin-checker` is a plugin that can run TypeScript, VLS, vue-tsc, ESLint, and Stylelint in worker thread.
 * We imported `vite-plugin-checker` and also created a new plugin with two checks, one for ESLint and the other for Stylelint.
 * By default the new checks will run when we execute `npm run build`, but we also added them as individual commands so we can run them on demand.
+
+### Configure rules for ESLint and Stylelint
+
+Both ESLint and Stylelint use configuration files where we can configure the various rules we want to enforce when writing code.  The files they use are `.eslintrc.yml` and `.stylint.js` respectively.  Get copies of each of these files and save them in the root of your project.
 
 To test all the functionality we've implemented, run the commands below and then try updating any of the CSS in the project to ensure the changes are reflected in Storybook. You could also try writing bad CSS or JS to see the linters warning you about the errors.
 
