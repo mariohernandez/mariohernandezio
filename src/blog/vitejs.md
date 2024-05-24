@@ -21,16 +21,18 @@ Vite is considered the _Next Generation Frontend Tooling_, and when tested, we w
 </span>
 {% endraw %}
 
-Topics covered in this post include:
+The topics covered in this post can be broken down in two groups:
 
-1. [Seting up the Vite & Storybook environment](#setup)
-1. [Building the app for the first time](#building-app)
-1. [Updating the project's structure](#updating)
-1. [Storybook's CSS configuration](#global-css)
-1. [Configuring postCSS & TwigJS](#postcss-twigjs)
-1. [Copying static assets](#copying)
-1. [Building a watch task](#watch)
-1. [Linting CSS and JavaScript](#linting)
+1. Building and getting the front-end environment ready
+    * [Seting up the Vite & Storybook environment](#setup)
+    * [Building the app for the first time](#building-app)
+    * [Restructure the project](#restructure)
+    * [Storybook's CSS configuration](#global-css)
+1. Implementing an automated workflow
+    * [Configuring postCSS & TwigJS](#postcss-twigjs)
+    * [Copying static assets](#copying)
+    * [Building a watch task](#watch)
+    * [Linting CSS and JavaScript](#linting)
 
 ## Seting up the Vite & Storybook environment {id=setup}
 
@@ -76,8 +78,7 @@ Vite and Storybook ship with a handful of useful build scripts. We may find some
 
 Fig. 2: Example of app tasks out of the box.{.caption}
 
-To run any of those scripts prefix them with `npm run`. For example: `npm run build`, `npm run lint`, etc.
-Let's review the scripts above.
+To run any of those scripts prefix them with `npm run`. For example: `npm run build`, `npm run lint`, etc. Let's review the scripts.
 
 * **dev**: This is a Vite-specific command which runs the Vite app we just build for local development
 * **build**: This is the "do it all" command. Running `npm run build` on a project runs every task defined in the build job we will create later. CI/CD runners run this command to build your app for production.
@@ -86,11 +87,9 @@ Let's review the scripts above.
 * **storybook**: This is the command you run to launch and keep Storybook running while you code.
 * **build-storybok**: To build a static version of Storybook to package it or share it, or to run it as a static version of your project.
 
-Several commands above are pretty standard in most front-end projects, and we will keep most of them, but will change or extend what they do.
-
 ## Building your app for the first time {id=building-app}
 
-* Stop Storybook by pressing **Ctrl + C**
+* Stop Storybook by pressing **Ctrl + C** on your keyboard
 * Run the build command:
 {% raw %}
 
@@ -106,9 +105,9 @@ The output in the command line should look similar to this:
 
 Fig. 4: Screenshot of files compiled by the build command.{.caption}
 
-By default, Vite compiles the CSS into `dist/assets/`, and names the files by appending a random 8 character string to the original file name. For a traditional React/Vite app, when the random string changes, Vite is smart enough to automatically and dynamically update any reference to the files. However, in Drupal, the libraries we create expect for CSS and JS file names to stay consistent and not change. Let's change Vite's original behavior so compiled assets are consistently named.
+By default, Vite names the compiled files by appending a random 8 character string to the original file name. This works fine for Vite apps, but for Drupal, the libraries we'll create expect for CSS and JS file names to stay consistent and not change. Let's update this default behavior.
 
-* First, install the **glob** extension. We'll use this shortly to import multiple CSS files in a single import.
+* First, install the **glob** extension. We'll use this shortly to import multiple CSS files with a single import.
 
 {% raw %}
 
@@ -130,7 +129,7 @@ import { glob } from 'glob';
 
 {% endraw %}
 
-* Finally, add a build configuration in which we will make the configuration changes for compiling location and file names:
+* Finally, add a build configuration object with new settings for file names:
 
 {% raw %}
 
@@ -152,9 +151,9 @@ import { glob } from 'glob';
 
 Fig. 5: Build object to modify where files are compiled as well as their name preferences.{.caption}
 
-* First we imported `path` and `{ glob }`. **path** is part of Vite and **glob** was added by the extension we installed above.
-* Then we added a **build** configuration in which we defined several settings:
-  * `emptyOutDir`: When the build job runs, the `dist` directory will be emptied before the new compiled code is added. This ensure any old code that no longer belongs, will be removed in favor of the new code.
+* First we imported `path` and `{ glob }`. **path** is part of Vite and **glob** was added by the extension we installed earlier.
+* Then we added a **build** configuration object in which we defined several settings:
+  * `emptyOutDir`: When the build job runs, the `dist` directory will be emptied before the new compiled code is added.
   * `outDir`: Defines the App's output directory.
   * `rollupOptions`: This is Vite's system for bundleing code and within it we can include neat configurations:
     * `input`: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier, are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the `src` directory, and find any file that ends with **.css**.
@@ -168,8 +167,7 @@ Fig. 6: Screenshot of compiled code using the original file names.{.caption}
 
 The random 8 character string is gone and notice that this time the build job is pulling more CSS files. Since we configured the input to go three levels deep, the **src/stories** directory was included as part of the input path.
 
-## Updating the structure of the project {id=updating}
-
+## Restructure the project {id=restructure}
 Let's quickly review the structure of the project. Our goal is to adopt the Atomic Design methodology for our component-driven development workflow. At a high level, this is the current structure:
 
 {% raw %}
@@ -194,8 +192,6 @@ Fig. 7: Basic structure of a Vite project listing only the most important parts.
 * **package.json** tracks all the different node packages we install for our app as well as the scripts we can run in our app.
 * **vite.config.js** is Vite's main configuration file. This is probably where we will spend most of our time.
 
-### Restructure the project
-
 Let's update the environment so it reflects the structure of a typical Drupal theme or front-end environment that uses an Atomic Design methodology.
 
 * First stop Storybook from running by pressing **Ctrl + C** on your keyboard.
@@ -204,20 +200,20 @@ Let's update the environment so it reflects the structure of a typical Drupal th
 * Inside **components**, create these directories: **01-atoms**, **02-molecules**, **03-organisms**, **04-layouts**, and **05-pages**.
 * While we're at it, delete the **stories** directory inside **src**, since we won't be using it.
 * Also while at it, create a new file named **.nvmrc** in the root of your project
-    * Inside `.nvmrc` add the following: `v20.12.2` (This is the node version the project uses). This ensures everyone working in the project uses the same version of node.
+    * Inside `.nvmrc` add the following: `v20.13.1` (This is the node version the project uses). This ensures everyone working in the project uses the same NodeJS version.
 
 {% raw %}
 <span class="callout">
-<strong>NOTE</strong>: We will not use all these directories in this tutorial, but we created them simply to make you aware of which folders you will ultimately need.
+<strong>NOTE</strong>: We will not use all these directories in this tutorial, but we created them simply to inform you of the typical directories you will need.
 </span>
 {% endraw %}
 
 ### Add pre-built components
 
-As our environment grows we will have components inside those folders, for now, download the following pre-built components so we have something to test our environment with:
+As our environment grows we will have components inside the new directories, but for now, we will add pre-built components to have something to test our environment with:
 
-* **01-atoms/button & title** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-atoms){target=_blank rel=noopener}
-* **02-molecules/card** [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener}
+* [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-atoms){target=_blank rel=noopener} the **button** and **title** atoms
+* [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener} the **card** molecule
 * Save them all in their contentpart directories in your project. Then run:
 
 {% raw %}
@@ -229,11 +225,11 @@ npm run storybook
 
 {% endraw %}
 
-The components are available but are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is we haven't told Storybook where those styles are and how to consume them.  Let's do that next.
+The components are available but as you can see they are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is Storybook has not been configured to find the component's CSS. Let's do that next.
 
 ## Storybook's CSS configuration {id=global-css}
 
-To start, we will setup global styles for Storybook. Then we will configure components styles, which ideally, the system we put in place will automatically recognize as new components are added.
+To start, we will setup global styles for Storybook. These will be things like branding colors, typography, etc., which needs to be available for all components. Then we will configure components styles, which ideally Storybook should automatically recognize as new components are added.
 
 {% raw %}
 
@@ -520,7 +516,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 {% endraw %}
 
-* Lastly, still in `vite.config.js`, add the plugin configuration inside the `plugins: []` array:
+* Lastly, still in `vite.config.js`, add the plugin configuration inside the `plugins:[]` array:
 
 {% raw %}
 
@@ -569,7 +565,7 @@ import { watchAndRun } from 'vite-plugin-watch-and-run';
 
 {% endraw %}
 
-* Next, still inside `vite.config.js`, add the following plugin anywhere within the `plugins: []` array:
+* Next, still inside `vite.config.js`, add the following plugin anywhere within the `plugins:[]` array:
 {% raw %}
 
 ```js
@@ -648,7 +644,7 @@ import checker from 'vite-plugin-checker';
 
 {% endraw %}
 
-* Then, let's add one more plugin anywhere inside the `plugins: []` array:
+* Then, let's add one more plugin anywhere inside the `plugins:[]` array:
 
 {% raw %}
 
@@ -713,3 +709,5 @@ I realize this was a very long post, but I hope you found it useful. Automation 
 * Create a new Watch task
 * Add `.nvmrc`
 * Add `.eslintrc` & `.stylelint.yml`
+* Creaate Drupal libraries
+* Clean irrelevant Vite files
