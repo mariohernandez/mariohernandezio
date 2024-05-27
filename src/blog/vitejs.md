@@ -15,7 +15,9 @@ Recently I worked on a large Drupal project that needed to migrate its design sy
 
 Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugins ecosystem and its community support. Vite is relatively new, but it is pretty solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
 
+<span class="callout">
 Configuring automation for a front-end project is a very involved process, which makes this a pretty long blog post.  On the bright side, the topics and configurations covered in this post make for a solid foundation for any Drupal theme which you can elaborate on as your requirements change.
+</span>
 
 The topics covered in this post can be broken down in two categories:
 
