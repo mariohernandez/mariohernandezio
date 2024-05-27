@@ -1,5 +1,5 @@
 ---
-date: "2024-05-28"
+date: "2024-05-29"
 title: "Automating your Drupal Front-end with ViteJS"
 tags: ['drupal','front-end']
 draft: false
@@ -15,11 +15,7 @@ Recently I worked on a large Drupal project that needed to migrate its design sy
 
 Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugins ecosystem and its community support. Vite is relatively new, but it is pretty solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
 
-{% raw %}
-<span class="callout">
-<strong>NOTE</strong>: Most configurations covered in this post should work on any project type, not only Drupal.
-</span>
-{% endraw %}
+Configuring automation for a front-end project is a very involved process, which makes this a pretty long blog post.  On the bright side, the topics and configurations covered in this post make for a solid foundation for any Drupal theme which you can elaborate on as your requirements change.
 
 The topics covered in this post can be broken down in two categories:
 
@@ -382,39 +378,65 @@ The goal here is to ensure that every time a new CSS stylesheet is added to the 
 {% raw %}
 
 <span class="callout">
-<strong>NOTE</strong>: This workflow is only for Storybook. In Drupal we will use Drupal libraries in which we will include any CSS required for each component.
+<strong>NOTE</strong>: This workflow is only for Storybook. In Drupal we will use <a href="https://www.drupal.org/docs/develop/theming-drupal/adding-assets-css-js-to-a-drupal-theme-via-librariesyml" target="_blank" rel="noopener">Drupal libraries</a> in which we will include any CSS required for each component.
 </span>
 
 {% endraw %}
 
 ### Global styles
 
-* Inside **src/base**, add these pre-built **reset.css** and **base.css** stylesheets.
+* Inside **src/base**, add two stylesheets: `reset.css` and `base.css`.
+* Copy and paste the styles for [reset.css](https://github.com/mariohernandez/storybook/blob/variations/src/css/reset.css){target=_blank rel=noopener} and [base.css](https://github.com/mariohernandez/storybook/blob/variations/src/css/base.css){target=_blank rel=noopener}.
+* Inside **src/utilities** create `utilities.css` and in it paste [these styles](https://github.com/mariohernandez/storybook/blob/variations/src/css/utilities.css){target=_blank rel=noopener}.
 * Inside **src/**, create a new stylesheet called `styles.css`.
 * Inside **styles.css**, add the following imports:
 
 {% raw %}
 
 ```css
-@import-glob 'base/**/*.css';
-@import-glob 'utilities/*.css';
-@import-glob 'components/components.css';
+@import 'base/reset.css';
+@import 'base/base.css';
+@import 'utilities/utilities.css';
 ```
 
 {% endraw %}
 
 Fig. 10: Imports to gather all global styles.{.caption}
 
-The order in which we have imported our stylesheets is important as the cascading order in which the styles load makes a difference. We start from `reset`, `base`, `utilities`, and then components.
+The order in which we have imported our stylesheets is important as the cascading order in which they load makes a difference. We start from `reset` to `base`, to `utilities`.
 
 * `reset.css`: A reset stylesheet (or CSS reset) is a collection of CSS rules used to clear the browser's default formatting of HTML elements, removing potential inconsistencies between different browsers before any of our styles are applied.
 * `base.css`: CSS Base applies a style foundation for HTML elements that is consistent for baseline styles such as typography, branding and colors, font-sizes, etc.
-* `utilities/*.css`: Are a collection of pre-defined CSS rules to accomplish a specific style or task. For example, margins, sizes, z-index, animations, media queries, etc.
-* Lastly, components styles are specific to each component. This ensures styles don't leak into other areas or components where they don't belong.
+* `utilities.css`: Are a collection of pre-defined CSS rules we can apply to any HTML element. Rules such as variables for colors, font size, font color, as well as margin, sizes, z-index, animations, etc.
+
+### Component styles
+
+Before our components can be styled with their unique and individual styles, we need to make sure all of our global styles are loaded so the components can inherit all the base/global styles.
+
+* Inside **src/components** create a new stylesheet, `components.css`. This is where we are going to gather all components styles.
+* Inside `components.css` add glob imports for each of the component's categories:
+
+{% raw %}
+
+```css
+@import-glob '01-atoms/**/*.css';
+@import-glob '02-molecules/**/*.css';
+
+/* Since we only have Atoms and Molecules to work with, will omit the remaining imports. */
+```
+
+{% endraw %}
+
+Fig. 11: Glob import for all components of all categories.{.caption}
 
 ### Updating Storybook's Preview
 
-For Storybook to have access to all our styles, we can import base or global styles so they are available througout storybook when we are looking at any component. Let's apply these styles now.
+There are several ways in which we can make Storybook aware of our styles. We could import each component's stylesheet into its own ***.stories.js** file, but this could result in some components with multiple sub-components having several css imports. In addition, this is not an automated system which means we need to manually import stylesheets as we create them. The approach we are going to take is importing the stylesheets we created above into Storybook's preview system. This provides a couple of advantages:
+
+* The component's *.stories.js files are clean without any css imports as all CSS will already be available to Storybook.
+* As we add new components with individual stylesheets, these stylesheets will automatically be recognized by Storybook since we are using **@import-glob**.
+
+Remember, the order in which we import the styles makes a difference. We want all global and base styles to be imported first, before we import component styles.
 
 * In `.storybook/preview.js` add these imports somewhere after the existing imports.
 
@@ -422,35 +444,15 @@ For Storybook to have access to all our styles, we can import base or global sty
 
 ```js
 // Imports all global and utilities CSS
-import '../dist/css/global.css';
-import '../dist/css/utils.css';
+import '../src/base/styles.css'; /* Contains reset, base, and utilities styles. */
 
 // Import all components CSS.
-import '../dist/css/components.css';
+import '../src/components/components.css';
 ```
 
 {% endraw %}
 
-Fig. 11: Snippet showing importing of all CSS inside preview.js.{.caption}
-
-* Inside `src/components/`, create a new stylesheet called **components.css**.
-* Inside `components.css` add the following imports:
-
-{% raw %}
-
-```css
-@import-glob './01-atoms/**/*.css';
-@import-glob './02-molecules/**/*.css';
-@import-glob './03-organisms/**/*.css';
-@import-glob './04-layouts/**/*.css';
-@import-glob './05-pages/**/*.css';
-```
-
-{% endraw %}
-
-Fig. 12: Glob-importing all component's stylesheets.{.caption}
-
-Again, order does matter. In the snippet above we are making sure all atoms styles are loaded first, followed by molecules, organisms, etc.
+Fig. 12: Importing all styles, global and components.{.caption}
 
 ### JavaScript compiling
 
