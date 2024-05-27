@@ -687,7 +687,7 @@ npm run watch
 
 ## 9. One last thing
 
-It goes without saying that we need to add **storybook.info.yml** and **storybook.libraries.yml** files for this to be a Drupal theme. Here are some key pieces to each of those files:
+It goes without saying that we need to add **storybook.info.yml** and **storybook.libraries.yml** files for this to be a Drupal theme. Here are some key pieces for each of those files:
 
 ### *.info.yml
 
@@ -714,11 +714,19 @@ components:
 
 ### *.libraries.yml
 
-The recommended method for adding CSS and JS to components or pages in Drupal is by using libraries. In our project we would create a library for each component we add. Here are some examples of libraries for the components we currently have:
+The recommended method for adding CSS and JS to components or a theme in Drupal is by using [Drupal libraries](https://www.drupal.org/docs/develop/creating-modules/adding-assets-css-js-to-a-drupal-module-via-librariesyml){target=_blank rel-noopener}. In our project we would create a library for each component. In addition, we need to create a **global** library which includes all the global and utilities styles.  Here are some examples of libraries we can add:
 
 {% raw %}
 
 ```yml
+global:
+  version: VERSION
+  css:
+    base:
+      dist/css/reset.css: {}
+      dist/css/base.css: {}
+      dist/css/utilities.css: {}
+
 button:
   css:
     component:
@@ -737,8 +745,6 @@ title:
 
 {% endraw %}
 
-Learn more about [Drupal libraries](https://www.drupal.org/docs/develop/creating-modules/adding-assets-css-js-to-a-drupal-module-via-librariesyml){target=_blank rel-noopener} as they will be critical in our project.
-
 ## In closing
 
-I realize this was a very long post, but there is really no way around it when covering this many topics.  I hope you found the content useful and can apply it to your next Drupal project. There are many ways to do everything I covered here and I challenge you to find better and more efficient ways. For now, thanks for visiting.
+I realize this was a very long post, but there is really no way around it when covering this many and kinds of topics.  I hope you found the content useful and can apply it to your next Drupal project. There are different ways to do what I've covered here and I challenge you to find better and more efficient ways. For now, thanks for visiting.
