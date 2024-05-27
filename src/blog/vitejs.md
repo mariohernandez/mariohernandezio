@@ -683,18 +683,60 @@ npm run watch
 
 {% endraw %}
 
+## 9. One last thing
+
+It goes without saying that we need to add **storybook.info.yml** and **storybook.libraries.yml** files for this to be a Drupal theme. Here are some key pieces to each of those files:
+
+### *.info.yml
+
+The same way we did for Storybook, we need to create namespaces for Drupal. This requires the [Components](https://www.drupal.org/project/components){target=_blank rel-noopener} module and it sconfiguration is as follows:
+
+{% raw %}
+
+```yml
+components:
+ namespaces:
+    atoms:
+      - src/components/01-atoms
+    molecules:
+      - src/components/02-molecules
+    organisms:
+      - src/components/03-organisms
+    layouts:
+      - src/components/04-layouts
+    pages:
+      - src/components/05-pages
+```
+
+{% endraw %}
+
+### *.libraries.yml
+
+The recommended method for adding CSS and JS to components or pages in Drupal is by using libraries. In our project we would create a library for each component we add. Here are some examples of libraries for the components we currently have:
+
+{% raw %}
+
+```yml
+button:
+  css:
+    component:
+      dist/css/button.css: {}
+
+card:
+  css:
+    component:
+      dist/css/card.css: {}
+
+title:
+  css:
+    component:
+      dist/css/title.css: {}
+```
+
+{% endraw %}
+
+Learn more about [Drupal libraries](https://www.drupal.org/docs/develop/creating-modules/adding-assets-css-js-to-a-drupal-module-via-librariesyml){target=_blank rel-noopener} as they will be critical in our project.
 
 ## In closing
 
-I realize this was a very long post, but I hope you found it useful. Automation in a font-end project is an essential part to be productive and focus on the actual work, coding. There are many ways to do everything I covered here and I challenge you to find better and more efficient ways. For now, thanks for visiting.
-
-## Remaining sections of the post
-
-* Create a task to copy assets
-* Create tasks for linting code
-* Redefine the Build command
-* Create a new Watch task
-* Add `.nvmrc`
-* Add `.eslintrc` & `.stylelint.yml`
-* Creaate Drupal libraries
-* Clean irrelevant Vite files
+I realize this was a very long post, but there is really no way around it when covering this many topics.  I hope you found the content useful and can apply it to your next Drupal project. There are many ways to do everything I covered here and I challenge you to find better and more efficient ways. For now, thanks for visiting.
