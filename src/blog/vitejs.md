@@ -13,10 +13,10 @@ summary: "If you are searching for the next front-end build tool for your Drupal
 ---
 Recently I worked on a large Drupal project that needed to migrate its design system from Patternlab to Storybook. I knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
 
-Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugins ecosystem and its community support. Vite is relatively new, but it is pretty solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
+Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugin's ecosystem and its community support. Vite is relatively new, but it is solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
 
 <span class="callout">
-Configuring automation for a front-end project is a very involved process, which makes this a pretty long blog post.  On the bright side, the topics and configurations covered in this post make for a solid foundation on automating your Drupal theme.
+Configuring automation for a front-end project is a very involved process, which makes this a long blog post.  On the bright side, the topics and configurations covered in this post make for a solid foundation on automating your Drupal theme.
 </span>
 
 The topics covered in this post can be broken down in two categories:
@@ -35,7 +35,7 @@ The topics covered in this post can be broken down in two categories:
 
 ## 1. Setup the front-end environment with Vite & Storybook {id=setup}
 
-In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite and Storybook, I am going to spare you those details here but you can refernce them from the original post.
+In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite and Storybook, I am going to spare you those details here but you can reference them from the original post.
 
 1. In your command line, navigate to the directory where you wish to build your environment. If you're building a new Drupal theme, navigate to `web/themes/custom/`
 1. Run the following commands (Storybook will launch automatically):
@@ -57,7 +57,7 @@ Fig. 1: The first command builds the Vite project, and the last one integrates S
 Vite and Storybook ship with a handful of useful scripts. We may find some of them already do what we want or may only need minor tweaks to make them our own.
 
 * In your code editor, open `package.json` from the root of your newly built project.
-* Look in the **scripts** section and you should see something similar to this:
+* Look in the **scripts** section and you should see something like this:
 
 {% raw %}
 
@@ -83,7 +83,7 @@ To run any of those scripts prefix them with `npm run`. For example: `npm run bu
 * **lint**: Will lint your JavaScript code inside `.js` or `.jsx` files.
 * **preview**: This is also another Vite-specific command which runs your app in preview mode.
 * **storybook**: This is the command you run to launch and keep Storybook running while you code.
-* **build-storybok**: To build a static version of Storybook to package it or share it, or to run it as a static version of your project.
+* **build-storybook**: To build a static version of Storybook to package it or share it, or to run it as a static version of your project.
 
 ### Building your app for the first time
 
@@ -97,13 +97,13 @@ npm run build
 
 {% endraw %}
 
-The output in the command line should look similar to this:
+The output in the command line should look like this:
 
 ![Output of build command](/images/blog-images/build.webp){.body-image .body-image--narrow .body-image--left}
 
 Fig. 3: Screenshot of files compiled by the build command.{.caption}
 
-By default, Vite names the compiled files by appending a random 8 character string to the original file name. This works fine for Vite apps, but for Drupal, the libraries we'll create expect for CSS and JS file names to stay consistent and not change. Let's update this default behavior.
+By default, Vite names the compiled files by appending a random 8-character string to the original file name. This works fine for Vite apps, but for Drupal, the libraries we'll create expect for CSS and JS file names to stay consistent and not change. Let's update this default behavior.
 
 * First, install the **glob** extension. We'll use this shortly to import multiple CSS files with a single import statement.
 
@@ -153,17 +153,17 @@ Fig. 4: Build object to modify where files are compiled as well as their name pr
 * Then we added a **build** configuration object in which we defined several settings:
   * **emptyOutDir**: When the build job runs, the **dist** directory will be emptied before the new compiled code is added.
   * **outDir**: Defines the App's output directory.
-  * **rollupOptions**: This is Vite's system for bundleing code and within it we can include neat configurations:
-    * **input**: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the **src** directory, and find any file that ends with **.css**.
-    * **output**: The destination for where our CSS code will be compiled (**dist/css**), and the file names should retain their original names (`assetFileNames: 'css/[name].css'`). This allows the removal of the random 8 digit string from file names.
+  * **rollupOptions**: This is Vite's system for bundling code and within it we can include neat configurations:
+    * **input**: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the **src** directory and find any file that ends with **.css**.
+    * **output**: The destination for where our CSS code will be compiled (**dist/css**), and the file names should retain their original names (`assetFileNames: 'css/[name].css'`). This allows the removal of the random 8-digit string from file names.
 
-Now if we run `npm run build` again, the output should be similar to this:
+Now if we run `npm run build` again, the output should be like this:
 
 ![Second output of build command](/images/blog-images/build-after.webp){.body-image .body-image--narrow .body-image--left}
 
 Fig. 5: Screenshot of compiled code using the original file names.{.caption}
 
-The random 8 character string is gone and notice that this time the build job is pulling more CSS files. Since we configured the input to go three levels deep, the **src/stories** directory was included as part of the input path.
+The random 8-character string is gone and notice that this time the build job is pulling more CSS files. Since we configured the input to go three levels deep, the **src/stories** directory was included as part of the input path.
 
 ## 2. Restructure the project {id=restructure}
 
@@ -186,12 +186,12 @@ Fig. 6: Basic structure of a Vite project listing only the most important parts.
 
 * **> .storybook** is the main location for Storybook's configuration.
 * **> dist** is where all compiled code is copied into and where the production app looks for all code.
-* **> public** is where we can store images and other static assets we need to reference from our site. Similar to Drupal's `/sites/default/files/`.
+* **> public** is where we can store images and other static assets we need to reference from our site. Equivalent to Drupal's `/sites/default/files/`.
 * **> src** is the directory we work out of. We will update the structure of this directory next.
 * **package.json** tracks all the different node packages we install for our app as well as the scripts we can run in our app.
 * **vite.config.js** is Vite's main configuration file. This is probably where we will spend most of our time.
 
-### Adop Atomic Design methodology
+### Adopt Atomic Design methodology
 
 * First stop Storybook from running by pressing **Ctrl + C** in your keyboard.
 * Next, inside **src**, create these directories: **base**, **components**, and **utilities**.
@@ -211,11 +211,11 @@ Fig. 6: Basic structure of a Vite project listing only the most important parts.
 
 ### Add pre-built components
 
-As our environment grows we will have components inside the new directories, but for now, we will add pre-built components to have something to test our environment with:
+As our environment grows, we will have components inside the new directories, but for now, we will add pre-built components to have something to test our environment with:
 
 * [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-atoms){target=_blank rel=noopener} the **button** and **title** atoms
 * [Download](https://github.com/mariohernandez/storybook/tree/variations/src/components/01-molecules){target=_blank rel=noopener} the **card** molecule
-* Feel free to add any other components you may have built yourself. Save them all in their contentpart directories in your project.
+* Feel free to add any other components you may have built yourself. Save them all in their content part directories in your project.
 
 {% raw %}
 
@@ -260,12 +260,12 @@ The configuration above is critical for Storybook to understand the code in our 
 
 * `vite-plugin-twig-drupal`, is the main TwigJS extension for our project.
 * Added two new `import`s which are used by Storybook to understand Twig:
-  * `vite-plugin-twig-drupal` handles transforming Twig files into Javascript functions.
+  * `vite-plugin-twig-drupal` handles transforming Twig files into JavaScript functions.
   * `@modyfi/vite-plugin-yaml` let's us pass data and variables through **YML** to our Twig components.
 
 ### Creating Twig namespaces
 
-* Still in `vite.config.js`, Add the **twig** plugin below which includes Twig namesapces. These are only for Storybook:
+* Still in `vite.config.js`, Add the **twig** plugin below which includes Twig namespaces. These are only for Storybook:
 
 {% raw %}
 
@@ -309,7 +309,7 @@ Fig. 6: Twig namespaces reflecting project restructure.{.caption}
 
 Fig. 7: Twig plugin with updated input path.{.caption}
 
-With all the configuration updates we just made, we need to rebuild the project in order for all the changes to take effect. Run the following commands (inside the **storybook** directory):
+With all the configuration updates we just made, we need to rebuild the project for all the changes to take effect. Run the following commands (inside the **storybook** directory):
 
 {% raw %}
 
@@ -320,7 +320,7 @@ npm run storybook
 
 {% endraw %}
 
-The components are available but as you can see, they are not styled despite the fact that each component contains a CSS stylesheet in its directory. The reason is Storybook has not been configured to find the component's CSS. We'll fix this later.
+The components are available but as you can see, they are not styled even though each component contains a CSS stylesheet in its directory. The reason is Storybook has not been configured to find the component's CSS. We'll fix this later.
 
 ## 4. Configure postCSS {id=configure-postcss}
 
@@ -366,7 +366,7 @@ export default {
 
 Fig. 9: Base configuration for postCSS.{.caption}
 
-One really cool thing about Vite is that it comes with postCSS functionality built-in. The only requirement is that you have a `postcss.config.js` file in the project's root. Notice how we are not doing much configuration for those plugins except for defining them. Let's review the code above:
+One cool thing about Vite is that it comes with postCSS functionality built in. The only requirement is that you have a `postcss.config.js` file in the project's root. Notice how we are not doing much configuration for those plugins except for defining them. Let's review the code above:
 
 * `postcss-import` the base for importing CSS stylesheets.
 * `postcss-import-ext-glob` to do bulk `@import` of all CSS content in a directory.
@@ -413,7 +413,7 @@ The order in which we have imported our stylesheets is important as the cascadin
 
 ### Component styles
 
-Before our components can be styled with their unique and individual styles, we need to make sure all of our global styles are loaded so the components can inherit all the base/global styles.
+Before our components can be styled with their unique and individual styles, we need to make sure all our global styles are loaded so the components can inherit all the base/global styles.
 
 * Inside **src/components** create a new stylesheet, `components.css`. This is where we are going to gather all components styles.
 * Inside `components.css` add glob imports for each of the component's categories:
@@ -458,7 +458,7 @@ Fig. 12: Importing all styles, global and components.{.caption}
 
 ### JavaScript compiling
 
-For JavaScript, we don't need such an elaborate system since JS code is very little compared to CSS. For JS we actually import the components ***.js** files directly into the component where the JS is being used. The components we are using for this post don't use JS, but if you look inside `card.stories.jsx`, I have commented near the top of the file how the component's JS file would be imported if JS was needed.
+For JavaScript, we don't need such an elaborate system since JS code is very little compared to CSS. For JS we import the components ***.js** files directly into the component where the JS is being used. The components we are using for this post don't use JS, but if you look inside `card.stories.jsx`, I have commented near the top of the file how the component's JS file would be imported if JS was needed.
 
 If the need for a more automated JavaScript processing workflow arose, we could easily integrate JS into one of the task we are building in this post.
 
@@ -669,8 +669,8 @@ Fig. 17: Two new npm commands to lint CSS and JavaScript.{.caption}
 
 * We installed a series of packages related to ESLint and Stylelint.
 * `vite-plugin-checker` is a plugin that can run TypeScript, VLS, vue-tsc, ESLint, and Stylelint in worker thread.
-* We imported `vite-plugin-checker` and also created a new plugin with two checks, one for ESLint and the other for Stylelint.
-* By default the new checks will run when we execute `npm run build`, but we also added them as individual commands so we can run them on demand.
+* We imported `vite-plugin-checker` and created a new plugin with two checks, one for ESLint and the other for Stylelint.
+* By default, the new checks will run when we execute `npm run build`, but we also added them as individual commands so we can run them on demand.
 
 ### Configure rules for ESLint and Stylelint
 
@@ -693,7 +693,7 @@ It goes without saying that we need to add **storybook.info.yml** and **storyboo
 
 ### *.info.yml
 
-The same way we did for Storybook, we need to create namespaces for Drupal. This requires the [Components](https://www.drupal.org/project/components){target=_blank rel-noopener} module and it sconfiguration is as follows:
+The same way we did for Storybook, we need to create namespaces for Drupal. This requires the [Components](https://www.drupal.org/project/components){target=_blank rel-noopener} module and its configuration is as follows:
 
 {% raw %}
 
@@ -749,4 +749,4 @@ title:
 
 ## In closing
 
-I realize this was a very long post, but there is really no way around it when covering this many and kinds of topics.  I hope you found the content useful and can apply it to your next Drupal project. There are different ways to do what I've covered here and I challenge you to find better and more efficient ways. For now, thanks for visiting.
+I realize this was a very long post, but there is really no way around it when covering this many and kinds of topics.  I hope you found the content useful and can apply it to your next Drupal project. There are different ways to do what I've covered in this post, and I challenge you to find better and more efficient ways. For now, thanks for visiting.
