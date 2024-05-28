@@ -16,28 +16,28 @@ Recently I worked on a large Drupal project that needed to migrate its design sy
 Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugin's ecosystem and its community support. Vite is relatively new, but it is solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
 
 <span class="callout">
-Configuring automation for a front-end project is a very involved process, which makes this a long blog post.  On the bright side, the topics and configurations covered in this post make for a solid foundation on automating your Drupal theme.
+Automating a front-end project is a very involved process, which will make this a long blog post.  On the bright side, the topics and configurations covered in this post make for a solid foundation on automating your Drupal theme.
 </span>
 
 The topics covered in this post can be broken down in two categories:
 
 1. Building the front-end environment
-    * [Setup the front-end environment with Vite & Storybook](#setup)
+    * [Build the front-end environment with Vite & Storybook](#setup)
     * [Restructure the project](#restructure)
     * [Configure TwigJS](#configure-twigjs)
     * [Configure postCSS](#configure-postcss)
     * [Storybook's CSS configuration](#global-css)
 
-1. Automating the workflow
+1. Front-end workflow automation
     * [Copying static assets](#copying)
     * [Building a watch task](#watch)
     * [Linting CSS and JavaScript](#linting)
 
-## 1. Setup the front-end environment with Vite & Storybook {id=setup}
+## 1. Build the front-end environment with Vite & Storybook {id=setup}
 
 In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite and Storybook, I am going to spare you those details here but you can reference them from the original post.
 
-1. In your command line, navigate to the directory where you wish to build your environment. If you're building a new Drupal theme, navigate to `web/themes/custom/`
+1. In your command line, navigate to the directory where you wish to build your environment. If you're building a new Drupal theme, navigate to your site's `web/themes/custom/`
 1. Run the following commands (Storybook will launch automatically):
 
 {% raw %}
@@ -76,7 +76,7 @@ Vite and Storybook ship with a handful of useful scripts. We may find some of th
 
 Fig. 2: Example of default Vite and Storybook scripts out of the box.{.caption}
 
-To run any of those scripts prefix them with `npm run`. For example: `npm run build`, `npm run lint`, etc. Let's review the scripts.
+To run any of those scripts, prefix them with `npm run`. For example: `npm run build`, `npm run lint`, etc. Let's review the scripts.
 
 * **dev**: This is a Vite-specific command which runs the Vite app we just build for local development
 * **build**: This is the "do it all" command. Running `npm run build` on a project runs every task defined in the build configuration we will do later. CI/CD runners run this command to build your app for production.
@@ -155,7 +155,7 @@ Fig. 4: Build object to modify where files are compiled as well as their name pr
   * **outDir**: Defines the App's output directory.
   * **rollupOptions**: This is Vite's system for bundling code and within it we can include neat configurations:
     * **input**: The directory where we want Vite to look for our files. Here's where the **path** and **glob** imports we added earlier are being used. By using `src/**/**/*.css`, we are instructing Vite to look three levels deep into the **src** directory and find any file that ends with **.css**.
-    * **output**: The destination for where our CSS code will be compiled (**dist/css**), and the file names should retain their original names (`assetFileNames: 'css/[name].css'`). This allows the removal of the random 8-digit string from file names.
+    * **output**: The destination for where our CSS code will be compiled (**dist/css**), and by setting `assetFileNames: 'css/[name].css'`, CSS files will retain their original names.
 
 Now if we run `npm run build` again, the output should be like this:
 
@@ -163,7 +163,7 @@ Now if we run `npm run build` again, the output should be like this:
 
 Fig. 5: Screenshot of compiled code using the original file names.{.caption}
 
-The random 8-character string is gone and notice that this time the build job is pulling more CSS files. Since we configured the input to go three levels deep, the **src/stories** directory was included as part of the input path.
+The random 8-character string is gone and notice that this time the build command is pulling more CSS files. Since we configured the input to go three levels deep, the **src/stories** directory was included as part of the input path.
 
 ## 2. Restructure the project {id=restructure}
 
@@ -172,10 +172,11 @@ The out of the box Vite project structure is a good start for us. However, we ne
 {% raw %}
 
 ```md
-> .storybook
-> dist
-> public
-> src
+> .storybook/
+> dist/
+> public/
+> src/
+  |- stories/
 package.json
 vite.config.js
 ```
@@ -191,7 +192,9 @@ Fig. 6: Basic structure of a Vite project listing only the most important parts.
 * **package.json** tracks all the different node packages we install for our app as well as the scripts we can run in our app.
 * **vite.config.js** is Vite's main configuration file. This is probably where we will spend most of our time.
 
-### Adopt Atomic Design methodology
+### Adopting Atomic Design methodology
+
+The [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/){target=_blank rel=noopener} methodology was first introduced by Brad Frost a little over ten years ago. Since then it has become the standard for building web projects. Our environment needs updating to reflect the structure expected by this methodology.
 
 * First stop Storybook from running by pressing **Ctrl + C** in your keyboard.
 * Next, inside **src**, create these directories: **base**, **components**, and **utilities**.
