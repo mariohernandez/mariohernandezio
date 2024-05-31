@@ -1,5 +1,5 @@
 ---
-date: "2024-05-29"
+date: "2024-05-31"
 title: "Automating your Drupal Front-end with ViteJS"
 tags: ['drupal','front-end']
 draft: false
@@ -87,23 +87,36 @@ To run any of those scripts, prefix them with `npm run`. For example: `npm run b
 
 ### Building your app for the first time
 
+In front-end development, it is important everyone in your team use the same version of NodeJS while working on your project. This ensures consistency in your app's behavior for everyone in your team. Discrepancies in the node version your team uses on your project can lead to unconsistencies when the app is built. A way to ensure your team is using the same node version for your app is by adding a **.nvmrc** file in the root of your project. This file specifies the node version your app uses. By the way, not all the apps you or team works on need to use the same node version as other apps.
+
+* In the root of your theme, create a file called `.nvmrc` (mind the dot)
+* Inside **.nvmrc** add the following: `v20.14.0`
 * Stop Storybook by pressing **Ctrl + C** in your keyboard
-* Run the build command:
+* Build the app:
 {% raw %}
 
 ```bash
+nvm install
+npm install
 npm run build
 ```
 
 {% endraw %}
 
+Fig. 3: Installs the node version defined in .nvmrc, then installs node packages, and finally builds the app.{.caption}
+
+<span class="callout">
+<strong>NOTE</strong>: You only need to run <strong>nvm install</strong> once while you are working in the app. If you switch apps and that app uses a different node version, when you return to this app, you will need to run <strong>nvm use</strong> to set your environment with the right node version for this app.<br/>
+<strong>P.S.</strong> You need to have <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener">NVM</a> installed in your system.
+</span>
+
 The output in the command line should look like this:
 
 ![Output of build command](/images/blog-images/build.webp){.body-image .body-image--narrow .body-image--left}
 
-Fig. 3: Screenshot of files compiled by the build command.{.caption}
+Fig. 4: Screenshot of files compiled by the build command.{.caption}
 
-By default, Vite names the compiled files by appending a random 8-character string to the original file name. This works fine for Vite apps, but for Drupal, the libraries we'll create expect for CSS and JS file names to stay consistent and not change. Let's update this default behavior.
+By default, Vite names the compiled files by appending a random 8-character string to the original file name. This works fine for Vite apps, but for Drupal, the libraries we'll create expect for CSS and JS file names to stay consistent and not change. Let's change this default behavior.
 
 * First, install the **glob** extension. We'll use this shortly to import multiple CSS files with a single import statement.
 
@@ -137,7 +150,7 @@ import { glob } from 'glob';
     emptyOutDir: true,
     outDir: 'dist',
     rollupOptions: {
-      input: glob.sync(path.resolve(__dirname,'src/**/*.css')),
+      input: glob.sync(path.resolve(__dirname,'./src/**/*.css')),
       output: {
         assetFileNames: 'css/[name].css',
       },
@@ -147,7 +160,7 @@ import { glob } from 'glob';
 
 {% endraw %}
 
-Fig. 4: Build object to modify where files are compiled as well as their name preferences.{.caption}
+Fig. 5: Build object to modify where files are compiled as well as their name preferences.{.caption}
 
 * First we imported `path` and `{ glob }`. **path** is part of Vite and **glob** was added by the extension we installed earlier.
 * Then we added a **build** configuration object in which we defined several settings:
@@ -161,7 +174,7 @@ Now if we run `npm run build` again, the output should be like this:
 
 ![Second output of build command](/images/blog-images/build-after.webp){.body-image .body-image--narrow .body-image--left}
 
-Fig. 5: Screenshot of compiled code using the original file names.{.caption}
+Fig. 6: Screenshot of compiled code using the original file names.{.caption}
 
 The random 8-character string is gone and notice that this time the build command is pulling more CSS files. Since we configured the input to go three levels deep, the **src/stories** directory was included as part of the input path.
 
@@ -183,7 +196,7 @@ vite.config.js
 
 {% endraw %}
 
-Fig. 6: Basic structure of a Vite project listing only the most important parts.{.caption}
+Fig. 7: Basic structure of a Vite project listing only the most important parts.{.caption}
 
 * **> .storybook** is the main location for Storybook's configuration.
 * **> dist** is where all compiled code is copied into and where the production app looks for all code.
@@ -200,9 +213,6 @@ The [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/){target=_
 * Next, inside **src**, create these directories: **base**, **components**, and **utilities**.
 * Inside **components**, create these directories: **01-atoms**, **02-molecules**, **03-organisms**, **04-layouts**, and **05-pages**.
 * While we're at it, delete the **stories** directory inside **src**, since we won't be using it.
-* Also, create a new file named **.nvmrc** (notice the dot), in the root of your project.
-  * Inside `.nvmrc` add the following: `v20.13.1` (This is the node version the project uses). This ensures everyone working in the project uses the same NodeJS version.
-  * Run `nvm install` to begin using the new node version.
 
 {% raw %}
 
@@ -235,29 +245,19 @@ npm i -D vite-plugin-twig-drupal @modyfi/vite-plugin-yaml twig twig-drupal-filte
 
 {% endraw %}
 
-* Next, update `vite.config.js` with the following configuration. Add the new imports at around line 5:
+* Next, update `vite.config.js` with the following configuration. Add the snippet below at around line 5:
 
 {% raw %}
 
 ```js
-import Twig from 'twig';
 import twig from 'vite-plugin-twig-drupal';
 import yml from '@modyfi/vite-plugin-yaml';
-import twigDrupal from 'twig-drupal-filters';
 import { join } from 'node:path';
-
-function setupTwig(twig) {
-  twig.cache();
-  twigDrupal(twig);
-  return twig;
-}
-
-setupTwig(Twig);
 ```
 
 {% endraw %}
 
-Fig. 5: TwigJS related packages and Drupal filters function.{.caption}
+Fig. 8: TwigJS related packages and Drupal filters function.{.caption}
 
 The configuration above is critical for Storybook to understand the code in our components:
 
@@ -265,6 +265,7 @@ The configuration above is critical for Storybook to understand the code in our 
 * Added two new `import`s which are used by Storybook to understand Twig:
   * `vite-plugin-twig-drupal` handles transforming Twig files into JavaScript functions.
   * `@modyfi/vite-plugin-yaml` let's us pass data and variables through **YML** to our Twig components.
+* `twig-drupal-filters` allows Storybook to understand Drupal filters we may use in Twig.
 
 ### Creating Twig namespaces
 
@@ -289,7 +290,7 @@ The configuration above is critical for Storybook to understand the code in our 
 
 {% endraw %}
 
-Fig. 6: Twig namespaces reflecting project restructure.{.caption}
+Fig. 9: Twig namespaces reflecting project restructure.{.caption}
 
 * Finally, since we updated our project structure earlier, let's update the **rollupOptions** within the Twig build object configuration:
 
@@ -310,9 +311,9 @@ Fig. 6: Twig namespaces reflecting project restructure.{.caption}
 
 {% endraw %}
 
-Fig. 7: Twig plugin with updated input path.{.caption}
+Fig. 10: Twig plugin with updated input path.{.caption}
 
-With all the configuration updates we just made, we need to rebuild the project for all the changes to take effect. Run the following commands (inside the **storybook** directory):
+With all the configuration updates we just made, we need to rebuild the project for all the changes to take effect. Run the following commands:
 
 {% raw %}
 
@@ -331,7 +332,8 @@ What is PostCSS? It is a JavaScript tool or transpiler that turns a special Post
 
 As we start interacting with CSS, we need to install several node packages to enable functionality we would not have otherwise. Native CSS has come a long way to the point that I no longer use Sass as a CSS preprocessor.
 
-* In your command line and inside the **storybook** directory, run this command:
+* Stop Storybook by pressing **Ctrl + C** in your keyboard
+* In your command line run this command:
 
 {% raw %}
 
@@ -367,7 +369,7 @@ export default {
 
 {% endraw %}
 
-Fig. 9: Base configuration for postCSS.{.caption}
+Fig. 11: Base configuration for postCSS.{.caption}
 
 One cool thing about Vite is that it comes with postCSS functionality built in. The only requirement is that you have a `postcss.config.js` file in the project's root. Notice how we are not doing much configuration for those plugins except for defining them. Let's review the code above:
 
@@ -399,14 +401,14 @@ The goal here is to ensure that every time a new CSS stylesheet is added to the 
 {% raw %}
 
 ```css
-@import 'base/reset.css';
-@import 'base/base.css';
-@import 'utilities/utilities.css';
+@import './base/reset.css';
+@import './base/base.css';
+@import './utilities/utilities.css';
 ```
 
 {% endraw %}
 
-Fig. 10: Imports to gather all global styles.{.caption}
+Fig. 12: Imports to gather all global styles.{.caption}
 
 The order in which we have imported our stylesheets is important as the cascading order in which they load makes a difference. We start from `reset` to `base`, to `utilities`.
 
@@ -426,13 +428,15 @@ Before our components can be styled with their unique and individual styles, we 
 ```css
 @import-glob '01-atoms/**/*.css';
 @import-glob '02-molecules/**/*.css';
-
-/* Since we only have Atoms and Molecules to work with, will omit the remaining imports. */
 ```
 
 {% endraw %}
 
-Fig. 11: Glob import for all components of all categories.{.caption}
+Fig. 13: Glob import for all components of all categories.{.caption}
+
+<span class="callout">
+<strong>NOTE</strong>: Since we only have Atoms and Molecules to work with, we are omitting imports for 03-organisms, 04-layouts, 05-pages. Feel free to add them if you have those kind of components.
+</span>
 
 ### Updating Storybook's Preview
 
@@ -443,27 +447,32 @@ There are several ways in which we can make Storybook aware of our styles. We co
 
 Remember, the order in which we import the styles makes a difference. We want all global and base styles to be imported first, before we import component styles.
 
-* In `.storybook/preview.js` add these imports somewhere after the existing imports.
+* In `.storybook/preview.js` add these imports at the top of the page around line 2.
 
 {% raw %}
 
 ```js
-// Imports all global and utilities CSS
-import '../src/base/styles.css'; /* Contains reset, base, and utilities styles. */
+import Twig from 'twig';
+import drupalFilters from 'twig-drupal-filters';
 
-// Import all components CSS.
-import '../src/components/components.css';
+function setupFilters(twig) {
+  twig.cache();
+  drupalFilters(twig);
+  return twig;
+}
+
+setupFilters(Twig);
 ```
 
 {% endraw %}
 
-Fig. 12: Importing all styles, global and components.{.caption}
+Fig. 14: Importing all styles, global and components.{.caption}
 
 ### JavaScript compiling
 
-For JavaScript, we don't need such an elaborate system since JS code is very little compared to CSS. For JS we import the components ***.js** files directly into the component where the JS is being used. The components we are using for this post don't use JS, but if you look inside `card.stories.jsx`, I have commented near the top of the file how the component's JS file would be imported if JS was needed.
+On a typical project, you will find that the majority of your components don't use JavaScript, and for this reason, we don't need such an elaborate system for JS code. Importing the JS files in the component's ***.stories.js** should work just fine. I have commented near the top of **card.stories.js** how the component's JS file would be imported if JS was needed.
 
-If the need for a more automated JavaScript processing workflow arose, we could easily integrate JS into one of the task we are building in this post.
+If the need for a more automated JavaScript processing workflow arose, we could easily repeat the same CSS workflow but for JS.
 
 ### Build the project again
 
@@ -482,13 +491,14 @@ You may notice that now the components in Storybook look styled. This tells us o
 
 **This concludes the preparation part of this post. The remaining part will focus on creating automation tasks for compiling, minifying and linting code, copying static assets such as images, and finally, watching for code changes as we code.  Let's start**.
 
-## 6. Copying static assets {id=copying}
+## 6. Copying static assets (images and JavaScript) {id=copying}
 
 Copying static assets like images, icons, JS, and other files from `src` into `dist` is a pretty common practice in front-end projects. Vite comes with built-in functionality to do this. Your assets need to be placed in the **public** directory and Vite will automatically copy them on build. However, sometimes we may have those assets alongside our components or other directories within our project.
 
 In Vite, there are many ways to accomplish any task, in this case, we will be using a nice plugin called `vite-plugin-static-copy`. Let's set it up.
 
-* In your command line and inside the **storybook** directory, install the extension:
+* If Storybook is running, kill it with **Ctrl + C** in your keyboard
+* Next, install the extension by running:
 
 {% raw %}
 
@@ -498,7 +508,7 @@ npm i -D vite-plugin-static-copy
 
 {% endraw %}
 
-* Next, at the top of `vite.config.js`, right after all the existing imports, import our new extension:
+* Next, right after all the existing imports, import our new extension:
 
 {% raw %}
 
@@ -516,11 +526,11 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 plugins: [
   viteStaticCopy({
     targets: [{
-      src: './src/components/**/**/*.js',
+      src: './src/components/**/*.js',
       dest: 'js',
     },
     {
-      src: './src/components/**/**/*.{png,jpg,jpeg,svg,webp,mp4}',
+      src: './src/components/**/*.{png,jpg,jpeg,svg,webp,mp4}',
       dest: 'images',
     }],
   }),
@@ -529,90 +539,34 @@ plugins: [
 
 {% endraw %}
 
-Fig. 13: Adds tasks for copying JavaScript and Images from src to dist.{.caption}
+Fig. 15: Adds tasks for copying JavaScript and Images from src to dist.{.caption}
 
-We added two targets inside the `viteStaticCopy` function, one to copy JS files from within our components into `dist/js`, and the other one to copy images into `dist/images`.
+We added two targets inside the `viteStaticCopy` function, one to copy JS files from within our components into `dist/js`, and the other one to copy images into `dist/images`. If you need to copy other static assets, simply create new targets for each.
 
 If you run `npm run build`, any images or JS files inside any of your components will be copied into the respective directory in **dist**.
 
 ## 7. Building a watch task {id=watch}
 
-So far if we want any of the tasks we've configured to run, we need to run `npm run build`. Ideally, we would want for those tasks to run automatically as we work in the project, without us running a command. We can setup a watch task so every time we update and save a file, the task will be triggered and run.
+A watch task makes it possible for developers to see the changes they are making as they code, and without being interrupted by running commands. Depending on your configuration, a watch task watches for any changes you make to CSS, JavaScript and other file types, and upon saving those changes, code is automatically compiled, and a Hard Module Reload (HMR) is evoked, making the changes visible in Storybook.
 
-For this task, we will use the `vite-plugin-watch-and-run` extension. You know the drill.
+Although there are extensions to create watch tasks, we will stick with Storybook's out of the box watch functionality because it does everything we need.
 
-{% raw %}
-
-```shell
-npm i -D vite-plugin-watch-and-run
-```
-
-{% endraw %}
-
-* At the top of `vite.config.js`, right after all the existing imports, import our new extension:
+I actually learned this the hard way, I originally was importing the key stylesheets in **.storybook/preview.js** using the files from **dist**. This works to an extend because the code is compiled upon changes, but Storybook is not aware of the changes. I spent hours debugging this issue and tried so many other options. At the end, the simple solution was to import any CSS and JS into Storybook's preview, using the source files.  For example, if you look in **.storybook/preview.js**, you will see we are importing two CSS files which contain all of our CSS code:
 
 {% raw %}
 
 ```js
-import { watchAndRun } from 'vite-plugin-watch-and-run';
+import '../src/styles.css';
+import '../src/components/components.css';
 ```
 
 {% endraw %}
 
-* Next, still inside `vite.config.js`, add the following plugin anywhere within the `plugins:[]` array. Perhaps after the ending of the last plugin we added:
-{% raw %}
+Fig. 16: Importing source assets into Storybook's preview.{.caption}
 
-```js
-watchAndRun([
-  {
-    name: 'css',
-    watchKind: ['add', 'change', 'unlink'],
-    watch: path.resolve('./src/patterns/components/**/*.css'),
-    run: 'npm run watch',
-    delay: 300,
-  },
-  {
-    name: 'js',
-    watchKind: ['add', 'change', 'unlink'],
-    watch: path.resolve('./src/patterns/components/**/*.js'),
-    run: 'npm run watch',
-    delay: 300,
-  },
-]),
-```
+Notice how we are importing the files from the **src** directory, versus the **dist** directory.  This my friends, is the secret for Storybook to not only compile your code when changes happen, but Storybook will also do a HMR to display those changes.
 
-{% endraw %}
-
-Fig. 14: Configuration for CSS and JS watch task.{.caption}
-
-* Finally, open `package.json` and within the **scripts** section, add the following:
-
-{% raw %}
-
-```json
-"vite:watch": "vite build --watch",
-"watch": "npm run vite:watch & npm run storybook",
-```
-
-{% endraw %}
-
-Fig. 15: Two new npm commands for for the watch task.{.caption}
-
-The new watch task above is actually a combination of two other tasks: `vite:watch` and `storybook`.
-
-Let's briefly go over the configuration in **watchAndRun**:
-
-* `name` is an arbitrary name you wish to assign to the task
-* `watchKind` is the type of change (add, delete, and change)
-* `watch` is the path to watch for changes
-* `run` is the command to run when changes do happen
-* `delay` is a little pause from doing anything in the event that many files are added or removed at once.
-
-When the new watch task is evoked (`npm run watch`), the following happens:
-
-1. Vite build runs with a **--watch** flag which will stay running listening for any CSS or JS changes until it is manually stopped.
-1. It will build Storybook and will launch it on your default browser.
-1. When changes are saved, the watch task recompiles the code and storybook does a Hot Module Reload, or HMR, to reflect the changes.
+The same or kind of the same works for JavaScript.  However, the difference is that for JS, we import the file in the component's ***.stories.js**, which in turn has the same effect as it does for CSS.
 
 ## 8. Linting CSS and JavaScript {id=linting}
 
@@ -645,30 +599,32 @@ import checker from 'vite-plugin-checker';
 ```js
 checker({
   eslint: {
-    lintCommand: 'eslint "./src/patterns/components/**/*.{js,jsx}"',
+    lintCommand: 'eslint "./src/components/**/*.{js,jsx}"',
   },
   stylelint: {
-    lintCommand: 'stylelint "./src/patterns/components/**/*.css"',
+    lintCommand: 'stylelint "./src/components/**/*.css"',
   },
 }),
 ```
 
 {% endraw %}
 
-Fig. 16: Checks for linting CSS and JavaScript.{.caption}
+Fig. 17: Checks for linting CSS and JavaScript.{.caption}
 
-* Finally, let's add two new commands to `package.json` to be able to execute the checks above on demand:
+So we can execute the above checks on demand, we can add them as commands to our app.
+
+* In **package.json**, within the **scripts** section, add the following commands:
 
 {% raw %}
 
 ```json
-"eslint": "eslint --ext .js,.jsx,.ts,.tsx .",
-"stylelint": "stylelint './src/patterns/components/**/*.css'",
+"eslint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+"stylelint": "stylelint './src/components/**/*.css'",
 ```
 
 {% endraw %}
 
-Fig. 17: Two new npm commands to lint CSS and JavaScript.{.caption}
+Fig. 18: Two new npm commands to lint CSS and JavaScript.{.caption}
 
 * We installed a series of packages related to ESLint and Stylelint.
 * `vite-plugin-checker` is a plugin that can run TypeScript, VLS, vue-tsc, ESLint, and Stylelint in worker thread.
@@ -678,6 +634,51 @@ Fig. 17: Two new npm commands to lint CSS and JavaScript.{.caption}
 ### Configure rules for ESLint and Stylelint
 
 Both ESLint and Stylelint use configuration files where we can configure the various rules we want to enforce when writing code.  The files they use are `eslint.config.js` and `.stylint.js` respectively.  Get copies of each of these files and save them in the root of your project.
+
+* In the root of your theme, create a new file called **.stylintrc.yml**
+* Inside **.stylelintrc.yml**, add the following code:
+
+{% raw %}
+
+```yml
+extends:
+  - stylelint-config-standard
+plugins:
+  - stylelint-order
+  - stylelint-selector-pseudo-class-lvhfa
+ignoreFiles:
+  - './dist/**'
+rules:
+  at-rule-no-unknown: null
+  alpha-value-notation: number
+  color-function-notation: null
+  declaration-empty-line-before: never
+  declaration-block-no-redundant-longhand-properties: null
+  hue-degree-notation: number
+  import-notation: string
+  no-descending-specificity: null
+  no-duplicate-selectors: true
+  order/order:
+    - - type: at-rule
+        hasBlock: false
+      - custom-properties
+      - declarations
+    - unspecified: ignore
+      disableFix: true
+  order/properties-alphabetical-order: error
+  plugin/selector-pseudo-class-lvhfa: true
+  property-no-vendor-prefix: null
+  selector-class-pattern: null
+  value-keyword-case:
+    - lower
+    - camelCaseSvgKeywords: true
+      ignoreProperties:
+        - /^--font/
+```
+
+{% endraw %}
+
+Fig. 19: Basic CSS Stylelint rules.{.caption}
 
 To test all the functionality we've implemented, run the commands below and then try updating any of the CSS in the project to ensure the changes are reflected in Storybook. You could also try writing bad CSS or JS to see the linters catch the issues.
 
@@ -717,6 +718,8 @@ components:
 
 {% endraw %}
 
+Fig. 20: Drupal namespaces for nesting components.{.caption}
+
 ### *.libraries.yml
 
 The recommended method for adding CSS and JS to components or a theme in Drupal is by using [Drupal libraries](https://www.drupal.org/docs/develop/creating-modules/adding-assets-css-js-to-a-drupal-module-via-librariesyml){target=_blank rel-noopener}. In our project we would create a library for each component. In addition, we need to create a **global** library which includes all the global and utilities styles.  Here are some examples of libraries we can add:
@@ -749,6 +752,8 @@ title:
 ```
 
 {% endraw %}
+
+Fig. 21: Drupal libraries for global styles and component's styles.{.caption}
 
 ## In closing
 
