@@ -457,12 +457,12 @@ Before our components can be styled with their unique and individual styles, we 
 Fig. 14: Glob import for all components of all categories.{.caption}
 
 <span class="callout">
-<strong>NOTE</strong>: Since we only have Atoms and Molecules to work with, we are omitting imports for 03-organisms, 04-layouts, 05-pages. Feel free to add them if you have those kind of components.
+<strong>NOTE</strong>: Since we only have Atoms and Molecules to work with, we are omitting imports for 03-organisms, 04-layouts, 05-pages. Feel free to add them if you have that kind of components.
 </span>
 
 ### Updating Storybook's Preview
 
-There are several ways in which we can make Storybook aware of our styles and javascript. We could import each component's stylesheet  and javascript into each ***.stories.js** file, but this could result in some components with multiple sub-components having several CSS and JS imports. In addition, this is not an automated system which means we need to manually do imports as they become available. The approach we are going to take is importing the stylesheets we created above into Storybook's preview system. This provides a couple of advantages:
+There are several ways in which we can make Storybook aware of our styles and javascript. We could import each component's stylesheet and javascript into each ***.stories.js** file, but this could result in some components with multiple sub-components having several CSS and JS imports. In addition, this is not an automated system which means we need to manually do imports as they become available. The approach we are going to take is importing the stylesheets we created above into Storybook's preview system. This provides a couple of advantages:
 
 * The component's *.stories.js files are clean without any css imports as all CSS will already be available to Storybook.
 * As we add new components with individual stylesheets, these stylesheets will automatically be recognized by Storybook since we are using **@import-glob**.
@@ -666,7 +666,7 @@ Fig. 19: Two new npm commands to lint CSS and JavaScript.{.caption}
 
 ### Configure rules for ESLint and Stylelint
 
-Both ESLint and Stylelint use configuration files where we can configure the various rules we want to enforce when writing code.  The files they use are `eslint.config.js` and `.stylelintrc.yml` respectively.  For the purpose of this post, we are only goin to add the **.stylelintrc.yml** in which we have defined basic CSS linting rules.
+Both ESLint and Stylelint use configuration files where we can configure the various rules we want to enforce when writing code.  The files they use are `eslint.config.js` and `.stylelintrc.yml` respectively.  For the purpose of this post, we are only going to add the **.stylelintrc.yml** in which we have defined basic CSS linting rules.
 
 * In the root of your theme, create a new file called **.stylelintrc.yml** (mind the dot)
 * Inside **.stylelintrc.yml**, add the following code:
@@ -721,7 +721,7 @@ Test the rules we've defined by running either `npm run build` or `npm run style
 
 Currently we are running `npm run storybook` as a watch task. Nothing wrong with this.  However, to keep things more logical, we could rename the **storybook** command, **watch**, so we can run `npm run watch`. Something to consider.
 
-You could also make a copy of the **storybook** comand and name it **watch** and add additional commands you wish to run with **watch**, while leaving the original **storybook** command intact. Choices, choices.
+You could also make a copy of the **storybook** command and name it **watch** and add additional commands you wish to run with **watch**, while leaving the original **storybook** command intact. Choices, choices.
 
 ## 9. One last thing
 
