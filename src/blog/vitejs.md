@@ -787,6 +787,18 @@ title:
 
 Fig. 22: Drupal libraries for global styles and component's styles.{.caption}
 
+**P.S**: When the Vite project was originally created at the begining of the post, Vite created files such as **App.css**, **App.js**, **main.js**, and **index.html**. All these files are in the root of the project and can be deleted. It won't affect any of the work we've done, but Vite will not run on its own, which we don't need it to anyway.
+
 ## In closing
 
 I realize this is a very long post, but there is really no way around it when covering these many topics in a single post.  I hope you found the content useful and can apply it to your next Drupal project. There are different ways to do what I've covered in this post, and I challenge you to find better and more efficient ways. For now, thanks for visiting.
+
+<span class="callout callout--top-border">
+<h4 class="callout__heading">Download the theme</h4>
+
+A full version of the Drupal theme built with this post can be downloaded.
+
+<a href="https://github.com/mariohernandez/storybook/tree/theme" class="button button--reverse" target="_blank" rel="noopener">Download the theme</a>
+
+Make sure you are using the **theme** branch from the repo.
+</span>
