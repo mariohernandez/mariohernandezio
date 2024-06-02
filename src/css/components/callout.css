@@ -11,6 +11,11 @@
     margin-block-end: 0;
   }
 
+  &.callout--info {
+    background-color: var(--gray-light);
+    border-color: var(--gray-medium);
+  }
+
   &.callout--warning {
     background-color: var(--lighter-yellow);
     border-inline-start: 4px solid var(--light-yellow);

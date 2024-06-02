@@ -10,6 +10,7 @@
 .page-header__title {
   margin-block-end: var(--size-20);
   line-height: var(--line-height-1-2);
+  text-wrap: pretty;
 }
 
 .blog-post__date {
@@ -63,7 +64,7 @@
   }
 
   h2 {
-    font-size: var(--font-size-22);
+    font-size: var(--font-size-24);
   }
 
   h3 {
@@ -76,7 +77,8 @@
     }
   }
 
-  ul {
+  ul,
+  ol {
     margin-block-end: var(--size-24);
   }
 }
@@ -152,6 +154,11 @@ users they are displayed before the article.  This is for better UI. */
 /* Body images */
 .body-image {
   margin: 3rem auto;
+
+  &.body-image--left {
+    margin-inline-start: 0;
+    margin-inline-end: initial;
+  }
 }
 
 .body-image--wide {

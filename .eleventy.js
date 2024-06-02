@@ -46,6 +46,9 @@ const postcssFilter = (cssCode, done) => {
 };
 // ---------- End of postcss compiling -------------
 
+// Readtime plugin.
+const readingTime = require('eleventy-plugin-reading-time');
+
 // Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
 const { minify } = require("terser");
 
@@ -58,6 +61,9 @@ const esbuild = require('esbuild');
 // const postcssCsso = require('postcss-csso');
 
 module.exports = function(eleventyConfig) {
+
+// Post readtime plugin configuration.
+eleventyConfig.addPlugin(readingTime);
 
   // Process CSS.
   // eleventyConfig.addTemplateFormats('css');
