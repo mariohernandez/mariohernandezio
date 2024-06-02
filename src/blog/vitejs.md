@@ -15,22 +15,18 @@ Recently I worked on a large Drupal project that needed to migrate its design sy
 
 Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugin's ecosystem and its community support. Vite is relatively new, but it is solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
 
-<span class="callout">
-Automating a front-end project is a very involved process, therefore, this will be quite a long post. I wrote it in such a way to provide as much detail to help you build a solid foundation for automating your own front-end project.
-</span>
-
 The topics covered in this post can be broken down in two categories:
 
-1. Building the front-end environment
+1. Preparing the Front-end environment
     * [Build the front-end environment with Vite & Storybook](#setup)
     * [Restructure the project](#restructure)
     * [Configure TwigJS](#configure-twigjs)
     * [Configure postCSS](#configure-postcss)
     * [Storybook's CSS configuration](#global-css)
 
-1. Front-end workflow automation
+1. Automating the environment
     * [Copying static assets](#copying)
-    * [Building a watch task](#watch)
+    * [The Watch task](#watch)
     * [Linting CSS and JavaScript](#linting)
 
 ## 1. Build the front-end environment with Vite & Storybook {id=setup}
@@ -38,7 +34,7 @@ The topics covered in this post can be broken down in two categories:
 In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite and Storybook, I am going to spare you those details here but you can reference them from the original post.
 
 1. In your command line, navigate to the directory where you wish to build your environment. If you're building a new Drupal theme, navigate to your site's `web/themes/custom/`
-1. Run the following commands (Storybook will launch automatically):
+1. Run the following commands (Storybook should launch at the end):
 
 {% raw %}
 
@@ -108,8 +104,8 @@ npm run build
 Fig. 3: Installs the node version defined in .nvmrc, then installs node packages, and finally builds the app.{.caption}
 
 <span class="callout">
-<strong>NOTE</strong>: You only need to run <strong>nvm install</strong> once per project unless the node version changes. If you switch to a project that uses a different node version, when you return to this project, run <strong>nvm use</strong> to set your environment back to the right node version.<br/>
-<strong>P.S.</strong> You need to have <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener">NVM</a> installed in your system.
+<strong>NOTE</strong>: You need to have <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener">NVM</a> installed in your system to execute nvm commands. <br />
+You only need to run <strong>nvm install</strong> once per project unless the node version changes. If you switch to a project that uses a different node version, when you return to this project, run <strong>nvm use</strong> to set your environment back to the right node version.<br/>
 </span>
 
 The output in the command line should look like this:
@@ -142,12 +138,14 @@ import { glob } from 'glob';
 
 {% endraw %}
 
-* Finally, add a build configuration object with new settings for file names:
+* Still in `vite.config.js`, replace the **export default...** with the following snippet which adds new settings for file names:
 
 {% raw %}
 
 ```js
-  plugins: [react()],
+export default defineConfig({
+  plugins: [
+  ],
   build: {
     emptyOutDir: true,
     outDir: 'dist',
@@ -159,6 +157,7 @@ import { glob } from 'glob';
       },
     },
   },
+})
 ```
 
 {% endraw %}
@@ -220,7 +219,7 @@ The [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/){target=_
 {% raw %}
 
 <span class="callout">
-<strong>NOTE</strong>: We will not use all these directories in this tutorial, but we created them simply to inform you of the typical directories you will need.
+<strong>NOTE</strong>: You don't need to use the same nomenclature as what Atomic Design suggests. I am using it here for simplicity.
 </span>
 
 {% endraw %}
@@ -245,20 +244,20 @@ stories: [
 
 Fig. 8: Updating stories' path after project restructure.{.caption}
 
-The Stories array above is where we tell Storybook where to find our stories and stories docs, if any. In Storybook, stories are your components variations.
+The Stories array above is where we tell Storybook where to find our stories and stories docs, if any. In Storybook, stories are the components and their variations.
 
 ### Add pre-built components
 
 As our environment grows, we will add components inside the new directories, but for the purpose of testing our environment's automation, I have created demo components.
 
 * Download [demo components](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} (button, title, card), from **src/components/**, and save them all in their content part directories in your project.
-* Feel free to add any other components you may have built yourself.
+* Feel free to add any other components you may have built yourself. We'll come back to the components shortly.
 
 ## 3. Configure TwigJS {id=configure-twigjs}
 
 Before we can see the newly added components, we need to configure Storybook to understands the Twig and YML code we are about to introduce within the demo components.  To do this we need to install several node packages.
 
-* From your command line and within the Storybook directory, run:
+* In your command line run:
 {% raw %}
 
 ```shell
@@ -290,7 +289,7 @@ The configuration above is critical for Storybook to understand the code in our 
 
 ### Creating Twig namespaces
 
-* Still in `vite.config.js`, Add the **twig** plugin below which includes Twig namespaces. These are only for Storybook:
+* Still in `vite.config.js`, add the **twig** and **yml()** plugins to add Twig namespaces for Storybook.
 
 {% raw %}
 
@@ -313,7 +312,7 @@ The configuration above is critical for Storybook to understand the code in our 
 
 Fig. 10: Twig namespaces reflecting project restructure.{.caption}
 
-Since we removed the `react()` function by using the snippet above, you can remove the **react** import as it's is no longer needed: `import react from '@vitejs/plugin-react'`.
+Since we removed the `react()` function by using the snippet above, we can remove **import react from '@vitejs/plugin-react'** from the imports list as is no longer needed.
 
 * Finally, since we updated our project structure earlier, let's update the **rollupOptions**' **input** path within the Twig build object configuration:
 
@@ -348,7 +347,7 @@ npm run storybook
 
 {% endraw %}
 
-The components are available but as you can see, they are not styled even though each component contains a CSS stylesheet in its directory. The reason is Storybook has not been configured to find the component's CSS. We'll fix this later.
+The components are available but as you can see, they are not styled even though each component contains a CSS stylesheet in its directory. The reason is Storybook has not been configured to find the component's CSS. We'll address this shortly.
 
 ## 4. Configure postCSS {id=configure-postcss}
 
@@ -367,7 +366,7 @@ npm i -D postcss postcss-import postcss-import-ext-glob postcss-nested postcss-p
 
 {% endraw %}
 
-* At the root of the **storybook** directory, create a new file called **postcss.config.js**, and in it, add the following:
+* At the root of your theme, create a new file called **postcss.config.js**, and in it, add the following:
 
 {% raw %}
 
@@ -411,6 +410,8 @@ The goal here is to ensure that every time a new CSS stylesheet or JS file is ad
 </span>
 
 {% endraw %}
+
+There are two types of styles to be configured in most project, global styles which apply site-wide, and components styles which are unique to each component added to the project.
 
 ### Global styles
 
@@ -465,7 +466,7 @@ Fig. 14: Glob import for all components of all categories.{.caption}
 There are several ways in which we can make Storybook aware of our styles and javascript. We could import each component's stylesheet and javascript into each ***.stories.js** file, but this could result in some components with multiple sub-components having several CSS and JS imports. In addition, this is not an automated system which means we need to manually do imports as they become available. The approach we are going to take is importing the stylesheets we created above into Storybook's preview system. This provides a couple of advantages:
 
 * The component's *.stories.js files are clean without any css imports as all CSS will already be available to Storybook.
-* As we add new components with individual stylesheets, these stylesheets will automatically be recognized by Storybook since we are using **@import-glob**.
+* As we add new components with individual stylesheets, these stylesheets will automatically be recognized by Storybook.
 
 Remember, the order in which we import the styles makes a difference. We want all global and base styles to be imported first, before we import component styles.
 
@@ -492,18 +493,18 @@ setupFilters(Twig);
 
 Fig. 15: Importing all styles, global and components.{.caption}
 
-In addition to importing two new extensions: **twig** and **twig-drupal-filters**, we setup a **setupFilters** function for Storybook to read Drupal filters we may use in our components, we are also importing two of the stylesheets we created earlier:
+In addition to importing two new extensions: **twig** and **twig-drupal-filters**, we setup a **setupFilters** function for Storybook to read Drupal filters we may use in our components. We are also importing two of the stylesheets we created earlier:
 
 * `styles.css` contains all the CSS code from reset.css, base.css, and utilities.css (in that order)
 * `components.css` contains all the CSS from all components. As new components are added and they have their own stylesheets, they will automatically be included in this import.
 
 <span class="callout callout--warning">
-<strong>IMPORTANT</strong>: For Storybook to reflect changes you make in your CSS, the imports above need to be from the <strong>src</strong> directory and not <strong>dist</strong>. I learned this the hard way.
+<strong>IMPORTANT</strong>: For Storybook to immediately display changes you make in your CSS, the imports above need to be from the <strong>src</strong> directory and not <strong>dist</strong>. I learned this the hard way.
 </span>
 
 ### JavaScript compiling
 
-On a typical project, you will find that the majority of your components don't use JavaScript, and for this reason, we don't need such an elaborate system for JS code. Importing the JS files in the component's ***.stories.js** should work just fine. I have commented near the top of **card.stories.js** how the component's JS file would be imported if JS was needed.
+On a typical project, you will find that the majority of your components don't use JavaScript, and for this reason, we don't need such an elaborate system for JS code. Importing the JS files in the component's ***.stories.js** should work just fine. Since the demo components dont use JS, I have commented near the top of **card.stories.js** how the component's JS file would be imported if JS was needed.
 
 If the need for a more automated JavaScript processing workflow arose, we could easily repeat the same CSS workflow but for JS.
 
@@ -574,11 +575,20 @@ Fig. 16: Adds tasks for copying JavaScript and Images from src to dist.{.caption
 The `viteStaticCopy` function we added allows us to copy any type of static assets anywhere within your project. We added a target array in which we included **src** and **dest** for the images we want copied. Every time we run **npm run build**, any images inside any of the components, will be copied into **dist/images**.
 If you need to copy other static assets, simply create new targets for each.
 
-* Run `npm run build`, then run `npm run storybook`
+* Build the project again:
+
+{% raw %}
+
+```shell
+npm run build
+npm run storybook
+```
+
+{% endraw %}
 
 The missing image for the Card component should now be visible. Pretty sweet! 🍰
 
-## 7. Building a watch task {id=watch}
+## 7. The Watch task {id=watch}
 
 A watch task makes it possible for developers to see the changes they are making as they code, and without being interrupted by running commands. Depending on your configuration, a watch task watches for any changes you make to CSS, JavaScript and other file types, and upon saving those changes, code is automatically compiled, and a Hard Module Reload (HMR) is evoked, making the changes visible in Storybook.
 
@@ -600,6 +610,12 @@ Fig. 17: Importing source assets into Storybook's preview.{.caption}
 Importing source CSS or JS files into Storybook's preview allows Storybook to become aware immediately of any code changes.
 
 The same, or kind of the same works for JavaScript.  However, the difference is that for JS, we import the JS file in the component's ***.stories.js**, which in turn has the same effect as what we've done above for CSS. The reason for this is that typically not every component we build needs JS.
+
+### A real watch task
+
+Currently we are running `npm run storybook` as a watch task. Nothing wrong with this.  However, to keep up with standards and best practices, we could rename the **storybook** command, **watch**, so we can run `npm run watch`. Something to consider.
+
+You could also make a copy of the **storybook** command and name it **watch** and add additional commands you wish to run with **watch**, while leaving the original **storybook** command intact. Choices, choices.
 
 ## 8. Linting CSS and JavaScript {id=linting}
 
@@ -717,17 +733,11 @@ The CSS rules above are only a starting point, but should be able to check for t
 
 Test the rules we've defined by running either `npm run build` or `npm run stylelint`. Either command will alert you of a couple of errors our current code contains. This tells us the linting process is working as expected.  You could test JS linting by creating a dummy JS file inside a component and writing bad JS in it.
 
-### A real watch task
-
-Currently we are running `npm run storybook` as a watch task. Nothing wrong with this.  However, to keep things more logical, we could rename the **storybook** command, **watch**, so we can run `npm run watch`. Something to consider.
-
-You could also make a copy of the **storybook** command and name it **watch** and add additional commands you wish to run with **watch**, while leaving the original **storybook** command intact. Choices, choices.
-
 ## 9. One last thing
 
-It goes without saying that we need to add **storybook.info.yml** and **storybook.libraries.yml** files for this to be a true Drupal theme. Here are some key pieces for each of those files:
+It goes without saying that we need to add **storybook.info.yml** and **storybook.libraries.yml** files for this to be a true Drupal theme. In addition, we need to create the **templates** directory somewhere within our theme.
 
-### *.info.yml
+### storybook.info.yml
 
 The same way we did for Storybook, we need to create namespaces for Drupal. This requires the [Components](https://www.drupal.org/project/components){target=_blank rel-noopener} module and **storybook.info.yml** configuration is like this:
 
@@ -746,13 +756,15 @@ components:
       - src/components/04-layouts
     pages:
       - src/components/05-pages
+    templates:
+      - src/templates
 ```
 
 {% endraw %}
 
 Fig. 21: Drupal namespaces for nesting components.{.caption}
 
-### *.libraries.yml
+### storybook.libraries.yml
 
 The recommended method for adding CSS and JS to components or a theme in Drupal is by using [Drupal libraries](https://www.drupal.org/docs/develop/creating-modules/adding-assets-css-js-to-a-drupal-module-via-librariesyml){target=_blank rel-noopener}. In our project we would create a library for each component in which we will include any CSS or JS the component needs. In addition, we need to create a **global** library which includes all the global and utilities styles.  Here are examples of libraries we can add in **storybook.libraries.yml**.
 
@@ -787,7 +799,13 @@ title:
 
 Fig. 22: Drupal libraries for global styles and component's styles.{.caption}
 
-**P.S**: When the Vite project was originally created at the begining of the post, Vite created files such as **App.css**, **App.js**, **main.js**, and **index.html**. All these files are in the root of the project and can be deleted. It won't affect any of the work we've done, but Vite will not run on its own, which we don't need it to anyway.
+#### /templates
+
+Drupal's templates' directory can be created anywhere within the theme.  I typically like to create it inside the **src** directory.  Go ahead and create it now.
+
+* Inside **storybook.info.yml**, add a new Twig namespace for the **templates** directory. See example above. Update your path accordingly based on where you created your **templates** directory.
+
+**P.S**: When the Vite project was originally created at the begining of the post, Vite created files such as **App.css**, **App.js**, **main.js**, and **index.html**. All these files are in the root of the project and can be deleted. It won't affect any of the work we've done, but Vite will no longer run on its own, which we don't need it to anyway.
 
 ## In closing
 
