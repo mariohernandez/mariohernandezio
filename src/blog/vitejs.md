@@ -11,6 +11,9 @@ featuredImageCredit: "Joshua Reddekopp"
 featuredImageCreditUrl: "https://unsplash.com/@joshuaryanphoto"
 summary: "If you are searching for the next front-end build tool for your Drupal project, or any project, you should try ViteJS. "
 ---
+
+Modern web development relies heavily on automation to stay productive, validate code, and perform repetitive tasks that could slow developers down. Front-end development in particular has evolved, and it can be a daunting task to configure effective automation. In this post, I'll try to walk you through basic automation for your Drupal theme, which uses Storybook as its design system.
+
 Recently I worked on a large Drupal project that needed to migrate its design system from Patternlab to Storybook. I knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
 
 Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugin's ecosystem and its community support. Vite is relatively new, but it is solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
@@ -28,6 +31,10 @@ The topics covered in this post can be broken down in two categories:
     * [Copying static assets](#copying)
     * [The Watch task](#watch)
     * [Linting CSS and JavaScript](#linting)
+
+<span class="callout callout--warning">
+<strong>NOTE</strong>: The project covered in this post does not use Single Directory Components nor the Storybook module.
+</span>
 
 ## 1. Build the front-end environment with Vite & Storybook {id=setup}
 
