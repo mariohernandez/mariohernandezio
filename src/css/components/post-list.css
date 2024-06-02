@@ -72,3 +72,10 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+/* See more posts link. */
+.post-list__all-posts {
+  display: flex;
+  margin-block-start: var(--size-24);
+  margin-inline-start: auto;
+}
