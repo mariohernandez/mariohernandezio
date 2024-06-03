@@ -32,10 +32,6 @@ The topics covered in this post can be broken down in two categories:
     * [The Watch task](#watch)
     * [Linting CSS and JavaScript](#linting)
 
-<span class="callout callout--warning">
-<strong>NOTE</strong>: The project covered in this post does not use Single Directory Components nor the Storybook module.
-</span>
-
 ## 1. Build the front-end environment with Vite & Storybook {id=setup}
 
 In a [previous post](../building-a-modern-drupal-theme-with-storybook), I wrote in detail how to build a front-end environment with Vite and Storybook, I am going to spare you those details here but you can reference them from the original post.
