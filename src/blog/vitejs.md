@@ -317,28 +317,6 @@ Fig. 10: Twig namespaces reflecting project restructure.{.caption}
 
 Since we removed the `react()` function by using the snippet above, we can remove **import react from '@vitejs/plugin-react'** from the imports list as is no longer needed.
 
-* Finally, since we updated our project structure earlier, let's update the **rollupOptions**' **input** path within the Twig build object configuration:
-
-{% raw %}
-
-```js
-  build: {
-    emptyOutDir: true,
-    outDir: 'dist',
-    rollupOptions: {
-      input: glob.sync(path.resolve(__dirname,'./src/components/**/*.{css,js}')),
-      output: {
-        assetFileNames: 'css/[name].css',
-        entryFileNames: 'js/[name].js',
-      },
-    },
-  },
-```
-
-{% endraw %}
-
-Fig. 11: Twig plugin with updated input path.{.caption}
-
 With all the configuration updates we just made, we need to rebuild the project for all the changes to take effect. Run the following commands:
 
 {% raw %}
@@ -393,7 +371,7 @@ export default {
 
 {% endraw %}
 
-Fig. 12: Base configuration for postCSS.{.caption}
+Fig. 11: Base configuration for postCSS.{.caption}
 
 One cool thing about Vite is that it comes with postCSS functionality built in. The only requirement is that you have a `postcss.config.js` file in the project's root. Notice how we are not doing much configuration for those plugins except for defining them. Let's review the code above:
 
@@ -434,7 +412,7 @@ There are two types of styles to be configured in most project, global styles wh
 
 {% endraw %}
 
-Fig. 13: Imports to gather all global styles.{.caption}
+Fig. 12: Imports to gather all global styles.{.caption}
 
 The order in which we have imported our stylesheets is important as the cascading order in which they load makes a difference. We start from `reset` to `base`, to `utilities`.
 
@@ -458,7 +436,7 @@ Before our components can be styled with their unique and individual styles, we 
 
 {% endraw %}
 
-Fig. 14: Glob import for all components of all categories.{.caption}
+Fig. 13: Glob import for all components of all categories.{.caption}
 
 <span class="callout">
 <strong>NOTE</strong>: Since we only have Atoms and Molecules to work with, we are omitting imports for 03-organisms, 04-layouts, 05-pages. Feel free to add them if you have that kind of components.
@@ -494,7 +472,7 @@ setupFilters(Twig);
 
 {% endraw %}
 
-Fig. 15: Importing all styles, global and components.{.caption}
+Fig. 14: Importing all styles, global and components.{.caption}
 
 In addition to importing two new extensions: **twig** and **twig-drupal-filters**, we setup a **setupFilters** function for Storybook to read Drupal filters we may use in our components. We are also importing two of the stylesheets we created earlier:
 
@@ -573,7 +551,7 @@ viteStaticCopy({
 
 {% endraw %}
 
-Fig. 16: Adds tasks for copying JavaScript and Images from src to dist.{.caption}
+Fig. 15: Adds tasks for copying JavaScript and Images from src to dist.{.caption}
 
 The `viteStaticCopy` function we added allows us to copy any type of static assets anywhere within your project. We added a target array in which we included **src** and **dest** for the images we want copied. Every time we run **npm run build**, any images inside any of the components, will be copied into **dist/images**.
 If you need to copy other static assets, simply create new targets for each.
@@ -608,7 +586,7 @@ import '../src/components/components.css';
 
 {% endraw %}
 
-Fig. 17: Importing source assets into Storybook's preview.{.caption}
+Fig. 16: Importing source assets into Storybook's preview.{.caption}
 
 Importing source CSS or JS files into Storybook's preview allows Storybook to become aware immediately of any code changes.
 
@@ -661,7 +639,7 @@ checker({
 
 {% endraw %}
 
-Fig. 18: Checks for linting CSS and JavaScript.{.caption}
+Fig. 17: Checks for linting CSS and JavaScript.{.caption}
 
 So we can execute the above checks on demand, we can add them as commands to our app.
 
@@ -676,7 +654,7 @@ So we can execute the above checks on demand, we can add them as commands to our
 
 {% endraw %}
 
-Fig. 19: Two new npm commands to lint CSS and JavaScript.{.caption}
+Fig. 18: Two new npm commands to lint CSS and JavaScript.{.caption}
 
 * We installed a series of packages related to ESLint and Stylelint.
 * `vite-plugin-checker` is a plugin that can run TypeScript, VLS, vue-tsc, ESLint, and Stylelint in worker thread.
@@ -730,7 +708,7 @@ rules:
 
 {% endraw %}
 
-Fig. 20: Basic CSS Stylelint rules.{.caption}
+Fig. 19: Basic CSS Stylelint rules.{.caption}
 
 The CSS rules above are only a starting point, but should be able to check for the most common CSS errors.
 
@@ -765,7 +743,7 @@ components:
 
 {% endraw %}
 
-Fig. 21: Drupal namespaces for nesting components.{.caption}
+Fig. 20: Drupal namespaces for nesting components.{.caption}
 
 ### storybook.libraries.yml
 
@@ -800,7 +778,7 @@ title:
 
 {% endraw %}
 
-Fig. 22: Drupal libraries for global styles and component's styles.{.caption}
+Fig. 21: Drupal libraries for global styles and component's styles.{.caption}
 
 #### /templates
 
