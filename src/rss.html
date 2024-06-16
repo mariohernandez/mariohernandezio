@@ -1,15 +1,22 @@
 ---
+permalink: '/feed.xml'
+"eleventyExcludeFromCollections": true,
 title: 'Mario Hernandez'
 summary: 'The personal blog for Mario Hernandez, a front-end developer from Los Angeles'
-permalink: '/feed.xml'
+"metadata": {
+  "title": "Mario Hernandez Blog",
+  "description": "I am a software engineer, writer, and trainer from Los Angeles",
+  "language": "en",
+  "base": "https://mariohernandez.io/",
+}
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ title }}</title>
-	<subtitle>{{ summary }}</subtitle>
+	<subtitle>{{ metadata.description }}</subtitle>
 	<link href="{{ site.url }}{{ permalink }}" rel="self"/>
 	<link href="{{ site.url }}/"/>
-	<updated>{{ collections.blog | rssLastUpdatedDate }}</updated>
+	<pubDate>{{ collections.blog | rssLastUpdatedDate }}</pubDate>
 	<id>{{ site.url }}</id>
 	<author>
     <name>{{ site.authorName }}</name>
@@ -20,7 +27,7 @@ permalink: '/feed.xml'
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
-      <updated>{{ post.date | rssDate }}</updated>
+      <pubDate>{{ post.date | rssDate }}</pubDate>
       <id>{{ absolutePostUrl }}</id>
       <content type="html"><![CDATA[
         {{ post.templateContent | safe }}
