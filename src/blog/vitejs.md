@@ -567,7 +567,11 @@ npm run storybook
 
 {% endraw %}
 
-The missing image for the Card component should now be visible. Pretty sweet! 🍰
+The missing image for the Card component should now be visible, see below. Pretty sweet! 🍰
+
+![Card component in Storybook](/images/blog-images/storybook.webp){.body-image .body-image--narrow .body-image--left}
+
+Fig. 16: Screenshot of the Card component in Storybook.{.caption}
 
 ## 7. The Watch task {id=watch}
 
@@ -586,7 +590,7 @@ import '../src/components/components.css';
 
 {% endraw %}
 
-Fig. 16: Importing source assets into Storybook's preview.{.caption}
+Fig. 17: Importing source assets into Storybook's preview.{.caption}
 
 Importing source CSS or JS files into Storybook's preview allows Storybook to become aware immediately of any code changes.
 
@@ -639,7 +643,7 @@ checker({
 
 {% endraw %}
 
-Fig. 17: Checks for linting CSS and JavaScript.{.caption}
+Fig. 18: Checks for linting CSS and JavaScript.{.caption}
 
 So we can execute the above checks on demand, we can add them as commands to our app.
 
@@ -654,7 +658,7 @@ So we can execute the above checks on demand, we can add them as commands to our
 
 {% endraw %}
 
-Fig. 18: Two new npm commands to lint CSS and JavaScript.{.caption}
+Fig. 19: Two new npm commands to lint CSS and JavaScript.{.caption}
 
 * We installed a series of packages related to ESLint and Stylelint.
 * `vite-plugin-checker` is a plugin that can run TypeScript, VLS, vue-tsc, ESLint, and Stylelint in worker thread.
@@ -708,7 +712,7 @@ rules:
 
 {% endraw %}
 
-Fig. 19: Basic CSS Stylelint rules.{.caption}
+Fig. 20: Basic CSS Stylelint rules.{.caption}
 
 The CSS rules above are only a starting point, but should be able to check for the most common CSS errors.
 
@@ -743,7 +747,7 @@ components:
 
 {% endraw %}
 
-Fig. 20: Drupal namespaces for nesting components.{.caption}
+Fig. 21: Drupal namespaces for nesting components.{.caption}
 
 ### storybook.libraries.yml
 
@@ -778,7 +782,7 @@ title:
 
 {% endraw %}
 
-Fig. 21: Drupal libraries for global styles and component's styles.{.caption}
+Fig. 22: Drupal libraries for global styles and component's styles.{.caption}
 
 #### /templates
 
