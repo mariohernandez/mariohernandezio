@@ -28,7 +28,7 @@ summary: 'The personal blog for Mario Hernandez, a front-end developer from Los 
       <link href="{{ absolutePostUrl }}"/>
       <pubDate>{{ post.date | rssDate }}</pubDate>
       <id>{{ absolutePostUrl }}/</id>
-      <content type="html">{{ post.content | renderTransforms(post.data.page, metadata.base) }}</content>
+      <content type="html">{{ post.content | safe }}</content>
     </entry>
 	{% endfor %}
 </feed>
