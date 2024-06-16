@@ -16,8 +16,7 @@ summary: 'The personal blog for Mario Hernandez, a front-end developer from Los 
 	<subtitle>{{ metadata.description }}</subtitle>
 	<link href="{{ site.url }}{{ permalink }}" rel="self"/>
 	<link href="{{ site.url }}/"/>
-	<updated>{{ collections.blog | rssLastUpdatedDate }}</updated>
-	<id>{{ site.url }}</id>
+	<id>{{ site.url }}/</id>
 	<author>
     <name>{{ site.author }}</name>
     <email>{{ site.email }}</email>
@@ -27,11 +26,9 @@ summary: 'The personal blog for Mario Hernandez, a front-end developer from Los 
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
-      <updated>{{ post.date | rssDate }}</updated>
-      <id>{{ absolutePostUrl }}</id>
-      <content type="html"><![CDATA[
-        {{ post.templateContent | safe }}
-      ]]></content>
+      <pubDate>{{ post.date | rssDate }}</pubDate>
+      <id>{{ absolutePostUrl }}/</id>
+      <content type="html">{{ post.content | safe }}</content>
     </entry>
 	{% endfor %}
 </feed>
