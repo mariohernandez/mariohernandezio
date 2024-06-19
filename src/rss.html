@@ -19,7 +19,6 @@ summary: 'The personal blog for Mario Hernandez, a front-end developer from Los 
 	<id>{{ site.url }}</id>
 	<author>
     <name>{{ site.author }}</name>
-    <email>{{ site.email }}</email>
 	</author>
 	{% for post in collections.blog %}
     {% set absolutePostUrl %}{{ site.url }}{{ post.url | url }}{% endset %}
