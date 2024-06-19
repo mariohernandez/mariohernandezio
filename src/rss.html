@@ -1,13 +1,12 @@
 ---
-permalink: '/feed.xml'
-"eleventyExcludeFromCollections": true
-title: 'Mario Hernandez'
-summary: 'The personal blog for Mario Hernandez, a front-end developer from Los Angeles'
+permalink: 'feed.xml'
+eleventyExcludeFromCollections: true
+title: 'Mario Hernandez Blog'
 "metadata": {
   "title": "Mario Hernandez Blog",
-  "description": "I am a software engineer, writer, and trainer from Los Angeles",
+  "description": "I am a Software Engineer, Writer, and Trainer with emphasis on Front-end development.",
   "language": "en",
-  "base": "https://mariohernandez.io/"
+  "base": "https://mariohernandez.io"
 }
 ---
 <?xml version="1.0" encoding="utf-8"?>
@@ -17,15 +16,16 @@ summary: 'The personal blog for Mario Hernandez, a front-end developer from Los 
 	<link href="{{ site.url }}{{ permalink }}" rel="self"/>
 	<link href="{{ site.url }}"/>
 	<id>{{ site.url }}</id>
+  <updated>{{ post.date | rssLastUpdatedDate  }}</updated>
 	<author>
     <name>{{ site.author }}</name>
 	</author>
 	{% for post in collections.blog %}
-    {% set absolutePostUrl %}{{ site.url }}{{ post.url | url }}{% endset %}
+    {% set absolutePostUrl %}{{ metadata.base }}{{ post.url | url }}{% endset %}
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
-      <pubDate>{{ post.date | dateFilter }}</pubDate>
+      <updated>{{ post.date | rssLastUpdatedDate  }}</updated>
       <id>{{ absolutePostUrl }}</id>
       <content type="html"><![CDATA[{{ post.templateContent | safe }}]]></content>
     </entry>
