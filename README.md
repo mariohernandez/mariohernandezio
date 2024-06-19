@@ -14,6 +14,11 @@ As of November 11, 2023, the site requires two commands to run simultaneously in
 
 1. `npm start`: This will start a local server and watch for any non-CSS file changes.
 1. `npm run watch:css`: This will run a postcss watch task and recompile the css code when css changes are made.
+1. `npm run production`: To build the project for first time.
+
+## IMPORTANT
+
+Do not upgrade the `@11ty/eleventy-plugin-rss` package to version 2 as this version is only compatible with Eleventy v3.
 
 TODO:
 
