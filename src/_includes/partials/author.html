@@ -1,12 +1,14 @@
 <article class="author">
   <figure class="author__avatar">
-    <img src="{{ author.avatar }}" alt="{{ author.alt }}" width="90" height="90">
+    <img src="/images/mario-avatar.webp" alt="Headshot of Mario Hernandez" width="90" height="90">
   </figure>
-  <div class="author__info">
+  <div class="author__info flow">
     <header class="author__header">
-      <h3 class="author__heading">{{ author.heading }}</h3>
+      <h3 class="author__heading">About Mario Hernandez</h3>
     </header>
-    <p>{{ author.bio }}</p>
-    <a href="/about" class="button button--link">Learn more about Mario</a>
+    <p class="author__bio">Mario is a Software Engineer with over 15 years of experience building enterprise Drupal websites. In addition, Mario is a trainer and in his spare time, he enjoys writing about Drupal and Front-end development.</p>
+    <a href="/about" class="button button--link author__cta">Learn more about Mario
+      <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
+    </a>
   </div>
 </article>

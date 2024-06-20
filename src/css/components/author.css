@@ -1,0 +1,51 @@
+.author {
+  background-color: var(--gray-light);
+  border-image-outset: 0 50vw;
+  border-image-slice: fill 0;
+  border-image-source: linear-gradient(var(--gray-light), var(--gray-light));
+  display: grid;
+  gap: var(--size-30);
+  grid-template-columns: var(--size-92) 1fr;
+  margin-block-start: var(--size-40);
+  margin-inline: auto;
+  max-width: 60ch;
+  padding: var(--size-20);
+  padding-block-end: var(--size-40);
+
+
+  /* Styles for CTA link and arrow svg image. */
+  .button--link {
+    align-items: center;
+    display: flex;
+    font-size: var(--size-16) !important;
+    justify-content: flex-end;
+    line-height: 1;
+
+    .link-arrow {
+      margin-inline-start: var(--size-2);
+    }
+
+    svg {
+      height: var(--size-18);
+      margin-block-start: var(--size-4);
+      width: var(--size-18);
+    }
+  }
+}
+
+.author__avatar {
+  width: var(--size-92);
+
+  img {
+    border: 1px solid var(--purple);
+    border-radius: 50%;
+  }
+}
+
+.author__info:not(.author__heading) {
+  font-size: var(--size-16);
+}
+
+.author__bio {
+  line-height: 1.5;
+}
