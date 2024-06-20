@@ -16,7 +16,6 @@ title: 'Mario Hernandez Blog'
 	<link href="{{ site.url }}{{ permalink }}" rel="self"/>
 	<link href="{{ site.url }}"/>
 	<id>{{ site.url }}</id>
-  <updated>{{ post.date | rssLastUpdatedDate  }}</updated>
 	<author>
     <name>{{ site.author }}</name>
 	</author>
@@ -25,7 +24,7 @@ title: 'Mario Hernandez Blog'
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}"/>
-      <updated>{{ post.date | rssLastUpdatedDate  }}</updated>
+      <pubDate>{{ post.date | rssLastUpdatedDate  }}</pubDate>
       <id>{{ absolutePostUrl }}</id>
       <content type="html"><![CDATA[{{ post.templateContent | safe }}]]></content>
     </entry>
