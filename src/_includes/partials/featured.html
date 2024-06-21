@@ -19,7 +19,7 @@
             </h2>
           </header>
           <div class="featured-post__article--date eyebrow">
-            {{ item.date | dateFilter }} | <span class="blog-post__readtime">About {{ item.data.content | readingTime }} read time</span>
+            {{ item.date | dateFilter }} | <span class="blog-post__readtime">{{ item.data.content | readingTime }} read</span>
           </div>
           <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
           <div class="featured-post__cta" aria-label="{{ item.title }}">

@@ -5,7 +5,7 @@
 {# Render post date and any tags that this post has been tagged with. #}
 {% set pageHeaderSummary %}
   <time class="blog-post__date eyebrow" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }} |
-    <span class="blog-post__readtime">About {{ content | readingTime }} read time</span>
+    <span class="blog-post__readtime">{{ content | readingTime }} read</span>
   </time>
 
   {# Hiding tags and social share for mobile and screen-readers for better UI.

@@ -6,7 +6,7 @@
   display: grid;
   gap: var(--size-30);
   grid-template-columns: var(--size-92) 1fr;
-  margin-block-start: var(--size-40);
+  margin-block: var(--size-40) 2px;
   margin-inline: auto;
   max-width: 60ch;
   padding: var(--size-20);
