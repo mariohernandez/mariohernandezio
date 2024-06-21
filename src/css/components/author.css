@@ -1,16 +1,15 @@
 .author {
   background-color: var(--gray-light);
-  border-image-outset: 0 50vw;
-  border-image-slice: fill 0;
-  border-image-source: linear-gradient(var(--gray-light), var(--gray-light));
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
   display: grid;
-  gap: var(--size-30);
+  gap: var(--size-20);
   grid-template-columns: var(--size-92) 1fr;
-  margin-block: var(--size-40) 2px;
+  margin-block: var(--size-50);
   margin-inline: auto;
   max-width: 60ch;
-  padding: var(--size-20);
-  padding-block-end: var(--size-40);
+  padding: var(--size-30) var(--size-20);
+  text-wrap: pretty;
 
 
   /* Styles for CTA link and arrow svg image. */
@@ -34,7 +33,7 @@
 }
 
 .author__avatar {
-  width: var(--size-92);
+  width: var(--size-80);
 
   img {
     border: 1px solid var(--purple);
@@ -42,10 +41,26 @@
   }
 }
 
-.author__info:not(.author__heading) {
+.author__info,
+.author__connect {
   font-size: var(--size-16);
+}
+
+.author__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author__heading {
+  font-size: var(--size-18);
 }
 
 .author__bio {
   line-height: 1.5;
+}
+
+.author__connect {
+  align-items: center;
+  display: flex;
+  margin-inline-start: auto;
 }
