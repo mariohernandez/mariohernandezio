@@ -7,7 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: var(--size-20) 0;
 }
 
 .social__item {
@@ -15,6 +14,8 @@
 }
 
 .social__item--icon {
+  align-items: center;
+  display: flex;
 
   img {
     height: var(--size-32);

@@ -1,0 +1,66 @@
+.author {
+  background-color: var(--gray-light);
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
+  display: grid;
+  gap: var(--size-20);
+  grid-template-columns: var(--size-92) 1fr;
+  margin-block: var(--size-50);
+  margin-inline: auto;
+  max-width: 60ch;
+  padding: var(--size-30) var(--size-20);
+  text-wrap: pretty;
+
+
+  /* Styles for CTA link and arrow svg image. */
+  .button--link {
+    align-items: center;
+    display: flex;
+    font-size: var(--size-16) !important;
+    justify-content: flex-end;
+    line-height: 1;
+
+    .link-arrow {
+      margin-inline-start: var(--size-2);
+    }
+
+    svg {
+      height: var(--size-18);
+      margin-block-start: var(--size-4);
+      width: var(--size-18);
+    }
+  }
+}
+
+.author__avatar {
+  width: var(--size-80);
+
+  img {
+    border: 1px solid var(--purple);
+    border-radius: 50%;
+  }
+}
+
+.author__info,
+.author__connect {
+  font-size: var(--size-16);
+}
+
+.author__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author__heading {
+  font-size: var(--size-18);
+}
+
+.author__bio {
+  line-height: 1.5;
+}
+
+.author__connect {
+  align-items: center;
+  display: flex;
+  margin-inline-start: auto;
+}

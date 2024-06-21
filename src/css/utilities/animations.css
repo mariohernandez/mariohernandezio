@@ -11,8 +11,10 @@
   --transition-top-05s: top 0.5s ease;
 
   /* Box shadoww. */
-  --box-shadow-thin: var(--size-5) var(--size-5) 0 0 var(--purple);
+  --box-shadow-thin: var(--size-6) var(--size-6) 0 0 var(--purple);
   --box-shadow: var(--size-10) var(--size-10) 0 0 var(--purple);
+  --box-shadow-gray: var(--size-10) var(--size-10) 0 0 var(--gray-darker);
+  --box-shadow-gray-thin: var(--size-6) var(--size-6) 0 0 var(--gray-darker);
 }
 
 /* Zoom effect on image when hovering over them. */
