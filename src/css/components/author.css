@@ -2,14 +2,20 @@
   background-color: var(--gray-light);
   border: 1px solid var(--gray-medium);
   border-radius: 4px;
-  display: grid;
   gap: var(--size-20);
   grid-template-columns: var(--size-92) 1fr;
   margin-block: var(--size-50);
   margin-inline: var(--size-20);
   max-width: 60ch;
-  padding: var(--size-30) var(--size-20);
+  padding: var(--size-20);
+  text-align: center;
   text-wrap: pretty;
+
+  @media (--tablet) {
+    display: grid;
+    padding: var(--size-30) var(--size-20);
+    text-align: initial;
+  }
 
   @media (--tablet-large) {
     margin-inline: auto;
@@ -37,7 +43,14 @@
 }
 
 .author__avatar {
+  margin-block-end: var(--size-16);
+  margin-inline: auto;
   width: var(--size-80);
+
+  @media (--tablet) {
+    margin-block-end: initial;
+    margin-inline: initial;
+  }
 
   img {
     border: 1px solid var(--purple);
@@ -66,8 +79,9 @@
 .author__connect {
   align-items: center;
   display: flex;
+  justify-content: center;
 
   @media (--tablet) {
-    margin-inline-start: auto;
+    justify-content: flex-end;
   }
 }
