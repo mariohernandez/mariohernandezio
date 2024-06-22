@@ -6,10 +6,14 @@
   gap: var(--size-20);
   grid-template-columns: var(--size-92) 1fr;
   margin-block: var(--size-50);
-  margin-inline: auto;
+  margin-inline: var(--size-20);
   max-width: 60ch;
   padding: var(--size-30) var(--size-20);
   text-wrap: pretty;
+
+  @media (--tablet-large) {
+    margin-inline: auto;
+  }
 
 
   /* Styles for CTA link and arrow svg image. */
@@ -62,5 +66,8 @@
 .author__connect {
   align-items: center;
   display: flex;
-  margin-inline-start: auto;
+
+  @media (--tablet) {
+    margin-inline-start: auto;
+  }
 }
