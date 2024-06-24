@@ -48,6 +48,21 @@
   </article>
   {# Author block. #}
   {% include "partials/author.html" %}
+
+  {# Comments snippet. #}
+  <section class="post__comments margin-inline flow" style="max-width:60ch;">
+    <h3 class="post__comments--heading">Was this post any good?</h3>
+    <p>I'd love to hear whether you found this post useful.</p>
+    <script src="https://utteranc.es/client.js"
+      repo="mariohernandez/mariohernandezio"
+      issue-term="pathname"
+      label="Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </section>
+
   {# Recommended posts block. #}
   {% include "partials/recommended-posts.html" %}
 {% endblock %}

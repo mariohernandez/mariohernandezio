@@ -168,3 +168,18 @@ users they are displayed before the article.  This is for better UI. */
 .body-image--narrow {
   max-width: 50%;
 }
+
+/* Comments form styles. */
+.post__comments {
+  border-block-start: 1px solid var(--gray-dark);
+  margin-block: var(--size-40);
+  padding-block-start: var(--size-20);
+
+  p {
+    font-size: var(--font-size-16);
+  }
+}
+
+.post__comments--heading {
+  font-size: var(--font-size-20);
+}
