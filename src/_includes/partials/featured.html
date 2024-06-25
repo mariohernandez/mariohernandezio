@@ -1,28 +1,28 @@
-<section class="featured-post">
-  <div class="featured-post__inner">
+<section class="featured-article">
+  <div class="featured-article__inner">
     {% for item in collections.featuredPost %}
-      <div class="featured-post__image image-zoom">
+      <div class="featured-article__image image-zoom">
         <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" loading="lazy" width="960" height="450" />
-        <div class="featured-post__image--credit">
+        <div class="featured-article__image--credit">
           <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
         </div>
       </div>
 
-      <article class="featured-post__article">
-        <div class="featured-post__article--inner flow-16">
-          <p class="featured-post__tag">{{ featuredPost.heading }}</p>
+      <article class="featured-article__article">
+        <div class="featured-article__article--inner flow-16">
+          <p class="featured-article__tag">{{ featuredPost.heading }}</p>
           <header role="header">
-            <h2 class="featured-post__article--title">
+            <h2 class="featured-article__article--title">
               <a href="{{ item.url }}" aria-label="{{ item.data.title }}" data-frame="quaternary">
                 {{ item.data.title }}
               </a>
             </h2>
           </header>
-          <div class="featured-post__article--date eyebrow">
+          <div class="featured-article__article--date eyebrow">
             {{ item.date | dateFilter }} | <span class="blog-post__readtime">{{ item.data.content | readingTime }} read</span>
           </div>
-          <p class="featured-post__summary">{{ item.data.summary | safe }}</p>
-          <div class="featured-post__cta" aria-label="{{ item.title }}">
+          <p class="featured-article__summary">{{ item.data.summary | safe }}</p>
+          <div class="featured-article__cta" aria-label="{{ item.title }}">
             <a href="{{ item.url }}" class="button button--link" data-link="arrow">Read the full article
               <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
             </a>

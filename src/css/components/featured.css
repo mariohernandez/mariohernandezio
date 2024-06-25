@@ -3,7 +3,7 @@
  * Featured post styles.
  */
 
-.featured-post {
+.featured-article {
   width: 100%;
 
   @media (--laptop) {
@@ -13,7 +13,7 @@
   }
 }
 
-.featured-post__inner {
+.featured-article__inner {
   position: relative;
 
   @media (--tablet) {
@@ -26,7 +26,7 @@
   }
 }
 
-.featured-post__article {
+.featured-article__article {
   background-color: var(--gray-light);
 
   @media (--laptop) {
@@ -38,7 +38,7 @@
   }
 }
 
-.featured-post__article--inner {
+.featured-article__article--inner {
   padding: var(--size-20);
   padding-block-end: var(--size-30);
 
@@ -48,7 +48,7 @@
   }
 }
 
-.featured-post__article--title {
+.featured-article__article--title {
   font-size: var(--font-size-24);
   line-height: var(--line-height-1-4);
 
@@ -63,8 +63,8 @@
 
 /* Featured article heading tag and photo credit tag
 common styles. */
-.featured-post__tag,
-.featured-post__image--credit {
+.featured-article__tag,
+.featured-article__image--credit {
   background-color: var(--black);
   color: var(--white);
   display: inline-block;
@@ -80,13 +80,13 @@ common styles. */
   text-align: center;
 }
 
-.featured-post__tag {
+.featured-article__tag {
   left: 0;
   top: 0;
 }
 
 /* Photo credit. */
-.featured-post__image--credit {
+.featured-article__image--credit {
   bottom: 0;
   padding: var(--size-5) var(--size-10);
   right: 0;
@@ -106,10 +106,10 @@ common styles. */
   }
 }
 
-/* .featured-post__summary {
+/* .featured-article__summary {
   margin-block-start: var(--size-6);
 } */
 
-/* .featured-post__cta {
+/* .featured-article__cta {
   margin-block-start: var(--size-16);
 } */
