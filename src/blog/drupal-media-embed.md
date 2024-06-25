@@ -2,6 +2,7 @@
 date: "2024-01-01"
 title: "Managing image embeds with Drupal media"
 tags: ['drupal', 'media']
+tag: ['drupal media']
 draft: false
 featured: false
 featuredImage: "/images/media-embed.webp"

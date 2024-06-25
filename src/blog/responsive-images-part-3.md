@@ -1,7 +1,8 @@
 ---
 date: "2023-10-27"
 title: "Image resolution switching using srcset and sizes attributes"
-tags: ['drupal','responsive-images','srcset','sizes']
+tags: ['drupal','responsive images','srcset','sizes']
+tag: ['responsive images']
 draft: false
 featured: false
 featuredImage: "/images/srcset-sizes.webp"

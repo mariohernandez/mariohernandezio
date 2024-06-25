@@ -2,6 +2,7 @@
 date: "2018-11-11"
 title: "Surviving the fire"
 tags: ['family', 'nature', 'support']
+tag: ['family']
 draft: false
 featured: false
 featuredImage: "/images/fire.webp"

@@ -2,6 +2,7 @@
 date: "2023-09-27"
 title: "Drupal base path"
 tags: ['drupal','twig']
+tag: ['twig']
 draft: false
 featured: false
 featuredImage: "/images/paths.webp"

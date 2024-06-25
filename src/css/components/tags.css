@@ -51,9 +51,3 @@
   font-size: var(--font-size-14);
   margin-block-end: var(--size-10);
 }
-
-@media (--tablet) {
-  .article-tags-mobile {
-    display: none;
-  }
-}

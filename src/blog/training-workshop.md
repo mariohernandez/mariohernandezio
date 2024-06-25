@@ -2,6 +2,7 @@
 date: "2018-05-20"
 title: "Running a training workshop"
 tags: ['training']
+tag: ['training']
 draft: false
 featured: false
 featuredImage: "/images/training-workshop.webp"

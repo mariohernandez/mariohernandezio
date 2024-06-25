@@ -2,6 +2,7 @@
 date: '2019-01-10'
 title: 'Handling Drupal attributes in components'
 tags: ['twig', 'drupal']
+tag: ['twig']
 draft: false
 featured: false
 featuredImage: '/images/attributes.webp'
