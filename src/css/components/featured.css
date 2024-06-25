@@ -4,7 +4,6 @@
  */
 
 .featured-post {
-  /* margin: var(--size-60) -2rem var(--size-40) -2rem; */
   width: 100%;
 
   @media (--laptop) {
@@ -15,7 +14,6 @@
 }
 
 .featured-post__inner {
-  margin: 0;
   position: relative;
 
   @media (--tablet) {
@@ -45,7 +43,7 @@
   padding-block-end: var(--size-30);
 
   @media (--laptop) {
-    padding: var(--size-60) var(--size-30) var(--size-30);
+    padding: var(--size-40) var(--size-30) var(--size-30);
     position: relative;
   }
 }
@@ -53,7 +51,6 @@
 .featured-post__article--title {
   font-size: var(--font-size-24);
   line-height: var(--line-height-1-4);
-  margin-block-end: var(--size-8);
 
   a {
     text-decoration: none;
@@ -75,7 +72,7 @@ common styles. */
   font-weight: var(--weight-500);
   letter-spacing: 0.1em;
   line-height: var(--line-height-1);
-  margin: 0;
+  /* margin: 0; */
   padding: var(--size-8) var(--size-20);
   position: absolute;
   text-transform: uppercase;
@@ -109,10 +106,10 @@ common styles. */
   }
 }
 
-.featured-post__summary {
+/* .featured-post__summary {
   margin-block-start: var(--size-6);
-}
+} */
 
-.featured-post__cta {
+/* .featured-post__cta {
   margin-block-start: var(--size-16);
-}
+} */
