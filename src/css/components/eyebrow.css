@@ -29,4 +29,12 @@
     margin: 1rem 0;
     width: 5rem;
   }
+
+  &.eyebrow--nodash {
+    text-decoration: none;
+
+    &::after {
+      display: none;
+    }
+  }
 }

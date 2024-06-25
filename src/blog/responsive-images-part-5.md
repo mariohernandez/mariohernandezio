@@ -1,7 +1,8 @@
 ---
 date: "2023-10-27"
 title: "Responsive image styles"
-tags: ['drupal','responsive-image-styles']
+tags: ['drupal','responsive image']
+tag: ['responsive images']
 draft: false
 featured: false
 featuredImage: "/images/picture-frames.webp"

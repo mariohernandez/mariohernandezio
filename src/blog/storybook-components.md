@@ -2,6 +2,7 @@
 date: "2024-05-02"
 title: "Integrating Drupal with Storybook components"
 tags: ['drupal','storybook','components']
+tag: ['storybook']
 draft: false
 featured: false
 featuredImage: "/images/mountains.webp"

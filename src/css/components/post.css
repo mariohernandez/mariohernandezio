@@ -7,6 +7,19 @@
   margin-block-end: 0.5rem
 }
 
+/* Individual tag above article title. */
+.blog-post__tag {
+
+  .eyebrow {
+    color: var(--gray-darker2);
+    margin-block-end: var(--size-20);
+
+    &:hover {
+      color: var(--gray-darker);
+    }
+  }
+}
+
 .page-header__title {
   margin-block-end: var(--size-20);
   line-height: var(--line-height-1-2);
@@ -15,6 +28,11 @@
 
 .blog-post__date {
   margin-block-end: var(--size-40);
+}
+
+.blog-post__share {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .blog-post__image {
@@ -83,25 +101,12 @@
   }
 }
 
-/* Tags for mobile users are displayed at the end of the article, for all other
-users they are displayed before the article.  This is for better UI. */
-.tags-and-social-share {
+.blog-post__tags {
   display: flex;
-  justify-content: flex-end;
-
-  @media (--tablet) {
-    justify-content: space-between;
-  }
-
-  .tags {
-    display: none;
-
-    @media (--tablet) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
+  justify-content: flex-start;
+  margin-block-start: var(--size-50);
+  margin-inline: auto;
+  max-width: 60ch;
 }
 
 /* Blog series pager styles. */

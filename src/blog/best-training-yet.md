@@ -1,7 +1,8 @@
 ---
 date: "2019-04-20"
 title: "Our best training yet"
-tags: ['training', 'drupalcon',]
+tags: ['training', 'drupalcon']
+tag: ['drupalcon']
 draft: false
 featured: false
 featuredImage: "/images/students.webp"

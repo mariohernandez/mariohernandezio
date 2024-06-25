@@ -2,6 +2,7 @@
 date: "2024-04-14"
 title: "Migrating from Patternlab to Storybook"
 tags: ['drupal','storybook']
+tag: ['storybook']
 draft: false
 featured: false
 featuredImage: "/images/storybook.webp"

@@ -2,6 +2,7 @@
 date: "2024-06-02"
 title: "Automating your Drupal Front-end with ViteJS"
 tags: ['drupal','vitejs','storybook']
+tag: ['vitejs']
 draft: false
 featured: true
 featuredImage: "/images/switch.webp"

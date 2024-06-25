@@ -2,6 +2,7 @@
 date: "2020-03-30"
 title: "Building a Drupal Theme with the Theme Generator"
 tags: ['drupal', 'drupal theme']
+tag: ['drupal']
 draft: false
 featured: false
 featuredImage: "/images/scaffold.webp"
