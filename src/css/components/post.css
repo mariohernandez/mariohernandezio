@@ -171,9 +171,9 @@ users they are displayed before the article.  This is for better UI. */
 
 /* Comments form styles. */
 .post__comments {
-  border-block-start: 1px solid var(--gray-dark);
+  border-block-start: 1px solid var(--gray-medium);
   margin-block: var(--size-40);
-  padding-block-start: var(--size-20);
+  padding-block-start: var(--size-50);
 
   p {
     font-size: var(--font-size-16);
