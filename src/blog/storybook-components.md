@@ -2,8 +2,9 @@
 date: "2024-05-02"
 title: "Integrating Drupal with Storybook components"
 tags: ['drupal','storybook','components']
+tag: ['storybook']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/mountains.webp"
 featuredImageAlt: "Overlapped mountains painted with water colors"
 imageThumb: "/images/thumbs/mountains-thumb.webp"
@@ -11,7 +12,7 @@ featuredImageCredit: "Alex Shutin"
 featuredImageCreditUrl: "https://unsplash.com/@fiveamstories"
 summary: "In this post we'll go over the process of making Drupal aware of the components we have built in Storybook."
 ---
-Hey you're back! 🙂 In the [previous post](../building-a-modern-drupal-theme-with-storybook) we talked about how to build a custom Drupal theme using Storybook as the design system.  We also built a simple component to demonstrate how Storybook, using custom extensions, can understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
+Hey you're back! 🙂 In the [previous post](../migrating-from-patternlab-to-storybook) we talked about how to build a custom Drupal theme using Storybook as the design system.  We also built a simple component to demonstrate how Storybook, using custom extensions, can understand Twig.  In this post, the focus will be on making Drupal aware of those components by connecting Drupal to Storybook.
 If you are following along, we will continue where we left off to take advantage of all the prep work we did in the previous post. Topics we will cover in this post include:
 
 1. What is Drupal integration
@@ -92,6 +93,8 @@ teaser: 'Step inside for a tour. We offer a variety of tours and experiences to 
   </div>
 </article>
 ```
+
+Code snippet for building card{.caption .caption--center}
 
 {% endraw %}
 
@@ -185,8 +188,8 @@ Let's go over some of the most noticeable updates inside **vite.config.js**:
 * As part of the `rollupOptions` we also defined two stylesheets for global styles (**reset.css** and **styles.css**). We'll create these next.
 
     {% raw %}
-    <span class="panel">
-    <h4 class="panel__heading">Important</h4>
+    <span class="callout">
+    <h4 class="callout__heading">Important</h4>
     This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repetitive tasks performed on a typical front-end project.
     </span>
     {% endraw %}
@@ -211,7 +214,11 @@ import '../dist/css/styles.css';
 
 ### Previewing the Card in Storybook
 
-_Remember, you need NodeJS v20 or higher as well as NVM installed on your machine_.
+{% raw %}
+<span class="callout">
+Remember, you need NodeJS v20 or higher as well as NVM installed on your machine
+</span>
+{% endraw %}
 
 * In your command line, navigate to the **storybook** directory and run:
 
@@ -304,8 +311,8 @@ All the pieces are in place to Integrate the Card component so Drupal can use it
 * With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page. See example below.
 
     {% raw %}
-    <span class="panel">
-    <h4 class="panel__heading">Note</h4>
+    <span class="callout">
+    <h4 class="callout__heading">Note</h4>
     I am using a new basic Drupal site with Olivero as the default theme. If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
     </span>
     {% endraw %}
@@ -396,9 +403,9 @@ If your card's image size or aspect ratio does not look as the one in Storybook,
 This is only a small example of how to build a simple component in Storybook using Twig and then integrate it with Drupal, so content is rendered in a more semantic and accessible manner. There are many more advantages of implementing a system like this. I hope this was helpful and see the potential of a component-driven environment using Storybook. Thanks for visiting.
 
 {% raw %}
-<span class="panel panel--top-border panel--wide">
-<h4 class="panel__heading">Download the code</h4>
-For a full copy of the code base which includes the work in this and the <a href="../building-a-modern-drupal-theme-with-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
+<span class="callout callout--top-border callout--wide">
+<h4 class="callout__heading">Download the code</h4>
+For a full copy of the code base which includes the work in this and the <a href="../migrating-from-patternlab-to-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
 
 <a href="https://github.com/mariohernandez/storybook/tree/card" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
 </span>

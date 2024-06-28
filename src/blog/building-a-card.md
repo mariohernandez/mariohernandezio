@@ -2,6 +2,7 @@
 date: "2018-08-02"
 title: "How to build a card component"
 tags: ['components']
+tag: ['components']
 draft: false
 featured: false
 featuredImage: "/images/featured-image.webp"

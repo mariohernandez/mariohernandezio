@@ -46,5 +46,6 @@
 }
 
 .hero__cta {
+  margin-block-start: var(--size-30);
   text-align: center;
 }

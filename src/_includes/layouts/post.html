@@ -4,28 +4,30 @@
 
 {# Render post date and any tags that this post has been tagged with. #}
 {% set pageHeaderSummary %}
-  <time class="blog-post__date eyebrow" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
-  {# Hiding tags and social share for mobile and screen-readers for better UI.
-  Tags for mobile are available at the end of the article. #}
-  <div class="tags-and-social-share" aria-hidden="true">
-    {# Post tags. #}
-    {% if tags %}
-      {% include "partials/tags.html" %}
-    {% endif %}
+  <time class="blog-post__date eyebrow" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }} |
+    <span class="blog-post__readtime">{{ content | readingTime }} read</span>
+  </time>
 
-    {# Social media share. #}
+  {# Social share links on each blog article. #}
+  <div class="blog-post__share" aria-hidden="true">
     {% include 'partials/social-share.html' %}
   </div>
 {% endset %}
 
 {% block content %}
   <article class="blog-post__full mb-60 margin-inline-flex">
+    {# Adds primary tag above article title. #}
+    {% for item in tag %}
+      <span class="blog-post__tag">
+        <a href="/tag/{{ item | slug }}/" class="eyebrow eyebrow--nodash">{{ item | title | replace(' ', '') }}</a>
+      </span>
+    {% endfor %}
     {% include "partials/page-header.html" %}
 
     <div class="blog-post__content">
       <div class="blog-post__image image-zoom">
         <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" width="960" height="450" />
-        <div class="featured-post__image--credit">
+        <div class="featured-article__image--credit">
           <a href="{{ featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ featuredImageCredit }}</a>
         </div>
       </div>
@@ -33,16 +35,28 @@
         {{ content | safe }}
       </div>
     </div>
-    {# Tags here are only for mobile.  For all other devices they are shown
-    before the article for better UI. #}
-    <div class="article-tags-mobile">
-      <p class="tags__label">Tags for this post:</p>
-      {# Post tags for mobile. #}
+    <div class="blog-post__tags">
       {% if tags %}
         {% include "partials/tags.html" %}
       {% endif %}
     </div>
   </article>
+  {# Author block. #}
+  {% include "partials/author.html" %}
+
+  {# Comments snippet. #}
+  <section class="post__comments margin-inline-flex flow" style="max-width:60ch;">
+    <h3 class="post__comments--heading">Was this post useful?</h3>
+    <p>Share your thoughts about the topic on this blog post.</p>
+    <script src="https://utteranc.es/client.js"
+      repo="mariohernandez/mariohernandezio"
+      issue-term="pathname"
+      label="Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </section>
 
   {# Recommended posts block. #}
   {% include "partials/recommended-posts.html" %}

@@ -1,7 +1,8 @@
 ---
 date: "2023-10-27"
 title: "Art Direction using the picture HTML element"
-tags: ['drupal','responsive-images','picture-element']
+tags: ['drupal','responsive images','picture element']
+tag: ['responsive images']
 draft: false
 featured: false
 featuredImage: "/images/picture-element.webp"
@@ -52,7 +53,7 @@ So how do we query for the device size and how do we instruct the browser which 
 
 {% endraw %}
 
-<div class="post-hint">
+<div class="callout">
 
 **Note**: The order in which the media queries are written within the `<picture>` tag matters. The browser will use the first match it finds even if it's not the intended one.  Therefore, consider the media query order very carefully to ensure the right image is served.
 

@@ -7,10 +7,9 @@
 
 @import './utilities/animations';
 @import './utilities/breakpoints';
-@import './utilities/eyebrow';
 @import './utilities/link-arrow';
 @import './utilities/margins';
-@import './utilities/post-body';
+@import './utilities/spacing';
 @import './utilities/sizes';
 @import './utilities/tables';
 @import './utilities/visibility';
@@ -20,17 +19,19 @@
 
 @import './components/404';
 @import './components/about';
+@import './components/author';
 @import './components/button';
+@import './components/callout';
 @import './components/card';
+@import './components/caption';
 @import './components/eyebrow';
-@import './components/featured-post';
+@import './components/featured';
 @import './components/footer';
 @import './components/header';
 @import './components/hero';
 @import './components/logo';
 @import './components/navigation';
 @import './components/pager';
-@import './components/panels';
 @import './components/post';
 @import './components/post-list';
 @import './components/quote';
@@ -38,3 +39,4 @@
 @import './components/social';
 @import './components/social-share';
 @import './components/tags';
+@import './components/callout'; /* Positioned here to override body styles */

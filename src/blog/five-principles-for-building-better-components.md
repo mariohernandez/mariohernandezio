@@ -1,7 +1,8 @@
 ---
 date: '2021-09-04'
 title: 'Five principles for building better components'
-tags: ['patterns', 'components']
+tags: ['components']
+tag: ['components']
 draft: false
 featured: false
 featuredImage: '/images/wireframes.webp'

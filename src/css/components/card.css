@@ -40,8 +40,4 @@
 
 .card__content {
   padding: var(--size-12);
-
-  > * {
-    margin-block-end: var(--size-10);
-  }
 }
