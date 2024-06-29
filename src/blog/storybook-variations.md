@@ -33,7 +33,7 @@ In Storybook, all variations of a component are referred to as "Stories", hence 
 
 ![Example of Storybook's sidebar and its elements](/images/storybook-sidebar.png)
 
-Fig. 2: Storybook's official naming convention in hierarchy.{.caption}
+Fig. 2: Storybook's official naming convention and hierarchy.{.caption}
 
 ## The Card component
 
@@ -55,9 +55,13 @@ The image above shows the stories or variations we will build. From top-left to 
 
 In the interest of time, I have a repo that already includes the base of the Card component so you can focus only on building the variations.
 
+
 1. [Clone the repo](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} which already contains a project to work with and the Card component.
+  <span class="callout">
+  If you already have a working Storybook environment, copy the <strong>components</strong> directory (<code>src/components</code>), from the newly cloned repo, into your project and you can ignore the remaining steps.
+  </span>
 1. Switch to the **variations** branch by running `git checkout variations`
-1. Run the project as instructed in the **README** of the repo
+1. Run the project as instructed in the **README** in the repo
 
 ## Variations time
 
@@ -74,11 +78,11 @@ import './card.css';
 
 const component = {
   title: 'Molecules/Card',
+  render: (args) => parse(card(args)),
 };
 
 export const Card = {
   name: 'Card stacked',
-  render: (args) => parse(card(args)),
   args: { ...data },
 };
 
@@ -86,6 +90,10 @@ export default component;
 ```
 
 {% endraw %}
+
+TODO: Describe original card snippet.
+
+* The **render** property parses the markup and logic from `card.twig`, and the data from `card.yml` as arguments. Each key in `card.yml` is translated into an argument.
 
 In this tutorial, we will use two ways for creating variations in Storybook:
 
@@ -96,13 +104,13 @@ In this tutorial, we will use two ways for creating variations in Storybook:
 
 ![Card with an image, teaser and CTA](/images/blog-images/card.webp){.body-image .body-image--wide .body-image--left}
 
-Fig. 4: Example of the default Card other variations will originate from {.caption}
+Fig. 4: Example of the default Card from which other variations will originate.{.caption}
 
 ## Card with light CTA
 
-We will start with the first method for creating variations, doing all the work in `card.stories.jsx`. The variations that lends itself well to this approach is the **Card with light CTA**.
+For the Card with light CTA, we will start with the first method for creating variations, doing all the work in `card.stories.jsx`.
 
-* Inside `card.stories.jsx`, and directly after the closing of the **Card** object (around line 16), add the following object to create a new story:
+* Inside `card.stories.jsx`, and directly after the closing of the **Card** object (around line 17), add the following object to create a new story:
 
 {% raw %}
 
@@ -110,7 +118,6 @@ We will start with the first method for creating variations, doing all the work 
 export const CardLightCta = {
   ...Card,
   name: 'Card light CTA',
-  render: (args) => parse(card(args)),
   args: {
     ...data,
     cta: {
@@ -124,22 +131,21 @@ export const CardLightCta = {
 
 {% endraw %}
 
-Let's describe what we are doing:
+Let's go over the snippet above:
 
 * We start by creating and exporting a new object called **CardLightCta**. This is a new story. The name we chose is arbitrary but it should be unique for each story.
-* Next, we pass the default Card story (`...Card`), so the new story can inherit all the default Card attributes.
+* Next, we pass the default Card story (`...Card`), as a spread operator, so the new story inherits all attributes from the original card.
 * The **name** property allows for each story to have a unique name which will appear directly under the component name in Storybook's sidebar (see image at top for details).
-* The **render** property parses the markup and logic from `card.twig`, and the data from `card.yml` as arguments. Each key in `card.yml` is translated into an argument.
 * Finally, we open the **args** object where we will update some of the fields to achieve the desired variation:
   * We pass the `...data` object as a spread operator to individually update the fields that need updating.
   * Since the only difference between this variation and the original card is that the CTA is light, we need to define the `cta` field with the desired values for each of its properties:
-    * First as a modifier class will pass `button--light`. This is a predefined modifier class which will turn the CTA white
-    * Next, we type the text that will become the CTA's label, **Try it now**
-    * And finally, we set a URL to be passed to the CTA as its href value.
+    * First as a modifier class we pass `button--light`. This is a predefined modifier class which will turn the CTA white.
+    * Next, we type the text that will become the CTA's label, **Try it now**.
+    * And finally, we pass a URL to the CTA.
 
 ### Preview
 
-If Storybook is running, you should be able to see the new variation which will display the card with a light CTA. If Storybook is not yet running, in your command line navigate to the **storybook** directory and run these commands:
+If Storybook is running, you should see the new variation which will display the card with a light CTA. If you need to run Storybook for the first time, in your command line navigate to the storybook directory and run these commands:
 
 {% raw %}
 
@@ -151,6 +157,8 @@ npm run storybook
 ```
 
 {% raw %}
+
+If all goes well, Storybook should be running showing the Card component under the Molecules folder. Under the Card component you will see two stories: **Card stacked** and **Card light CTA**.
 
 ![Card component with light CTA](/images/blog-images/card-light.webp){.body-image .body-image--wide .body-image--left}
 
@@ -168,7 +176,6 @@ Same as before, add the following snippet to `card.stories.jsx` directly after t
 export const CardSmall = {
   ...Card,
   name: 'Card small',
-  render: (args) => parse(card(args)),
   args: {
     ...data,
     modifier: 'card--small',
@@ -197,7 +204,6 @@ Fig. 6: Example of a small card.{.caption}
 export const CardNoImage = {
   ...Card,
   name: 'Card no image',
-  render: (args) => parse(card(args)),
   args: {
     ...data,
     modifier: 'card--no-image',
@@ -211,7 +217,7 @@ export const CardNoImage = {
 Even more similar to the previous story, this variation only varies from the original story as follows:
 
 * We are passing a modifier class to the component, `card--no-image`.
-* Finally, since we want no image, we define the `image` object but leave its value empty.
+* Since we want no image, we define the `image` object but leave its value empty.
 
 ### Preview of card without image
 
@@ -258,7 +264,7 @@ import dataHorizontal from './card-horizontal.yml';
 
 {% endraw %}
 
-* Next, the way we've done before, inside `card.stories.jsx` add the following object directly after the closing of the last story you added:
+* Next, the way we've done before, inside `card.stories.jsx` add the following object directly after the closing of the last story:
 
 {% raw %}
 
@@ -266,7 +272,6 @@ import dataHorizontal from './card-horizontal.yml';
 export const CardHorizontal = {
   ...Card,
   name: 'Card horizontal',
-  render: (args) => parse(card(args)),
   args: {
     ...dataHorizontal,
   },
@@ -275,8 +280,8 @@ export const CardHorizontal = {
 
 {% endraw %}
 
-* First we imported a new data file called `card-horizontal.yml` and assigned the object name of `dataHorizontal`. By doing this, we can manipulate the fields needed for this variation inside this data file, rather than in the story file.
-* Lastly, we repeat the same process as the previous variations but this time, inside the **args** object, we pass the new object we created in the previous step (`...dataHorizontal`), rather than `...data`, as a spread operator.
+* First we imported a new data file called `card-horizontal.yml` and assigned the object name of `dataHorizontal`. By doing this, any changes we make inside **card-horizontal.yml** will be reflected in Storybook.
+* Lastly, we repeat the same process as the previous variations but this time, inside the **args** object, we pass the new object we created in the previous step (`...dataHorizontal`), rather than `...data`.
 * That's it. Our story file is nice and clean. Since we handled all the fields updates in `card-horizontal.yml`, the `.jsx` file is simply consuming its data to achieve the desired variations.
 
 ### Preview of horizontal card
@@ -303,18 +308,17 @@ import './card.css';
 
 const component = {
   title: 'Molecules/Card',
+  render: (args) => parse(card(args)),
 };
 
 export const Card = {
   name: 'Card stacked',
-  render: (args) => parse(card(args)),
   args: { ...data },
 };
 
 export const CardLightCta = {
   ...Card,
   name: 'Card light CTA',
-  render: (args) => parse(card(args)),
   args: {
     ...data,
     cta: {
@@ -328,7 +332,6 @@ export const CardLightCta = {
 export const CardSmall = {
   ...Card,
   name: 'Card small',
-  render: (args) => parse(card(args)),
   args: {
     ...data,
     modifier: 'card--small',
@@ -339,7 +342,6 @@ export const CardSmall = {
 export const CardNoImage = {
   ...Card,
   name: 'Card no image',
-  render: (args) => parse(card(args)),
   args: {
     ...data,
     modifier: 'card--no-image',
@@ -350,7 +352,6 @@ export const CardNoImage = {
 export const CardHorizontal = {
   ...Card,
   name: 'Card horizontal',
-  render: (args) => parse(card(args)),
   args: {
     ...dataHorizontal,
   },
