@@ -10,14 +10,14 @@ featuredImageAlt: "Colourful cacti in a row against a white background"
 imageThumb: "/images/thumbs/variations-thumb.webp"
 featuredImageCredit: "Scott Webb"
 featuredImageCreditUrl: "https://unsplash.com/@scottwebb"
-summary: "Component variations inherit the attributes of a component and "
+summary: "If your Drupal theme uses Storybook as its design system, learn how to create component variations or stories."
 ---
 
-One great way to extend your catalog of components is by creating components variations. Variations, in the context of component-driven development, refers to creating alternative displays of existing components to enhance your site's UI/UX, as well as to find creative ways to display the same content. Variations of a component reduce the need of building new components.
+One great way to extend your catalog of components is by creating components variations. Variations, in the context of component-driven development, refers to displaying your content in different ways. Variations of a component reduce the need of building new components as well as duplicate code.
 
 In Storybook, variations are known as Stories. In this post I will be using variations and stories interchangeably.
 
-The image below shows how a card component can be displayed in so many ways.
+The image below shows how different card stories or variations, can display the same content in many ways.
 
 ![Card with multiple variations](/images/variations.webp){.body-image}
 
@@ -25,7 +25,9 @@ Fig. 1: Example of multiple variations of a Card component.{.caption}
 
 ## Principles of building components
 
-Sometimes when building a new component, we are not able to see beyond the use case of the component we are tasked with building. Some time ago I wrote about [principles for building components](../five-principles-for-building-better-components/). Rather than repeating myself, take a quick look at the article and comeback when you are done. You will find those principles not only apply to building new components, but also to building variations of components.
+Sometimes when building a new component, we can't anticipage how the website will evolve with time and therefore we build components the best way possible at the time of building them. As time goes by and requirements change, we realize that we could have done things differently had we known about the requirements changes. Variations of a component give you a chance to alter how something was built without having to change your entire environment of content architecture.
+
+Some time ago I wrote about [principles for building components](../five-principles-for-building-better-components/). Rather than repeating myself, take a quick look at the article and comeback when you are done. You will find those principles not only apply to building new components, but also to building variations of components.
 
 ## Building component variations in Storybook
 
@@ -37,15 +39,15 @@ Fig. 2: Storybook's official naming convention and hierarchy.{.caption}
 
 ## The Card component
 
-First off, I am going with the assumption that you already know how Storybook stories are created and that you have a Storybook instance running. If that's not the case, [follow these instructions](../migrating-from-patternlab-to-storybook/) to get your Storybook environment up and running. You will need [NodeJS 20+](https://nodejs.org/en/download/prebuilt-installer) and [NVM](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/) installed on your system.
+First off, I am going with the assumption that you already know how Storybook stories are created and that you have a Storybook instance running. If that's not the case, [follow these instructions](../migrating-from-patternlab-to-storybook/) to get your Storybook environment up and running. You will need [NodeJS 20+](https://nodejs.org/en/download/prebuilt-installer) and [NVM](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/) installed on your system to follow along.
 
-Next, let's look at the variations we will be creating in this post.
+Next, let's look at the Card variations we will be creating in this post.
 
 ![Example of component variations](/images/stories.webp){.body-image}
 
-Fig. 3: Example of the different variations we will build in this post.{.caption}
+Fig. 3: Example of the different card variations we will build in this post.{.caption}
 
-The image above shows the stories or variations we will build. From top-left to right:
+The image above shows the Card stories or variations we will build. From top-left to right:
 
 * Default or Stacked
 * Light CTA
@@ -59,15 +61,20 @@ In the interest of time, I have a repo that already includes the base of the Car
 1. [Clone the repo](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} which already contains a project to work with and the Card component.
 
     <span class="callout">
-    If you already have a working Storybook environment, copy the <strong>components</strong> directory (<code>src/components</code>), from the newly cloned repo, into your project and you can ignore the remaining steps.
+    If you already have a working Storybook environment, copy the <strong>components</strong> directory (<code>src/components</code>), from the newly cloned repo, into your project.
     </span>
 
 1. Switch to the **variations** branch by running `git checkout variations`
 1. Run the project as instructed in the **README** in the repo
 
-## Variations time
+### Methods for creating stories
 
-The original Card component was built with Twig, but for the variations we will be working exclusively in `card.stories.jsx`. The current version of the card story looks like this:
+In this tutorial, we will use two methods for creating variations in Storybook:
+
+1. Doing all the work directly in `card.stories.jsx` to change fields values or hide/show fields, depending on the story requirements.
+1. Using additional `*.yml` files to assist with the same fields updates above.
+
+We will be using the first method above for all stories except the Card horizontal. The original Card component was built with Twig, but for the variations we will be working exclusively in `card.stories.jsx`. The current version of the card story looks like this:
 
 {% raw %}
 
@@ -97,33 +104,44 @@ Let me explain the snippet above as this is the foundation for all the variation
 
 * First we do a series of imports to collect all the pieces needed to build components and stories:
 
-  * **import parse**: This is a react plugin which allows us to parse the HTML in our stories into React Storybook can understand.
+  * **import parse**: This is a react plugin which allows us to parse the HTML in our stories into React code Storybook can understand.
   * **import card**: It imports all the code and logic inside our component's twig template.
   * **import data**: Pulls in all the data from the component's **.yml** file so we can use it as React args.
-  * **import './card.css'**: Imports all CSS styles so Storybook can displayed the styled components and stories.
+  * **import './card.css'**: Imports all CSS styles so Storybook can displayed the styled components and stories. Inside card.css, we already have styles for each of the stories we will be building.
 * Next, we set a new configuration object called **component**, which will serve as the default instance of the card component. This is an arbitrary name and can be anything that makes sense to you.
-  Inside the _component_ object we have two properties: **title** and **render**. The title property's value determines the location and name of the component within Storybook's hierarchy. In this example the Card component will be located under the **Molecules** folder. See Fig.2 above for details about the hierarchy.
-  The **render** property is what handles the rendering of the component by using the **data** variable as args.
+  Inside the _component_ object we have two properties: **title** and **render**.
+  * The **title** property's value determines the location and name of the component within Storybook's hierarchy. In this example the Card component will be located under the **Molecules** folder. See Fig.2 above for details about the hierarchy.
+  * The **render** property is what handles the rendering of the component by using the **card** and **data** objects we imported earlier, and combined together (Twig and YML), they render the full component.
 
-* Next, we create our first story by defining a new configuration object called **Card**, in which we pass a name for the story and the data variable as args.
+* Next, we create our first story by defining a new configuration object called **Card**, in which we pass a name (Card stacked), for the story and the data variable as args.
 * Finally, we export the _component_ object as default, which is a React requirement.
 
-### Methods for creating stories
+If Storybook is running, you should see the new variation which will display the Card stacked. If you need to run Storybook for the first time, in your command line navigate to the storybook directory and run these commands:
 
-In this tutorial, we will use two methods for creating variations in Storybook:
+<span class="callout callout--warning">
+<strong>IMPORTANT: </strong>You need <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank" rel="noopener">NodeJS 20+</a> and <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener">NVM</a> installed in your system.
+</span>
 
-1. Doing all the work directly in `card.stories.jsx` to change fields values or hide/show fields
-1. Using supporting `*.yml` files to assist with the same fields updates above
+{% raw %}
 
-### Preview of default card
+```bash
+nvm install
+npm install
+npm run build
+npm run storybook
+```
+
+{% raw %}
+
+If all goes well, Storybook should be running showing the Card stacked story under the Molecules folder.
+
+### Preview of Card stacked
 
 ![Card with an image, teaser and CTA](/images/blog-images/card.webp){.body-image .body-image--wide .body-image--left}
 
-Fig. 4: Example of the default Card from which other variations will originate.{.caption}
+Fig. 4: Example of the Card stacked from which other variations will originate.{.caption}
 
 ## Card with light CTA
-
-For the Card with light CTA, we will start with the first method for creating variations, doing all the work in `card.stories.jsx`.
 
 * Inside `card.stories.jsx`, and directly after the closing of the **Card** object (around line 17), add the following object to create a new story:
 
@@ -148,36 +166,17 @@ export const CardLightCta = {
 
 Let's go over the snippet above:
 
-* We start by creating and exporting a new object called **CardLightCta**. This is a new story. The name we chose is arbitrary but it should be unique for each story.
+* We start by creating and exporting a new object called **CardLightCta**. This is a new story. This name is arbitrary but it should be unique for each story.
 * Next, we pass the default Card story (`...Card`), as a spread operator, so the new story inherits all attributes from the original card.
-* The **name** property allows for each story to have a unique name which will appear directly under the component name in Storybook's sidebar (see image at top for details).
+* The **name** property allows for each story to have a unique name which will appear directly under the component name in Storybook's sidebar (see Fig. 2 at the top for details).
 * Finally, we open the **args** object where we will update some of the fields to achieve the desired variation:
   * We pass the `...data` object as a spread operator to individually update the fields that need updating.
-  * Since the only difference between this variation and the original card is that the CTA is light, we need to define the `cta` field with the desired values for each of its properties:
+  * Since the only difference between this variation and the original card is that the CTA is light, we need to define the `cta` object and provide each of its properties with the appropriate values:
     * First as a modifier class we pass `button--light`. This is a predefined modifier class which will turn the CTA white.
     * Next, we type the text that will become the CTA's label, **Try it now**.
     * And finally, we pass a URL to the CTA.
 
-### Preview
-
-If Storybook is running, you should see the new variation which will display the card with a light CTA. If you need to run Storybook for the first time, in your command line navigate to the storybook directory and run these commands:
-
-<span class="callout callout--warning">
-<strong>IMPORTANT: </strong> You need to have NodeJS 20+ and NVM installed in your system.
-</span>
-
-{% raw %}
-
-```bash
-nvm install
-npm install
-npm run build
-npm run storybook
-```
-
-{% raw %}
-
-If all goes well, Storybook should be running showing the Card component under the Molecules folder. Under the Card component you will see two stories: **Card stacked** and **Card light CTA**.
+### Preview of Card with light CTA
 
 ![Card component with light CTA](/images/blog-images/card-light.webp){.body-image .body-image--wide .body-image--left}
 
