@@ -1,8 +1,8 @@
 ---
-date: "2024-06-02"
+date: "2024-07-01"
 title: "Components variations in Storybook"
 tags: ['components','variations','storybook']
-tag: ['storybook']
+tag: ['components']
 draft: false
 featured: true
 featuredImage: "/images/variations-featured.webp"
