@@ -2,8 +2,9 @@
 date: "2024-06-02"
 title: "Components variations in Storybook"
 tags: ['components','variations','storybook']
-draft: true
-featured: false
+tag: ['storybook']
+draft: false
+featured: true
 featuredImage: "/images/variations-featured.webp"
 featuredImageAlt: "Colourful cacti in a row against a white background"
 imageThumb: "/images/thumbs/variations-thumb.webp"
@@ -14,9 +15,13 @@ summary: "Component variations inherit the attributes of a component and "
 
 One great way to enhance your catalog of components is by creating components variations. Variations, in the context of component-driven development, refers to creating alternative displays of existing components in an effort to enhance your site's UI/UX, as well as to find creative ways to display the same content. Variations of a component reduce the need of building new components.
 
+In Storybook, variations are known as Stories. In this post I will be using variations and stories interchangeably.
+
 The image below shows how a card component can be displayed in so many ways.
 
 ![Card with multiple variations](/images/variations.webp)
+
+Fig. 1: Example of multiple variations of a Card component.{.caption}
 
 ## Principles of building components
 
@@ -24,17 +29,21 @@ Sometimes when building a new component, we are not able to see beyond the use c
 
 ## Building component variations in Storybook
 
-In Storybook, all variations of a component are referred to as "Stories", hence the name Storybook. A story captures the rendered state of a UI component. Developers write multiple stories per component that describe all the “interesting” states/variations a component can support. Here's a visual that describes the official naming and hirarchy Storybook uses.
+In Storybook, all variations of a component are referred to as "Stories", hence the name Storybook. A story captures the rendered state of a UI component. Developers write multiple stories per component that describe all the “interesting” states/variations a component can support. Here's a visual that describes the official naming and hierarchy Storybook uses.
 
 ![Example of Storybook's sidebar and its elements](/images/storybook-sidebar.png)
 
+Fig. 2: Storybook's official naming convention in hierarchy.{.caption}
+
 ## The Card component
 
-First off, I am going with the assumption that you already know how Storybook stories are created and that you have a Storybook instance running. If that's not the case, [read my post](../building-a-modern-drupal-theme-with-storybook/) on how to get everything setup so you can follow along. Ignore the fact that it says Drupal theme.
+First off, I am going with the assumption that you already know how Storybook stories are created and that you have a Storybook instance running. If that's not the case, [follow these instructions](../migrating-from-patternlab-to-storybook/) to get your Storybook environment up and running. You will need [NodeJS 20+](https://nodejs.org/en/download/prebuilt-installer) and [NVM](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/) installed on your system.
 
 Next, let's take a look at the variations/stories we will be creating in this post.
 
-![Example of component variations](/images/stories.webp){.body-image .body-image--wide}
+![Example of component variations](/images/stories.webp){.body-image}
+
+Fig. 3: Example of the different variations we will build in this post.{.caption}
 
 The image above shows the stories or variations we will build. From top-left to right:
 
@@ -44,9 +53,9 @@ The image above shows the stories or variations we will build. From top-left to 
 * No image
 * Horizontal
 
-In the interest of time, I have a repo that already includes the base of the Card component so we can focus only on building the variations.
+In the interest of time, I have a repo that already includes the base of the Card component so you can focus only on building the variations.
 
-1. [Clone the repo](https://github.com/mariohernandez/storybook){target=_blank rel=noopener} which already contains a project to work with and the Card component
+1. [Clone the repo](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} which already contains a project to work with and the Card component.
 1. Switch to the **variations** branch by running `git checkout variations`
 1. Run the project as instructed in the **README** of the repo
 
@@ -80,14 +89,20 @@ export default component;
 
 In this tutorial, we will use two ways for creating variations in Storybook:
 
-1. Doing all the work directly in `card.stories.jsx`
-1. Using alternative `*.yml` files to assist with fields updates
+1. Doing all the work directly in `card.stories.jsx` to change fields values or hide/show fields
+1. Using supporting `*.yml` files to assist with the same fields updates above
+
+### Preview of default card
+
+![Card with an image, teaser and CTA](/images/blog-images/card.webp){.body-image .body-image--wide .body-image--left}
+
+Fig. 4: Example of the default Card other variations will originate from {.caption}
 
 ## Card with light CTA
 
 We will start with the first method for creating variations, doing all the work in `card.stories.jsx`. The variations that lends itself well to this approach is the **Card with light CTA**.
 
-* Inside `card.stories.jsx`, directly after the closing of the **Card** object (around line 16), add the following to create a new story:
+* Inside `card.stories.jsx`, and directly after the closing of the **Card** object (around line 16), add the following object to create a new story:
 
 {% raw %}
 
@@ -111,18 +126,18 @@ export const CardLightCta = {
 
 Let's describe what we are doing:
 
-* We start by creating and exporting a new object called **CardLightCta**. This is an arbitrary name we chose which should be unique within each story.
+* We start by creating and exporting a new object called **CardLightCta**. This is a new story. The name we chose is arbitrary but it should be unique for each story.
 * Next, we pass the default Card story (`...Card`), so the new story can inherit all of the default Card attributes.
 * The **name** property allows for each story to have a unique name which will appear directly under the component name in Storybook's sidebar (see image at top for details).
 * The **render** property parses the markup and logic from `card.twig`, and the data from `card.yml` as arguments. Each key in `card.yml` is translated into an argument.
 * Finally, we open the **args** object where we will update some of the fields in order to achieve the desired variation:
-  * We pass the `...data` object as a spread operator to individually update the properties/fields that need updating.
+  * We pass the `...data` object as a spread operator to individually update the fields that need updating.
   * Since the only difference between this variation and the original card is that the CTA is light, we need to define the `cta` field with the desired values for each of its properties:
-    * First as a modifier class will will pass `button--light`
+    * First as a modifier class will will pass `button--light`. This is a predefined modifier class which will turn the CTA white
     * Next we type the text that will become the CTA's label, **Try it now**
     * And finally, we set a URL to be passed to the CTA as its href value.
 
-### Preview the new variation
+### Preview
 
 If Storybook is running, you should be able to see the new variation which will display the card with a light CTA. If Storybook is not yet running, in your command line navigate to the **storybook** directory and run these commands:
 
@@ -137,9 +152,13 @@ npm run storybook
 
 {% raw %}
 
+![Card component with light CTA](/images/blog-images/card-light.webp){.body-image .body-image--wide .body-image--left}
+
+Fig. 5: Example of a Card component with a light CTA.{.caption}
+
 ## Card small
 
-This next story or variation is the small version of the card. The difference between this card and the original one is that this one has no CTA and its size is ...well, small 🙂
+This next story or variation, is the small version of the card. The difference between this card and the original one is that this one has no CTA and its size is ...well, small 🙂
 
 Same as before, add the following snippet to `card.stories.jsx` directly after the closing of the card with light CTA story:
 
@@ -161,6 +180,12 @@ export const CardSmall = {
 {% endraw %}
 
 This story is very similar to the previous one from the updates needed point of view. As you can see, the only thing we are doing is passing `card--small` as a modifier class to the entire component, and since we don't need a button or CTA, we are defining the `cta` object but its value is empty which will supress it from printing on the page. If you notice in `card.twig`, we use a conditional that checks if the `cta` object exists, otherwise don't print any of the markup starting with the `footer` tag.
+
+### Preview of small card
+
+![Card component in small format](/images/blog-images/card-small.webp){.body-image .body-image--wide .body-image--left}
+
+Fig. 6: Example of a small card.{.caption}
 
 ## Card with no image
 
@@ -188,6 +213,12 @@ Even more similar to the previous story, this variation only varies from the ori
 * We are passing a modifier class to the component, `card--no-image`.
 * Finally, since we want no image, we define the `image` object but leave its value empty.
 
+### Preview of card without image
+
+![Card component without image](/images/blog-images/card-no-image.webp){.body-image .body-image--wide .body-image--left}
+
+Fig. 6: Example of a card without image.{.caption}
+
 ## Card horizontal
 
 The final variation is the Card horizontal. For all previous variations we have done all the changes inside `card.stories.jsx`, but for this one, we will resource to using an alternative `*.yml` file. Why you may ask, well, this variations requires a bit more changes and making all those changes inside the stories.jsx file may look a little too busy and not as easy to read the code. That's pretty much the only reason for me to use this method, to keep the code in my stories clean and more readable.
@@ -212,10 +243,10 @@ cta: ''
 {% endraw %}
 
 * The **modifier** field has a specific CSS class we will pass: `card--horizontal`. This class will allow us to change the layout of the card to be in horizontal direction.
-* The **image** field has a different version of our image. The image has been cropped in square aspect ratio for better fitting of this variation.
+* The **image** field uses a different image altogether. The image has been cropped in square aspect ratio for better fitting of this variation.
 * Finally, the **cta** field is empty, meaning we don't want to print a button on this variation.
 
-Maybe I exagerated when I said that this variation has too many changes, but my point is that in cases when your stories do require a lot of changes, using a different yml file may help you keep your stories.jsx file a lot neater and clean.
+Maybe I exagerated when I said that this variation has too many changes, but my point is that in cases when your stories do require a lot of changes, using a different yml file may help you keep your stories.jsx file a lot neater and cleaner.
 
 * The first step is one we haven't done before. Inside `card.stories.jsx` somewhere around line 5 (after the last import in the file), add the following import:
 
@@ -227,7 +258,7 @@ import dataHorizontal from './card-horizontal.yml';
 
 {% endraw %}
 
-* Next, the way we've done before, inside `card.stories.jsx` add the following snippet directly after the closing of the last story you added:
+* Next, the way we've done before, inside `card.stories.jsx` add the following object directly after the closing of the last story you added:
 
 {% raw %}
 
@@ -245,14 +276,20 @@ export const CardHorizontal = {
 {% endraw %}
 
 * First we imported a new data file called `card-horizontal.yml` and assigned the object name of `dataHorizontal`. By doing this, we can manipulate the fields needed for this variation inside this data file, rather than in the story file.
-* Next we repeat the same process as the previous variations but this time, inside the **args** object, we pass the new object we created in the previous step (`...dataHorizontal`), rather than `...data`.
-* That's it. Our story file is nice and clean.
+* Lastly, we repeat the same process as the previous variations but this time, inside the **args** object, we pass the new object we created in the previous step (`...dataHorizontal`), rather than `...data`, as a spread operator.
+* That's it. Our story file is nice and clean. Since we handled all the fields updates in `card-horizontal.yml`, the `.jsx` file is simply consuming its data to achieve the desired variations.
+
+### Preview of horizontal card
+
+![Card component in horizontal mode](/images/blog-images/card-horizontal.webp){.body-image .body-image--wide .body-image--left}
+
+Fig. 6: Example of a card in horizontal layout.{.caption}
 
 Now that we have covered both methods for creating variations, know that neither method is better than the other. The decision to use one over the other boils down to personal preferences and sometimes which makes the most sense to simplify the process.
 
 ## Final result
 
-At the end of this process, your `card.stories.yml` should look like this:
+At the end of this process, your `card.stories.jsx` should look like this:
 
 {% raw %}
 
@@ -323,10 +360,6 @@ export default component;
 ```
 
 {% endraw %}
-
-...and Storybook should list all your variations or stories in the order they were added:
-
-![Storybook displaying several stories in sidebar](/images/sb-variations.png)
 
 ## In closing
 

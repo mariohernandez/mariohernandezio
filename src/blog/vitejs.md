@@ -4,7 +4,7 @@ title: "Automating your Drupal Front-end with ViteJS"
 tags: ['drupal','vitejs','storybook']
 tag: ['vitejs']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/switch.webp"
 featuredImageAlt: "Digital on/off switch over a purple gradient"
 imageThumb: "/images/thumbs/switch-thumb.webp"

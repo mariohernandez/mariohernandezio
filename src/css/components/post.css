@@ -179,12 +179,9 @@
   border-block-start: 1px solid var(--gray-medium);
   margin-block: var(--size-40);
   padding-block-start: var(--size-50);
-
-  p {
-    font-size: var(--font-size-16);
-  }
 }
 
-.post__comments--heading {
-  font-size: var(--font-size-20);
+.post__comments--intro {
+  font-size: var(--font-size-16);
+  font-weight: 600;
 }
