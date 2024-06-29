@@ -19,7 +19,7 @@ In Storybook, variations are known as Stories. In this post I will be using vari
 
 The image below shows how a card component can be displayed in so many ways.
 
-![Card with multiple variations](/images/variations.webp)
+![Card with multiple variations](/images/variations.webp){.body-image}
 
 Fig. 1: Example of multiple variations of a Card component.{.caption}
 
@@ -57,9 +57,11 @@ In the interest of time, I have a repo that already includes the base of the Car
 
 
 1. [Clone the repo](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} which already contains a project to work with and the Card component.
-  <span class="callout">
-  If you already have a working Storybook environment, copy the <strong>components</strong> directory (<code>src/components</code>), from the newly cloned repo, into your project and you can ignore the remaining steps.
-  </span>
+
+    <span class="callout">
+    If you already have a working Storybook environment, copy the <strong>components</strong> directory (<code>src/components</code>), from the newly cloned repo, into your project and you can ignore the remaining steps.
+    </span>
+
 1. Switch to the **variations** branch by running `git checkout variations`
 1. Run the project as instructed in the **README** in the repo
 
@@ -91,11 +93,24 @@ export default component;
 
 {% endraw %}
 
-TODO: Describe original card snippet.
+Let me explain the snippet above as this is the foundation for all the variations we will be creating.
 
-* The **render** property parses the markup and logic from `card.twig`, and the data from `card.yml` as arguments. Each key in `card.yml` is translated into an argument.
+* First we do a series of imports to collect all the pieces needed to build components and stories:
 
-In this tutorial, we will use two ways for creating variations in Storybook:
+  * **import parse**: This is a react plugin which allows us to parse the HTML in our stories into React Storybook can understand.
+  * **import card**: It imports all the code and logic inside our component's twig template.
+  * **import data**: Pulls in all the data from the component's **.yml** file so we can use it as React args.
+  * **import './card.css'**: Imports all CSS styles so Storybook can displayed the styled components and stories.
+* Next, we set a new configuration object called **component**, which will serve as the default instance of the card component. This is an arbitrary name and can be anything that makes sense to you.
+  Inside the _component_ object we have two properties: **title** and **render**. The title property's value determines the location and name of the component within Storybook's hierarchy. In this example the Card component will be located under the **Molecules** folder. See Fig.2 above for details about the hierarchy.
+  The **render** property is what handles the rendering of the component by using the **data** variable as args.
+
+* Next, we create our first story by defining a new configuration object called **Card**, in which we pass a name for the story and the data variable as args.
+* Finally, we export the _component_ object as default, which is a React requirement.
+
+### Methods for creating stories
+
+In this tutorial, we will use two methods for creating variations in Storybook:
 
 1. Doing all the work directly in `card.stories.jsx` to change fields values or hide/show fields
 1. Using supporting `*.yml` files to assist with the same fields updates above
@@ -146,6 +161,10 @@ Let's go over the snippet above:
 ### Preview
 
 If Storybook is running, you should see the new variation which will display the card with a light CTA. If you need to run Storybook for the first time, in your command line navigate to the storybook directory and run these commands:
+
+<span class="callout callout--warning">
+<strong>IMPORTANT: </strong> You need to have NodeJS 20+ and NVM installed in your system.
+</span>
 
 {% raw %}
 
