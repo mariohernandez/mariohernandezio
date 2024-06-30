@@ -21,9 +21,15 @@
 }
 
 .page-header__title {
-  margin-block-end: var(--size-20);
   line-height: var(--line-height-1-2);
   text-wrap: pretty;
+}
+
+.page-header__subtitle {
+  color: var(--gray-darker2);
+  font-size: var(--size-22);
+  font-style: italic;
+  text-wrap: balance;
 }
 
 .blog-post__date {
