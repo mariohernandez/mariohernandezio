@@ -1,10 +1,11 @@
 ---
 date: "2024-06-02"
 title: "Automating your Drupal Front-end with ViteJS"
+subtitle: "ViteJS is the Next Generation Frontend Tooling, with a tremendous plugins ecosystem to enhance its functionality, and a great community behind it."
 tags: ['drupal','vitejs','storybook']
 tag: ['vitejs']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/switch.webp"
 featuredImageAlt: "Digital on/off switch over a purple gradient"
 imageThumb: "/images/thumbs/switch-thumb.webp"
