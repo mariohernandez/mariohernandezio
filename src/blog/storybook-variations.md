@@ -18,6 +18,11 @@ One great way to extend your catalog of components is by creating components var
 
 In Storybook, variations are known as Stories. In this post I will be using variations and stories interchangeably.
 
+<span class="callout">
+  <h3 class="callout__heading">NOTE:</h3>
+  Although this tutorial might work in a non-Drupal environment, this post is a follow up to previous tutorials that are Drupal-specific. The syntax and plugins used in this tutorial are for a Drupal and Twig environment.
+</span>
+
 The image below shows how different card stories or variations, can display the same content in many ways.
 
 ![Card with multiple variations](/images/variations.webp){.body-image}
