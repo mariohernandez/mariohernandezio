@@ -11,9 +11,13 @@
 }
 
 .flow-16 > * + * {
-  margin-block-start: var(--flow-space-16, 1.2rem);
+  margin-block-start: var(--flow-space-16, 1.6rem);
 }
 
 .flow-20 > * + * {
-  margin-block-start: var(--flow-space-20, 1.2rem);
+  margin-block-start: var(--flow-space-20, 2rem);
+}
+
+.flow-30 > * + * {
+  margin-block-start: var(--flow-space-30, 3rem);
 }
