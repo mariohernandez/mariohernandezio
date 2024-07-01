@@ -7,7 +7,7 @@
 
 {% block content %}
   <article class="about__full margin-inline-flex">
-    <div class="about__content">
+    <div class="about__content flow-20">
       <div class="about__intro">
         {{ intro }}
       </div>
@@ -17,9 +17,13 @@
       <div class="about__body">
         {{ content | safe }}
       </div>
-      <a href="{{ blog_url }}" class="button button--link mt-20" data-link="arrow">Read my blog
+      <a href="{{ blog_url }}" class="button button--link" data-link="arrow">Read my blog
         <span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span>
       </a>
+      <div class="about__social">
+        <p class="about__social__label">Connect with me</p>
+        {% include "partials/social.html" %}
+      </div>
     </div>
     <div class="about__images">
       <div class="about__image about__image--first">

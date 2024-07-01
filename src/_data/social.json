@@ -1,16 +1,16 @@
 {
   "items": [
     {
-      "title": "Twitter",
-      "url": "https://twitter.com/imariohernandez",
-      "icon": "x",
-      "text": "Follow me on Twitter"
-    },
-    {
       "title": "Instagram",
       "url": "https://www.instagram.com/_mariorhernandez/",
       "icon": "instagram",
       "text": "Like me on Instagram"
+    },
+    {
+      "title": "Twitter",
+      "url": "https://twitter.com/imariohernandez",
+      "icon": "x",
+      "text": "Follow me on Twitter"
     },
     {
       "title": "Github",
