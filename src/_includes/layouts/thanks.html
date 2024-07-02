@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{% block content %}
+  <article class="thanks">
+    <header>
+      <h1 class="thanks__title">{{ title }}</h1>
+    </header>
+    <div class="thanks__content">
+      {{ content | safe }}
+    </div>
+  </article>
+{% endblock %}
