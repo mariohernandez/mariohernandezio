@@ -3,27 +3,55 @@
 {% set pageHeaderTitle = title %}
 
 {% block content %}
-  <h1 class="contact__title">Contact me</h1>
-  {{ content | safe }}
-  <form action="https://api.web3forms.com/submit" method="POST" id="form">
-    <input type="hidden" name="access_key" value="2a6297fc-3c6b-4635-bd0d-2f0a4635bf91" />
-    <input type="hidden" name="subject" value="New Submission from mariohernandez.io" />
-    <input type="hidden" name="redirect" value="https://mariohernandez.io/thanks/" />
-    <input type="checkbox" name="botcheck" id="" style="display: none;" />
-    <div>
-      <label for="name">Your name</label><br>
-      <input type="text" name="name" id="name" placeholder="Full name please" required />
-      <br><br>
+  <article class="contact margin-inline-flex mb-60 flow-40">
+    <header class="contact__header">
+      <h1 class="contact__title">Contact me</h1>
+    </header>
+    <div class="contact__body flow">
+      {{ content | safe }}
+
+      <div class="contact__social-items flow">
+        <h2 class="contact__method--header">Social channels</h2>
+        <a class="contact__social" href="https://x.com/imariohernandez" target="_blank">
+          {% include '../../images/icons/x.svg' %}
+          <span>@imariohernandez</span>
+        </a>
+        <a class="contact__social" href="https://www.linkedin.com/in/mariorhernandez/" target="_blank">
+          {% include '../../images/icons/linkedin.svg' %}
+          <span>mariorhernandez</span>
+        </a>
+        <a class="contact__social" href="hhttps://drupal.slack.com/" target="_blank">
+          {% include '../../images/icons/instagram.svg' %}
+          <span>@imariohernandez</span>
+        </a>
+      </div>
     </div>
-    <div>
-      <label for="email">Email Address</label><br>
-      <input type="email" name="email" id="email" placeholder="you@company.com" required /><br>
+    <div class="form__wrapper">
+      <h2 class="contact__method--header">Send me a message</h2>
+      <form action="https://api.web3forms.com/submit" method="POST" id="form" class="contact__form flow-30">
+        <input type="hidden" name="access_key" value="2a6297fc-3c6b-4635-bd0d-2f0a4635bf91" />
+        <input type="hidden" name="subject" value="New Submission from mariohernandez.io" />
+        <input type="hidden" name="redirect" value="https://mariohernandez.io/thanks/" />
+        <input type="checkbox" name="botcheck" id="" style="display: none;" />
+        <div class="contact__field">
+          <label class="contact__label" for="name">Your name</label>
+          <input type="text" name="name" id="name" placeholder="Full name please" required />
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label" for="email">Email Address</label>
+          <input type="email" name="email" id="email" placeholder="you@company.com" required />
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label" for="message">Your Message</label>
+          <textarea rows="4" name="message" id="message" placeholder="Your Message" required></textarea>
+        </div>
+
+        <div class="contact__field">
+          <button type="submit" class="button button--reverse"> Send Message </button>
+        </div>
+      </form>
     </div>
-    <div>
-      <label for="message">Your Message</label>
-      <br>
-      <textarea rows="5" name="message" id="message" placeholder="Your Message" required></textarea><br>
-    </div>
-    <button type="submit"> Send Message </button>
-  </form>
+  </article>
 {% endblock %}

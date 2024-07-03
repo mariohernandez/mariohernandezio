@@ -2,6 +2,7 @@
 @import './base/reset';
 @import './base/webfonts';
 @import './base/colors';
+@import './base/forms';
 @import './base/typography';
 @import './base/base';
 
@@ -24,6 +25,7 @@
 @import './components/callout';
 @import './components/card';
 @import './components/caption';
+@import './components/contact';
 @import './components/eyebrow';
 @import './components/featured';
 @import './components/footer';
@@ -39,4 +41,5 @@
 @import './components/social';
 @import './components/social-share';
 @import './components/tags';
+@import './components/thanks';
 @import './components/callout'; /* Positioned here to override body styles */

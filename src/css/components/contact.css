@@ -1,0 +1,46 @@
+.contact {
+  max-width: var(--size-720);
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+
+  /* By default the button is extended in the contact form.
+  This reduces its width so it is more presentable. */
+  .button {
+    width: 50%;
+  }
+}
+
+.contact__social {
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+
+  svg {
+    margin-inline-end: var(--size-4);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.contact__form {
+  background-color: var(--gray-light);
+  padding: var(--size-30);
+}
+
+.contact__label {
+  display: block;
+  margin-block-end: var(--size-6);
+}
+
+.contact__method--header {
+  background-color: var(--gray-medium);
+  color: var(--black);
+  font-size: var(--size-14);
+  padding: var(--size-10);
+  text-transform: uppercase;
+}
