@@ -3,12 +3,15 @@
 {% set pageHeaderTitle = title %}
 
 {% block content %}
-  <article class="thanks">
+  <article class="thanks margin-inline-flex flow-30">
     <header>
       <h1 class="thanks__title">{{ title }}</h1>
     </header>
     <div class="thanks__content">
       {{ content | safe }}
+    </div>
+    <div class="thanks__image" aria-hidden="true">
+      <img src="{{ image }}" alt="Mario punching blocks" />
     </div>
   </article>
 {% endblock %}

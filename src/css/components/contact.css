@@ -1,0 +1,40 @@
+.contact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--size-40);
+  max-width: var(--size-960);
+}
+
+.contact__first {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+
+  /* By default the button is extended in the contact form.
+  This reduces its width so it is more presentable. */
+  .button {
+    width: 50%;
+  }
+}
+
+.contact__form {
+  /* background-color: var(--gray-very-light); */
+  border: 1px solid var(--gray-medium);
+  border-radius: var(--size-6);
+  padding: var(--size-30);
+  padding-block-start: var(--size-18);
+}
+
+.contact__label {
+  display: block;
+  margin-block-end: var(--size-6);
+}
+
+.contact__form--heading {
+  font-size: var(--size-22);
+}
