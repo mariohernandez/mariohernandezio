@@ -23,10 +23,12 @@
   display: flex;
   flex-direction: column;
 
-  /* By default the button is extended in the contact form.
+  /* By default the button is extended in the contact form on large devices..
   This reduces its width so it is more presentable. */
-  .button {
-    width: 50%;
+  @media (--tablet) {
+    .button {
+      width: 50%;
+    }
   }
 }
 
