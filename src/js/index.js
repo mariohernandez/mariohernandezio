@@ -30,13 +30,13 @@ navToggle.addEventListener('click', function() {
 
   // Configuration of hCaptcha for contact form.
   // https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha
-  const form = document.getElementById('mhcontact');
-  form.addEventListener('submit', function(e) {
-    const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
-    if (!hCaptcha) {
-      e.preventDefault();
-      alert("Please fill out captcha field")
-      return
-    }
-  });
+  // const form = document.getElementById('mhcontact');
+  // form.addEventListener('submit', function(e) {
+  //   const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
+  //   if (!hCaptcha) {
+  //     e.preventDefault();
+  //     alert("Please fill out captcha field")
+  //     return
+  //   }
+  // });
 });
