@@ -8,7 +8,7 @@
   background-color: var(--white);
   border: var(--size-1) solid var(--black);
   color: var(--black);
-  display: inline-block;
+  display: block;
   font-size: var(--font-size-12);
   font-weight: var(--weight-700);
   letter-spacing: 0.2em;
@@ -18,6 +18,10 @@
   text-transform: uppercase;
   transition: var(--transition-background-color-04s), var(--transition-color-04s), var(--transition-border-color-04s);
   white-space: nowrap;
+
+  @media (--tablet) {
+    display: inline-block;
+  }
 
   &:hover {
     background-color: var(--black);
