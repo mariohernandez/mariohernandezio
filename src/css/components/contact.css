@@ -1,14 +1,22 @@
 .contact {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--size-40);
-  max-width: var(--size-960);
+
+  @media (--tablet) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: var(--size-960);
+  }
 }
 
 .contact__first {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-block-end: var(--size-40);
+
+  @media (--tablet) {
+    margin-block-end: initial;
+  }
 }
 
 .contact__field {
