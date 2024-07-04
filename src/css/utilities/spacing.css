@@ -4,6 +4,8 @@
   --flow-space-20: var(--size-20);
   --flow-space-30: var(--size-30);
   --flow-space-40: var(--size-40);
+  --flow-space-60: var(--size-60);
+  --flow-space-80: var(--size-80);
 }
 
 .flow > * + * {
@@ -24,4 +26,12 @@
 
 .flow-40 > * + * {
   margin-block-start: var(--flow-space-40, 4rem);
+}
+
+.flow-40 > * + * {
+  margin-block-start: var(--flow-space-60, 6rem);
+}
+
+.flow-40 > * + * {
+  margin-block-start: var(--flow-space-80, 8rem);
 }

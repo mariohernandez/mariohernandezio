@@ -1,18 +1,19 @@
 input[type=text],
 input[type=email],
 textarea {
-  border: 1px solid var(--gray-darker2);
+  border: 0;
+  background-color: var(--lighter-blue);
   border-radius: var(--size-4);
-  padding: var(--size-4);
+  padding: var(--size-2);
 }
 
-.contact__label {
-  font-size: var(--size-18);
+label {
+  font-size: var(--size-16);
   font-weight: 600;
 }
 
 ::placeholder {
-  color: var(--gray-dark);
-  font-size: var(--size-18);
+  color: var(--gray-darker2);
+  font-size: var(--size-16);
   font-style: italic;
 }

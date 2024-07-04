@@ -5,4 +5,4 @@ permalink: 'contact/index.html'
 icon_x: '../../images/icons/x.svg'
 ---
 
-Have a question or want to provide feedback about one of my blog posts?
+Do you have a question about one of my posts? or, did you find an issue?
