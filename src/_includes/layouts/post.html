@@ -16,11 +16,13 @@
 
 {% block content %}
   <article class="blog-post__full mb-60 margin-inline-flex">
-    {# Adds primary tag above article title. #}
-    {% for item in tag %}
-      <span class="blog-post__tag">
-        <a href="/tag/{{ item | slug }}/" class="eyebrow eyebrow--nodash">{{ item | title | replace(' ', '') }}</a>
-      </span>
+    {# Adds the first tag above article title. #}
+    {% for tag in tags %}
+      {% if loop.first %}
+        <span class="blog-post__tag">
+          <a href="/tag/{{ tag | slug }}/" class="eyebrow eyebrow--nodash">{{ tag | title | replace('-', ' ') }}</a>
+        </span>
+      {% endif %}
     {% endfor %}
     {% include "partials/page-header.html" %}
 

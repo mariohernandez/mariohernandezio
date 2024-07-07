@@ -2,7 +2,6 @@
 date: "2018-07-21"
 title: "Flexible Headings with Twig"
 tags: ['components', 'twig']
-tag: ['components']
 draft: false
 featured: false
 featuredImage: "/images/flexible-headings.webp"

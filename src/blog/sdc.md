@@ -1,8 +1,7 @@
 ---
 date: "2024-07-01"
 title: "Single Directory Components and Storybook"
-tags: ['components','sdc','storybook']
-tag: ['single directory components']
+tags: ['single directory components', 'components','sdc','storybook']
 draft: false
 featured: true
 featuredImage: "/images/paper-boat.webp"
