@@ -1,0 +1,19 @@
+input[type=text],
+input[type=email],
+textarea {
+  border: 0;
+  background-color: var(--lighter-blue);
+  border-radius: var(--size-4);
+  padding: var(--size-2);
+}
+
+label {
+  font-size: var(--size-16);
+  font-weight: 600;
+}
+
+::placeholder {
+  color: var(--gray-darker2);
+  font-size: var(--size-16);
+  font-style: italic;
+}
