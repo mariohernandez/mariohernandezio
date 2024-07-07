@@ -1,8 +1,7 @@
 ---
 date: "2023-10-27"
 title: "Responsive images, wrapping up"
-tags: ['drupal','responsive images']
-tag: ['responsive images']
+tags: ['responsive images', 'drupal']
 draft: false
 featured: false
 featuredImage: "/images/wrap.webp"

@@ -1,8 +1,7 @@
 ---
 date: "2023-10-27"
 title: "Responsive images and Media"
-tags: ['drupal','responsive images','media']
-tag: ['responsive images']
+tags: ['responsive images', 'drupal', 'media']
 draft: false
 featured: false
 featuredImage: "/images/media.webp"
