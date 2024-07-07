@@ -1,7 +1,7 @@
 ---
 date: "2023-10-27"
 title: "Responsive images in Drupal - a guide"
-tags: ['responsive-images', 'drupal']
+tags: ['responsive images', 'drupal']
 draft: false
 featured: false
 featuredImage: "/images/emily-bernal.webp"

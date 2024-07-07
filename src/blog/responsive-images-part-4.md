@@ -1,7 +1,7 @@
 ---
 date: "2023-10-27"
 title: "Image styles in Drupal"
-tags: ['responsive-images', 'drupal', 'image-styles']
+tags: ['responsive images', 'drupal', 'image-styles']
 draft: false
 featured: false
 featuredImage: "/images/image-styles.webp"

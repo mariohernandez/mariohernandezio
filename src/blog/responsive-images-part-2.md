@@ -1,7 +1,7 @@
 ---
 date: "2023-10-27"
 title: "Art Direction using the picture HTML element"
-tags: ['responsive-images', 'drupal', 'picture element']
+tags: ['responsive images', 'drupal', 'picture element']
 draft: false
 featured: false
 featuredImage: "/images/picture-element.webp"
