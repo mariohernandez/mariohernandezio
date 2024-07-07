@@ -21,7 +21,7 @@ a {
 }
 
 h1 {
-  font-size: var(--font-size-24);
+  font-size: var(--font-size-26);
 
   @media (--tablet) {
     font-size: var(--font-size-40);

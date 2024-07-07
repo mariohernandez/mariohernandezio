@@ -123,3 +123,10 @@
     text-align: left;
   }
 }
+
+.about__social {
+  align-items: center;
+  display: flex;
+  font-size: var(--size-18);
+  font-weight: 600;
+}

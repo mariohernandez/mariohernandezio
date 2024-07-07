@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{% block content %}
+  <form action="https://api.web3forms.com/submit" method="POST" id="form">
+    <fieldset>
+      <legend>Contact me</legend>
+      <input type="hidden" name="access_key" value="2a6297fc-3c6b-4635-bd0d-2f0a4635bf91" />
+      <input type="hidden" name="subject" value="New Submission from MH.io" />
+      <input type="hidden" name="redirect" value="https://mariohernandez.io/thanks/index.html" />
+      <input type="checkbox" name="botcheck" id="" style="display: none;" />
+      <div>
+        <label for="name">Your name</label><br>
+        <input type="text" name="name" id="name" placeholder="Full name please" required />
+        <br><br>
+      </div>
+      <div>
+        <label for="email">Email Address</label><br>
+        <input type="email" name="email" id="email" placeholder="you@company.com" required /><br>
+      </div>
+      <div>
+        <label for="message">Your Message</label>
+        <br>
+        <textarea rows="5" name="message" id="message" placeholder="Your Message" required></textarea><br>
+      </div>
+      <button type="submit"> Send Message </button>
+    </fieldset>
+  </form>
+{% endblock %}
