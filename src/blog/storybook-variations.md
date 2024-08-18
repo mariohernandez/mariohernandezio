@@ -4,7 +4,7 @@ title: "Components variations in Storybook"
 subtitle: "Component variations, or Stories as they are called in Storybook, help you write less and more flexible code to adapt to multiple content display scenarios."
 tags: ['components', 'variations', 'storybook']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/variations-featured.webp"
 featuredImageAlt: "Colourful cacti in a row against a white background"
 imageThumb: "/images/thumbs/variations-thumb.webp"
