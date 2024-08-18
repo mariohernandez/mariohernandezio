@@ -2,7 +2,7 @@
 date: "2024-07-01"
 title: "Single Directory Components and Storybook"
 tags: ['single directory components', 'components','sdc','storybook']
-draft: false
+draft: true
 featured: false
 featuredImage: "/images/paper-boat.webp"
 featuredImageAlt: "Closeup photo of yellow paper boat"
