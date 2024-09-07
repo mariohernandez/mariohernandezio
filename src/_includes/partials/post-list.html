@@ -13,9 +13,10 @@
               <a href="{{ item.url }}" class="blog__link">{{ item.data.title }}</a>
             </h2>
           </header>
-          <p class="blog__teaser">{{ item.data.summary | safe }}</p>
           <p class="blog__date">
-            <time datetime="{{ item.date | dateFilter }}">{{ item.date | dateFilter }}</time></p>
+            <time datetime="{{ item.date | dateFilter }}">{{ item.date | dateFilter }}</time>
+          </p>
+          <p class="blog__teaser">{{ item.data.summary | safe }}</p>
         </article>
       </li>
     {% endfor %}

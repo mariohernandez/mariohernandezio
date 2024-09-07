@@ -46,9 +46,9 @@
   }
 }
 
-.blog__item:not(:last-child) {
+.blog__item {
   border-block-end: 1px solid var(--gray-medium);
-  padding-block-end: var(--size-30);
+  padding-block-end: var(--size-20);
 }
 
 .blog__link {

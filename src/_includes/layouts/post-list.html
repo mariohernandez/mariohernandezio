@@ -6,12 +6,12 @@
 
 {# If this is a tag, grab those items instead as one large collection #}
 {% if tag %}
-  {% set postListItems = collections[tag] %}
+  {% set postListItems = collections[tag] | reverse %}
   {% set pageHeaderTitle = 'Posts tagged with “' + tag | title | lower | replace('-', ' ') + '”' %}
 {% endif %}
 
 {% block content %}
-  <section class="post-list flow-40 margin-inline-flex" id="post-list">
+  <section class="post-list flow-30 margin-inline-flex" id="post-list">
     {% include "partials/page-header.html" %}
     {% include "partials/post-list.html" %}
 
@@ -21,5 +21,4 @@
       {% include "partials/pager.html" %}
     {% endif %}
   </section>
-
 {% endblock %}
