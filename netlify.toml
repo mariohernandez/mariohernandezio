@@ -2,6 +2,7 @@
   command = "npm run production"
   publish = "dist"
 
+## https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
 [[redirects]]
   from = "/blog/building-a-modern-drupal-theme-with-storybook"
   to = "/blog/migrating-your-drupal-theme-from-patternlab-to-storybook"
