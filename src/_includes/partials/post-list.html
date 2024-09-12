@@ -8,14 +8,14 @@
     {% for item in postListItems %}
       <li class="blog__item">
         <article class="blog__article">
+          <p class="blog__date">
+            <time datetime="{{ item.date | dateFilter }}">{{ item.date | dateFilter }}</time>
+          </p>
           <header class="blog__header">
             <h2 class="blog__title">
               <a href="{{ item.url }}" class="blog__link">{{ item.data.title }}</a>
             </h2>
           </header>
-          <p class="blog__date">
-            <time datetime="{{ item.date | dateFilter }}">{{ item.date | dateFilter }}</time>
-          </p>
           <p class="blog__teaser">{{ item.data.summary | safe }}</p>
         </article>
       </li>

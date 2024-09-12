@@ -2,8 +2,17 @@
   command = "npm run production"
   publish = "dist"
 
-# Redirect with a 301
 [[redirects]]
-from = "/blog/building-a-modern-drupal-theme-with-storybook"
-to = "/blog/migrating-from-patternlab-to-storybook"
-status = 301
+  from = "/blog/building-a-modern-drupal-theme-with-storybook"
+  to = "/blog/migrating-your-drupal-theme-from-patternlab-to-storybook"
+  status = 301
+
+[[redirects]]
+  from = "/blog/migrating-from-patternlab-to-storybook"
+  to = "/blog/migrating-your-drupal-theme-from-patternlab-to-storybook"
+  status = 301
+
+[[redirects]]
+  from = "/blog/responsive-images-in-drupal-a-guide"
+  to = "/blog/responsive-images-in-drupal-a-series"
+  status = 301

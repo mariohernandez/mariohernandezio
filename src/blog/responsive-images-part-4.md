@@ -1,5 +1,5 @@
 ---
-date: "2023-10-27"
+date: "2023-11-17"
 title: "Image styles in Drupal"
 tags: ['responsive images', 'drupal', 'image-styles']
 draft: false
