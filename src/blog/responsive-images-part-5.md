@@ -1,5 +1,5 @@
 ---
-date: "2023-10-27"
+date: "2023-11-24"
 title: "Responsive image styles"
 tags: ['responsive images', 'drupal']
 draft: false

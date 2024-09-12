@@ -1,6 +1,6 @@
 ---
 date: "2024-04-14"
-title: "Migrating from Patternlab to Storybook"
+title: "Migrating your Drupal theme from Patternlab to Storybook"
 tags: ['storybook', 'drupal']
 draft: false
 featured: false

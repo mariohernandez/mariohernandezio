@@ -1,6 +1,6 @@
 ---
 date: "2023-10-27"
-title: "Responsive images in Drupal - a guide"
+title: "Responsive images in Drupal - a series"
 tags: ['responsive images', 'drupal']
 draft: false
 featured: false

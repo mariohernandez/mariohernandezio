@@ -1,5 +1,5 @@
 ---
-date: "2023-10-27"
+date: "2023-12-01"
 title: "Responsive images and Media"
 tags: ['responsive images', 'drupal', 'media']
 draft: false

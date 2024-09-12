@@ -74,9 +74,6 @@
 
 .blog__date {
   font-size: var(--font-size-14);
-  font-weight: var(--weight-600);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 /* See more posts link. */

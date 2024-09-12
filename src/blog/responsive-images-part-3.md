@@ -1,5 +1,5 @@
 ---
-date: "2023-10-27"
+date: "2023-11-10"
 title: "Image resolution switching using srcset and sizes attributes"
 tags: ['responsive images', 'drupal', 'srcset','sizes']
 draft: false
