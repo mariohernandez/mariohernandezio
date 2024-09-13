@@ -75,13 +75,9 @@ img {
       font-family: var(--font-monospace);
       font-size: var(--font-size-16);
       line-height: 1;
-      overflow: auto;
-      overflow-wrap: break-all;
       padding-block: var(--size-3);
       padding-inline: var(--size-5);
-      text-wrap: wrap;
       vertical-align: middle;
-      white-space: pre-wrap;
       word-break: break-all;
     }
   }
