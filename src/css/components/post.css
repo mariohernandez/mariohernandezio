@@ -11,11 +11,10 @@
 .blog-post__tag {
 
   .eyebrow {
-    color: var(--gray-darker2);
     margin-block-end: var(--size-20);
 
     &:hover {
-      color: var(--gray-darker);
+      color: var(--gray-darker2);
     }
   }
 }
@@ -38,8 +37,7 @@
 }
 
 .blog-post__share {
-  display: flex;
-  justify-content: flex-end;
+  margin-block: var(--size-20) var(--size-10);
 }
 
 .blog-post__image {

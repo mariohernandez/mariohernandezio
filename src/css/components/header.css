@@ -17,10 +17,20 @@
   }
 }
 
+/* On mobile the header is fixed and sticky. */
 .header__inner {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: var(--high);
+
+  /* On tablet and beyond, we unstick the header. */
   @media (--tablet) {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    position: initial;
+    z-index: initial;
   }
 }
