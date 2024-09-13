@@ -134,6 +134,6 @@ Once the responsive image style above is ready to go, You can repeat the process
 Navigate posts within this series
 
 * < [Responsive images and Media](../responsive-image-styles)
-* [Back to the begining of this guide](../responsive-images-in-drupal-a-guide) >
+* [Back to the begining of this series](../responsive-images-in-drupal-a-series) >
 
 </div>
