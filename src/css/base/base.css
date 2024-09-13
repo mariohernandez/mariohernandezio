@@ -61,8 +61,7 @@ img {
 }
 
 /* Code snippets styles.
- * If code snippet is inline with text.
- */
+ * If code snippet is inline with text. */
 .blog-post__body {
   ul,
   ol,
@@ -76,8 +75,10 @@ img {
       font-family: var(--font-monospace);
       font-size: var(--font-size-16);
       line-height: 1;
+      overflow: auto;
       padding-block: var(--size-3);
       padding-inline: var(--size-5);
+      text-wrap: wrap;
       vertical-align: middle;
     }
   }
