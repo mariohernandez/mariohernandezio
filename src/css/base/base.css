@@ -80,6 +80,7 @@ img {
       padding-inline: var(--size-5);
       text-wrap: wrap;
       vertical-align: middle;
+      white-space: pre-wrap;
     }
   }
 }
