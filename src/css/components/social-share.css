@@ -8,10 +8,6 @@
   display: flex;
 }
 
-.social-share__item {
-  margin-inline-start: var(--size-5);
-}
-
 .social-share__link {
   display: block;
   padding: var(--size-10);
@@ -23,12 +19,6 @@
 }
 
 .social-share__label {
-  font-size: 1.2rem;
-  font-weight: var(--weight-600);
-  text-transform: uppercase;
+  font-size: var(--font-size-16);
   white-space: nowrap;
-
-  @media (--tablet) {
-    margin-inline-start: var(--size-20);
-  }
 }
