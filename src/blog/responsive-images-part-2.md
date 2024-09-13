@@ -97,7 +97,7 @@ You may be wondering: "_Why did you get us all excited about the `<picture>` ele
 
 Navigate posts within this series
 
-- < [Responsive images in Drupal - a guide](../responsive-images-in-drupal-a-guide)
+- < [Responsive images in Drupal - a series](../responsive-images-in-drupal-a-series)
 - [Image resolution switching using `srcset` and `sizes` attributes](../image-resolution-switching-using-srcset-and-sizes-attributes) >
 
 </div>
