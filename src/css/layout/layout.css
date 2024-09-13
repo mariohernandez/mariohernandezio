@@ -2,6 +2,16 @@
  * @file
  * Layout for all blog post pages.
  */
+.main-content {
+  /* Since the header is sticky in mobile, we need all content to clear the header
+  by adding top padding. */
+  padding-block-start: var(--size-60);
+
+  @media (--tablet) {
+    /* On tablet and beyond we reset the top padding. */
+    padding-block-start: initial;
+  }
+}
 
 .blog-post__full {
   max-width: var(--size-960);
