@@ -6,7 +6,7 @@ https://piccalil.li/course/learn-eleventy-from-scratch/ -->
 https://piccalil.li/course/learn-eleventy-from-scratch/lesson/19/ -->
 # Personal blog of Mario Hernandez
 
-This site is proudly built with [11ty](https://www.11ty.dev/){target=_blank rel=noopener}.
+This site is proudly built with [11ty](https://www.11ty.dev/).
 
 I am a Front-end Software Engineer who specializes in [Drupal](https://drupal.org) front-end development. I have been building Drupal websites since 2008 and have worked on some of the most well known brands. I am also a speaker at open source events where I talk about all things front-end and Drupal. I love writing about Drupal and Front-end development in general in my personal blog.
 
@@ -56,7 +56,6 @@ Compile CSS
 ```bash
   npm run watch:css
 ```
-
 
 ## Notice
 
