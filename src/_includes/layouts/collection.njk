@@ -1,0 +1,47 @@
+---
+layout: layouts/base.html
+templateClass: template-collection
+---
+{%- set collectionObject = collections.postCollections[page.fileSlug] -%}
+
+<div class="l-post l-post--collection">
+	<header class="l-post__header">
+		<h1 id="title" class="l-post__title c-post__title">
+			{{ title | safe }}
+		</h1>
+
+		<p id="metadata" class="u-font-size-body-small l-post__metadata c-post__metadata">
+			<span class="c-post__metadata--published">
+				<span class="u-text-transform-uppercase">Published:&#8194;</span><time datetime="{{ collectionObject.collection.date | dateFilter }}">{{ collectionObject.collection.date | dateReadable }}</time><span class="u-hide-visually">.</span>
+			</span>
+		</p>
+	</header>
+
+	<div	class="l-post__body">
+		<div class="l-post__content">
+			<div class="c-content c-content--post">
+				{{ content | safe }}
+			</div>
+			<ol class="c-collection__list">
+				{%- for post in collectionObject.posts -%}
+					<li>
+            <div class="u-spacing-top-long u-spacing-left-long c-card-post">
+              <a class="c-card-post__title" href="{{ post.url | url }}">
+                <h3 id="{{ post.data.title | slugify }}">
+                  {{ post.data.title | safe }}</a>
+                </h3>
+              </a>
+              <p class="u-font-size-body-small c-card-post__meta">
+                Published on <time datetime="{{ post.date | htmlDateString }}">{{ post.date | dateFilter }}</time>
+              </p>
+              <p class="u-font-family-secondary u-font-size-body-small u-spacing-top-medium c-card-post__description">
+                {{ post.data.description | safe }}
+              </p>
+            </div>
+					</li>
+				{%- endfor -%}
+			</ol>
+		</div>
+		<div>
+	</div>
+</div>

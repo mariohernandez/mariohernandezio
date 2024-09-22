@@ -1,0 +1,37 @@
+---
+layout: layouts/base.html
+title: Blog collections
+subtitle: Posts organized by topic.
+permalink: /collections/
+templateClass: template-collections
+---
+
+<div data-content class="l-content">
+	{% set postCollections = collections[ "postCollections" ] %}
+	{% for postCollection in postCollections %}
+		test
+		<div class="c-card__wrapper">
+			<h2 id="{{ postCollection.collection.data.title | slugify }}">{{ postCollection.collection.data.title }}</h2>
+			<div class="c-preface">{{ postCollection.collection.templateContent | safe }}</div>
+			<ol class="c-collection__list">
+				{%- for post in postCollection.posts -%}
+					<li>
+						<div class="u-spacing-top-long u-spacing-left-long c-card-post">
+							<a class="c-card-post__title" href="{{ post.url | url }}">
+								<h3 id="{{ post.data.title | slugify }}">
+									{{ post.data.title | safe }}</a>
+								</h3>
+							</a>
+							<p class="u-font-size-body-small c-card-post__meta">
+								Published on <time datetime="{{ post.date | htmlDateString }}">{{ post.date | dateFilter }}</time>
+							</p>
+							<p class="u-font-family-secondary u-font-size-body-small u-spacing-top-medium c-card-post__description">
+								{{ post.data.description | safe }}
+							</p>
+						</div>
+					</li>
+				{%- endfor -%}
+			</ol>
+		</div>
+	{% endfor %}
+</div>
