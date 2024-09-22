@@ -63,7 +63,6 @@ const esbuild = require('esbuild');
 module.exports = function(eleventyConfig) {
 
   // Article/blog series collections
-
   eleventyConfig.addCollection(
     'seriesCollections',
     require('./src/_11ty/collections/seriesCollections.js')

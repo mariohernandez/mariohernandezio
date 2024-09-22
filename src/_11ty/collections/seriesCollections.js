@@ -7,7 +7,7 @@
 module.exports = function (collection) {
   // Collect all posts that are part of a series
   const rawSeriesCollections = collection
-    .getFilteredByGlob("../../content/series/*")
+    .getFilteredByGlob("./src/content/series/*.md")
     .sort(function (a, b) {
       return a.data.title.localeCompare(b.data.title);
     });
