@@ -1,15 +1,14 @@
 ---
-pagination:
-  data: collections.series
-  size: 1
-  alias: series
 permalink: series/{{ series.slug }}/index.html
 ---
 {% extends "layouts/base.html" %}
 
+{# Sets the series name as the page title. #}
+{% set pageHeaderTitle = series.name %}
+
 {% block content %}
-  <section class="series">
-    <h1 class="center">{{ series.name }}{{ ' series' }}</h1>
+  <section class="series margin-inline-flex">
+    <h1 class="center">{{ pageHeaderTitle }}{{ ' series' }}</h1>
     <sub>{{ series.info }}</sub>
     <ol class="post-list">
       {% for post in series.posts %}
@@ -19,4 +18,4 @@ permalink: series/{{ series.slug }}/index.html
       {% endfor %}
     </ol>
   </section>
-{% endblock content %}
+{% endblock %}

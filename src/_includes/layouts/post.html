@@ -35,13 +35,30 @@
       </div>
       <div class="blog-post__body">
         {{ content | safe }}
+        <div class="blog-post__tags">
+          {% if tags %}
+            {% include "partials/tags.html" %}
+          {% endif %}
+        </div>
+        {# Lists blog posts if they are part of a series. #}
+        {%- if series -%}
+          <section class="series__toc margin-inline-flex margin-block-40">
+            <p>Originally posted on <time datetime="{{ page.date | dateFilter }}">{{ page.date | dateFilter }}</time>
+              {% if series %} as part {{ part }} of the <a href="{{ '/series/' + series | urlize }}">{{ seriesData[series].name }}</a> series.{% endif -%}</p>
+              <ul class="series__items">
+                {% for post in collections.series %}
+                  {# {{ posts | dump }} #}
+                  {# Loop through the nested 'posts' array to get to the individual posts of this series. #}
+                  {% for item in post.posts %}
+                    <li>Part {{ item.part}}: <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>{{ item.title }}</a></li>
+                  {% endfor %}
+                {% endfor %}
+              </ul>
+          </section>
+        {%- endif -%}
       </div>
     </div>
-    <div class="blog-post__tags">
-      {% if tags %}
-        {% include "partials/tags.html" %}
-      {% endif %}
-    </div>
+
   </article>
   {# Author block. #}
   {% include "partials/author.html" %}
@@ -58,20 +75,6 @@
       async>
     </script>
   </section>
-
-  {%- if collections.series -%}
-    {# {{ collections.series | dump }} #}
-  {%- set posts = collections.series[series] -%}
-    {# {{ posts | dump }} #}
-    <sub>Originally posted on <time datetime="{{ page.date | dateFilter }}">{{ page.date | dateFilter }}</time>{% if series %} as part {{ part }} of the <a href="{{ '/series/' + series | urlize }}">{{ seriesData[series].name }}</a> series.{% endif -%}
-      {% for post in collections.series %}
-        {% for item in post.posts %}
-          <li>Part {{ item.part}}: <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>{{ item.title }}</a></li>
-        {% endfor %}
-      {% endfor %}
-    </sub>
-  {%- endif -%}
-
 
   {# Recommended posts block. #}
   {% include "partials/recommended-posts.html" %}
