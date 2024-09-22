@@ -62,11 +62,12 @@
   {%- if collections.series -%}
     {# {{ collections.series | dump }} #}
   {%- set posts = collections.series[series] -%}
-    {{ posts | dump }}
+    {# {{ posts | dump }} #}
     <sub>Originally posted on <time datetime="{{ page.date | dateFilter }}">{{ page.date | dateFilter }}</time>{% if series %} as part {{ part }} of the <a href="{{ '/series/' + series | urlize }}">{{ seriesData[series].name }}</a> series.{% endif -%}
       {% for post in collections.series %}
-        {# {{ post | dump }} #}
-        <li><a href="{{ url }}">{{ title }}</a></li>
+        {% for item in post.posts %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
       {% endfor %}
     </sub>
   {%- endif -%}
