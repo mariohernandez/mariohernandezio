@@ -1,0 +1,10 @@
+{
+  "responsive-images": {
+    "name": "Responsive images",
+    "info": "Learn all the parts to effectively manage images in Drupal."
+  },
+  "storybook": {
+    "name": "Storybook",
+    "info": "Build the next generation Drupal front-end environment."
+  }
+}

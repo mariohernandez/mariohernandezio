@@ -30,7 +30,7 @@
       <div class="blog-post__image image-zoom">
         <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" width="960" height="450" />
         <div class="featured-article__image--credit">
-          <a href="{{ featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ featuredImageCredit }}</a>
+          <a href="{{ featuredImageCreditUrl }}" target="_blank" rel="noopener noreferrer"><span>Photo by: </span>{{ featuredImageCredit }}</a>
         </div>
       </div>
       <div class="blog-post__body">
@@ -58,6 +58,19 @@
       async>
     </script>
   </section>
+
+  {%- if collections.series -%}
+    {# {{ collections.series | dump }} #}
+  {%- set posts = collections.series[series] -%}
+    {{ posts | dump }}
+    <sub>Originally posted on <time datetime="{{ page.date | dateFilter }}">{{ page.date | dateFilter }}</time>{% if series %} as part {{ part }} of the <a href="{{ '/series/' + series | urlize }}">{{ seriesData[series].name }}</a> series.{% endif -%}
+      {% for post in collections.series %}
+        {# {{ post | dump }} #}
+        <li><a href="{{ url }}">{{ title }}</a></li>
+      {% endfor %}
+    </sub>
+  {%- endif -%}
+
 
   {# Recommended posts block. #}
   {% include "partials/recommended-posts.html" %}

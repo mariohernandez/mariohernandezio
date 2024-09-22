@@ -1,6 +1,10 @@
 ---
 date: "2023-11-03"
 title: "Art Direction using the picture HTML element"
+slug: 'responsive-images'
+description: Art direction by using the picture element
+series: 'responsive-images'
+part: 2
 tags: ['responsive images', 'drupal', 'picture element']
 draft: false
 featured: false

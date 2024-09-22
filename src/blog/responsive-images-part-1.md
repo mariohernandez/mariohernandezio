@@ -1,6 +1,10 @@
 ---
 date: "2023-10-27"
 title: "Responsive images in Drupal - a series"
+slug: 'responsive-images'
+description: A series about managing responsive images in Drupal
+series: 'responsive-images'
+part: 1
 tags: ['responsive images', 'drupal']
 draft: false
 featured: false

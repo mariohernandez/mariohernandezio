@@ -1,6 +1,10 @@
 ---
 date: "2023-11-10"
 title: "Image resolution switching using srcset and sizes attributes"
+slug: 'responsive-images'
+description: How to work with image resolution switching
+series: 'responsive-images'
+part: 3
 tags: ['responsive images', 'drupal', 'srcset','sizes']
 draft: false
 featured: false

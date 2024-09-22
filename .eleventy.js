@@ -62,8 +62,19 @@ const esbuild = require('esbuild');
 
 module.exports = function(eleventyConfig) {
 
-// Post readtime plugin configuration.
-eleventyConfig.addPlugin(readingTime);
+  /* For the Blog Series Collections */
+  eleventyConfig.addCollection(
+    "series",
+    require("./src/_11ty/collections/series.js")
+  );
+
+  eleventyConfig.addFilter(
+    "getSeries",
+    require("./src/_11ty/filters/getSeries.js")
+  );
+
+  // Post readtime plugin configuration.
+  eleventyConfig.addPlugin(readingTime);
 
   // Process CSS.
   // eleventyConfig.addTemplateFormats('css');

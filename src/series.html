@@ -1,0 +1,22 @@
+---
+pagination:
+  data: collections.series
+  size: 1
+  alias: series
+permalink: series/{{ series.slug }}/index.html
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <section class="series">
+    <h1 class="center">{{ series.name }}{{ ' series' }}</h1>
+    <sub>{{ series.info }}</sub>
+    <ol class="post-list">
+      {% for post in series.posts %}
+        <li class="post-list-entry">
+          <a href="{{ post.url }}">Part {{ post.part }}: {{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endblock content %}
