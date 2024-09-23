@@ -10,9 +10,7 @@ permalink: /collections/
 		{% set postCollections = collections[ "seriesCollections" ] %}
 		{% for handle, postCollection in postCollections %}
 			<div class="c-card__wrapper">
-				<h2 id="{{ postCollection.collection.data.title | slugify }}">Series:
-					{{ postCollection.collection.data.title }}
-				</h2>
+				<h2>Series: {{ handle | replace('-', ' ') | capitalize }}</h2>
 				<div class="c-preface">{{ postCollection.collection.templateContent | safe }}</div>
 				<ol class="c-collection__list">
 					{%- for post in postCollection.posts -%}
