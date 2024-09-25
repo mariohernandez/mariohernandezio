@@ -2,7 +2,6 @@
 date: "2023-11-10"
 title: "Image resolution switching using srcset and sizes attributes"
 slug: image-resolution-switching-using-srcset-and-sizes-attributes
-description: Image resolution switching
 series:
   slug: "responsive-images"
   order: 3

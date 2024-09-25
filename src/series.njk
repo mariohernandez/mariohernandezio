@@ -1,38 +1,33 @@
 ---
-title: Blog collections
+title: Blog series
+description: The following are blog posts about a specific topic organized as series.
 subtitle: Posts organized by topic.
 permalink: /series/
 ---
 {% extends "layouts/base.html" %}
 
 {% block content %}
-	<div data-content class="l-content">
+	<div data-content class="series__landing margin-inline-flex">
+	<h1 class="page-header__title">{{ title | safe }}</h1>
+	<h2 class="page-header__title">{{ description | safe }}</h2>
 		{% set postCollections = collections[ "seriesCollections" ] %}
 		{% for handle, postCollection in postCollections %}
-			<div class="c-card__wrapper">
-				<h2>Series: {{ handle | replace('-', ' ') | capitalize }}</h2>
-				<div class="c-preface">{{ postCollection.collection.templateContent | safe }}</div>
-				<ol class="c-collection__list">
-					{%- for post in postCollection.posts -%}
-						<li>
-							<div class="u-spacing-top-long u-spacing-left-long c-card-post">
-								<a class="c-card-post__title" href="{{ post.url | url }}">
-									<h3 id="{{ post.data.title | slugify }}">
-										{{ post.data.title | safe }}</a>
-									</h3>
-								</a>
-
-								<p class="u-font-size-body-small c-card-post__meta">
-									Published on <time datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time>
-								</p>
-								<p class="u-font-family-secondary u-font-size-body-small u-spacing-top-medium c-card-post__description">
-									{{ post.data.description | safe }}
-								</p>
-							</div>
-						</li>
-					{%- endfor -%}
-				</ol>
-			</div>
+			<h3>Series: {{ handle | replace('-', ' ') | capitalize }}</h3>
+			<ol class="series__post--list">
+				{%- for post in postCollection.posts -%}
+					<li>
+						<a class="series__post--title" href="{{ post.url | url }}">
+							{{ post.data.title | safe }}</a>
+						</a>
+						<p class="series__post--meta">
+							<time datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time>
+						</p>
+						<p class="series__post--summary">
+							{{ post.data.summary | safe }}
+						</p>
+					</li>
+				{%- endfor -%}
+			</ol>
 		{% endfor %}
 	</div>
 {% endblock %}

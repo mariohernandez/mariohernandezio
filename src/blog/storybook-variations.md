@@ -2,7 +2,6 @@
 date: "2024-07-01"
 title: "Components variations in Storybook"
 slug: components-variations-in-storybook
-description: Building component variations or stories
 series:
   slug: "storybook"
   order: 2

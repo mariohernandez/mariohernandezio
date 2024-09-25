@@ -2,7 +2,6 @@
 date: "2024-05-02"
 title: "Integrating Drupal with Storybook components"
 slug: integrating-drupal-with-storybook-components
-description: Integrating Storybook into your theme
 series:
   slug: "storybook"
   order: 1
