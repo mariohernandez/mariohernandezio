@@ -1,6 +1,10 @@
 ---
 date: "2023-12-01"
 title: "Responsive images and Media"
+slug: image-images-and-media
+series:
+  slug: "responsive-images"
+  order: 6
 tags: ['responsive images', 'drupal', 'media']
 draft: false
 featured: false
@@ -121,12 +125,3 @@ By default the new image field was added at the bottom of the list of fields. Le
 Before we can see the responsive images, let's create a couple of news articles so we have content to work with.  Go ahead and create a few news articles using the Article content type.  Upload large images if you wish so we can see the work we've done in action.
 
 In the next post, we will complete the configuration and display of responsive images.
-
-<div class="post-pager margin-inline-flex margin-block-40">
-
-Navigate posts within this series
-
-- < [Responsive image styles](../responsive-image-styles)
-- [Responsive images, wrapping up](../responsive-images-wrapping-up) >
-
-</div>

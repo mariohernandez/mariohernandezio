@@ -1,0 +1,22 @@
+.series__posts {
+  /* create a new counter for the first time */
+  counter-reset: item 0;
+  padding-inline-start: 0;
+
+  li {
+    /* increment the counter on each list item */
+    counter-increment: item;
+    list-style-type: none;
+
+    &::before {
+      /* show numbers on list items */
+      content: "Part " counter(item) ": ";
+    }
+  }
+
+  [data-state="active"] {
+    color: var(--gray-darker2);
+    text-decoration: none;
+    pointer-events: none;
+  }
+}

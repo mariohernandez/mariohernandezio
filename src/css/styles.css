@@ -38,6 +38,7 @@
 @import './components/post-list';
 @import './components/quote';
 @import './components/recommended-posts';
+@import './components/series';
 @import './components/social';
 @import './components/social-share';
 @import './components/tags';

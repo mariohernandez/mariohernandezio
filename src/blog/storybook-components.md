@@ -401,15 +401,10 @@ If your card's image size or aspect ratio does not look as the one in Storybook,
 * Changing the image style for the Image field for one that may work better for your image.
 * Preview the article again on the homepage to see if this looks better.
 
+### Download the code
+
+For a full copy of the codebase which includes the work in this and the [previous post](../migrating-your-drupal-theme-from-patternlab-to-storybook/), clone or [download the repo](https://github.com/mariohernandez/storybook/tree/card){target=_blank rel=noopener noreferrer} and switch to the **card** branch. The **main** branch only includes the previous post code.
+
 ## In closing
 
 This is only a small example of how to build a simple component in Storybook using Twig and then integrate it with Drupal, so content is rendered in a more semantic and accessible manner. There are many more advantages of implementing a system like this. I hope this was helpful and see the potential of a component-driven environment using Storybook. Thanks for visiting.
-
-{% raw %}
-<span class="callout callout--top-border callout--wide">
-<h4 class="callout__heading">Download the code</h4>
-For a full copy of the code base which includes the work in this and the <a href="../migrating-from-patternlab-to-storybook">previous post</a>, clone or download the repo and switch to the <strong>card</strong> branch. The <strong>main</strong> branch only includes the previous post code.
-
-<a href="https://github.com/mariohernandez/storybook/tree/card" class="button button--reverse" target="_blank" rel="noopener">Download the code</a>
-</span>
-{% endraw %}

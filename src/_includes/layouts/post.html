@@ -36,21 +36,17 @@
       <div class="blog-post__body">
         {{ content | safe }}
         {%- if series -%}
-          {%- set collectionObject = collections.seriesCollections[series.slug] -%}
-          <details open>
-            <summary>Series: <strong>{{ series.slug | replace('-', ' ') | capitalize }}</strong></summary>
-            <div class="content">
-              <p>{{collectionObject.collection.data.preface}}</p>
-
-              <ul class="series__posts">
+          <div class="callout callout--top-border">
+            {%- set collectionObject = collections.seriesCollections[series.slug] -%}
+            <h3 class="post__series__title">Series: {{ series.slug | replace('-', ' ') | capitalize }}</h3>
+            {# <h4 class="post__series__description">{{collectionObject.collection.data.preface}}</h4> #}
+            <ol class="series__posts">
               {%- for post in collectionObject.posts -%}
                 {%- set currentPost = false -%}
-
                 {#- style current post differently from the other posts on the list -#}
                 {%- if post.data.title == title -%}
                   {%- set currentPost = true -%}
                 {%- endif -%}
-
                 {#- But if you have an actual post it's linked here.#}
                 {%- if post.data.permalink and not loop.last -%}
                   <li class="series__post">
@@ -59,12 +55,9 @@
                   </li>
                 {%- endif -%}
               {%- endfor -%}
-              </ul>
-            </div>
-          </details>
-       {% endif %}
-
-
+            </ol>
+          </div>
+        {% endif %}
       </div>
     </div>
     <div class="blog-post__tags">
