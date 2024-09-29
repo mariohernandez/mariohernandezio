@@ -1,6 +1,10 @@
 ---
 date: "2023-11-10"
 title: "Image resolution switching using srcset and sizes attributes"
+slug: image-resolution-switching-using-srcset-and-sizes-attributes
+series:
+  slug: "responsive-images"
+  order: 3
 tags: ['responsive images', 'drupal', 'srcset','sizes']
 draft: false
 featured: false
@@ -69,12 +73,3 @@ The next post of this series will focus on image styles. These are fun but can a
 ## In closing
 
 Time for a story: I recently did an experiment that 100% proves the use of resolution switching using `srcset` and `sizes` attributes.  As most people nowadays, I use a very large second display when working on projects to fit more apps and see things better. My second display is nice but it's not a 4K display.  It's double the physical size of my mac's screen, but the mac's screen resolution is higher by almost double (twice the number of pixels).  When I look at an image of a project where I've implemented the practices in this guide, in the large display, and inspected the page, I see the browser has selected an image that is 720px which makes complete sense for the use case I am testing.  I then unplugged the second display and viewed the page on my mac's screen (higher resolution), I reloaded the page and inspected it, I noticed the browser has now selected an image that is double the size of the first image.  This is exactly the behavior I would expect because my mac screen is of higher resolution and my connection speed is very fast.  So the browser was able to make the smart decision to use a different images based on my environment.
-
-<div class="post-pager margin-inline-flex margin-block-40">
-
-Navigate posts within this series
-
-- < [Art Direction using the picture HTML element](../art-direction-using-the-picture-html-element)
-- [Image styles in Drupal](../image-styles-in-drupal) >
-
-</div>

@@ -1,0 +1,35 @@
+---
+title: Blog series
+description: The following are blog posts about a specific topic organized as series.
+subtitle: Posts organized by topic.
+permalink: /series/
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+	<div class="series__landing margin-inline-flex">
+		<h1 class="page-header__title">{{ title | safe }}</h1>
+		<p class="page-header__subtitle">{{ description | safe }}</p>
+		<div class="series__wrapper">
+			{% set postCollections = collections[ "seriesCollections" ] %}
+			{% for handle, postCollection in postCollections %}
+				<div class="series__list series__toc">
+					<h3 class="series__title">Series: {{ handle | replace('-', ' ') | capitalize }}</h3>
+					<ol class="series__list">
+						{%- for post in postCollection.posts -%}
+							{# If hides individual series listing pages as they are included in
+							the list of post as a hack to get series working. #}
+							{% if not loop.last %}
+								<li>
+									<a class="series__post--title" href="{{ post.url | url }}">
+										{{ post.data.title | safe }}</a>
+									</a> - <time class="blog__date" datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time>
+								</li>
+							{% endif %}
+						{%- endfor -%}
+					</ol>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

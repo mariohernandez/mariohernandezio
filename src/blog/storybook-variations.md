@@ -1,6 +1,10 @@
 ---
 date: "2024-07-01"
 title: "Components variations in Storybook"
+slug: components-variations-in-storybook
+series:
+  slug: "storybook"
+  order: 2
 subtitle: "Component variations, or Stories as they are called in Storybook, help you write less and more flexible code to adapt to multiple content display scenarios."
 tags: ['components', 'variations', 'storybook']
 draft: false

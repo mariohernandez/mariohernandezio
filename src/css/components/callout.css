@@ -2,9 +2,9 @@
 .callout {
   background-color: var(--lighter-blue);
   border-inline-start: 4px solid var(--light-blue);
-  display: inline-block;
-  font-size: var(--font-size-16);
+  display: block;
   margin-block: 0 var(--size-30);
+  max-width: 100%;
   padding: var(--size-20);
 
   p {
@@ -29,7 +29,7 @@
   &.callout--top-border {
     background-color: var(--gray-light);
     border: 0;
-    border-block-start: 6px solid var(--gray-darkest);
+    border-block-start: 6px solid var(--purple);
   }
 
   &.callout--narrow {

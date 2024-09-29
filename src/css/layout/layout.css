@@ -13,6 +13,8 @@
   }
 }
 
-.blog-post__full {
+.blog-post__full,
+.series__landing,
+.series__container {
   max-width: var(--size-960);
 }

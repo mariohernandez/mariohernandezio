@@ -34,7 +34,6 @@
 .tags__link {
   display: block;
   text-decoration: none;
-  font-size: 1.6rem;
   font-weight: var(--weight-500);
   line-height: var(--line-height-1);
   text-decoration: underline;

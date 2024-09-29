@@ -56,7 +56,6 @@
   /* Change links color to purple if they are inside the post body. */
   a {
     color: var(--purple);
-    font-weight: 600;
   }
 
   p {
@@ -79,9 +78,9 @@
     padding-inline-start: 0;
   }
 
-  h2,
-  h3,
-  h4 {
+  h2:not([class]),
+  h3:not([class]),
+  h4:not([class]) {
     margin-block-start: var(--size-40);
     margin-block-end: var(--size-12);
   }
@@ -100,8 +99,8 @@
     }
   }
 
-  ul,
-  ol {
+  ul:not([class]),
+  ol:not([class]) {
     margin-block-end: var(--size-24);
   }
 }

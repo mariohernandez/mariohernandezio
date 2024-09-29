@@ -1,0 +1,57 @@
+/* Series Table Of Content in indivisual posts. */
+.series__toc {
+  background-color: var(--gray-light);
+  border: 0;
+  border-block-start: 6px solid var(--purple);
+  /* create a new counter for the first time */
+  counter-reset: item 0;
+  margin-block-start: var(--size-40);
+  padding: var(--size-24);
+
+  > * + * {
+    margin-block-start: var(--size-20);
+  }
+
+  .series__list {
+    padding-inline-start: 0;
+  }
+
+  /* Only show the 'Part x:' text on larger devices. */
+  @media (--tablet) {
+    li {
+      /* increment the counter on each list item */
+      counter-increment: item;
+      list-style-type: none;
+
+      &::before {
+        /* show numbers on list items */
+        content: "Part " counter(item) ": ";
+      }
+    }
+  }
+
+ [data-state="active"] {
+    color: var(--gray-darker);
+    text-decoration: none;
+    pointer-events: none;
+  }
+
+  .series__title {
+    border-block-end: 3px dotted var(--purple);
+    color: var(--purple);
+    font-weight: 600;
+    padding-block-end: var(--size-14);
+    text-transform: uppercase;
+  }
+
+  [data-state="active"] {
+    color: var(--gray-darker);
+    text-decoration: none;
+    pointer-events: none;
+  }
+}
+
+/* Series collections landing page. */
+.series__wrapper {
+  margin-block-start: var(--size-40);
+}

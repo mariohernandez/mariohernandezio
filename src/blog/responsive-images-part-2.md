@@ -1,6 +1,10 @@
 ---
 date: "2023-11-03"
 title: "Art Direction using the picture HTML element"
+slug: art-direction-using-the-picture-html-element
+series:
+  slug: "responsive-images"
+  order: 2
 tags: ['responsive images', 'drupal', 'picture element']
 draft: false
 featured: false
@@ -92,12 +96,3 @@ Then why use the picture element?  Well, when developing a website, the develope
 | Images dimensions                       | Yes    | No     |
 
 You may be wondering: "_Why did you get us all excited about the `<picture>` element if we can't really use it?_" well, if you are trying to achieve art direction, then you use the `<picture>` element.  It's the recommended approach for that use case.  If you are looking for resolution switching, a use case for most images in the web, you need to use the `srcset` and `sizes` attributes approach.  In the next post we'll dive deep into this technique.
-
-<div class="post-pager margin-inline-flex margin-block-40">
-
-Navigate posts within this series
-
-- < [Responsive images in Drupal - a series](../responsive-images-in-drupal-a-series)
-- [Image resolution switching using `srcset` and `sizes` attributes](../image-resolution-switching-using-srcset-and-sizes-attributes) >
-
-</div>
