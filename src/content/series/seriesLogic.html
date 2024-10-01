@@ -3,8 +3,8 @@
   <div class="series__container margin-inline-flex">
 		<h1 class="page-header__title">Series: {{ title | safe }}</h1>
 		<p class="page-header__subtitle">{{ description | safe }}</p>
-    <div class="series__toc">
-      <ul class="series__list">
+    <div class="series-card">
+      <ul class="series-card__items">
         {%- for post in collectionObject.posts -%}
           {%- set currentPost = false -%}
           {#- style current post differently from the other posts on the list -#}
@@ -13,9 +13,11 @@
           {%- endif -%}
           {#- But if you have an actual post it's linked here.#}
           {%- if post.data.permalink and not loop.last -%}
-            <li class="series__post">
-              <a class="series__link" href="{{ post.url }}" {%- if currentPost -%}aria-current="page" data-state="active"{%- endif -%}>
-            {{ post.data.title | safe }}</a>  - <time class="blog__date" datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time>
+            <li class="series-card__item">
+              <a class="series-card__link" href="{{ post.url }}"{%- if currentPost -%} aria-current="page" data-state="active"{%- endif -%}>
+                {{ post.data.title | safe }}
+              </a>
+              <time class="series-card__date" datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time>
             </li>
           {%- endif -%}
         {%- endfor -%}

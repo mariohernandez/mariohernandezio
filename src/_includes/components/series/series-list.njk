@@ -1,0 +1,8 @@
+<li class="series-card__item">
+  <a class="series-card__item--title" href="{{ post.url | url }}">
+    {{ post.data.title | safe }}
+  </a>
+  <time class="series-card__item--date" datetime="{{ post.date | dateFilter }}">
+    {{ post.date | dateFilter }}
+  </time>
+</li>

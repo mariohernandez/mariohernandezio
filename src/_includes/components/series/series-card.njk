@@ -1,0 +1,10 @@
+<div class="series-card">
+  <h2 class="series-card__title">Series: {{ handle | replace('-', ' ') | capitalize }}</h2>
+  <ol class="series-card__items">
+    {%- for post in postCollection.posts -%}
+      {% if not loop.last %}
+        {% include "components/series/series-list.njk" %}
+      {% endif %}
+    {%- endfor -%}
+  </ol>
+</div>

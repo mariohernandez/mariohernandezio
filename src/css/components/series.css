@@ -51,7 +51,44 @@
   }
 }
 
-/* Series collections landing page. */
+.series__container {
+  > * + * {
+    margin-block-start: var(--size-20);
+  }
+}
+
 .series__wrapper {
-  margin-block-start: var(--size-40);
+  > * + * {
+    margin-block-start: var(--size-40);
+  }
+}
+
+.series-card {
+  background-color: var(--gray-light);
+  border-radius: var(--size-20);
+  padding: var(--size-40);
+  /* create a new counter for the first time */
+  counter-reset: item 0;
+
+  .series-card__items {
+    padding-inline-start: 0;
+  }
+
+ /* Only show the 'Part x:' text on larger devices. */
+  @media (--tablet) {
+    .series-card__item {
+      /* increment the counter on each list item */
+      counter-increment: item;
+      list-style-type: none;
+
+      &::before {
+        /* show numbers on list items */
+        content: "Part " counter(item) ": ";
+      }
+    }
+  }
+
+  > * + * {
+    margin-block-start: var(--size-30);
+  }
 }
