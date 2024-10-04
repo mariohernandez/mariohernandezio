@@ -22,12 +22,12 @@ eleventyExcludeFromCollections: true
   <author>
     <name>{{ metadata.author.name }}</name>
   </author>
-  {%- for post in collections.posts | reverse %}
+  {%- for post in collections.blog %}
   {%- set absolutePostUrl %}{{ post.url | htmlBaseUrl(metadata.base) }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}" />
-    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <pubDate>{{ post.data.date | w3DateFilter }}</pubDate>
     <id>{{ absolutePostUrl }}</id>
     <content type="html">{{ post.content | renderTransforms(post.data.page, metadata.base) }}</content>
   </entry>
