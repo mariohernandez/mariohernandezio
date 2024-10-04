@@ -1,6 +1,7 @@
 // Filters
 const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
+const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
 
 // RSS Feed plugin.
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
@@ -47,7 +48,7 @@ const postcssFilter = (cssCode, done) => {
 // ---------- End of postcss compiling -------------
 
 // Readtime plugin.
-const readingTime = require('eleventy-plugin-reading-time');
+// const readingTime = require('eleventy-plugin-reading-time');
 
 // Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
 const { minify } = require("terser");
@@ -68,8 +69,8 @@ module.exports = function(eleventyConfig) {
     require('./src/_11ty/collections/seriesCollections.js')
   );
 
-// Post readtime plugin configuration.
-eleventyConfig.addPlugin(readingTime);
+  // Post readtime plugin configuration.
+  // eleventyConfig.addPlugin(readingTime);
 
   // Process CSS.
   // eleventyConfig.addTemplateFormats('css');
@@ -209,4 +210,6 @@ eleventyConfig.addPlugin(readingTime);
       output: 'dist'
     }
   };
+
+  eleventyConfig.addPlugin(UpgradeHelper);
 };

@@ -4,9 +4,7 @@
 
 {# Render post date and any tags that this post has been tagged with. #}
 {% set pageHeaderSummary %}
-  <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }} |
-    <span class="blog-post__readtime">{{ content | readingTime }} read</span>
-  </time>
+  <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
 
   {# Social share links on each blog article. #}
   <div class="blog-post__share" aria-hidden="true">
