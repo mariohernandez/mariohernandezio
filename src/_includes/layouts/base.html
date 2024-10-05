@@ -24,7 +24,7 @@
       {% include '../../../dist/css/styles.css' %}
       {% endset %}
       {# feed it through our jsmin filter to minify. #}
-      {{css | postcss | safe}}
+      {{ css | postcss | safe }}
     </style>
 
     <!-- Google tag (gtag.js) -->
