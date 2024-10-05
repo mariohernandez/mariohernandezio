@@ -11,6 +11,12 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 // Transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 
+// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+const { minify } = require("terser");
+
+// Lint JS.
+const esbuild = require('esbuild');
+
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -49,51 +55,10 @@ const postcssFilter = (cssCode, done) => {
 // Readtime plugin.
 // const readingTime = require('eleventy-plugin-reading-time');
 
-// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
-const { minify } = require("terser");
-
-// Process JS.
-const esbuild = require('esbuild');
-// const postcss = require('postcss');
-// const postcssImport = require('postcss-import');
-// const postcssMediaMinmax = require('postcss-media-minmax');
-// const autoprefixer = require('autoprefixer');
-// const postcssCsso = require('postcss-csso');
-
 module.exports = function(eleventyConfig) {
-
-  // Article/blog series collections
-  eleventyConfig.addCollection(
-    'seriesCollections',
-    require('./src/_11ty/collections/seriesCollections.js')
-  );
 
   // Post readtime plugin configuration.
   // eleventyConfig.addPlugin(readingTime);
-
-  // Process CSS.
-  // eleventyConfig.addTemplateFormats('css');
-  // eleventyConfig.addExtension('css', {
-  //   outputFileExtension: 'css',
-  //   compile: async (content, path) => {
-  //     if (path !== './src/css/styles.css') {
-  //       return;
-  //     }
-
-  //     return async () => {
-  //       let output = await postcss([
-  //         postcssImport,
-  //         // postcssMediaMinmax,
-  //         autoprefixer,
-  //         cssnano,
-  //       ]).process(content, {
-  //         from: path,
-  //       });
-
-  //       return output.css;
-  //     }
-  //   }
-  // });
 
   // Process JS.
   eleventyConfig.addTemplateFormats('js');
@@ -191,6 +156,12 @@ module.exports = function(eleventyConfig) {
       x => x.data.featured
     );
   });
+
+  // Article/blog series collections
+  eleventyConfig.addCollection(
+    'seriesCollections',
+    require('./src/_11ty/collections/seriesCollections.js')
+  );
 
   // Watch JavaScript dependencies (turned off by default).
   eleventyConfig.setWatchJavaScriptDependencies(false);
