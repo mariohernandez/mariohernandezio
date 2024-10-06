@@ -1,6 +1,9 @@
+// Sort blog posts by display order.
+const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
+
 // Filters
-const dateFilter = require('./src/filters/date-filter.js');
-const w3DateFilter = require('./src/filters/w3-date-filter.js');
+const dateFilter = require('./src/_11ty/filters/date-filter.js');
+const w3DateFilter = require('./src/_11ty/filters/w3-date-filter.js');
 
 // RSS Feed plugin.
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
@@ -10,6 +13,12 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 // Transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
+
+// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+const { minify } = require("terser");
+
+// Lint JS.
+const esbuild = require('esbuild');
 
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
@@ -49,51 +58,10 @@ const postcssFilter = (cssCode, done) => {
 // Readtime plugin.
 // const readingTime = require('eleventy-plugin-reading-time');
 
-// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
-const { minify } = require("terser");
-
-// Process JS.
-const esbuild = require('esbuild');
-// const postcss = require('postcss');
-// const postcssImport = require('postcss-import');
-// const postcssMediaMinmax = require('postcss-media-minmax');
-// const autoprefixer = require('autoprefixer');
-// const postcssCsso = require('postcss-csso');
-
 module.exports = function(eleventyConfig) {
-
-  // Article/blog series collections
-  eleventyConfig.addCollection(
-    'seriesCollections',
-    require('./src/_11ty/collections/seriesCollections.js')
-  );
 
   // Post readtime plugin configuration.
   // eleventyConfig.addPlugin(readingTime);
-
-  // Process CSS.
-  // eleventyConfig.addTemplateFormats('css');
-  // eleventyConfig.addExtension('css', {
-  //   outputFileExtension: 'css',
-  //   compile: async (content, path) => {
-  //     if (path !== './src/css/styles.css') {
-  //       return;
-  //     }
-
-  //     return async () => {
-  //       let output = await postcss([
-  //         postcssImport,
-  //         // postcssMediaMinmax,
-  //         autoprefixer,
-  //         cssnano,
-  //       ]).process(content, {
-  //         from: path,
-  //       });
-
-  //       return output.css;
-  //     }
-  //   }
-  // });
 
   // Process JS.
   eleventyConfig.addTemplateFormats('js');
@@ -145,9 +113,9 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.setQuietMode(true);
 
   // ---------- Copy files to dist -------------
-  eleventyConfig.addPassthroughCopy("./src/js");
-  eleventyConfig.addPassthroughCopy("./src/fonts");
-  eleventyConfig.addPassthroughCopy("./src/images");
+  eleventyConfig.addPassthroughCopy("./src/js/");
+  eleventyConfig.addPassthroughCopy("./src/fonts/");
+  eleventyConfig.addPassthroughCopy("./src/images/");
   eleventyConfig.addPassthroughCopy("./src/manifest.json");
 
   // Do not rebuild when README.md changes (You can use a glob here too)
@@ -176,13 +144,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('dateFilter', dateFilter);
   eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
 
-  const sortByDisplayOrder = require('./src/utils/sort.js');
-
-  // Returns blog items that are not in draft mode, sorted by display order
+  // Returns blog items, sorted by display order
   eleventyConfig.addCollection('blog', collection => {
-    return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md')).filter(
-      x => x.data.draft == false
-    );
+    return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md'));
   });
 
   // Returns blog items, sorted by display order then filtered by featured
@@ -191,6 +155,12 @@ module.exports = function(eleventyConfig) {
       x => x.data.featured
     );
   });
+
+  // Article/blog series collections
+  eleventyConfig.addCollection(
+    'seriesCollections',
+    require('./src/_11ty/collections/seriesCollections.js')
+  );
 
   // Watch JavaScript dependencies (turned off by default).
   eleventyConfig.setWatchJavaScriptDependencies(false);

@@ -3,7 +3,7 @@ title: 'Blog'
 layout: 'layouts/post-list.html'
 pagination:
   data: collections.blog
-  size: 12
+  size: 5
 permalink: 'blog{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{% endif %}/index.html'
 paginationPrevText: 'Previous posts'
 paginationNextText: 'Next posts'

@@ -1,5 +1,5 @@
 ---
-title: Thank you my friend!
+title: Thank you, my friend!
 layout: 'layouts/thanks.html'
 permalink: '/thanks/index.html'
 image: '/images/mario-punch.webp'

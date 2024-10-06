@@ -56,11 +56,3 @@ Compile CSS
 ```bash
   npm run watch:css
 ```
-
-## Notice
-
-Do not upgrade the `@11ty/eleventy-plugin-rss` package to version 2 as this version is only compatible with Eleventy v3.
-
-## Todo
-
-* Clean up the base.html page once all Sass and critical styles have been completely removed and are no longer needed.
