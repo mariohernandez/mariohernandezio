@@ -1,6 +1,6 @@
 // Filters
-const dateFilter = require('./src/filters/date-filter.js');
-const w3DateFilter = require('./src/filters/w3-date-filter.js');
+const dateFilter = require('./src/_11ty/filters/date-filter.js');
+const w3DateFilter = require('./src/_11ty/filters/w3-date-filter.js');
 
 // RSS Feed plugin.
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
