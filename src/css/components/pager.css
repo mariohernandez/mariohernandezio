@@ -4,9 +4,13 @@
  */
 
 .pager {
+  padding-block-start: var(--size-20);
+
+}
+
+.pager__navigation {
   display: flex;
   justify-content: space-between;
-  padding-block-start: var(--size-20);
 
   @media (--tablet) {
     justify-content: space-around;
