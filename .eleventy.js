@@ -1,3 +1,6 @@
+// Sort blog posts by display order.
+const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
+
 // Filters
 const dateFilter = require('./src/_11ty/filters/date-filter.js');
 const w3DateFilter = require('./src/_11ty/filters/w3-date-filter.js');
@@ -141,13 +144,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('dateFilter', dateFilter);
   eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
 
-  const sortByDisplayOrder = require('./src/utils/sort.js');
-
-  // Returns blog items that are not in draft mode, sorted by display order
+  // Returns blog items, sorted by display order
   eleventyConfig.addCollection('blog', collection => {
-    return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md')).filter(
-      x => x.data.draft == false
-    );
+    return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md'));
   });
 
   // Returns blog items, sorted by display order then filtered by featured
