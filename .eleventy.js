@@ -110,9 +110,9 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.setQuietMode(true);
 
   // ---------- Copy files to dist -------------
-  eleventyConfig.addPassthroughCopy("./src/js");
-  eleventyConfig.addPassthroughCopy("./src/fonts");
-  eleventyConfig.addPassthroughCopy("./src/images");
+  eleventyConfig.addPassthroughCopy("./src/js/");
+  eleventyConfig.addPassthroughCopy("./src/fonts/");
+  eleventyConfig.addPassthroughCopy("./src/images/");
   eleventyConfig.addPassthroughCopy("./src/manifest.json");
 
   // Do not rebuild when README.md changes (You can use a glob here too)

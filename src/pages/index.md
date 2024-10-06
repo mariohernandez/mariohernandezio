@@ -1,6 +1,7 @@
 ---
 title: 'Mario Hernandez'
 layout: 'layouts/home.html'
+permalink: '/'
 hero:
   heading: 'I build websites'
   subheading: 'and write about it on this blog'
