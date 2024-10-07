@@ -1,0 +1,37 @@
+.series__wrapper {
+  border-image-outset: 0 50vw;
+  border-image-slice: fill 0;
+  border-image-source: linear-gradient(var(--gray-light), var(--gray-light));
+  background-color: var(--gray-light);
+  padding-block: var(--size-40);
+}
+
+.series-card {
+  background-color: var(--white);
+  border-radius: var(--size-20);
+  padding: var(--size-30);
+
+  > * + * {
+    margin-block-start: var(--size-24);
+  }
+}
+
+.series-card__items {
+  /* create a new counter for the first time */
+  counter-reset: item 0;
+  padding-inline-start: 0;
+
+  /* Only show the 'Part x:' text on larger devices. */
+  @media (--tablet) {
+    li {
+      /* increment the counter on each list item */
+      counter-increment: item;
+      list-style-type: none;
+
+      &::before {
+        /* show numbers on list items */
+        content: "Part " counter(item) ": ";
+      }
+    }
+  }
+}
