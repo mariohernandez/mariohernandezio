@@ -9,6 +9,7 @@
   @media (--laptop) {
     background-color: var(--gray-light);
     margin: 0 auto var(--size-60);
+    margin-block-end: 0;
     padding-block: var(--size-120);
   }
 }
@@ -27,10 +28,7 @@
 }
 
 .featured-article__article {
-  background-color: var(--gray-light);
-
   @media (--laptop) {
-    background-color: var(--white);
     left: -6rem;
     position: absolute;
     top: -6rem;
@@ -39,6 +37,7 @@
 }
 
 .featured-article__article--inner {
+  background-color: var(--white);
   padding: var(--size-20);
   padding-block-end: var(--size-30);
 

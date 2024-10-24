@@ -4,7 +4,7 @@ title: "Integrating Drupal with Storybook components"
 slug: integrating-drupal-with-storybook-components
 series:
   slug: "storybook"
-  order: 1
+  order: 2
 tags: ['storybook', 'drupal', 'components']
 draft: false
 featured: false

@@ -19,7 +19,7 @@ module.exports = function (collection) {
       if (!seriesCollections[item.data.series.slug]) {
         seriesCollections[item.data.series.slug] = {
           posts: [],
-          preface: item.data.series.preface,
+          description: item.data.series.description,
         };
       }
       seriesCollections[item.data.series.slug].posts.push(item);

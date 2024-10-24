@@ -1,7 +1,9 @@
 {# This is the card to display each individual series list like shown on the homepage
 or in the Series landing page (series/) #}
 <div class="series-card">
+  <div class="series-card__top"></div>
   <h3 class="series-card__title">Series: {{ handle | replace('-', ' ') | capitalize }}</h3>
+  <p>{{ description }}</p>
   <ol class="series-card__items">
     {%- for post in postCollection.posts -%}
       {# If hides individual series listing pages as they are included in
@@ -11,7 +13,7 @@ or in the Series landing page (series/) #}
           <a class="series-card__link" href="{{ post.url | url }}">
             {{ post.data.title | safe }}</a>
           </a>
-          <time class="series-card__date" datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time>
+          {# <time class="series-card__date" datetime="{{ post.date | dateFilter }}">{{ post.date | dateFilter }}</time> #}
         </li>
       {% endif %}
     {%- endfor -%}

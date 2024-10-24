@@ -4,7 +4,7 @@ title: "Automating your Drupal Front-end with ViteJS"
 slug: automating-your-drupal-front-end-with-vitejs
 series:
   slug: "storybook"
-  order: 3
+  order: 4
 subtitle: "ViteJS is the Next Generation Frontend Tooling, with a tremendous plugins ecosystem to enhance its functionality, and a great community behind it."
 tags: ['vitejs', 'drupal', 'storybook']
 draft: false
