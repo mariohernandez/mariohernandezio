@@ -1,10 +1,11 @@
+{# Thi is the series list displayed within each relevant post. #}
 {%- if series -%}
   {%- set collectionObject = collections.seriesCollections[series.slug] -%}
-  <div class="series__container margin-inline-flex">
+  <div class="series__container margin-inline-flex flow-30">
 		<h1 class="page-header__title">Series: {{ title | safe }}</h1>
 		<p class="page-header__subtitle">{{ description | safe }}</p>
     <div class="series__toc">
-      <ul class="series__list">
+      <ul class="series__list" role="list">
         {%- for post in collectionObject.posts -%}
           {%- set currentPost = false -%}
           {#- style current post differently from the other posts on the list -#}

@@ -1,0 +1,87 @@
+:root {
+  --shadow: 0 10px 15px -3px hsla(0, 0%, 0%, 10%), 0 4px 6px -4px hsla(0, 0%, 0%, 10%);
+  --shadow-full: 0 8px 24px rgba(0, 0, 0, .14), 0 8px 16px rgba(0, 0, 0, .04);
+}
+
+.series-card-set {
+  /* border-image-outset: 0 50vw;
+  border-image-slice: fill 0;
+  border-image-source: linear-gradient(var(--gray-light), var(--gray-light)); */
+  background-color: var(--white);
+  margin-inline: var(--size-20);
+  max-width: var(--size-1200);
+
+  @media (--laptop) {
+    margin-inline: auto;
+  }
+}
+
+.series-card-set__heading {
+  margin-block-end: var(--size-30);
+}
+
+.series-card-set__inner {
+  display: grid;
+  gap: var(--size-40);
+  grid-template-columns: 1fr;
+
+  @media (--laptop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.series-card {
+  background-color: var(--white);
+  border-radius: var(--size-18);
+  box-shadow: var(--shadow-full);
+  padding: var(--size-50) var(--size-20);
+  position: relative;
+
+  @media (--laptop) {
+    padding: var(--size-50);
+  }
+
+  .series-card-set & {
+    /* box-shadow: var(--shadow); */
+    /* background-image: linear-gradient(73deg, rebeccapurple 8.37%, #E1126E 88.5%); */
+    /* color: var(--white);
+
+    .series-card__title,
+    .series-card__link {
+      color: var(--white);
+    } */
+  }
+
+  > * + * {
+    margin-block-start: var(--size-24);
+  }
+}
+
+.series-card__top {
+  background-image: linear-gradient(73deg, rebeccapurple 8.37%, #E1126E 88.5%);
+  border-radius: 20px 20px 0 0;
+  height: var(--size-18);
+  left: 0;
+  position:absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--lowest);
+}
+
+.series-card__items {
+  /* create a new counter for the first time */
+  /* counter-reset: item 0; */
+  padding-inline-start: var(--size-24);
+
+  /* Only show the 'Part x:' text on larger devices. */
+  /* @media (--tablet) {
+    li {
+      counter-increment: item;
+      list-style-type: none;
+
+      &::before {
+        content: "Part " counter(item) ": ";
+      }
+    }
+  } */
+}

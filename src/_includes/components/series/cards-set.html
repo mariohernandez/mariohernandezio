@@ -1,0 +1,9 @@
+{% set postCollections = collections[ "seriesCollections" ] %}
+<section class="series-card-set mb-100 mt-100">
+  <h2 class="series-card-set__heading margin-inline-flex">Blog series</h2>
+  <div class="series-card-set__inner margin-inline-flex">
+    {% for handle, postCollection in postCollections %}
+      {% include "components/series/card.html" %}
+    {% endfor %}
+  </div>
+</section>
