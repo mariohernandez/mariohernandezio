@@ -53,5 +53,6 @@
 
 /* Series collections landing page. */
 .series__wrapper {
-  margin-block-start: var(--size-40);
+  display: grid;
+  gap: var(--size-50);
 }

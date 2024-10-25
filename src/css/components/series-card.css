@@ -10,7 +10,6 @@
   background-color: var(--white);
   margin-inline: var(--size-20);
   max-width: var(--size-1200);
-  padding-block: var(--size-60);
 
   @media (--laptop) {
     margin-inline: auto;

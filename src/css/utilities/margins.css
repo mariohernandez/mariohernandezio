@@ -44,6 +44,10 @@
   margin-block-end: var(--size-80);
 }
 
+.mb-100 {
+  margin-block-end: var(--size-100);
+}
+
 /* margin-top: */
 .mt-20 {
   margin-block-start: var(--size-20);
@@ -59,4 +63,8 @@
 
 .mt-80 {
   margin-block-start: var(--size-80);
+}
+
+.mt-100 {
+  margin-block-start: var(--size-100);
 }

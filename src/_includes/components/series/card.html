@@ -3,7 +3,6 @@ or in the Series landing page (series/) #}
 <div class="series-card">
   <div class="series-card__top"></div>
   <h3 class="series-card__title">Series: {{ handle | replace('-', ' ') | capitalize }}</h3>
-  <p>{{ description }}</p>
   <ol class="series-card__items">
     {%- for post in postCollection.posts -%}
       {# If hides individual series listing pages as they are included in
