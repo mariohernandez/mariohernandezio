@@ -1,28 +1,35 @@
 ---
-date: "2024-08-18"
-title: "SOLVED - Cannot crop based on original image after initial crop has been set"
-tags: ['drupal', 'media','crop']
+date: "2025-01-01"
+title: "Integrating Font Awesome Pro and Kits in your Drupal theme"
+subtitle: "Font Awsome Pro in combination with Kits are a great way to manage your icons library so you only load the icons your website uses."
+tags: ['fontawesome','drupal']
 draft: false
-featured: false
-featuredImage: "/images/crop.webp"
+featured: true
+featuredImage: "/images/icons.webp"
 featuredImageAlt: "Person taking a picture with their phone"
-imageThumb: "/images/thumbs/crop-thumb.webp"
+imageThumb: "/images/thumbs/icons-thumb.webp"
 featuredImageCredit: "Kipras Štreimikis"
 featuredImageCreditUrl: "https://unsplash.com/@kkipras"
-summary: "Cropping images in Drupal is a great way to ensure your images always look their best."
+summary: "Take better control of your icons library using a single Drupal module."
 eleventyExcludeFromCollections: false
 ---
 
-If you have read my posts about responsive images you will know I have done quite a bit of work with Drupal media and in particular, images. However, I recently ran into an issue I had not experienced before and it was quite challenging to comprehend. The issue was related to image cropping.
-In our Drupal platform we allow content editors to manually crop images using a hand-full of crop types for various aspect ratios such as 1:1, 3:4, 4:3, 16:9, etc. To achieve the manual crop we use the [Crop API](https://www.drupal.org/project/crop){target=_blank rel="noopener noreferrer} and [Image Widget Crop](https://www.drupal.org/project/image_widget_crop){target=_blank rel="noopener noreferrer} Drupal modules.
+You may be thinking: Font Awesome? I know how to do that in my theme. But did you know that the Pro version of Font Awesome is not fully compatible with the Fontawesome module? In addition, did you know that if you use Font Awesome's custom icons kits, the fontawesome module is also not fully compatible with them?
 
-The issue we started noticing is that no matter the image we were using, all cropping settings were limited to a predefined aspect ratio of 1:1 or square, rather than the original image's aspect ratio. This was causing big problems for us because editors were not able to properly crop images and as a result images were rendered with odd cropping settings.
+Recently I ran into the roadblocks described above and was not sure I was going to be able to get both, Font Awesome Pro and Font Awesome Kits, to work within my theme. Luckily thanks to some workarounds, I was able to achieve both.  This is the approach I took for getting things to work.
 
-After some research, I found an issue that had been reported in the Image Widget Crop module, [issue #3222406](https://www.drupal.org/project/image_widget_crop/issues/3222406){target=_blank rel="noopener noreferrer}. This was exactly the issue we were having and was relieved it wasn't something unique to our platform.
+<span class="callout">
+<strong>NOTE</strong>: If you are using the free version of Font Awesome, you should not have issues integrating them with your team, this walkthrough only applies to the Pro version.
+</span>
 
-## Cause of the issue
+## Font Awesome Pro
 
-Looking back, I think this issue was partly of my own making, but seeing that others were experiencing the same it's also possible it was just an odd bug. Long story short, the issue was caused by using an image style with specific hard dimension, as the **crop preview** image, See **Fig. 1** below.
+Having a Font Awesome Pro account provides many more options than their free version. The Pro accounts gives you more control of the icons you can use, upload custom icons, create kits, and more. Obviously the Pro version is a paid version and there are several tiers of Pro you can get.
+
+## Font Awesome Kits
+
+Font Awesome Kits are like collection of icons you can create when your goal is to limit the icons you want your team to use. This is perfect when you don't really need to load all 55,663 icons available in Font Awesome (as the date of this post), but instead you have a pre-approved list of icons your organization uses.
+
 
 ![Image crop preview settings](/images/blog-images/crop-preview.png){.body-image .body-image--wide .body-image--left}
 
