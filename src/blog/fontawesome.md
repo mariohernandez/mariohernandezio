@@ -1,7 +1,7 @@
 ---
-date: "2025-01-01"
+date: "2025-02-14"
 title: "Integrating Font Awesome Pro and Kits in your Drupal theme"
-subtitle: "Font Awsome Pro in combination with Kits are a great way to manage your icons library so you only load the icons your website uses."
+subtitle: "Font Awsome Pro in combination with icons kits are a great way to manage your icons library so you only load the icons your website uses."
 tags: ['fontawesome','drupal']
 draft: false
 featured: true
@@ -10,26 +10,68 @@ featuredImageAlt: "Person taking a picture with their phone"
 imageThumb: "/images/thumbs/icons-thumb.webp"
 featuredImageCredit: "Kipras Štreimikis"
 featuredImageCreditUrl: "https://unsplash.com/@kkipras"
-summary: "Take better control of your icons library using a single Drupal module."
+summary: "Take better control of your Font Awesome icons library using a single Drupal module."
 eleventyExcludeFromCollections: false
 ---
 
-You may be thinking: Font Awesome? I know how to do that in my theme. But did you know that the Pro version of Font Awesome is not fully compatible with the Fontawesome module? In addition, did you know that if you use Font Awesome's custom icons kits, the fontawesome module is also not fully compatible with them?
+In this post I'm going to describe how to use the [Font Awesome](https://www.drupal.org/project/fontawesome){target=_blank rel="noopener noreferrer} Drupal module to integrate Fontawesome Pro along with icons kits with your drupal website. The top-level requirements include:
 
-Recently I ran into the roadblocks described above and was not sure I was going to be able to get both, Font Awesome Pro and Font Awesome Kits, to work within my theme. Luckily thanks to some workarounds, I was able to achieve both.  This is the approach I took for getting things to work.
+1. Use Font Awesome Pro
+1. Use Icons Kits to only allow pre-approved icons
+1. Provide an icon picker with preview of the icons for better user experience for content creators
 
 <span class="callout">
-<strong>NOTE</strong>: If you are using the free version of Font Awesome, you should not have issues integrating them with your team, this walkthrough only applies to the Pro version.
+<strong>NOTE</strong>: This post focuses on Font Awesome Pro. The free version of Font Awesome may be simpler to integrate.
 </span>
 
 ## Font Awesome Pro
 
-Having a Font Awesome Pro account provides many more options than their free version. The Pro accounts gives you more control of the icons you can use, upload custom icons, create kits, and more. Obviously the Pro version is a paid version and there are several tiers of Pro you can get.
+Having a Font Awesome Pro account provides more advantages than the free version. The Pro accounts gives you more control of the icons you can use, you can upload custom icons, create icons kits, and more. Obviously the Pro version is a paid version and there are several tiers of Pro you can get.
 
 ## Font Awesome Kits
 
 Font Awesome Kits are like collection of icons you can create when your goal is to limit the icons you want your team to use. This is perfect when you don't really need to load all 55,663 icons available in Font Awesome (as the date of this post), but instead you have a pre-approved list of icons your organization uses.
 
+## The setup
+
+### Creating a Font Awesome Kit
+
+* Login to your Font Awesome account and click the **Your Kits** link
+* Create a kit using the type of icons you wish to include in it (Solid, Regular, Light, Thin, etc.)
+* When you are finished with your kit and have selected the icons you want to make available for your content creators, you can download the kit to your computer.  We'll be back to this later.
+
+### Enable the modules
+
+Originally I was looking a various Drupal modules to accomplish without going into too much detail, combining multiple Font Awesome-related modules did not do the trick, instead, I ended up using a single module which fulfilled all my requirements.
+
+* First things first, download and install the [Font Awesome](https://www.drupal.org/project/fontawesome){target=_blank rel="noopener noreferrer} module
+* The module comes with a companion submodule, **Fontawesome Icon picker widget**, `fontawesome_iconpicker_widget`, install it as well
+* In your project's root, ensure you have a `libraries/` directory which is where the Font Awesome library and the icon picker widget library will be stored
+* Run `drush fa:download` to download the `fonticonpicker` library
+
+<span class="callout">
+<strong>NOTE</strong>: Please read the README.md from the Font Awesome module for more details about configuration.
+</span>
+
+### Configure Font Awesome
+
+There are many settings you can configure and these are based on your specific requirements. I'm going to list only the ones that applied to me and will ignore the rest.
+
+* Navigate to **Configuration > Content Authoring > Font Awesome Settings** or `admin/config/content/fontawesome`
+* First setting is to choose a tag for your icons, you can use `<i>` or `<span>`. Either is fine
+* Next select a Font Awesome Method. **SVG with JS** is the recommended method
+* Check the **Load Font Awesome Library?**. This option works for me but if you are loading the Font Awesome library some other way, you may need to leave this box unchecked.
+* Uncheck the **External File Configuration** box because we will be loading our library locally. Using an external file configuration/URL may not work with the Pro version of Font Awesome.
+* Under **Partial file configuration**, check the icons you wish to serve on your site. Keep in mind, the options you select should match the type of icons you added when you created the kit
+* Save your changes
+
+### Adding the Font Awesome library
+
+### Creating a new Drupal library
+
+### Creating a new field of type Font Awesome
+
+## Adding icons to your pages
 
 ![Image crop preview settings](/images/blog-images/crop-preview.png){.body-image .body-image--wide .body-image--left}
 
