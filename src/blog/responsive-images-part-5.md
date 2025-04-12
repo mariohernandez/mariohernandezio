@@ -31,7 +31,7 @@ Let's say we are building a photo gallery where we will use a series of images t
 
 ## Back to hands-on exercises
 
-We are going to create a new responsive image style in which we will make use of the image styles we created in the previous post. Let's pretend the images we are targeting will be used for displaying News and Events listings ([Similar to this](https://www.visittheusa.com/usa-experiences){target=_blank rel=noopener}, and example below).
+We are going to create a new responsive image style in which we will make use of the image styles we created in the previous post. Let's pretend the images we are targeting will be used for displaying News and Events listings ([Similar to this](https://www.visittheusa.com/usa-experiences){target="_blank" rel="noopener noreferrer"}, and example below).
 
 ![Listing of news articles](/images/list.webp){.body-image .body-image--wide}
 

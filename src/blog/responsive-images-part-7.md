@@ -55,9 +55,9 @@ What we need is to be able to manually crop each image we intend to do art direc
 
 Here are the tools we will be working with:
 
-* [Crop API](https://www.drupal.org/project/crop){target=_blank rel=noopener}: On its own it does nothing, but in combination with other tools like Image widget crop, it gives you the ability to crop images on demand.
-* [Image widget crop](https://www.drupal.org/project/image_widget_crop){target=_blank rel=noopener}: Provides the UI for content creators to be able to crop images on demand.  It has a hard requirement of the Crop API module.
-* [Cropper](https://github.com/fengyuanchen/cropper){target=_blank rel=noopener}: A simple jQuery image cropping plugin for added cropping functionality.
+* [Crop API](https://www.drupal.org/project/crop){target="_blank" rel="noopener noreferrer"}: On its own it does nothing, but in combination with other tools like Image widget crop, it gives you the ability to crop images on demand.
+* [Image widget crop](https://www.drupal.org/project/image_widget_crop){target="_blank" rel="noopener noreferrer"}: Provides the UI for content creators to be able to crop images on demand.  It has a hard requirement of the Crop API module.
+* [Cropper](https://github.com/fengyuanchen/cropper){target="_blank" rel="noopener noreferrer"}: A simple jQuery image cropping plugin for added cropping functionality.
 
 **Note**: With the exception of the Crop API module, the other two tools above are optional or can be replaced by other similar tools/modules.  Often times the modules you pick for a job depend on your unique requirements. So don't feel you need to use the tools above if you know of other equivalent ones that may do a better job.
 

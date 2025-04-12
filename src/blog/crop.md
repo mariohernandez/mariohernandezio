@@ -46,9 +46,7 @@ If you read [comment #5](https://www.drupal.org/project/image_widget_crop/issues
 
 Fig. 2: Screenshot of Manage form display settings for images.{.caption}
 
-<span class="callout">
-<strong>NOTE</strong>: Your environment may be configured differently than mine and you may not have the same options as I do.
-</span>
+**NOTE**: Your environment may be configured differently than mine and you may not have the same options as I do.{.callout}
 
 With the changes to the Crop preview image style, every time you crop the image you are dealing with the original image rather than an already cropped image.
 

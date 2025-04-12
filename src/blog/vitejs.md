@@ -19,9 +19,9 @@ summary: "If you are searching for the next front-end build tool for your Drupal
 
 Modern web development relies heavily on automation to stay productive, validate code, and perform repetitive tasks that could slow developers down. Front-end development in particular has evolved, and it can be a daunting task to configure effective automation. In this post, I'll try to walk you through basic automation for your Drupal theme, which uses Storybook as its design system.
 
-Recently I worked on a large Drupal project that needed to migrate its design system from Patternlab to Storybook. I knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target=_blank rel=noopener}.
+Recently I worked on a large Drupal project that needed to migrate its design system from Patternlab to Storybook. I knew switching design systems also meant switching front-end build tools. The obvious choice seemed to be Webpack, but as I looked deeper into build tools, I discovered [ViteJS](https://vitejs.dev){target="_blank" rel="noopener noreferrer"}.
 
-Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugin's ecosystem and its community support. Vite is relatively new, but it is solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target=_blank rel=noopener}.
+Vite is considered the _Next Generation Frontend Tooling_, and when tested, we were extremely impressed not only with how fast Vite is, but also with its plugin's ecosystem and its community support. Vite is relatively new, but it is solid and very well maintained. [Learn more about Vite](https://vitejs.dev/guide/){target="_blank" rel="noopener noreferrer"}.
 
 The topics covered in this post can be broken down in two categories:
 
@@ -111,10 +111,7 @@ npm run build
 
 Fig. 3: Installs the node version defined in .nvmrc, then installs node packages, and finally builds the app.{.caption}
 
-<span class="callout">
-<strong>NOTE</strong>: You need to have <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener">NVM</a> installed in your system to execute nvm commands. <br />
-You only need to run <strong>nvm install</strong> once per project unless the node version changes. If you switch to a project that uses a different node version, when you return to this project, run <strong>nvm use</strong> to set your environment back to the right node version.<br/>
-</span>
+**NOTE**: You need to have [NVM](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/){target="_blank" rel="noopener noreferrer"} installed in your system to execute nvm commands. You only need to run **nvm install** once per project unless the node version changes. If you switch to a project that uses a different node version, when you return to this project, run **nvm use** to set your environment back to the right node version.{.callout}
 
 The output in the command line should look like this:
 
@@ -190,7 +187,7 @@ The random 8-character string is gone and notice that this time the build comman
 
 ## 2. Restructure the project {id=restructure}
 
-The out of the box Vite project structure is a good start for us. However, we need to make some adjustments so we can adopt the Atomic Design methodology. This is today's standards and will work well with our [Component-driven Development](https://drewl.com/blog/what-is-component-driven-development/){target=_blank rel=noopener} workflow. At a high level, this is the current project structure:
+The out of the box Vite project structure is a good start for us. However, we need to make some adjustments so we can adopt the Atomic Design methodology. This is today's standards and will work well with our [Component-driven Development](https://drewl.com/blog/what-is-component-driven-development/){target="_blank" rel="noopener noreferrer"} workflow. At a high level, this is the current project structure:
 
 {% raw %}
 
@@ -217,20 +214,14 @@ Fig. 7: Basic structure of a Vite project listing only the most important parts.
 
 ### Adopting the Atomic Design methodology
 
-The [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/){target=_blank rel=noopener} methodology was first introduced by Brad Frost a little over ten years ago. Since then it has become the standard for building web projects. Our environment needs updating to reflect the structure expected by this methodology.
+The [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/){target="_blank" rel="noopener noreferrer"} methodology was first introduced by Brad Frost a little over ten years ago. Since then it has become the standard for building web projects. Our environment needs updating to reflect the structure expected by this methodology.
 
 * First stop Storybook from running by pressing **Ctrl + C** in your keyboard.
 * Next, inside **src**, create these directories: **base**, **components**, and **utilities**.
 * Inside **components**, create these directories: **01-atoms**, **02-molecules**, **03-organisms**, **04-layouts**, and **05-pages**.
 * While we're at it, delete the **stories** directory inside **src**, since we won't be using it.
 
-{% raw %}
-
-<span class="callout">
-<strong>NOTE</strong>: You don't need to use the same nomenclature as what Atomic Design suggests. I am using it here for simplicity.
-</span>
-
-{% endraw %}
+**NOTE**: You don't need to use the same nomenclature as what Atomic Design suggests. I am using it here for simplicity.{.callout}
 
 ### Update Storybook's stories with new paths
 
@@ -258,7 +249,7 @@ The Stories array above is where we tell Storybook where to find our stories and
 
 As our environment grows, we will add components inside the new directories, but for the purpose of testing our environment's automation, I have created demo components.
 
-* Download [demo components](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} (button, title, card), from **src/components/**, and save them all in their content part directories in your project.
+* Download [demo components](https://github.com/mariohernandez/storybook/tree/variations){target="_blank" rel="noopener noreferrer"} (button, title, card), from **src/components/**, and save them all in their content part directories in your project.
 * Feel free to add any other components you may have built yourself. We'll come back to the components shortly.
 
 ## 3. Configure TwigJS {id=configure-twigjs}
@@ -383,27 +374,21 @@ One cool thing about Vite is that it comes with postCSS functionality built in. 
 * `postcss-import` the base for importing CSS stylesheets.
 * `postcss-import-ext-glob` to do bulk `@import` of all CSS content in a directory.
 * `postcss-nested` to unwrap nested rules to make its syntax closer to Sass.
-* `postcss-preset-env` defines the CSS browser support level we need. [Stage 4](https://cssdb.org/#the-staging-process){target=_blank rel=noopener} means we want the "web standards" level of support.
+* `postcss-preset-env` defines the CSS browser support level we need. [Stage 4](https://cssdb.org/#the-staging-process){target="_blank" rel="noopener noreferrer"} means we want the "web standards" level of support.
 
 ## 5. CSS and JavaScript configuration {id=global-css}
 
 The goal here is to ensure that every time a new CSS stylesheet or JS file is added to the project, Storybook will automatically be aware and begin consuming their code.
 
-{% raw %}
-
-<span class="callout">
-<strong>NOTE</strong>: This workflow is only for Storybook. In Drupal we will use <a href="https://www.drupal.org/docs/develop/theming-drupal/adding-assets-css-js-to-a-drupal-theme-via-librariesyml" target="_blank" rel="noopener">Drupal libraries</a> in which we will include any CSS and JS required for each component.
-</span>
-
-{% endraw %}
+**NOTE**: This workflow is only for Storybook. In Drupal we will use [Drupal libraries](https://www.drupal.org/docs/develop/theming-drupal/adding-assets-css-js-to-a-drupal-theme-via-librariesyml){target="_blank" rel="noopener noreferrer"} in which we will include any CSS and JS required for each component.{.callout}
 
 There are two types of styles to be configured in most project, global styles which apply site-wide, and components styles which are unique to each component added to the project.
 
 ### Global styles
 
 * Inside **src/base**, add two stylesheets: `reset.css` and `base.css`.
-* Copy and paste the styles for [reset.css](https://github.com/mariohernandez/storybook/blob/variations/src/css/reset.css){target=_blank rel=noopener} and [base.css](https://github.com/mariohernandez/storybook/blob/variations/src/css/base.css){target=_blank rel=noopener}.
-* Inside **src/utilities** create `utilities.css` and in it paste [these styles](https://github.com/mariohernandez/storybook/blob/variations/src/css/utilities.css){target=_blank rel=noopener}.
+* Copy and paste the styles for [reset.css](https://github.com/mariohernandez/storybook/blob/variations/src/css/reset.css){target="_blank" rel="noopener noreferrer"} and [base.css](https://github.com/mariohernandez/storybook/blob/variations/src/css/base.css){target="_blank" rel="noopener noreferrer"}.
+* Inside **src/utilities** create `utilities.css` and in it paste [these styles](https://github.com/mariohernandez/storybook/blob/variations/src/css/utilities.css){target="_blank" rel="noopener noreferrer"}.
 * Inside **src/**, create a new stylesheet called `styles.css`.
 * Inside **styles.css**, add the following imports:
 
@@ -443,9 +428,7 @@ Before our components can be styled with their unique and individual styles, we 
 
 Fig. 13: Glob import for all components of all categories.{.caption}
 
-<span class="callout">
-<strong>NOTE</strong>: Since we only have Atoms and Molecules to work with, we are omitting imports for 03-organisms, 04-layouts, 05-pages. Feel free to add them if you have that kind of components.
-</span>
+**NOTE**: Since we only have Atoms and Molecules to work with, we are omitting imports for 03-organisms, 04-layouts, 05-pages. Feel free to add them if you have that kind of components.{.callout}
 
 ### Updating Storybook's Preview
 
@@ -806,7 +789,7 @@ I realize this is a very long post, but there is really no way around it when co
 
 A full version of the Drupal theme built with this post can be downloaded.
 
-<a href="https://github.com/mariohernandez/storybook/tree/theme" class="button button--reverse" target="_blank" rel="noopener">Download the theme</a>
+<a href="https://github.com/mariohernandez/storybook/tree/theme" class="button button--reverse" target="_blank" rel="noopener noreferrer">Download the theme</a>
 
 Make sure you are using the **theme** branch from the repo.
 </span>

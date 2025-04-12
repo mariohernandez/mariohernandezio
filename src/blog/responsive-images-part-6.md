@@ -15,7 +15,7 @@ featuredImageCredit: "Simon Berger"
 featuredImageCreditUrl: "https://unsplash.com/@8moments"
 summary: "In Drupal, the core Media module manages the creation, editing, deletion, settings, and display of media entities."
 ---
-Drupal's Media is a powerful tool and we will use it to improve the way we manage responsive images by using media types and view modes to our advantage when managing responsive images. The following quote comes straight from Drupal's [Media module](https://www.drupal.org/docs/8/core/modules/media/overview){target=_blank rel=noopener}:
+Drupal's Media is a powerful tool and we will use it to improve the way we manage responsive images by using media types and view modes to our advantage when managing responsive images. The following quote comes straight from Drupal's [Media module](https://www.drupal.org/docs/8/core/modules/media/overview){target="_blank" rel="noopener noreferrer"}:
 
 > In Drupal, the core Media module manages the creation, editing, deletion, settings, and display of media entities. Media items are typically images, documents, slideshows, YouTube videos, tweets, Instagram photos, etc. Media entities are standard Drupal content entities. And are grouped by Media type bundles. Like content types they can have fields added, and their display can be managed via view modes.
 
