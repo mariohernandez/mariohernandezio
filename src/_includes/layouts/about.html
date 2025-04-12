@@ -25,7 +25,7 @@
         {% include "partials/social.html" %}
       </div>
     </div>
-    <div class="about__images">
+    <div class="about__images" aria-hidden="true"> {# Hides this contaiiner and images from screen readers. #}
       <div class="about__image about__image--first">
         <img src="{{ about.image }}" alt="{{ about.alt }}" width="540" height="720" />
       </div>
