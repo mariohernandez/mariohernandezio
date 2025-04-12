@@ -62,9 +62,7 @@ After converting the imag eto Webp by updating the image style of that image, th
 
 Fig. 3: Example shows using a WebP format.{.caption}
 
-<span class="callout">
-<strong>NOTE</strong>: This was a pretty basic comparison test. File size reduction will vary depending on original file zize, format, and other preferences on your site.
-</span>
+**NOTE**: This was a pretty basic comparison test. File size reduction will vary depending on original file zize, format, and other preferences on your site.{.callout}
 
 ## What about other formats like Avif?
 

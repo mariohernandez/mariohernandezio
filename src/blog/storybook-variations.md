@@ -21,10 +21,7 @@ One great way to extend your catalog of components is by creating components var
 
 In Storybook, variations are known as Stories. In this post I will be using variations and stories interchangeably.
 
-<span class="callout">
-  <h3 class="callout__heading">NOTE:</h3>
-  Although this tutorial might work in a non-Drupal environment, this post is a follow up to previous tutorials that are Drupal-specific. The syntax and plugins used in this tutorial are for a Drupal and Twig environment.
-</span>
+**NOTE**: Although this tutorial might work in a non-Drupal environment, this post is a follow up to previous tutorials that are Drupal-specific. The syntax and plugins used in this tutorial are for a Drupal and Twig environment.{.callout}
 
 The image below shows how different card stories or variations, can display the same content in many ways.
 
@@ -66,12 +63,9 @@ The image above shows the Card stories or variations we will build. From top-lef
 
 In the interest of time, I have a repo that already includes the base of the Card component so you can focus only on building the variations.
 
+1. [Clone the repo](https://github.com/mariohernandez/storybook/tree/variations){target="_blank" rel="noopener noreferrer"} which already contains a project to work with and the Card component.
 
-1. [Clone the repo](https://github.com/mariohernandez/storybook/tree/variations){target=_blank rel=noopener} which already contains a project to work with and the Card component.
-
-    <span class="callout">
-    If you already have a working Storybook environment, copy the <strong>components</strong> directory (<code>src/components</code>), from the newly cloned repo, into your project.
-    </span>
+    If you already have a working Storybook environment, copy the **components** directory (`src/components`), from the newly cloned repo, into your project.{.callout}
 
 1. Switch to the **variations** branch by running `git checkout variations`
 1. Run the project as instructed in the **README** in the repo
@@ -128,7 +122,7 @@ Let me explain the snippet above as this is the foundation for all the variation
 If Storybook is running, you should see the new variation which will display the Card stacked. If you need to run Storybook for the first time, in your command line navigate to the storybook directory and run these commands:
 
 <span class="callout callout--warning">
-<strong>IMPORTANT: </strong>You need <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank" rel="noopener">NodeJS 20+</a> and <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener">NVM</a> installed in your system.
+<strong>IMPORTANT: </strong>You need <a href="https://nodejs.org/en/download/prebuilt-installer" target="_blank" rel="noopener noreferrer">NodeJS 20+</a> and <a href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/" target="_blank" rel="noopener noreferrer">NVM</a> installed in your system.
 </span>
 
 {% raw %}

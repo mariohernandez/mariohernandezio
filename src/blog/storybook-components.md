@@ -101,7 +101,7 @@ Code snippet for building card{.caption .caption--center}
 
 {% endraw %}
 
-* Copy and paste [these styles](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/components/02-molecules/card/card.css){target=_blank rel=noopener} into **card.css**.
+* Copy and paste [these styles](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/components/02-molecules/card/card.css){target="_blank" rel="noopener noreferrer"} into **card.css**.
 
 * Finally, let's create the Storybook card story by adding the following to **card.stories.jsx**:
 {% raw %}
@@ -187,15 +187,10 @@ export default defineConfig({
 Let's go over some of the most noticeable updates inside **vite.config.js**:
 
 * We have defined a few things to improve the functionality of our Vite project, starting with using **src** as our app root directory and **public** for publicDir. This helps the app understand the project structure in a relative manner.
-* Next, we defined a Build task which provides the app with defaults for things like where should it compiled code to (i.e. **/dist**), and [`rollupOptions`](https://rollupjs.org/configuration-options/){target=_blank rel=noopener} for instructing the app which stylesheets to compile and what to call them.
+* Next, we defined a Build task which provides the app with defaults for things like where should it compiled code to (i.e. **/dist**), and [`rollupOptions`](https://rollupjs.org/configuration-options/){target="_blank" rel="noopener noreferrer"} for instructing the app which stylesheets to compile and what to call them.
 * As part of the `rollupOptions` we also defined two stylesheets for global styles (**reset.css** and **styles.css**). We'll create these next.
 
-    {% raw %}
-    <span class="callout">
-    <h4 class="callout__heading">Important</h4>
-    This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repetitive tasks performed on a typical front-end project.
-    </span>
-    {% endraw %}
+    **Important**: This is as basic as it gets for a build workflow and in no way would I recommend this be your front-end build workflow. When working on bigger projects with more components, it is best to define a more robust and dynamic workflow that provides automation for all the repetitive tasks performed on a typical front-end project.{.callout}
 
 * Under the Plugins section, we have defined two new namespaces, **@atoms** and **@molecules**, each of which points to specific path within our _components_ directory. These are the namespaces Storybook understands when nesting components. You can have as many namespaces as needed.
 
@@ -203,7 +198,7 @@ Let's go over some of the most noticeable updates inside **vite.config.js**:
 
 * Inside **storybook/src**, create a new directory called **css**
 * Inside the **css** directory, add two new files, **reset.css** and **styles.css**
-* Here are the styles for [reset.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/reset.css){target=_blank rel=noopener} and [styles.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/styles.css){target=_blank rel=noopener}. Please copy them and paste them into each of the stylesheets.
+* Here are the styles for [reset.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/reset.css){target="_blank" rel="noopener noreferrer"} and [styles.css](https://raw.githubusercontent.com/mariohernandez/storybook/card/src/css/styles.css){target="_blank" rel="noopener noreferrer"}. Please copy them and paste them into each of the stylesheets.
 * Now for Storybook to use _reset.css_ and _styles.css_, we need to update **/.storybook/preview.js** by adding these two imports directly after the current imports, around line 4.
 
 {% raw %}
@@ -217,11 +212,7 @@ import '../dist/css/styles.css';
 
 ### Previewing the Card in Storybook
 
-{% raw %}
-<span class="callout">
-Remember, you need NodeJS v20 or higher as well as NVM installed on your machine
-</span>
-{% endraw %}
+Remember, you need NodeJS v20 or higher as well as NVM installed on your machine.{.callout}
 
 * In your command line, navigate to the **storybook** directory and run:
 
@@ -250,7 +241,7 @@ After Storybook launches, you should see two story categories in Storybook's sid
 
 We have completed all the prep work in Storybook and our attention now will be all in Drupal. In the previous post all the work we did was in a standalone project which did not require Drupal to run. In this post, we need a Drupal site to be able to do the integration with Storybook. If you are following along and already have a Drupal 10 site ready, you can skip the first step below.
 
-1. Build a basic Drupal 10 website ([I recommend using DDEV](https://ddev.readthedocs.io/en/stable/users/quickstart/#drupal){target=_blank rel=noopener}).
+1. Build a basic Drupal 10 website ([I recommend using DDEV](https://ddev.readthedocs.io/en/stable/users/quickstart/#drupal){target="_blank" rel="noopener noreferrer"}).
 1. Add the **storybook** theme to your website. If you completed the excercise in the previous post, you can copy the theme you built into your site's **/themes/custom/** directory, Otherwise, you can clone [the previous post repo](https://github.com/mariohernandez/storybook){target=_blank rel=nooperner} into the same location so it becomes your theme. After this your theme's path should be **themes/custom/storybook**.
 1. No need to enable the theme just yet, we'll come back to the theme shortly.
 1. Finally, create a new Article post that includes a title, body content and an image. We'll use this article later in the process.
@@ -259,7 +250,7 @@ We have completed all the prep work in Storybook and our attention now will be a
 
 Earlier we created namespaces for Storybook, now we will do the same but this time for Drupal. It is best if the namesapces' names between Storybook and Drupal match for consistency. In addition, we will create Drupal libraries to allow Drupal to use the CSS we've written.
 
-* Install and enable the [Components](https://www.drupal.org/project/components){target=_blank rel=noopener} module
+* Install and enable the [Components](https://www.drupal.org/project/components){target="_blank" rel="noopener noreferrer"} module
 * Add the following namespaces at the end of **storybook.info.yml** (mind your indentation):
 
 {% raw %}
@@ -313,12 +304,7 @@ All the pieces are in place to Integrate the Card component so Drupal can use it
 
 * With Twig debugging on, go to the homepage where the Article we created should be displayed in teaser mode. If you right-click on any part of the article and select **inspect** from the context menu, you will see in detail all the templates Drupal is using to render the content on the current page. See example below.
 
-    {% raw %}
-    <span class="callout">
-    <h4 class="callout__heading">Note</h4>
-    I am using a new basic Drupal site with Olivero as the default theme. If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.
-    </span>
-    {% endraw %}
+    **NOTE**: I am using a new basic Drupal site with Olivero as the default theme. If your homepage does not display Article nodes in teaser view mode, you could create a simple Drupal view to list Article nodes in teaser view mode to follow along.{.callout}
 
 ![Code inspector showing Drupal debugging](/images/storybook-debug.webp){.body-image .body-image--wide}
 
@@ -371,7 +357,7 @@ The template has a lot of information that may or may not be needed when integra
 
 {% endraw %}
 
-* We set a variable with `content|render` as its value. The only purpose for this variable is to make Drupal aware of the entire content array for caching purposes. [More info here](https://www.previousnext.com.au/blog/ensuring-drupal-8-block-cache-tags-bubble-up-page){target=_blank rel=noopener}.
+* We set a variable with `content|render` as its value. The only purpose for this variable is to make Drupal aware of the entire content array for caching purposes. [More info here](https://www.previousnext.com.au/blog/ensuring-drupal-8-block-cache-tags-bubble-up-page){target="_blank" rel="noopener noreferrer"}.
 * Next, we setup a variable called **article_title** which we structured the same way as data inside **card.yml**. Having similar data structures between Drupal and our components provides many advantages during the integration process.
   * Notice how for the **text** and **url** properties we are using Drupal specific variables (**label** and **url**), accordingly. If you look in the comments in _node--article--teaser.html.twig_ you will see these two variables.
 * We are using a Twig **include** statement with the **@molecules** namespace to nest the Card component into the node template. The same way we nested the Title component into the Card.
@@ -403,7 +389,7 @@ If your card's image size or aspect ratio does not look as the one in Storybook,
 
 ### Download the code
 
-For a full copy of the codebase which includes the work in this and the [previous post](../migrating-your-drupal-theme-from-patternlab-to-storybook/), clone or [download the repo](https://github.com/mariohernandez/storybook/tree/card){target=_blank rel=noopener noreferrer} and switch to the **card** branch. The **main** branch only includes the previous post code.
+For a full copy of the codebase which includes the work in this and the [previous post](../migrating-your-drupal-theme-from-patternlab-to-storybook/), clone or [download the repo](https://github.com/mariohernandez/storybook/tree/card){target="_blank" rel="noopener noreferrer"} and switch to the **card** branch. The **main** branch only includes the previous post code.
 
 ## In closing
 

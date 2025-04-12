@@ -19,21 +19,21 @@ Building a custom Drupal theme nowadays is a more complex process than it used t
 
 ## Enter Storybook
 
-After looking a various options for a design system, [Storybook](https://storybook.js.org/){target=_blank rel=noopener} seemed to be the right choice for us for a couple of reasons: one, it has been around for about 10 years and during this time it has matured significantly, and two, it has become a very popular option in the Drupal ecosystem. In some ways, Storybook follows the same model as Drupal, it has a pretty active community and a very healthy ecosystem of plugins to extend its core functionality.
+After looking a various options for a design system, [Storybook](https://storybook.js.org/){target="_blank" rel="noopener noreferrer"} seemed to be the right choice for us for a couple of reasons: one, it has been around for about 10 years and during this time it has matured significantly, and two, it has become a very popular option in the Drupal ecosystem. In some ways, Storybook follows the same model as Drupal, it has a pretty active community and a very healthy ecosystem of plugins to extend its core functionality.
 
 Storybook looks very promising as a design system for Drupal projects and with the recent release of [Single Directory Components or SDC](https://www.drupal.org/project/sdc), and the new [Storybook module](https://www.drupal.org/project/storybook), we think things can only get better for Drupal front-end development. Unfortunately for us, technical limitations in combination with our specific requirements, prevented us from using SDC or the Storybook module.  Instead, we built our environment from scratch with a stand-alone integration of Storybook 8.
 
 {% raw %}
 
 <span class="callout callout--warning">
-<strong>INFO</strong>: At the time of our implementation, TwigJS did not have the capability to resolve <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener">SDC's</a> namespace. It appears this has been addressed and using SDC should now be possible with this custom setup. I haven't personally tried it and therefore I can't confirm.
+<strong>INFO</strong>: At the time of our implementation, TwigJS did not have the capability to resolve <a href="https://www.drupal.org/project/sdc" target="_blank" rel="noopener noreferrer">SDC's</a> namespace. It appears this has been addressed and using SDC should now be possible with this custom setup. I haven't personally tried it and therefore I can't confirm.
 </span>
 
 {% endraw%}
 
 ## Our process and requirements
 
-In choosing Storybook, we went through a rigorous research and testing process to ensure it will not only solve our immediate problems with our current environment, but it will be around as a long term solution. As part of this process, we also tested several available options like [Emulsify](https://www.emulsify.info/){target=_blank rel=noopener} and [Gesso](https://github.com/forumone/gesso){target=_blank rel=noopener} which would be great options for anyone looking for a ready-to-go system out of the box.  Some of our requirements included:
+In choosing Storybook, we went through a rigorous research and testing process to ensure it will not only solve our immediate problems with our current environment, but it will be around as a long term solution. As part of this process, we also tested several available options like [Emulsify](https://www.emulsify.info/){target="_blank" rel="noopener noreferrer"} and [Gesso](https://github.com/forumone/gesso){target="_blank" rel="noopener noreferrer"} which would be great options for anyone looking for a ready-to-go system out of the box.  Some of our requirements included:
 
 ### 1. No components refactoring
 
@@ -110,13 +110,13 @@ npm i -D vite-plugin-twig-drupal html-react-parser twig-drupal-filters @modyfi/v
 
 {% endraw %}
 
-* [vite-plugin-twig-drupal](https://github.com/larowlan/vite-plugin-twig-drupal){target=_blank rel=noopener}: If you are using Vite like we are, this is a Vite plugin that handles transforming twig files into a Javascript function that can be used with Storybook.  This plugin includes the following:
-  * [Twig](https://www.npmjs.com/package/twig){target=_blank rel=noopener} or TwigJS: This is the JavaScript implementation of the Twig PHP templating language.  This allows Storybook to understand Twig.
+* [vite-plugin-twig-drupal](https://github.com/larowlan/vite-plugin-twig-drupal){target="_blank" rel="noopener noreferrer"}: If you are using Vite like we are, this is a Vite plugin that handles transforming twig files into a Javascript function that can be used with Storybook.  This plugin includes the following:
+  * [Twig](https://www.npmjs.com/package/twig){target="_blank" rel="noopener noreferrer"} or TwigJS: This is the JavaScript implementation of the Twig PHP templating language.  This allows Storybook to understand Twig.
     **Note**: TwigJS may not always be in sync with the version of Twig PHP in Drupal and you may run into issues when using certain Twig functions or filters, however, we are adding other extensions that may help with the incompatability issues.
-  * [drupal attribute](https://github.com/ericmorand/drupal-attribute){target=_blank rel=noopener}: Adds the ability to work with Drupal attributes.
-* [twig-drupal-filters](https://www.npmjs.com/package/twig-drupal-filters){target=_blank rel=noopener}: TwigJS implementation of Twig functions and filters.
-* [html-react-parser](https://www.npmjs.com/package/html-react-parser){target=_blank rel=noopener}: This extension is key for Storybook to parse HTML code into react elements.
-* [@modifi/vite-plugin-yaml](https://github.com/Modyfi/vite-plugin-yaml){target=_blank rel=noopener}: Transforms a YAML file into a JS object.  This is useful for passing the component's data to React as args.
+  * [drupal attribute](https://github.com/ericmorand/drupal-attribute){target="_blank" rel="noopener noreferrer"}: Adds the ability to work with Drupal attributes.
+* [twig-drupal-filters](https://www.npmjs.com/package/twig-drupal-filters){target="_blank" rel="noopener noreferrer"}: TwigJS implementation of Twig functions and filters.
+* [html-react-parser](https://www.npmjs.com/package/html-react-parser){target="_blank" rel="noopener noreferrer"}: This extension is key for Storybook to parse HTML code into react elements.
+* [@modifi/vite-plugin-yaml](https://github.com/Modyfi/vite-plugin-yaml){target="_blank" rel="noopener noreferrer"}: Transforms a YAML file into a JS object.  This is useful for passing the component's data to React as args.
 
 #### ViteJS configuration
 
@@ -318,13 +318,13 @@ In the [next blog post](../integrating-drupal-with-storybook-components), we wil
 
 ## Resources
 
-* [Storybook docs](https://storybook.js.org/docs/get-started){target=_blank rel=noopener}
-* [How to write stories](https://storybook.js.org/docs/writing-stories){target=_blank rel=noopener}
-* [Single Directory Components](https://www.drupal.org/project/sdc){target=_blank rel=noopener}
-* [Storybook Drupal module](https://www.drupal.org/project/storybook){target=_blank rel=noopener}
+* [Storybook docs](https://storybook.js.org/docs/get-started){target="_blank" rel="noopener noreferrer"}
+* [How to write stories](https://storybook.js.org/docs/writing-stories){target="_blank" rel="noopener noreferrer"}
+* [Single Directory Components](https://www.drupal.org/project/sdc){target="_blank" rel="noopener noreferrer"}
+* [Storybook Drupal module](https://www.drupal.org/project/storybook){target="_blank" rel="noopener noreferrer"}
 
 ## In closing
 
-Getting to this point was a team effort and I'd like to thank [Chaz Chumley](https://github.com/chazchumley){target=_blank rel=noopener}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
+Getting to this point was a team effort and I'd like to thank [Chaz Chumley](https://github.com/chazchumley){target="_blank" rel="noopener noreferrer"}, a Senior Software Engineer, who did a lot of the configuration discussed in this post.  In addition, I am thankful to the Emulsify and Gesso teams for letting us pick their brains during our research. Their help was critical in this process.
 
 I hope this was helpful and if there is anything I can help you with in your journey of a Storybook-friendly Drupal theme, feel free to reach out.
