@@ -3,7 +3,7 @@ date: "2024-08-18"
 title: "SOLVED - Cannot crop based on original image after initial crop has been set"
 tags: ['drupal', 'media','crop']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/crop.webp"
 featuredImageAlt: "Person taking a picture with their phone"
 imageThumb: "/images/thumbs/crop-thumb.webp"

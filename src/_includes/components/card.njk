@@ -1,6 +1,6 @@
 {# Card for blog posts articles. #}
 <article class="card">
-  <div class="card__image">
+  <div class="card__image" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
     <img src="{{ item.data.imageThumb }}" alt="{{ item.data.featuredImageAlt }}" width="320" height="150" />
   </div>
   <div class="card__content flow">

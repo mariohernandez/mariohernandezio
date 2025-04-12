@@ -7,7 +7,7 @@
       <p>{{ about.bio }}</p>
       <a href="#" class="button">Read my blog</a>
     </div>
-    <div class="about__media">
+    <div class="about__media" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
        <img src="{{ about.image }}" alt="{{ about.alt }}" width="450" height="720" />
     </div>
   </article>
