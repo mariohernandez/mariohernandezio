@@ -1,32 +1,34 @@
 ---
 date: "2025-04-28"
-title: "Modern CSS techniques to improve your Drupal theme"
-subtitle: "Small wins, when added up can make a big difference. This is one of those small wins which can result in performance gains for your website."
+title: "The Owl Selector"
+subtitle: "Sometimes you come across a hack or creative way to address an issue and you ask yourself: Why didn't I think of that?"
 tags: ['css', 'theme']
 draft: false
 featured: true
-featuredImage: "/images/heroes/webp.webp"
-featuredImageAlt: "Google Lighthouse Metrics for MarioHernandez.io"
-imageThumb: "/images/thumbs/webp-thumb.webp"
-featuredImageCredit: ""
-featuredImageCreditUrl: ""
-summary: "Media, in particular images, have always been a hot topic for discussion as it relates to website performance. Learn about this relatively easy approach to reduce image file sizes."
+featuredImage: "/images/heroes/owl.webp"
+featuredImageAlt: "White owl with fully spread wings flying over snow"
+imageThumb: "/images/thumbs/owl-thumb.webp"
+featuredImageCredit: "Todd Steitle"
+featuredImageCreditUrl: "https://unsplash.com/@tsteitle"
+summary: "With all the advanced features of modern CSS, you'd be surprised how a super simple technique can do so much for you with so little code."
 eleventyExcludeFromCollections: false
 ---
-
-I don't think there has ever been a more exciting time to work with CSS than now. The capabilities of CSS have evolved in such a way that some things that could only be done with JavaScript a few years ago are now achievable with only CSS. In addition, CSS has gifted developers with a series of amazing new features which have changed the landscape for front-end development.
 
 In this blog series, I hope to share some incredible and very useful CSS tips and tricks that can help you become a better developer and enhace the UX of your website.
 
 ## Lobotomized Owls 🦉 🦉
 
-This is probably one of my favorite techniques for applying consistent margin or other styles to direct sibling child elements of a particular selector. The **Lobotomized Owl** looks like this in code `* + *`, which as you can see, it looks like a cute owl. This is not a new CSS thing, it was originally presented [back in 2014](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/){target="_blank" rel="noopener noreferrer"}.
+The Lobotomized Owl, or **Owl selector**, is probably one of my favorite techniques for managing document flow and achieve consistent spacing in an extremely manageable manner. Although the Owl selector may be used for other things, in this post I will focus solely in spacing between sibling elements. Let's get started.
 
-## Understanding the Lobotomized Owl selector
+`* + *`
+
+The **Lobotomized Owl** is not a new CSS thing, it has been around since at least 2014 when [A List Apart](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/){target="_blank" rel="noopener noreferrer"} wrote about it. I highly recommend you read that article for more in-depth description of the Owl selector.
+
+## Understanding the Owl selector
 
 ### Concept
 
-Only apply CSS styles to child elements that have siblins.
+The Owl selector allows you to manage the document flow by using the [adjacent or next sibling combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Next-sibling_combinator){target="_blank" rel="noopener noreferrer"} (`+`), along with the [universal selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors){target="_blank" rel="noopener noreferrer"} (`*`).
 
 ### Example
 
@@ -41,7 +43,11 @@ Consider the following HTML:
 </div>
 ```
 
-Let's say we want to apply top margin to sibling child elements:
+## Scoping the Owl selector
+
+Using the Owl selector in its original form (`* + *`), could result in unexpected updates due to its broad scope. Narrowing the scope is prefered. See examples below.
+
+Chaining the Owl selector with `.parent >`:
 
 ```css
 .parent > * + * {
@@ -49,23 +55,31 @@ Let's say we want to apply top margin to sibling child elements:
 }
 ```
 
-The CSS rule above adds a `2rem` top margin to any "direct" child of `.parent` (`.parent > *`), but only if it has a sibling (`+ *`).
+Nesting it within `.parent` along with other rules that may exist:
+
+```css
+.parent {
+  > * + * {
+    margin-block-start: 2rem;
+  }
+}
+```
+
+By narrow the scope as shown above, and using the [child selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator){target="_blank" rel="noopener noreferrer"} (`>`), a `2rem` top margin is added to "direct" children of `.parent`, but only if they have siblings.
 
 ### Visual example
 
-The image below shows each `div` as a white box and the margin as purple boxes.
+A more visual representation of what the CSS is doing can be seen here:
 
 ![Four boxes representing divs](/images/blog-images/owl.webp){.body-image .body-image--narrow .body-image--left aria-hidden="true"}
 
-FIG 1: Each box represents a div. Purple boxes represent margin/spacing.{.caption}
+FIG 1: Each white box represents a div while the purple boxes represent top margin.{.caption}
 
-Notice that the first box in the image above has no top margin because there is no sibling above it. However, boxes 2, 3, and 4 do have siblings above them and therefore the 2rem top margin was added to them.
+> Instead of writing styles, we’ve created a style axiom: an overarching principle for the layout of content flow. - [Heydon Pickering](https://alistapart.com/author/heydonworks/){target="_blank" rel="noopener noreferrer"}.
 
 ## Traditional approach for handling margin
 
-In the past I have used other techniques for adding margin to a group of elements. Let's say we have a list of items (ol/ul), and we want to add margin as we did before, but we also want to add inner borders. The Owl selector is perfect for this.
-
-In the past I would do something like this:
+In the past I would do something like this to handle margin on a group of elements.
 
 ```css
 .my-list {
@@ -75,7 +89,7 @@ In the past I would do something like this:
 }
 ```
 
-That's not terribly wrong, but before `:not` was a thing, I would do something like this:
+That's not terribly bad, but before `:not` was a thing, I would do something like this (please forgive me):
 
 ```css
 .my-list {
@@ -143,14 +157,14 @@ The HTML above is actually the code used on each of the blog posts on this site.
 
 ![Visual representation of blog post markup](/images/blog-images/article.webp){.body-image .body-image--narrow .body-image--left aria-hidden="true"}
 
-FIG 2. Blog post markup represented in rectangular boxes.{.caption}
+FIG 2. Illustration of the markup structure of a Blog post.{.caption}
 
 From the code and **FIG 2** above, we notice the following:
 
 1. The `<article>` tag is the top parent element with four direct child elements (_Tag, Header, Share, and Article content_).
 1. The `<header>` tag is also a parent element itself with three direct child elements (_Title, Subtitle, and Date_).
 
-Let's start with the `<article>` as the top parent:
+Let's start with the `<article>` parent selector:
 
 ```css
 .blog-post {
@@ -165,8 +179,6 @@ The result of this CSS rule is a 2rem top margin on direct sibling children of t
 ![Blog post diagram displaying margin in purple](/images/blog-images/article2.webp){.body-image .body-image--narrow .body-image--left aria-hidden="true"}
 
 FIG 3. The purple boxes represent the space added by the CSS above.{.caption}
-
-Only the _Article content, Share, and Header_ have siblings above them. The _Tag_ element does not and therefore it does not inherit top margin.
 
 Now let's apply the same treatment to the `<header>`:
 
@@ -184,59 +196,20 @@ To make it easier to diferentiate, this time I highlighted the margin in direct 
 
 FIG 4. The blue boxes represent the space added by the CSS above.{.caption}
 
-This time, only the _Date and Subtitle_ elements are given a 2rem top margin.
-
 With very little CSS code we have been able to achieve consistent spacing in direct sibling children of the `<article>` as well as nested ones inside the `<header>`.  In the spirit of staying [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself){target="_blank" rel="noopener noreferrer"}, we could even combine both rules to reduce code repitition.
 
 ```css
-.blog-post, .blog-post__header { /* Placing in the same line to fix prism bug. */
+      .blog-post,
+      .blog-post__header {
   > * + * {
     margin-block-start: 2rem;
   }
 }
 ```
 
-## Defining utility clsses
-
-You'll notice on each blog post I use CSS utility classes like `.mt-20` or similar. These help me reduce code repetition but I am very selective where I use these utility clsses as they don't always provide the expected result especially on content where spacing, among other things, is not always consistent across breakpoints. Here are some examples of these CSS utility classes.
-
-```css
-/* 10px of top margin */
-.mt-10 {
-  > * + * {
-    margin-block-start: 10px;
-  }
-}
-
-/* 20px of top margin */
-.mt-20 {
-  > * + * {
-    margin-block-start: 20px;
-  }
-}
-
-/* 10px of bottom margin */
-.mb-10 {
-  > * + * {
-    margin-block-end: 10px;
-  }
-}
-
-/* 20px of bottom margin */
-.mb-20 {
-  > * + * {
-    margin-block-end: 20px;
-  }
-}
-```
-
-Whenever I need consistent margins or padding across breakpoints, I use the corresponding utility class.
-
 ## What if the HTML structure changes?
 
-It's not uncommom for the HTML of a document to change. Some of my blog posts for example may have subtitle text while others may not. The beauty of the Owl selector is that it is not depending on the specific HTML tags in your document.
-
-You can test this by looking at some of my other blog posts with and without subtitle text (text below the article title). You will see that whether a post has subtitle or not, the spacing remains consistent. If you are up for it, you could inspect any blog post and add new random HTML elements and you'll notice spacing remains consistent.
+It's not uncommom for the HTML of a document to change. Some of my blog posts for example have subtitle text while others don't. The beauty of the Owl selector is that it is not depending on the specific HTML tags in your document.
 
 ## What about Gap?
 
@@ -265,4 +238,12 @@ If you opt to use Gap for spacing, this means you either need to use `display: f
 
 ## In closing
 
-CSS has evolved in recent years and there has never been a better time to do amazing things with it. I will continue to write about CSS and share more tips and tricks. Stay tuned!
+I don't think there has ever been a more exciting time to work with CSS than now. The capabilities of CSS and browser support have never been better. Sometimes however, using some of the most basic techniques can make a great impact in our projects.
+
+If you found this post useful, stay tuned for more like it.
+
+## Resources
+
+* [My favourite 3 lines of CSS](https://piccalil.li/blog/my-favourite-3-lines-of-css/){target="_blank" rel="noopener noreferrer"}
+* [The Stack](https://every-layout.dev/layouts/stack/){target="_blank" rel="noopener noreferrer"}
+* [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/){target="_blank" rel="noopener noreferrer"}

@@ -28,10 +28,10 @@
   margin-block-start: var(--flow-space-40, 4rem);
 }
 
-.flow-40 > * + * {
+.flow-60 > * + * {
   margin-block-start: var(--flow-space-60, 6rem);
 }
 
-.flow-40 > * + * {
+.flow-80 > * + * {
   margin-block-start: var(--flow-space-80, 8rem);
 }
