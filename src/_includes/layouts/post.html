@@ -2,29 +2,31 @@
 
 {% set pageHeaderTitle = title %}
 
-{# Render post date and any tags that this post has been tagged with. #}
-{% set pageHeaderSummary %}
+{# Render post date. #}
+{% set pageHeaderDate %}
   <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
+{% endset %}
 
-  {# Social share links on each blog article. #}
+{# Social share links on each blog article. #}
+{% set pageHeaderShare %}
   <div class="blog-post__share">
     {% include 'partials/social-share.html' %}
   </div>
 {% endset %}
 
 {% block content %}
-  <article class="blog-post__full mb-60 margin-inline-flex">
+  <article class="blog-post__full flow-30 mb-60 margin-inline-flex">
     {# Adds the first tag above article title. #}
     {% for tag in tags %}
       {% if loop.first %}
-        <span class="blog-post__tag">
+        <div class="blog-post__tag">
           <a href="/tag/{{ tag | slug }}/" class="eyebrow eyebrow--nodash">{{ tag | title | replace('-', ' ') }}</a>
-        </span>
+        </div>
       {% endif %}
     {% endfor %}
     {% include "partials/page-header.html" %}
 
-    <div class="blog-post__content">
+    <div class="blog-post__content flow-40">
       <div class="blog-post__image image-zoom" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
         <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" width="960" height="450" />
         {% if featuredImageCreditUrl or featuredImageCredit %}
