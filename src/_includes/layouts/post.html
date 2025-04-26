@@ -3,6 +3,7 @@
 {% set pageHeaderTitle = title %}
 
 {# Render post date. #}
+{# @TODO: Confirm this change does not break other areas. #}
 {% set pageHeaderDate %}
   <time class="blog-post__date" datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
 {% endset %}
