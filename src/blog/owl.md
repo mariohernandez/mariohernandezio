@@ -1,6 +1,6 @@
 ---
-date: "2025-04-28"
-title: "The Owl Selector"
+date: "2025-05-01"
+title: "Understanding The Owl Selector in CSS"
 subtitle: "Sometimes you come across a hack or creative way to address an issue and you ask yourself: Why didn't I think of that?"
 tags: ['css', 'theme']
 draft: false
@@ -10,25 +10,27 @@ featuredImageAlt: "White owl with fully spread wings flying over snow"
 imageThumb: "/images/thumbs/owl-thumb.webp"
 featuredImageCredit: "Todd Steitle"
 featuredImageCreditUrl: "https://unsplash.com/@tsteitle"
-summary: "With all the advanced features of modern CSS, you'd be surprised how a super simple technique can do so much for you with so little code."
+summary: "If you are a seasoned developer you would probably agree that many times we focus so much on learning the new things that we forget about the basics or things we learned when we were getting started."
 eleventyExcludeFromCollections: false
 ---
 
-In this blog series, I hope to share some incredible and very useful CSS tips and tricks that can help you become a better developer and enhace the UX of your website.
+With all the advancements in CSS over the past few years, it's surprising to discover a technique that's been available all along. If you're well-versed in CSS, you might already know this little nugget: `selector > * + * {...}`. Let's dive into it.
 
 ## Lobotomized Owls 🦉 🦉
 
-The Lobotomized Owl, or **Owl selector**, is probably one of my favorite techniques for managing document flow and achieve consistent spacing in an extremely manageable manner. Although the Owl selector may be used for other things, in this post I will focus solely in spacing between sibling elements. Let's get started.
+The Lobotomized Owl (`* + *`), or **Owl selector**, is one of my favorite techniques for managing document flow and achieving consistent spacing in a highly manageable way. While the Owl selector can be used for various style settings, my preferred use is to add spacing between sibling elements.
 
-`* + *`
+### How does the Owl selector work?
 
-The **Lobotomized Owl** is not a new CSS thing, it has been around since at least 2014 when [A List Apart](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/){target="_blank" rel="noopener noreferrer"} wrote about it. I highly recommend you read that article for more in-depth description of the Owl selector.
+_The Owl selector targets elements that are preceded by an immediate sibling_. This means that if you apply the Owl selector to a group of HTML elements, the styles will apply to all elements except the first one, as the first one doesn't have a preceding sibling. We'll see some examples shortly.
+
+The Lobotomized Owl isn't a new CSS concept; it's been around since the beginning of CSS and was first discussed back in 2014 when [A List Apart](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/){target="_blank" rel="noopener noreferrer"} wrote about it. Read that article for a more in-depth description of the Owl selector.
 
 ## Understanding the Owl selector
 
 ### Concept
 
-The Owl selector allows you to manage the document flow by using the [adjacent or next sibling combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Next-sibling_combinator){target="_blank" rel="noopener noreferrer"} (`+`), along with the [universal selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors){target="_blank" rel="noopener noreferrer"} (`*`).
+The Owl selector allows you to manage the document flow by using the [next sibling combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Next-sibling_combinator){target="_blank" rel="noopener noreferrer"} (`+`), along with the [universal selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors){target="_blank" rel="noopener noreferrer"} (`*`).
 
 ### Example
 
@@ -45,7 +47,7 @@ Consider the following HTML:
 
 ## Scoping the Owl selector
 
-Using the Owl selector in its original form (`* + *`), could result in unexpected updates due to its broad scope. Narrowing the scope is prefered. See examples below.
+Using the Owl selector in its original form (`* + *`), could result in unexpected updates due to its broad scope. Narrowing the scope is prefered.
 
 Chaining the Owl selector with `.parent >`:
 
@@ -59,13 +61,15 @@ Nesting it within `.parent` along with other rules that may exist:
 
 ```css
 .parent {
+  /* other rules here. */
+
   > * + * {
     margin-block-start: 2rem;
   }
 }
 ```
 
-By narrow the scope as shown above, and using the [child selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator){target="_blank" rel="noopener noreferrer"} (`>`), a `2rem` top margin is added to "direct" children of `.parent`, but only if they have siblings.
+By narrow the scope as shown above, and using the [child selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator){target="_blank" rel="noopener noreferrer"} (`>`), a `2rem` top margin is added to "direct" children of `.parent`, but only if they have a preceding sibling.
 
 ### Visual example
 
@@ -83,41 +87,43 @@ In the past I would do something like this to handle margin on a group of elemen
 
 ```css
 .my-list {
-  li:not(last-child) {
-    border-block-end: 1px solid #000;
+  li:not(:first-child) {
+    border-block-start: 1px solid #000;
   }
 }
 ```
 
-That's not terribly bad, but before `:not` was a thing, I would do something like this (please forgive me):
+That's not terribly bad, but the problem with this approach is that it increases the specificity of the rule, which could complicate overrides.
+
+Before `:not` was a thing, I would also do something like this (please forgive me):
 
 ```css
 .my-list {
   li {
-    border-block-end: 1px solid #000;
+    border-block-start: 1px solid #000;
   }
 }
 
 .my-list {
-  li:last-child {
+  li:first-child {
     border: 0;
   }
 }
 ```
 
-Now I can simply do:
+There's nothing wrong with this example except that it's more code and you're overriding rules. Ultimately, it works, so don't feel too bad if you've done this. Just don't do it again 😉. Instead, do this:
 
 ```css
 .my-list {
   > * + * {
-    border-block-end: 1px solid #000;
+    border-block-start: 1px solid #000;
   }
 }
 ```
 
 ## A more complex example
 
-The examples above are pretty simple but in many cases, our HTML may not be as clean or uniformed as the examples we've seen. Here's a more realistic example where our markup is a combination of different HTML tags.
+The examples above are pretty simple, but in many cases, our HTML may not be as clean or uniform as the examples we've seen. Here's a more realistic example where our markup is a combination of different HTML tags.
 
 ```html
 <article class="blog-post">
@@ -153,7 +159,7 @@ The examples above are pretty simple but in many cases, our HTML may not be as c
 </article>
 ```
 
-The HTML above is actually the code used on each of the blog posts on this site. Let's break it down in an ilustration form for a better visual representation.
+The HTML above is actually the code used on each of the blog posts on this site. Let's break it down in an illustration form for a better visual representation.
 
 ![Visual representation of blog post markup](/images/blog-images/article.webp){.body-image .body-image--narrow .body-image--left aria-hidden="true"}
 
@@ -163,6 +169,7 @@ From the code and **FIG 2** above, we notice the following:
 
 1. The `<article>` tag is the top parent element with four direct child elements (_Tag, Header, Share, and Article content_).
 1. The `<header>` tag is also a parent element itself with three direct child elements (_Title, Subtitle, and Date_).
+1. There is a mix of HTML tags.
 
 Let's start with the `<article>` parent selector:
 
@@ -174,7 +181,7 @@ Let's start with the `<article>` parent selector:
 }
 ```
 
-The result of this CSS rule is a 2rem top margin on direct sibling children of the `.blog-post` selector. I have highlighted in purple how this looks in FIG 3. below:
+The result of this CSS rule is a 2rem top margin on direct sibling children of the `.blog-post` selector, except the first/top one. I have highlighted in purple how this looks in FIG 3. below:
 
 ![Blog post diagram displaying margin in purple](/images/blog-images/article2.webp){.body-image .body-image--narrow .body-image--left aria-hidden="true"}
 
@@ -209,7 +216,7 @@ With very little CSS code we have been able to achieve consistent spacing in dir
 
 ## What if the HTML structure changes?
 
-It's not uncommom for the HTML of a document to change. Some of my blog posts for example have subtitle text while others don't. The beauty of the Owl selector is that it is not depending on the specific HTML tags in your document.
+It's not uncommon for the HTML of a document to change. Some of my blog posts, for example, have subtitle text while others don't. The beauty of the Owl selector is that it doesn't depend on specific HTML tags or structure in your document. If new sibling elements are added or some are removed, the spacing previously defined with the Owl selector will continue to work as intended without breaking the document flow.
 
 ## What about Gap?
 
@@ -226,7 +233,8 @@ Oh yes, enough about Owls 🦉, Gap is a beautiful thing and can even be used si
 ### Pros of gap
 
 * The CSS block above will behave exactly as the Owl technique, as in it will only add space between sibling child elements.
-* Another advantage of using Gap for spacing, is that when it comes to responsive design, the gap rules you apply to elements for mobile, will remain in place as you transition to tablet or desktop. This means if in mobile your elements were stacked in column direction, but in desktop they change to row, the gap rules will still apply as long as your child elements are siblins. See FIG 5. below.
+* Another advantage of using Gap for spacing, is that when it comes to responsive design, the gap rules you apply to elements for mobile, will remain in place as you transition to tablet or desktop. No need to change the gap settings if the direction of your layout has changed. See FIG 5. below.
+* Gap is great for menu lists where you may want to add spacing in between each menu item except the ones at the end.
 
 ![Example of gap settings on sibling elements](/images/blog-images/gap.webp){.body-image .body-image--wide .body-image--left aria-hidden="true"}
 
@@ -244,6 +252,7 @@ If you found this post useful, stay tuned for more like it.
 
 ## Resources
 
+* [What is the 'Owl selector' (* + *)?](https://www.youtube.com/watch?v=0O0ssm70g1g){target="_blank" rel="noopener noreferrer"} &mdash; Brand new video
 * [My favourite 3 lines of CSS](https://piccalil.li/blog/my-favourite-3-lines-of-css/){target="_blank" rel="noopener noreferrer"}
 * [The Stack](https://every-layout.dev/layouts/stack/){target="_blank" rel="noopener noreferrer"}
 * [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/){target="_blank" rel="noopener noreferrer"}
