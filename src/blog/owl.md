@@ -10,7 +10,7 @@ featuredImageAlt: "White owl with fully spread wings flying over snow"
 imageThumb: "/images/thumbs/owl-thumb.webp"
 featuredImageCredit: "Todd Steitle"
 featuredImageCreditUrl: "https://unsplash.com/@tsteitle"
-summary: "If you are a seasoned developer you would probably agree that many times we focus so much on learning the new things that we forget about the basics or things we learned when we were getting started."
+summary: "How crazy it is that this blog post is about a CSS technique that has existed all along? This is a good example of <em>going back to the basics</em>."
 eleventyExcludeFromCollections: false
 ---
 
