@@ -1,7 +1,7 @@
 ---
 date: "2025-05-01"
-title: "Understanding The Owl Selector in CSS"
-subtitle: "Sometimes you come across a hack or creative way to address an issue and you ask yourself: Why didn't I think of that?"
+title: "Understanding The Owl Selector"
+subtitle: "A simple yet effective CSS solution for managing content flow in your HTML documents."
 tags: ['css', 'theme']
 draft: false
 featured: true
@@ -10,7 +10,7 @@ featuredImageAlt: "White owl with fully spread wings flying over snow"
 imageThumb: "/images/thumbs/owl-thumb.webp"
 featuredImageCredit: "Todd Steitle"
 featuredImageCreditUrl: "https://unsplash.com/@tsteitle"
-summary: "How crazy it is that this blog post is about a CSS technique that has existed all along? This is a good example of <em>going back to the basics</em>."
+summary: "So you think you know CSS? Take a look at this simple technique for managing spacing between sibling elements."
 eleventyExcludeFromCollections: false
 ---
 
