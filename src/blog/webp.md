@@ -4,7 +4,7 @@ title: "Using modern image formats to improve performance"
 subtitle: "Small wins, when added up can make a big difference. This is one of those small wins which can result in performance gains for your website."
 tags: ['drupal', 'media']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/heroes/webp.webp"
 featuredImageAlt: "Google Lighthouse Metrics for MarioHernandez.io"
 imageThumb: "/images/thumbs/webp-thumb.webp"

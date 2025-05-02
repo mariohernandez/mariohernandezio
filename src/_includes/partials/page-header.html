@@ -5,9 +5,16 @@
   {% if subtitle %}
     <p class="page-header__subtitle">{{ subtitle }}</p>
   {% endif %}
-  {% if pageHeaderSummary %}
-  <div class="page-header__summary">
-    {{ pageHeaderSummary | safe }}
+  {# @TODO: Confirm this change does not break other areas. #}
+  {% if pageHeaderDate %}
+  <div class="page-header__date">
+    {{ pageHeaderDate | safe }}
   </div>
   {% endif %}
 </header>
+{# @TODO: Confirm this change does not break other areas. #}
+{% if pageHeaderShare %}
+<div class="page-header__share">
+  {{ pageHeaderShare | safe }}
+</div>
+{% endif %}
