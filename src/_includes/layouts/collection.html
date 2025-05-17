@@ -4,7 +4,7 @@ templateClass: template-collection
 ---
 {%- set collectionObject = collections.postCollections[page.fileSlug] -%}
 
-<ol class="your-own-style">
+<ol class="your-own-style" role="list">
 	{%- for post in collectionObject.posts -%}
 		<li>
 			<div class="u-spacing-top-long u-spacing-left-long c-card-post">
