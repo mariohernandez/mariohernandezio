@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{% block content %}
+  <article class="search__page">
+    <header>
+      <h1 class="page__title">{{ title }}</h1>
+    </header>
+    <div class="search__body">
+      {{ body }}
+    </div>
+    <div class="search" id="search"></div>
+  </article>
+{% endblock %}
