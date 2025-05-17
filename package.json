@@ -4,8 +4,8 @@
   "description": "A personal blog website built with Eleventy",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "npx eleventy --serve",
-    "production": "NODE_ENV=production postcss src/css/styles.css --dir dist/css && NODE_ENV=production npx eleventy",
+    "start": "npx eleventy --serve && npx -y pagefind --site dist",
+    "production": "NODE_ENV=production postcss src/css/styles.css --dir dist/css && NODE_ENV=production npx eleventy && NODE_ENV=production npx -y pagefind --site dist",
     "watch:css": "postcss src/css/styles.css --dir dist/css -w",
     "compile:css": "postcss src/css/styles.css --dir dist/css"
   },

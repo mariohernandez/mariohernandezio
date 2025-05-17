@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{# Grab other posts that aren’t the current one as 'recommended posts' #}
+{% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
+
+{% block content %}
+  <article class="search__page flow-30 mb-60 margin-inline-flex">
+    <header>
+      <h1 class="page__title">{{ title }}</h1>
+    </header>
+    <div class="search__body">
+      {{ body }}
+    </div>
+    <div class="search" id="search"></div>
+  </article>
+  {% include "components/series/cards-set.html" %}
+{% endblock %}

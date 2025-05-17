@@ -15,6 +15,7 @@
 
 .blog-post__full,
 .series__landing,
-.series__container {
+.series__container,
+.search__page {
   max-width: var(--size-960);
 }

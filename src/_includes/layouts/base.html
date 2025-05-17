@@ -14,6 +14,7 @@
     <link rel="icon" href="/images/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- 180×180 -->
     <link rel="manifest" href="/manifest.json">
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
 
     {# Syntax highlight using prism with the prism.css theme. #}
     <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
@@ -29,13 +30,19 @@
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KFWBDSLVNK"></script>
-
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-KFWBDSLVNK');
+    </script>
+
+    {# Pagefind search. #}
+    <script src="/pagefind/pagefind-ui.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+      });
     </script>
   </head>
   <body>
