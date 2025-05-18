@@ -1,18 +1,18 @@
 .navigation {
   background-color: var(--gray-light);
-  border-block-end: 1px solid var(--gray-medium);
-  border-inline-start: 1px solid var(--gray-medium);
-  border-radius: 0 0 0 var(--size-5);
-  padding-block: var(--size-40);
+  border: 1px solid var(--gray-medium);
+  border-block-start: 0;
+  border-radius: 0 0 0 var(--size-4);
+  inline-size: var(--size-200);
+  left: calc(var(--size-220) * -1);
+  padding: var(--size-20);
   position: absolute;
-  top: -245px;
-  transition: var(--transition-top-05s);
-  right: 0;
-  width: var(--size-200);
+  transition: left 0.3s ease;
+  top: calc(var(--size-56) - 2px);
   z-index: var(--lowest);
 
   .nav-is-open & {
-    top: var(--size-44);
+    left: 0;
   }
 
   @media (--tablet) {
@@ -20,7 +20,7 @@
     border: 0;
     padding: 0;
     position: static;
-    width: initial;
+    inline-size: initial;
     z-index: initial;
   }
 }
@@ -39,18 +39,38 @@
 }
 
 .navigation__item {
+  @media (--tablet) {
+    /* Hides icon from all links except the search link. */
+    &:not(.navigation__item--search) {
+      svg {
+        display: none;
+      }
+    }
 
-  a {
+    /* Hides text from the search link. */
+    .navigation__link--search {
+      > span {
+        display: none;
+      }
+    }
+  }
+
+  .navigation__link {
     align-items: center;
     color: var(--gray-darker);
     display: flex;
+    gap: var(--size-16);
     text-decoration: none;
     text-transform: lowercase;
     font-size: var(--font-size-18);
     font-weight: var(--weight-700);
-    justify-content: center;
     padding: var(--size-10);
     transition: var(--transition-color-03s);
+
+    svg {
+      block-size: var(--size-18);
+      inline-size: var(--size-18);
+    }
 
     @media (--tablet) {
       font-size: var(--font-size-20);
@@ -58,20 +78,28 @@
       position: relative;
       transition: none;
 
-      &[data-state="active"],
-      &[aria-current="page"],
-      &:hover:not(.navigation__link--search) { /* Excludes border in search button. */
-        color: var(--purple);
+      /* Increase size of search icon on larger devices. */
+      svg {
+        block-size: var(--size-24);
+        inline-size: var(--size-24);
+      }
 
-        /* Adds bottom border to hover and active links. */
-        &:after {
-          border-block-end: var(--size-4) solid var(--purple);
-          bottom: var(--size-10);
-          content: '';
-          display: block;
-          left: var(--size-18);
-          position: absolute;
-          right: var(--size-18);
+      &:not(.navigation__link--search) { /* Excludes border in search button. */
+        &[data-state="active"],
+        &[aria-current="page"],
+        &:hover {
+          color: var(--purple);
+
+          /* Adds bottom border to hover and active links. */
+          &:after {
+            border-block-end: var(--size-4) solid var(--purple);
+            bottom: var(--size-10);
+            content: '';
+            display: block;
+            left: var(--size-18);
+            position: absolute;
+            right: var(--size-18);
+          }
         }
       }
     }
@@ -80,21 +108,23 @@
 
 /* Mobile navigation */
 .mobile-nav-toggle {
+  align-items: center;
+  block-size: var(--size-28);
   border: 0;
-  height: var(--size-24);
-  width: var(--size-28);
+  display: flex;
+  inline-size: var(--size-28);
 
 
   .nav-bar {
+    block-size: var(--size-1);
     border: 1px solid var(--white);
     display: block;
-    height: var(--size-1);
+    inline-size: 100%;
     margin-block-end: var(--size-5);
-    width: 100%;
 
     &:last-child {
+      inline-size: 90%;
       margin: 0 0 0 auto;
-      width: 90%;
     }
   }
 
@@ -104,8 +134,6 @@
 }
 
 .icon--hamburger {
-  transform: rotate(-180deg);
-
   .nav-is-open & {
     display: none;
   }

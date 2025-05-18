@@ -25,15 +25,15 @@
   align-items: center;
   background-color: var(--gray-darkest);
   display: flex;
-  gap: var(--size-20);
-  grid-template-columns: 1fr var(--size-80);
-  justify-content: space-between;
-  padding: var(--size-14) var(--size-28) var(--size-18);
+  gap: var(--size-40);
+  padding: var(--size-14) var(--size-20);
   position: relative;
   z-index: var(--lower);
 
   @media (--tablet) {
     background-color: var(--white);
+    gap: reset;
+    justify-content: space-between;
     padding: 0;
     z-index: initial;
   }
