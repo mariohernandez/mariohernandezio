@@ -1,18 +1,26 @@
 <nav class="navigation" aria-label="Primary" role="navigation">
   <ul class="navigation__items" role="list">
     {% for item in navigation.items %}
-      <li class="navigation__item">
-        <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
-          {{ item.text }}
-        </a>
-      </li>
+      {% if not loop.last %}
+        <li class="navigation__item">
+          <a class="navigation__link" href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+            {% include "../../images/icons/" + (item.icon) + ".svg" %}
+            <span>
+              {{ item.text }}
+            </span>
+          </a>
+        </li>
+      {% else %}
+        <li class="navigation__item navigation__item--search">
+          <a class="navigation__link navigation__link--search" href="{{ item.url }}"
+            {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+            {% include "../../images/icons/" + (item.icon) + ".svg" %}
+            <span>
+              {{ item.text }}
+            </span>
+          </a>
+        </li>
+      {% endif %}
     {% endfor %}
-    {# Adds a search button as the last nav item to ensure proper alignment with nav. #}
-    <li class="navigation__item navigation__item--search">
-      <a href="/search" class="navigation__link--search">
-        <span class="visually-hidden">Searchh this site</span>
-        {% include '../../images/icons/search.svg' %}
-      </a>
-    </li>
   </ul>
 </nav>

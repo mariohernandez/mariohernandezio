@@ -2,15 +2,15 @@
 <header role="banner" class="header">
   <div class="header__inner">
     <div class="header__logo">
-      <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
-        Mario
-        <span>Hernandez</span>
-      </a>
       <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Open menu">
         {# Hamburger and Close svg icons for mobile nav. #}
         {% include '../../images/icons/hamburger.svg' %}
         {% include '../../images/icons/close.svg' %}
       </button>
+      <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
+        Mario
+        <span>Hernandez</span>
+      </a>
     </div>
     {% include "partials/nav.html" %}
   </div>
