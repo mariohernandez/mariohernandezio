@@ -16,7 +16,7 @@
 {% endset %}
 
 {% block content %}
-  <article class="blog-post__full flow-30 mb-60 margin-inline-flex">
+  <article class="blog-post__full flow-20 mb-60 margin-inline-flex">
     {# Adds the first tag above article title. #}
     {% for tag in tags %}
       {% if loop.first %}
@@ -27,9 +27,16 @@
     {% endfor %}
     {% include "partials/page-header.html" %}
 
-    <div class="blog-post__content flow-40">
-      <div class="blog-post__image image-zoom" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
-        <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" width="960" height="450" />
+    <div class="blog-post__content flow-20">
+      <div class="blog-post__image image-zoom"> {# Hides this contaiiner and image from screen readers. #}
+        <img
+          srcset="{{ featuredImage }} 950w{% if featuredLarge %}, {{ featuredLarge }} 1900w{% endif %}{% if featuredSmall %}, {{ featuredSmall }} 640w{% endif %}"
+          sizes="(min-width: 1024px) 950px, 100vw"
+          src="{{ featuredImage }}"
+          width="950"
+          height="450"
+          alt="{{ featuredImageAlt}}"
+          aria-hidden="true" />
         {% if featuredImageCreditUrl or featuredImageCredit %}
           <div class="featured-article__image--credit">
             <a href="{{ featuredImageCreditUrl }}" target="_blank" rel="noopener noreferrer"><span>Photo by: </span>{{ featuredImageCredit }}</a>

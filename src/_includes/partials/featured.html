@@ -2,7 +2,13 @@
   <div class="featured-article__inner">
     {% for item in collections.featuredPost %}
       <div class="featured-article__image image-zoom" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
-        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" width="960" height="450" />
+        <img
+          srcset="{{ item.data.featuredImage }} 950w{% if item.data.featuredLarge %}, {{ item.data.featuredLarge }} 1900w{% endif %}{% if item.data.featuredSmall %}, {{ item.data.featuredSmall }} 640w{% endif %}"
+          sizes="(min-width: 1024px) 950px, 100vw"
+          src="{{ item.data.featuredImage }}"
+          width="950"
+          height="450"
+          alt="{{ item.data.featuredImageAlt}}" />
         {% if item.data.featuredImageCreditUrl or item.data.featuredImageCredit %}
           <div class="featured-article__image--credit">
             <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>

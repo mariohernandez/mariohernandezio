@@ -1,17 +1,19 @@
 <a class="button button--skip-link" href="#main-content">Skip to content</a>
 <header role="banner" class="header">
   <div class="header__inner">
-    <div class="header__logo">
-      <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Open menu">
-        {# Hamburger and Close svg icons for mobile nav. #}
-        {% include '../../images/icons/hamburger.svg' %}
-        {% include '../../images/icons/close.svg' %}
-      </button>
-      <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
-        Mario
-        <span>Hernandez</span>
-      </a>
-    </div>
+    <button class="mobile-nav-toggle" aria-expanded="false" aria-label="Open menu">
+      {# Hamburger and Close svg icons for mobile nav. #}
+      {% include '../../images/icons/hamburger.svg' %}
+      {% include '../../images/icons/close.svg' %}
+    </button>
+    <a href="/" aria-label="{{ site.name }} - home" class="site__logo">
+      Mario <span>Hernandez</span>
+    </a>
+    {# Search link/icon for mobile only. #}
+    <a href="/search" class="header__search--link">
+      {% include '../../images/icons/search.svg' %}
+      <span class="visually-hidden">Search this site</span>
+    </a>
     {% include "partials/nav.html" %}
   </div>
 </header>

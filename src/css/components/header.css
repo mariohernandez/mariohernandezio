@@ -2,12 +2,15 @@
  * @file
  * Layout styles for the header section.
  */
-
 .header {
+  color: var(--white);
+  container: header / inline-size;
   margin-block-end: var(--size-60);
   max-width: var(--size-960);
+  position: relative;
 
   @media (--tablet) {
+    color: var(--gray-darker);
     margin-block: var(--size-30) var(--size-80);
     margin-inline: var(--size-20);
   }
@@ -17,20 +20,51 @@
   }
 }
 
+/* Search button in mobile only. */
+.header__search--link {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  margin-inline-start: auto;
+
+  @media (--tablet) {
+    display: none;
+  }
+}
+
 /* On mobile the header is fixed and sticky. */
 .header__inner {
+  align-items: center;
+  background-color: var(--gray-darkest);
+  display: grid;
+  gap: var(--size-40);
+  grid-template-columns: var(--size-30) var(--size-150) 1fr;
   left: 0;
+  padding: var(--size-14) var(--size-20);
   position: fixed;
   right: 0;
   top: 0;
-  z-index: var(--high);
+  z-index: var(--lower);
 
   /* On tablet and beyond, we unstick the header. */
   @media (--tablet) {
-    align-items: center;
     display: flex;
     justify-content: space-between;
     position: initial;
     z-index: initial;
+  }
+
+  @container header (min-inline-size >= 768px) {
+    .header__search--link {
+      display: none;
+    }
+  }
+
+  @media (--tablet) {
+    background-color: var(--white);
+    /* gap: reset; */
+    justify-content: space-between;
+    padding: 0;
+    /* z-index: initial; */
   }
 }
