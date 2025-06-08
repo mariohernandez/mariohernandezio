@@ -16,19 +16,19 @@
   line-height: var(--line-height-1);
   text-align: center;
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     font-size: var(--font-size-50);
   }
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     font-size: var(--font-size-60);
   }
 
-  @media (--laptop) {
+  @media (width >= 75rem) {
     font-size: var(--font-size-80);
   }
 
-  @media (--desktop) {
+  @media (width >= 90rem) {
     font-size: var(--font-size-100);
   }
 }
@@ -38,11 +38,11 @@
   font-size: var(--font-size-20);
   font-weight: var(--weight-400);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     font-size: var(--font-size-30);
   }
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     font-size: var(--font-size-35);
   }
 }

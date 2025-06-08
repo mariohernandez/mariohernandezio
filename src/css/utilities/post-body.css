@@ -26,7 +26,7 @@
     list-style-type: none;
     padding-inline-start: 0;
 
-     @media (--tablet) {
+     @media (width >= 48rem) {
       flex-direction: row;
     }
   }
@@ -42,16 +42,6 @@
       text-decoration: underline;
     }
   }
-}
-
-/* Info callout styles. */
-.post-hint {
-  background-color: lighten($color-light-blue, 15%);
-  border-left: 3px solid $color-purple;
-  font-size: 1.8rem;
-  margin: 2rem 0 4rem;
-  padding: 2rem;
-  padding-inline-start: 4rem;
 }
 
 /* Body images */

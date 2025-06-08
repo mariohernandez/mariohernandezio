@@ -1,7 +1,7 @@
 .contact {
   gap: var(--size-40);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     max-width: var(--size-960);
@@ -14,7 +14,7 @@
   justify-content: center;
   margin-block-end: var(--size-40);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     margin-block-end: initial;
   }
 }
@@ -25,7 +25,7 @@
 
   /* By default the button is extended in the contact form on large devices..
   This reduces its width so it is more presentable. */
-  @media (--tablet) {
+  @media (width >= 48rem) {
     .button {
       width: 50%;
     }

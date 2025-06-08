@@ -7,7 +7,7 @@
   by adding top padding. */
   padding-block-start: var(--size-60);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     /* On tablet and beyond we reset the top padding. */
     padding-block-start: initial;
   }

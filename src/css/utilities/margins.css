@@ -7,14 +7,14 @@
 .margin-inline-flex {
   margin-inline: var(--size-20);
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     margin-inline: auto;
   }
 }
 
 /* This is similar to the above but on mobile is full width. */
 .margin-inline {
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     margin-inline: auto;
   }
 }

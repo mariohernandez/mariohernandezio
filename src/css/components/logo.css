@@ -3,12 +3,12 @@
   display: block;
   font-size: var(--font-size-18);
   font-weight: var(--weight-400);
-  letter-spacing: 0.02rem;;
+  letter-spacing: 0.02rem;
   line-height: var(--line-height-1);
   text-decoration: none;
   text-transform: lowercase;
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     color: var(--gray-darker);
     font-size: var(--font-size-30);
     letter-spacing: 0.01rem;
@@ -30,7 +30,7 @@
   position: relative;
   z-index: var(--lower);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     background-color: var(--white);
     gap: reset;
     justify-content: space-between;

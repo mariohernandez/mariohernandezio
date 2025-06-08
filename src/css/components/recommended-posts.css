@@ -19,7 +19,7 @@
     margin-block-end: var(--size-20);
     padding-block-end: var(--size-5);
 
-    @media (--tablet-large) {
+    @media (width >= 63rem) {
       font-size: var(--font-size-20);
     }
   }

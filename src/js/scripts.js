@@ -1,5 +1,3 @@
-'use strict';
-
 /**
   * Creates click event for mobile navigation.
   *
@@ -10,7 +8,7 @@
 const navToggle = document.querySelector('.mobile-nav-toggle');
 const siteHeader = document.querySelector('.header');
 
-navToggle.addEventListener('click', function() {
+navToggle.addEventListener('click', () => {
   siteHeader.classList.toggle('nav-is-open');
 
   // Toggle the aria-expanded attribute based on menu open/close state..

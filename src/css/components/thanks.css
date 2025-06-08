@@ -1,7 +1,7 @@
 .thanks {
   max-width: var(--size-960);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     img {
       max-width: 75%;
     }
