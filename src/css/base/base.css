@@ -31,11 +31,11 @@ h4 {
 h1 {
   font-size: var(--font-size-26);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     font-size: var(--font-size-40);
   }
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     font-size: var(--font-size-50);
   }
 }

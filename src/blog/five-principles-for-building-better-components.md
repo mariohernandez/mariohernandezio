@@ -15,7 +15,7 @@ summary: 'With great power comes great responsibility.'
 When working on a component-based project, building components or patterns, can be a liberating experience because we are able to draft the best markup possible to build the most flexible, scalable and reusable components.  If you work with third party platforms such as SharePoint, WordPress, Drupal, or others, this becomes even more rewarding as in most cases content management systems are not known for producing the best markup possible.  However, this liberating experience can come a a price if you are not taking the appropriate measures and checks when building your library of patterns.
 In this post I am going to discuss five critical principles I follow when building components.  My goal is always to achieve first and foremost, semantic markup that works in all devices including assistive technologies, reusability, scalability, and finally, ease of use.  In some cases it is hard to achieve all of these goals so it is important to understand where you draw the line and what is more important in the long term.
 
-**Disclaimer**: _Components and Paterns are used interchangeably_.
+**Disclaimer**: _Components and Patterns are used interchangeably_.
 
 ## Find patterns in your patterns
 

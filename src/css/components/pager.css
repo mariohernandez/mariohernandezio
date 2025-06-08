@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     justify-content: space-around;
   }
 }

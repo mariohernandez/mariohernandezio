@@ -4,14 +4,11 @@
 }
 
 .series-card-set {
-  /* border-image-outset: 0 50vw;
-  border-image-slice: fill 0;
-  border-image-source: linear-gradient(var(--gray-light), var(--gray-light)); */
   background-color: var(--white);
   margin-inline: var(--size-20);
   max-width: var(--size-1200);
 
-  @media (--laptop) {
+  @media (width >= 75rem) {
     margin-inline: auto;
   }
 }
@@ -25,7 +22,7 @@
   gap: var(--size-40);
   grid-template-columns: 1fr;
 
-  @media (--laptop) {
+  @media (width >= 75rem) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -37,19 +34,8 @@
   padding: var(--size-50) var(--size-20);
   position: relative;
 
-  @media (--laptop) {
+  @media (width >= 75rem) {
     padding: var(--size-50);
-  }
-
-  .series-card-set & {
-    /* box-shadow: var(--shadow); */
-    /* background-image: linear-gradient(73deg, rebeccapurple 8.37%, #E1126E 88.5%); */
-    /* color: var(--white);
-
-    .series-card__title,
-    .series-card__link {
-      color: var(--white);
-    } */
   }
 
   > * + * {
@@ -69,19 +55,5 @@
 }
 
 .series-card__items {
-  /* create a new counter for the first time */
-  /* counter-reset: item 0; */
   padding-inline-start: var(--size-24);
-
-  /* Only show the 'Part x:' text on larger devices. */
-  /* @media (--tablet) {
-    li {
-      counter-increment: item;
-      list-style-type: none;
-
-      &::before {
-        content: "Part " counter(item) ": ";
-      }
-    }
-  } */
 }

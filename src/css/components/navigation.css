@@ -15,7 +15,7 @@
     left: 0;
   }
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     background-color: var(--white);
     border: 0;
     padding: 0;
@@ -30,7 +30,7 @@
   list-style: none;
   text-align: center;
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@
 }
 
 .navigation__item {
-  @media (--tablet) {
+  @media (width >= 48rem) {
     /* Hides icon from all links except the search link. */
     &:not(.navigation__item--search) {
       svg {
@@ -72,7 +72,7 @@
       inline-size: var(--size-18);
     }
 
-    @media (--tablet) {
+    @media (width >= 48rem) {
       font-size: var(--font-size-20);
       padding-inline: var(--size-20);
       position: relative;
@@ -128,7 +128,7 @@
     }
   }
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     display: none;
   }
 }

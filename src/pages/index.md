@@ -6,7 +6,7 @@ hero:
   heading: 'I build websites'
   subheading: 'and write about it on this blog'
   button: {
-    'text': 'More about me',
+    'text': 'Learn more',
     'url': '#aboutme'
   }
 featuredPost:

@@ -7,12 +7,12 @@
   margin-block-end: var(--size-60);
   max-width: var(--size-960);
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     margin-block: var(--size-30) var(--size-80);
     margin-inline: var(--size-20);
   }
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     margin-inline: auto;
   }
 }
@@ -26,7 +26,7 @@
   z-index: var(--high);
 
   /* On tablet and beyond, we unstick the header. */
-  @media (--tablet) {
+  @media (width >= 48rem) {
     align-items: center;
     display: flex;
     justify-content: space-between;

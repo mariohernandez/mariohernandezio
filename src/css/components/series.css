@@ -17,7 +17,7 @@
   }
 
   /* Only show the 'Part x:' text on larger devices. */
-  @media (--tablet) {
+  @media (width >= 48rem) {
     li {
       /* increment the counter on each list item */
       counter-increment: item;

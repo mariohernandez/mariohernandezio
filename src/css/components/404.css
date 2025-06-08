@@ -88,7 +88,7 @@
     max-width: 45ch;
     margin-inline: var(--size-20);
 
-    @media (--tablet-large) {
+    @media (width >= 63rem) {
       margin-inline: auto;
     }
   }

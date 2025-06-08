@@ -59,7 +59,7 @@
     text-decoration: underline;
   }
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     font-size: var(--font-size-20);
   }
 }
@@ -67,7 +67,7 @@
 .blog__teaser {
   font-size: var(--font-size-16);
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     font-size: var(--font-size-18);
   }
 }

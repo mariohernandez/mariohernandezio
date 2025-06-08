@@ -5,7 +5,7 @@
 
 .about-me {
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     margin-inline: auto;
     max-width: var(--size-720);
   }
@@ -20,7 +20,7 @@
   background-color: var(--gray-light);
   padding: var(--size-70) var(--size-30) var(--size-30);
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     padding-block-start: var(--size-20);
     padding-inline-start: var(--size-250);
   }
@@ -36,7 +36,7 @@
   position: relative;
   width: var(--size-180);
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     margin: 0 0 -20rem -4rem;
     width: var(--size-250);
   }
@@ -47,7 +47,7 @@
     margin: 0 auto;
     width: var(--size-180);
 
-    @media (--tablet-large) {
+    @media (width >= 63rem) {
       box-shadow: var(--box-shadow);
       height: var(--size-278);
       margin: unset;
@@ -60,7 +60,7 @@
 .about__full {
   max-width: var(--size-960);
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     display: grid;
     grid-template-columns: auto var(--size-360);
     grid-gap: var(--size-50);
@@ -73,7 +73,7 @@
   font-weight: var(--weight-600);
   text-transform: uppercase;
 
-  @media (--tablet) {
+  @media (width >= 48rem) {
     font-size: var(--font-size-20);
   }
 }
@@ -83,7 +83,7 @@
   gap: var(--size-50);
   margin-block-start: var(--size-40);
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     flex-direction: column;
     gap: var(--size-60);
   }
@@ -92,7 +92,7 @@
     border: 1px solid var(--gray-dark);
     box-shadow: var(--box-shadow-thin);
 
-    @media (--tablet-large) {
+    @media (width >= 63rem) {
       box-shadow: var(--box-shadow);
     }
   }
@@ -100,7 +100,7 @@
 
 .about__image--first {
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     height: var(--size-480);
     width: var(--size-360);
   }
@@ -108,7 +108,7 @@
 
 .about__image--second {
 
-  @media (--tablet-large) {
+  @media (width >= 63rem) {
     height: auto;
     width: var(--size-360);
   }
@@ -119,7 +119,7 @@
   line-height: var(--line-height-1);
   margin-block-end: var(--size-20);
 
-  @media (--laptop) {
+  @media (width >= 75rem) {
     text-align: left;
   }
 }

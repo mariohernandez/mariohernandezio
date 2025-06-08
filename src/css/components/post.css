@@ -134,7 +134,7 @@
     margin-block-end: 0;
     padding-inline-start: 0;
 
-     @media (--tablet) {
+     @media (width >= 48rem) {
       flex-direction: row;
     }
   }
