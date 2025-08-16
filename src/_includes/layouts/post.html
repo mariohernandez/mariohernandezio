@@ -28,7 +28,7 @@
     {% include "partials/page-header.html" %}
 
     <div class="blog-post__content flow-40">
-      <div class="blog-post__image image-zoom" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
+      <div class="blog-post__image image-zoom">
         <img src="{{ featuredImage }}" alt="{{ featuredImageAlt}}" width="960" height="450" />
         {% if featuredImageCreditUrl or featuredImageCredit %}
           <div class="featured-article__image--credit">

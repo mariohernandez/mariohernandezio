@@ -1,7 +1,7 @@
 <section class="featured-article mb-100 mt-100">
   <div class="featured-article__inner">
     {% for item in collections.featuredPost %}
-      <div class="featured-article__image image-zoom" aria-hidden="true"> {# Hides this contaiiner and image from screen readers. #}
+      <div class="featured-article__image image-zoom">
         <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" width="960" height="450" />
         {% if item.data.featuredImageCreditUrl or item.data.featuredImageCredit %}
           <div class="featured-article__image--credit">
