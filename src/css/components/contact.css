@@ -44,7 +44,3 @@
   display: block;
   margin-block-end: var(--size-6);
 }
-
-.contact__form--heading {
-  font-size: var(--size-22);
-}

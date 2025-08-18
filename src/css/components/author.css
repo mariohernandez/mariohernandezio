@@ -17,8 +17,7 @@
   .button--link {
     align-items: center;
     display: flex;
-    font-size: var(--size-18) !important;
-    line-height: 1;
+    line-height: var(--line-height-1);
 
     .link-arrow {
       margin-inline-start: var(--size-2);
@@ -44,17 +43,15 @@
 .author__info {
   display: flex;
   flex-direction: column;
-  font-size: var(--size-16);
 }
 
 .author__by {
   color: var(--gray-darker);
-  font-size: var(--size-16);
-  font-weight: normal;
+  font-weight: var(--weight-400);
   margin-inline-end: var(--size-4);
 }
 
 .author__title {
   color: var(--gray-darker);
-  line-height: 1;
+  line-height: var(--line-height-1);
 }

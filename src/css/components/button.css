@@ -58,7 +58,6 @@
 .button--link {
   align-items: center;
   display: flex;
-  font-size: var(--font-size-18);
   font-weight: var(--weight-600);
   text-decoration: none;
 

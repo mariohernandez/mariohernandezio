@@ -18,7 +18,7 @@
 }
 
 .pager__link {
-  font-size: var(--font-size-16);
+  font-size: var(--font-body-sm);
   font-weight: var(--weight-600);
   text-decoration: none;
 }

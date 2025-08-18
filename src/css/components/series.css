@@ -39,7 +39,7 @@
   .series__title {
     border-block-end: 3px dotted var(--purple);
     color: var(--purple);
-    font-weight: 600;
+    font-weight: var(--weight-600);
     padding-block-end: var(--size-14);
     text-transform: uppercase;
   }

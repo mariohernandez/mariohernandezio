@@ -27,7 +27,6 @@
 }
 
 .about-me__heading {
-  font-size: var(--font-size-24);
   margin-block-end: var(--size-10);
 }
 
@@ -69,13 +68,8 @@
 }
 
 .about__intro {
-  font-size: var(--font-size-16);
   font-weight: var(--weight-600);
   text-transform: uppercase;
-
-  @media (width >= 48rem) {
-    font-size: var(--font-size-20);
-  }
 }
 
 .about__images {
@@ -127,6 +121,5 @@
 .about__social {
   align-items: center;
   display: flex;
-  font-size: var(--size-18);
-  font-weight: 600;
+  font-weight: var(--weight-600);
 }

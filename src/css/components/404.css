@@ -39,7 +39,7 @@
     font-family: var(--font-display);
     font-size: var(--size-mega);
     letter-spacing: -0.1ch;
-    line-height: 1;
+    line-height: var(--line-height-1);
     width: 100%;
     text-align: center;
   }

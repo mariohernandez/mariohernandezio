@@ -62,7 +62,7 @@
     gap: var(--size-16);
     text-decoration: none;
     text-transform: lowercase;
-    font-size: var(--font-size-18);
+    font-size: var(--font-body);
     font-weight: var(--weight-700);
     padding: var(--size-10);
     transition: var(--transition-color-03s);
