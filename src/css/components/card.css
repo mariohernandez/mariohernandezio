@@ -30,10 +30,6 @@
   }
 }
 
-.card__teaser {
-  line-height: var(--line-height-1.5);
-}
-
 .card__content {
   padding: var(--size-12);
 }
