@@ -1,6 +1,5 @@
 .eyebrow {
   display: block;
-  font-size: var(--font-size-12);
   font-weight: var(--weight-500);
   letter-spacing: 0.12em;
   line-height: var(--line-height-1);
@@ -8,17 +7,13 @@
 
   /* Changes styles for readtime text. */
   .blog-post__readtime {
-    font-size: var(--font-size-14);
+    font-size: var(--font-body-sm);
     letter-spacing: initial;
     text-transform: none;
   }
 
   @media (width >= 48rem) {
-    font-size: var(--font-size-14);
-  }
-
-  &.eyebrow--small {
-    font-size: var(--font-size-12);
+    font-size: var(--font-body-sm);
   }
 
   &::after {

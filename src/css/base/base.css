@@ -1,13 +1,13 @@
 html {
-  font-size: 62.5%;
+  font-size: 18px;
   scroll-behavior: smooth;
 }
 
 body {
   color: var(--gray-darker);
   font-family: var(--font-primary);
-  font-size: var(--font-size-20);
-  line-height: var(--line-height-1-8);
+  font-size: var(--font-body);
+  line-height: var(--line-height-1-4);
 }
 
 a {
@@ -25,31 +25,7 @@ h2,
 h3,
 h4 {
   color: var(--black);
-  line-height: var(--line-height-1);
-}
-
-h1 {
-  font-size: var(--font-size-26);
-
-  @media (width >= 48rem) {
-    font-size: var(--font-size-40);
-  }
-
-  @media (width >= 63rem) {
-    font-size: var(--font-size-50);
-  }
-}
-
-h2 {
-  font-size: var(--font-size-30);
-}
-
-h3 {
-  font-size: var(--font-size-24);
-}
-
-h4 {
-  font-size: var(--font-size-18);
+  line-height: var(--line-height-1-2);
 }
 
 /* The 'height: auto' ensures post image resizes proportional

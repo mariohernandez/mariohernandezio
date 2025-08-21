@@ -1,7 +1,7 @@
 .site__logo {
   color: var(--white);
   display: block;
-  font-size: var(--font-size-18);
+  font-size: var(--font-body);
   font-weight: var(--weight-400);
   letter-spacing: 0.02rem;
   line-height: var(--line-height-1);

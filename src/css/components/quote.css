@@ -8,7 +8,6 @@ blockquote {
   font-family: var(--font-secondary);
   font-size: var(--font-size-22);
   font-style: italic;
-  line-height: var(--line-height-14);
   margin: var(--size-40) auto;
   padding: var(--size-20);
   position: relative;

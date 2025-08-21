@@ -52,28 +52,15 @@
 }
 
 .blog__link {
-  font-size: var(--font-size-18);
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
-
-  @media (width >= 63rem) {
-    font-size: var(--font-size-20);
-  }
-}
-
-.blog__teaser {
-  font-size: var(--font-size-16);
-
-  @media (width >= 63rem) {
-    font-size: var(--font-size-18);
-  }
 }
 
 .blog__date {
-  font-size: var(--font-size-14);
+  font-size: var(--font-body-sm);
 }
 
 /* See more posts link. */

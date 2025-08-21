@@ -45,8 +45,7 @@
   }
 
   .callout__heading {
-    font-size: var(--font-size-16);
-    font-weight: 600;
+    font-weight: var(--weight-600);
     margin-block-start: 0;
     text-transform: uppercase;
   }

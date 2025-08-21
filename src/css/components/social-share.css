@@ -19,6 +19,6 @@
 }
 
 .social-share__label {
-  font-size: var(--font-size-16);
+  font-size: var(--font-body-sm);
   white-space: nowrap;
 }

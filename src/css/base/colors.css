@@ -6,7 +6,12 @@
  */
 :root {
   --black: #0e1e25;
-  --white: #ffffff;
+  --white: #fff;
+  --grey-900: #141414;
+  --grey-700: #414141;
+  --grey-500: #999;
+  --grey-300: #ededed;
+  --grey-100: #f9f9f9;
   --gray-darkest: #141414;
   --gray-darker: #414141;
   --gray-darker2: #999999;

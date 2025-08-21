@@ -25,17 +25,9 @@
 }
 
 .card__title {
-  font-size: var(--size-18);
-  line-height: var(--line-height-1-4);
-
   &:hover {
     text-decoration: underline;
   }
-}
-
-.card__teaser {
-  font-size: var(--size-16);
-  line-height: var(--line-height-1.5);
 }
 
 .card__content {
