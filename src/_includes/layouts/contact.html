@@ -14,7 +14,8 @@
     </div>
     <div class="contact__second flow-20">
       <h2 class="contact__form--heading">Send me a message</h2>
-      <form action="https://api.web3forms.com/submit" method="POST" id="mh-contact" class="contact__form flow-20">
+      <form action="https://api.web3forms.com/submit" aria-labeledby="contact-form" method="POST" id="mh-contact" class="contact__form flow-20">
+        <h3 class="visually-hidden" id="contact-form">Mario's contact form</h3>
         <input type="hidden" name="access_key" value="2a6297fc-3c6b-4635-bd0d-2f0a4635bf91" />
         <input type="hidden" name="subject" value="New Submission from mariohernandez.io" />
         <input type="hidden" name="redirect" value="https://mariohernandez.io/thanks/" />

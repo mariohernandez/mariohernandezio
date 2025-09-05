@@ -4,6 +4,7 @@ module.exports = {
     require('cssnano'),
     require('postcss-nested')(),
     require('autoprefixer')(),
+    require('postcss-mixins')(),
     require('postcss-preset-env')({
       stage: 4,
       features: {
