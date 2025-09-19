@@ -10,7 +10,6 @@ blockquote {
   font-style: italic;
   line-height: var(--line-height-14);
   margin: var(--size-40) auto;
-  padding: var(--size-20);
   position: relative;
   border-left: var(--size-4) solid var(--purple);
   margin-block-start: var(--size-60);

@@ -34,7 +34,6 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    font-size: var(--size-step-2);
     max-width: 30ch;
     font-family: var(--font-display);
     font-size: var(--size-mega);

@@ -22,5 +22,5 @@
   --lighter-yellow: #fdf5e2;
   --light-purple: #d8bfd8;
   --lighter-purple: #fff0f5;
-  --text-color: --black; /* Value for Light mode. */
+  --text-color: var(--black); /* Value for Light mode. */
 }
