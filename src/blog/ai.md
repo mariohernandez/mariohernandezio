@@ -1,8 +1,8 @@
 ---
-date: "2025-09-15"
+date: "2025-09-28"
 title: "Code reviews using AI"
 slug: code-reviews-using-ai
-tags: ['ai', 'coding']
+tags: ['coding', 'ai']
 draft: false
 featured: true
 featuredImage: "/images/heroes/ai.webp"
@@ -10,48 +10,54 @@ featuredImageAlt: "Illustration of person using a laptop with coding-related gra
 imageThumb: "/images/thumbs/ai.webp"
 featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
-summary: "I've always thought of peer code review as a way to learn from others. Now you can use AI to not only review your code but also learn how your code can be improved."
+summary: "If you're skeptical about AI code reviews, you might be pleasantly surprised. It's a great tool for improving code quality."
 ---
-Peer code reviews are a critical part of any web development team. Not only do they validate the the quality and integrity of your code, but they are a great learning and teaching tool.
+Peer code reviews are a cornerstone of any successful web development team. I've always thought of peer code review as a way to learn from others. How many times while reviewing someone else's code have you thought to yourself: "_I didn't know you could do that!_", or, "_That's a nice trick, I'll try it next time!_".
 
-## Why should I use AI to reviw my code?
+_Disclaimer_: This blog post was inspired by a post by [Lullabot](https://www.lullabot.com/articles/how-automated-code-review-tools-reduce-pull-request-bottlenecks) about AI and code reviews. My take however, is different as I share my personal experience with these tools.
 
-The concept of automating tasks to be more productive and efficient when writing code is nothing new. We do it all the time to lint, format, and test our code. Doing code reviews through AI can provide another layer of scrutiny to improve your code's quality.
+## Why Use AI to Review Your Code?
 
-When I work on personal projects projects and I'm a one-developer team, AI is a big help to give my code a second set of eyes that otherwise I would not get.
+Automating tasks to boost productivity and efficiency is nothing new in web development. We already rely on tools to lint, format, and test our code. AI-powered code reviews add another layer of scrutiny, helping improve code quality by catching issues that might slip through the cracks during manual review.
 
-## Should AI replace peer code reviews?
+When working on personal projects as a solo developer, AI becomes an invaluable second set of eyes offering feedback I wouldn’t otherwise receive. For personal use, many AI tools offer a free tier plan that may lack the advanced bells and whistles, but provides a basic level of functionality that could still be helpful.
 
-No. There are factors sometimes when your code may need to be written a specific way. AI may flag your code as needing improvements because it does not have the full context of why the code was written your way. A peer on the other hand, may be fully aware of why it needs to be done this way and can focus on ensuring your code will not create regressions of any kind.
+## Should AI Replace Peer Code Reviews?
 
-## Which AI tool is the best for code reviews?
+No. While AI can be incredibly helpful, it lacks the full context behind your code decisions. Sometimes, code needs to be written a certain way due to business logic, legacy constraints, or specific architecture choices. AI might flag these as issues, whereas a peer reviewer—familiar with the context—can validate the approach and focus in ensuring your code doesn’t introduce regressions.
 
-Short answer: The one that works for you. Choosing an AI tool is no different than selecting a framework for your project or the plugin/packages you need to get the job done. The best thing to do is to test the tools you are aware of and see for yourself which provides the most value and provide the best experience.
+## Which AI Tool Is Best for Code Reviews?
 
-Some of the tools I've used in the past few months include:
+Short answer: The one that works best for you.
 
-* [GitHub Copilot](https://github.com/resources/articles/software-development)
-* [Google Gemini Code Assistant](https://codeassist.google/)
-* [CodeRabbit](https://www.coderabbit.ai/)
+Choosing an AI tool is like selecting a framework or plugin, it depends on your workflow, preferences, and project needs. The best approach is to try a few and see which one delivers the most value and best user experience. Recently I have tried [GitHub Copilot](https://github.com/resources/articles/software-development), [Google Gemini Code Assistant](https://codeassist.google/), and [CodeRabbit](https://www.coderabbit.ai/).
 
-## Should I trust AI to make the right choices?
+In most cases, the decision of selecting one tool boils down to cost and your specific environment. The good thing is that these tools are relatively easy to integrate and test before deciding on the one you feel works the best for you.
 
-I think you should still be skeptical about any code changes or recommendations by AI, but the thing about code is that either works or it doesn't. Testing and confirming the proposed updates work and follow standards is a good way to determine if AI is providing the right solutions.
+## Should You Trust AI to Make the Right Choices?
 
-## My experience with AI
+It’s wise to remain skeptical of any code changes or recommendations made by AI. But the beauty of code is that it either works or it doesn’t. Testing and validating AI-suggested changes against your standards is the best way to determine their effectiveness.
 
-I have used GitHub Copilot within my IDE and so far I have gotten mixed results. I tried CodeRabbit for a bit but I don't believe I gave it a fair chance and will probably try it again. The one I continue to be pleased with is Google Gemini Code Assistance (a mouth full).
-The integration with my Github personal repo was pretty straight forward and I was up and running in minutes.
+## My Experience with AI Code Review Tools
 
-I created a demo PR with legacy Twig code which honestly could be improved just by looking at it, but you know how it goes. The code does the following:
+I use GitHub Copilot within my IDE (VS Code), and it has been helpful at times when I needed a hand with code validation or bugs. I like it because is directly integrated with my editor and the feedback it provides is in context with the code as I write it.
+I briefly tried CodeRabbit, but I don’t think I gave it a fair shot—planning to revisit it soon. The tool I’ve recently enjoyed using is Google Gemini Code Assistant (yes, it’s a mouthful).
 
-* Uses a media embed component for embedding images on pages with specific aspect ratio and dimensions.
-* In the component's Twig, we check whether a specific CSS class exists in Drupal's attributes. The class is passed from the image size options provided to editos (i.e. Medium Landscape = `medium-landscape`, Small Portrait = `small-portrait`, etc.).
-* Based on the CSS class, we set a variable to render a media entity (image) using a preconfigured media view mode which is associated with the proper image style or responsive image style.
-* We also provide a default media view mode if the editor does not make a image size selection.
-* Finally, if the editor fails to add an image, a validation message is presented (the image may not always be required).
+The integration with my personal GitHub repo was straightforward—I was up and running in minutes. It reviews my code when I create a PR and provides a very detailed summary of the changes I'm introducing along with excellent recommendations for improvements or fixes.
 
-This is the original code and although it is a pretty simple example, the point is that I learned something new that makes my code more efficient, cleaner, and easier to maintain.
+## A Real-World Example
+
+I created a pull request with legacy Twig code that clearly needed improvement. Here's what the code does:
+
+1. It embeds images using a media component which provides a set of image dimensions options for editors to choose.
+1. Based on the user-selected option, a CSS class is passed through Drupal’s attributes (e.g., medium-landscape, small-portrait).
+1. Each CSS class is mapped to a Media view mode which in turn is configured with s specific image style.
+1 It provides a default view mode if no size is selected.
+1. Displays a validation message if no image is added to the component.
+
+While the code was relatively simple, the AI helped me refactor it into something cleaner, more efficient, and easier to maintain. I'll use this technique again whenever I get the chance.
+
+### Original code
 
 {% raw %}
 
@@ -129,6 +135,8 @@ This is the original code and although it is a pretty simple example, the point 
 
 After creating a PR which included the code above, Gemini Code Assistant recommended an update to the logic by using a cleaner and concised approach. Take a look:
 
+### Final code
+
 {% raw %}
 
 ```php
@@ -156,30 +164,28 @@ After creating a PR which included the code above, Gemini Code Assistant recomme
   {% endif %}
 {% endfor %}
 
+{# Using the twig_tweak module to set the media entity as the value of `image`. #}
 {% set image = drupal_entity('media', mid, view_mode) %}
 
 {% if image %}
-  <figure class="{{ classes }}" {{ attributes ? attributes|without('class') }}>
+  <figure class="image-embed{{ attributes ? ' ' ~ attributes.class }}"
+    {{ attributes ? attributes|without('class') }}>
     {{ image }}
   </figure>
 {% else %}
-  <div class="{{ classes }}" {{ attributes ? attributes|without('class') }}>
-    <span>No media exists, please update or delete this component.</span>
+  <div class="image-embed{{ attributes ? ' ' ~ attributes.class }}"
+    {{ attributes ? attributes|without('class') }}>
+    <div class="image-embed__empty">
+      <span>No media exists, please update or delete this component.</span>
+    </div>
   </div>
 {% endif %}
 ```
 
 {% endraw %}
 
-Again, the code is pretty trivial and this is not a ground-breaking situation, but the potential for improving my code using a system like this is definitely reasurring even when working on a silo in personal projects.
+Again, the code is pretty trivial and this is not a ground-breaking situation, but the potential for improving my code using a system like this is definitely a bonus even when working alone in a projects.
 
 ## In closing
 
-It's an exciting time in web development and although there is a lot of uncertainty about AI, there are areas that are relatively safe to experiment with while still being cautious for unexpected results.
-
-### Resources
-
-* [GitHub Copilot](https://github.com/resources/articles/software-development)
-* [Google Gemini Code Assistant](https://codeassist.google/)
-* [CodeRabbit](https://www.coderabbit.ai/)
-* [Lullabot's post on automated code reviews](https://www.lullabot.com/articles/how-automated-code-review-tools-reduce-pull-request-bottlenecks)
+It's an exciting time in web development and although there is a lot of uncertainty about AI, there are areas that are relatively safe to experiment with while still being cautious for unexpected results. Happy Coding! 🤖
