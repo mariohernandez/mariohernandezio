@@ -4,33 +4,41 @@
  */
 
 .button:not(.button--link) {
+  --bg: var(--white);
+  --border: var(--black);
+  --text: var(--black);
+  align-items: center;
   border-radius: var(--size-40);
-  background-color: var(--white);
-  border: var(--size-1) solid var(--black);
-  color: var(--black);
-  display: inline-block;
+  background-color: var(--bg);
+  border-color: var(--border);
+  border-width: 1px;
+  color: var(--text);
+  display: inline-flex;
   font-size: var(--font-size-12);
   font-weight: var(--weight-700);
+  inline-size: fit-content;
+  justify-content: center;
   letter-spacing: 0.2em;
   padding: var(--size-8) var(--size-20);
-  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   transition: var(--transition-background-color-04s), var(--transition-color-04s), var(--transition-border-color-04s);
   white-space: nowrap;
 
   &:hover {
-    background-color: var(--black);
-    color: var(--white);
+    --bg: var(--black);
+    --text: var(--white);
   }
 
   &.button--reverse {
-    background-color: var(--black);
-    color: var(--white);
+    --bg: var(--black);
+    --border: var(--black);
+    --text: var(--white);
 
     &:hover {
-      background-color: var(--white);
-      color: var(--black);
+      --bg: var(--white);
+      --border: var(--black);
+      --text: var(--black);
     }
   }
 

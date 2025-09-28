@@ -4,7 +4,7 @@ title: "Understanding The Owl Selector"
 subtitle: "A simple yet effective CSS solution for managing content flow in your HTML documents."
 tags: ['css', 'theme']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/heroes/owl.webp"
 featuredImageAlt: "White owl with fully spread wings flying over snow"
 imageThumb: "/images/thumbs/owl-thumb.webp"
