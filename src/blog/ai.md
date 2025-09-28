@@ -1,6 +1,7 @@
 ---
 date: "2025-09-28"
 title: "Code reviews using AI"
+subtitle: "My personal experience experimenting with AI tools for code reviews. This is only a preliminary take on AI tools but I see a lot of potential for improving my craft."
 slug: code-reviews-using-ai
 tags: ['coding', 'ai']
 draft: false
@@ -10,11 +11,11 @@ featuredImageAlt: "Illustration of person using a laptop with coding-related gra
 imageThumb: "/images/thumbs/ai.webp"
 featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
-summary: "If you're skeptical about AI code reviews, you might be pleasantly surprised. It's a great tool for improving code quality."
+summary: "If you're skeptical about AI tools for code reviews, you might be pleasantly surprised. There are reasons to get excited about them."
 ---
 Peer code reviews are a cornerstone of any successful web development team. I've always thought of peer code review as a way to learn from others. How many times while reviewing someone else's code have you thought to yourself: "_I didn't know you could do that!_", or, "_That's a nice trick, I'll try it next time!_".
 
-_Disclaimer_: This blog post was inspired by a post by [Lullabot](https://www.lullabot.com/articles/how-automated-code-review-tools-reduce-pull-request-bottlenecks) about AI and code reviews. My take however, is different as I share my personal experience with these tools.
+_Disclaimer_: This blog post was inspired by a post by [Lullabot](https://www.lullabot.com/articles/how-automated-code-review-tools-reduce-pull-request-bottlenecks){target="_blank" rel="noopener noreferrer"} about AI and code reviews. My take however, is different as I share my personal experience with these tools.
 
 ## Why Use AI to Review Your Code?
 
@@ -30,7 +31,7 @@ No. While AI can be incredibly helpful, it lacks the full context behind your co
 
 Short answer: The one that works best for you.
 
-Choosing an AI tool is like selecting a framework or plugin, it depends on your workflow, preferences, and project needs. The best approach is to try a few and see which one delivers the most value and best user experience. Recently I have tried [GitHub Copilot](https://github.com/resources/articles/software-development), [Google Gemini Code Assistant](https://codeassist.google/), and [CodeRabbit](https://www.coderabbit.ai/).
+Choosing an AI tool is like selecting a framework or plugin, it depends on your workflow, preferences, and project needs. The best approach is to try a few and see which one delivers the most value and best user experience. Recently I have tried [GitHub Copilot](https://github.com/resources/articles/software-development){target="_blank" rel="noopener noreferrer"}, [Google Gemini Code Assistant](https://codeassist.google/){target="_blank" rel="noopener noreferrer"}, and [CodeRabbit](https://www.coderabbit.ai/){target="_blank" rel="noopener noreferrer"}.
 
 In most cases, the decision of selecting one tool boils down to cost and your specific environment. The good thing is that these tools are relatively easy to integrate and test before deciding on the one you feel works the best for you.
 
