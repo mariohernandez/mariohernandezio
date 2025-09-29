@@ -1,12 +1,53 @@
 /**
- * @file
- * Font family, font weight, and line height variables.
+ * @file typography.css.
+ * Global typography custom properties:
+ * - Font family, font-size, font weight, and line height variables.
  */
-:root {
+:where(html) {
   /* Font family. */
   --font-primary: Wotfard,Helvetica,sans-serif;
   --font-secondary: Georgia,'Times New Roman',Times,serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Base font sizes. */
+  --text-min: 0.778rem; /* 14px */
+  --text-max: 0.889rem; /* 16px */
+  --body-min: 1rem;     /* 18px */
+  --body-max: 1.111rem; /* 20px */
+
+  /* Global font size variables. */
+  --text-default: clamp(var(--body-min), 0.963rem + 0.185vw, var(--body-max));
+  --text-small: clamp(var(--text-min), 0.741rem + 0.185vw, var(--text-max))
+
+  /* Homepage large title in all caps. */
+  --big-title-min: 3.5rem;  /* 56px */
+  --big-title-max: 4.5rem;  /* 72px */
+
+  /* Global size for all headings. */
+  --h1-min: 1.778rem;   /* 32px */
+  --h1-max: 2.778rem;   /* 50px */
+  --h2-min: 1.333rem;   /* 24px */
+  --h2-max: 1.778rem;   /* 32px */
+  --h3-min: 1rem;       /* 18px */
+  --h3-max: 1.333rem;   /* 24px */
+  --h4-min: 0.889rem;   /* 16px */
+  --h4-max: 1.125rem;   /* 18px */
+
+  h1 {
+    font-size: clamp(var(--h1-min), 1.444rem + 1.667vw, var(--h1-max));
+  }
+
+  h2 {
+    font-size: clamp(var(--h2-min), 1.185rem + 0.741vw, var(--h2-max));
+  }
+
+  h3 {
+    font-size: clamp(var(--h3-min), 0.889rem + 0.556vw, var(--h3-max));
+  }
+
+  h4 {
+    font-size: clamp(var(--h4-min), 0.852rem + 0.185vw, var(--h4-max));
+  }
 
   /* Font size. */
   --font-size-10: 1rem;
@@ -38,9 +79,7 @@
   --font-size-100: 10rem;
   --font-size-140: 14rem;
 
-  /* Font weight. */
-  --weight-100: 100;
-  --weight-200: 200;
+  /* Font weights. */
   --weight-300: 300;
   --weight-400: 400;
   --weight-500: 500;
@@ -49,13 +88,11 @@
   --weight-800: 800;
   --weight-900: 900;
 
-  /* Line height. */
-  --line-height-1: 1;
-  --line-height-1-1: 1.1;
-  --line-height-1-2: 1.2;
-  --line-height-1-4: 1.4;
-  --line-height-1-5: 1.5;
-  --line-height-1-8: 1.8;
-  --line-height-2: 2;
-  --line-height-2-4: 2.4;
+  /* Line heights. */
+  --leading-none: 1.1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.3;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.625;
+  --leading-loose: 1.8;
 }
