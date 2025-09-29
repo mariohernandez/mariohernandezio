@@ -11,6 +11,7 @@ body {
   color: var(--color-primary);
   font-family: var(--font-primary);
   font-size: var(--text-default);
+  font-synthesis: none;
   line-height: var(--leading-relaxed);
 }
 

@@ -5,8 +5,8 @@
  */
 :where(html) {
   /* Font family. */
-  --font-primary: Wotfard,Helvetica,sans-serif;
-  --font-secondary: Georgia,'Times New Roman',Times,serif;
+  --font-primary: Wotfard, Arial, sans-serif;
+  --font-secondary: Georgia, 'Times New Roman', Times,serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Base font sizes. */
@@ -15,7 +15,9 @@
   --body-min: 1rem;     /* 18px */
   --body-max: 1.111rem; /* 20px */
 
-  /* Global font size variables. */
+  /* Global font size variables.
+   * https://www.marcbacon.com/tools/clamp-calculator/
+   */
   --text-default: clamp(var(--body-min), 0.963rem + 0.185vw, var(--body-max));
   --text-small: clamp(var(--text-min), 0.741rem + 0.185vw, var(--text-max))
 
@@ -49,7 +51,7 @@
     font-size: clamp(var(--h4-min), 0.852rem + 0.185vw, var(--h4-max));
   }
 
-  /* Font size. */
+  /* Other available Font sizes. */
   --font-size-10: 1rem;
   --font-size-12: 1.2rem;
   --font-size-14: 1.4rem;
