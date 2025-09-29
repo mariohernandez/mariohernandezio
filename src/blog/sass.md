@@ -14,4 +14,5 @@ imageThumb: "/images/thumbs/mountains-thumb.webp"
 featuredImageCredit: "Alex Shutin"
 featuredImageCreditUrl: "https://unsplash.com/@fiveamstories"
 summary: "In this post we'll go over the process of making Drupal aware of the components we have built in Storybook."
+eleventyExcludeFromCollections: true
 ---
