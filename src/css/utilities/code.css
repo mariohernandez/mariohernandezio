@@ -1,49 +1,7 @@
 /**
- * @file base.css.
- * Base project styles.
- */
-html {
-  font-size: 62.5%; /* 1rem = 10px */
-  scroll-behavior: smooth;
-}
-
-body {
-  color: var(--color-primary);
-  font-family: var(--font-primary);
-  font-size: var(--text-default);
-  font-synthesis: none;
-  line-height: var(--leading-relaxed);
-}
-
-a {
-  color: var(--color-secondary);
-  text-decoration: underline;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-primary);
-  line-height: var(--leading-snug); /* 1.3 */
-}
-
-/* The 'height: auto' ensures post image resizes proportional
-keeping its original aspect ratio. */
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
-
-/* Code snippets styles.
+ * @file
+ * Styles overrides for code snippets.
+ /*
  * If code snippet is inline with text. */
 .blog-post__body {
   ul,

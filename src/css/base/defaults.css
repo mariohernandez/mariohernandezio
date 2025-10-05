@@ -1,0 +1,36 @@
+/**
+ * @file base.css.
+ * Base project styles.
+ */
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-default);
+  font-synthesis: none;
+  line-height: var(--leading-relaxed);
+}
+
+/* a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+  line-height: var(--leading-snug); /* 1.3 */
+}

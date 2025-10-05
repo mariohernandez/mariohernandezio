@@ -8,6 +8,7 @@
 
 @import './utilities/animations';
 @import './utilities/breakpoints';
+@import './utilities/code';
 @import './utilities/link-arrow';
 @import './utilities/margins';
 @import './utilities/spacing';
