@@ -5,7 +5,7 @@ subtitle: "My personal experience experimenting with AI tools for code reviews. 
 slug: code-reviews-using-ai
 tags: ['coding', 'ai']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/heroes/ai.webp"
 featuredImageAlt: "Illustration of person using a laptop with coding-related graphics around him."
 imageThumb: "/images/thumbs/ai.webp"
