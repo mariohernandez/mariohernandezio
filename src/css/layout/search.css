@@ -1,0 +1,13 @@
+.search__page {
+  .pagefind-ui__form {
+    &::before {
+      height: 24px;
+      top: 14px;
+      width: 24px;
+    }
+
+    input[type="text"] {
+      padding-left: 50px;
+    }
+  }
+}

@@ -18,6 +18,7 @@
 @import './utilities/zindex';
 
 @import './layout/layout';
+@import './layout/search';
 
 @import './components/404';
 @import './components/about';

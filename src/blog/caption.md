@@ -3,6 +3,9 @@ date: "2025-10-06"
 title: "Normalize images captions in your website"
 subtitle: "A cleaner and more performant approach to managing your website images caption text."
 tags: ['css', 'theme']
+series:
+  slug: "css"
+  order: 1
 draft: false
 featured: true
 featuredImage: "/images/heroes/frame.webp"

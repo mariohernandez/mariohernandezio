@@ -31,7 +31,7 @@
   z-index: var(--lower);
 
   @media (width >= 48rem) {
-    background-color: var(--white);
+    /* background-color: var(--white); */
     gap: reset;
     justify-content: space-between;
     padding: 0;
