@@ -16,7 +16,7 @@
   }
 
   @media (width >= 48rem) {
-    background-color: var(--white);
+    /* background-color: var(--white); */
     border: 0;
     padding: 0;
     position: static;
