@@ -1,46 +1,126 @@
 /**
- * @file
- * Font family, font weight, and line height variables.
+ * @file typography.css.
+ * Global typography custom properties:
+ * - Font family, font-size, font weight, and line height variables.
  */
-:root {
+:where(html) {
   /* Font family. */
-  --font-primary: Wotfard,Helvetica,sans-serif;
-  --font-secondary: Georgia,'Times New Roman',Times,serif;
+  --font-primary: Wotfard, Arial, sans-serif;
+  --font-secondary: Georgia, 'Times New Roman', Times,serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Font size. */
-  --font-size-10: 1rem;
-  --font-size-12: 1.2rem;
-  --font-size-14: 1.4rem;
-  --font-size-16: 1.6rem;
-  --font-size-18: 1.8rem;
-  --font-size-20: 2rem;
-  --font-size-22: 2.2rem;
-  --font-size-24: 2.4rem;
-  --font-size-25: 2.5rem;
-  --font-size-26: 2.6rem;
-  --font-size-28: 2.8rem;
-  --font-size-30: 3rem;
-  --font-size-32: 3.2rem;
-  --font-size-34: 3.4rem;
-  --font-size-35: 3.5rem;
-  --font-size-36: 3.6rem;
-  --font-size-38: 3.8rem;
-  --font-size-40: 4rem;
-  --font-size-42: 4.2rem;
-  --font-size-44: 4.4rem;
-  --font-size-46: 4.6rem;
-  --font-size-48: 4.8rem;
-  --font-size-50: 5rem;
-  --font-size-60: 6rem;
-  --font-size-65: 6.5rem;
-  --font-size-80: 8rem;
-  --font-size-100: 10rem;
-  --font-size-140: 14rem;
+  /* Base font sizes. */
+  --text-min: 0.778rem; /* 14px */
+  --text-max: 0.889rem; /* 16px */
+  --body-min: 0.889rem; /* 16px */
+  --body-max: 1rem;     /* 18px */
 
-  /* Font weight. */
-  --weight-100: 100;
-  --weight-200: 200;
+  /* Global font size variables.
+   * https://www.marcbacon.com/tools/clamp-calculator/
+   */
+  --text-default: clamp(var(--body-min), 0.845rem + 0.217vw, var(--body-max));
+  --text-small: clamp(var(--text-min), 0.734rem + 0.217vw, var(--text-max))
+
+  /* Global size for all headings. */
+  --h1-min: 2.222rem;   /* 40px */
+  --h1-max: 2.889rem;   /* 52px */
+  --h2-min: 1.778rem;   /* 32px */
+  --h2-max: 2.222rem;   /* 40px */
+  --h3-min: 1.333rem;   /* 24px */
+  --h3-max: 1.778rem;   /* 32px */
+  --h4-min: 1.111rem;   /* 20px */
+  --h4-max: 1.333rem;   /* 24px */
+
+  /* Homepage large title in all caps. */
+  --big-title-min: 3.111rem;  /* 56px */
+  --big-title-max: 4rem;      /* 72px */
+
+  --hero-title: clamp(var(--big-title-min), 2.763rem + 1.739vw, var(--big-title-max));
+
+  /* Other available Font sizes. */
+  --font-size-2: 0.111rem;    /* 2px */
+  --font-size-4: 0.222rem;    /* 4px */
+  --font-size-6: 0.333rem;    /* 6px */
+  --font-size-8: 0.444rem;    /* 8px */
+  --font-size-10: 0.556rem;   /* 19px */
+  --font-size-12: 0.667rem;   /* 12px */
+  --font-size-14: 0.778rem;   /* 14px */
+  --font-size-16: 0.889rem;   /* 16px */
+  --font-size-18: 1rem;       /* 18px */
+  --font-size-20: 1.111rem;   /* 29px */
+  --font-size-22: 1.222rem;   /* 22px */
+  --font-size-24: 1.333rem;   /* 24px */
+  --font-size-26: 1.444rem;   /* 26px */
+  --font-size-28: 1.556rem;   /* 28px */
+  --font-size-30: 1.667rem;   /* 30px */
+  --font-size-32: 1.778rem;   /* 32px */
+  --font-size-34: 1.889rem;   /* 34px */
+  --font-size-36: 2rem;       /* 36px */
+  --font-size-38: 2.111rem;   /* 38px */
+  --font-size-40: 2.222rem;   /* 40px */
+  --font-size-42: 2.333rem;   /* 42px */
+  --font-size-44: 2.444rem;   /* 44px */
+  --font-size-46: 2.556rem;   /* 46px */
+  --font-size-48: 2.667rem;   /* 48px */
+  --font-size-50: 2.778rem;   /* 59px */
+  --font-size-52: 2.889rem;   /* 52px */
+  --font-size-54: 3rem;       /* 54px */
+  --font-size-56: 3.111rem;   /* 56px */
+  --font-size-58: 3.222rem;   /* 58px */
+  --font-size-60: 3.333rem;   /* 60px */
+  --font-size-62: 3.444rem;   /* 62px */
+  --font-size-64: 3.556rem;   /* 64px */
+  --font-size-66: 3.667rem;   /* 66px */
+  --font-size-68: 3.778rem;   /* 68px */
+  --font-size-70: 3.889rem;   /* 70px */
+  --font-size-72: 4rem;       /* 72px */
+  --font-size-74: 4.111rem;   /* 74px */
+  --font-size-76: 4.222rem;   /* 76px */
+  --font-size-78: 4.333rem;   /* 78px */
+  --font-size-80: 4.444rem;   /* 80px */
+  --font-size-82: 4.556rem;   /* 82px */
+  --font-size-84: 4.667rem;   /* 84px */
+  --font-size-86: 4.778rem;   /* 86px */
+  --font-size-88: 4.889rem;   /* 88px */
+  --font-size-90: 5rem;       /* 90px */
+  --font-size-92: 5.111rem;   /* 92px */
+  --font-size-94: 5.222rem;   /* 94px */
+  --font-size-96: 5.333rem;   /* 96px */
+  --font-size-98: 5.444rem;   /* 98px */
+  --font-size-100: 5.556rem;  /* 100px */
+  --font-size-102: 5.667rem;  /* 102px */
+  --font-size-104: 5.778rem;  /* 104px */
+  --font-size-106: 5.889rem;  /* 106px */
+  --font-size-108: 6rem;      /* 108px */
+  --font-size-110: 6.111rem;  /* 110px */
+  --font-size-112: 6.222rem;  /* 112px */
+  --font-size-114: 6.333rem;  /* 1114px */
+  --font-size-116: 6.444rem;  /* 116px */
+  --font-size-118: 6.556rem;  /* 118px */
+  --font-size-120: 6.667rem;  /* 120px */
+  --font-size-122: 6.778rem;  /* 122px */
+  --font-size-124: 6.889rem;  /* 124px */
+  --font-size-126: 7rem;      /* 126px */
+  --font-size-128: 7.111rem;  /* 128px */
+  --font-size-130: 7.222rem;  /* 130px */
+  --font-size-132: 7.333rem;  /* 132px */
+  --font-size-134: 7.444rem;  /* 134px */
+  --font-size-136: 7.556rem;  /* 136px */
+  --font-size-138: 7.667rem;  /* 138px */
+  --font-size-140: 7.778rem;  /* 140px */
+  --font-size-142: 7.889rem;  /* 142px */
+  --font-size-144: 8rem;      /* 144px */
+  --font-size-146: 8.111rem;  /* 146px */
+  --font-size-148: 8.222rem;  /* 148px */
+  --font-size-150: 8.333rem;  /* 159px */
+  --font-size-152: 8.444rem;  /* 152px */
+  --font-size-154: 8.556rem;  /* 154px */
+  --font-size-156: 8.667rem;  /* 156px */
+  --font-size-158: 8.778rem;  /* 158px */
+  --font-size-160: 8.889rem;  /* 160px */
+  --font-size-162: 9rem;      /* 162px */
+
+  /* Font weights. */
   --weight-300: 300;
   --weight-400: 400;
   --weight-500: 500;
@@ -49,13 +129,11 @@
   --weight-800: 800;
   --weight-900: 900;
 
-  /* Line height. */
-  --line-height-1: 1;
-  --line-height-1-1: 1.1;
-  --line-height-1-2: 1.2;
-  --line-height-1-4: 1.4;
-  --line-height-1-5: 1.5;
-  --line-height-1-8: 1.8;
-  --line-height-2: 2;
-  --line-height-2-4: 2.4;
+  /* Line heights. */
+  --leading-none: 1.1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.3;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.625;
+  --leading-loose: 1.8;
 }

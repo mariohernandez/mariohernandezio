@@ -1,113 +1,42 @@
+/**
+ * @file base.css.
+ * Base project styles.
+ */
+
 html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
+  font-size: 112.5%; /* = 18px */
 }
 
 body {
-  color: var(--gray-darker);
+  color: var(--color-primary);
   font-family: var(--font-primary);
-  font-size: var(--font-size-20);
-  line-height: var(--line-height-1-8);
-}
-
-a {
-  color: var(--black);
-  text-decoration: underline;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
+  font-size: var(--text-default);
+  font-synthesis: none;
+  line-height: var(--leading-relaxed);
 }
 
 h1,
 h2,
 h3,
-h4 {
-  color: var(--black);
-  line-height: var(--line-height-1);
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+  line-height: var(--leading-snug); /* 1.3 */
 }
 
 h1 {
-  font-size: var(--font-size-26);
-
-  @media (width >= 48rem) {
-    font-size: var(--font-size-40);
-  }
-
-  @media (width >= 63rem) {
-    font-size: var(--font-size-50);
-  }
+  font-size: clamp(var(--h1-min), 1.961rem + 1.304vw, var(--h1-max));
 }
 
 h2 {
-  font-size: var(--font-size-30);
+  font-size: clamp(var(--h2-min), 1.604rem + 0.87vw, var(--h2-max));
 }
 
 h3 {
-  font-size: var(--font-size-24);
+  font-size: clamp(var(--h3-min), 1.159rem + 0.87vw, var(--h3-max));
 }
 
 h4 {
-  font-size: var(--font-size-18);
-}
-
-/* The 'height: auto' ensures post image resizes proportional
-keeping its original aspect ratio. */
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
-
-/* Code snippets styles.
- * If code snippet is inline with text. */
-.blog-post__body {
-  ul,
-  ol,
-  p {
-    code {
-      background-color: var(--gray-lighten);
-      border: 1px solid var(--gray-medium);
-      border-radius: 5px;
-      color: var(--gray-darkest);
-      display: inline-block;
-      font-family: var(--font-monospace);
-      font-size: var(--font-size-16);
-      line-height: 1;
-      padding-block: var(--size-3);
-      padding-inline: var(--size-5);
-      vertical-align: middle;
-      word-break: break-all;
-    }
-  }
-}
-
-code[class*="language-"] {
-  font-size: var(--font-size-14);
-  line-height: 1.3;
-}
-
-/* Styles for code blocks line numbers */
-pre {
-  counter-reset: lineNumber;
-}
-
-pre[class*="language-"] {
-  margin-block-end: var(--size-30);
-  margin-block-start: var(--size-10);
-}
-
-code .highlight-line:before {
-  -webkit-user-select: none;
-  border-right: 1px solid #404040;
-  color: #858585;
-  content: counter(lineNumber);
-  counter-increment: lineNumber;
-  display: inline-block;
-  font-variant-numeric: tabular-nums;
-  margin-right: 1.2em;
-  padding-right: 1.2em;
-  text-align: right;
-  width: 2.4em;
+  font-size: clamp(var(--h4-min), 1.024rem + 0.435vw, var(--h4-max));
 }
