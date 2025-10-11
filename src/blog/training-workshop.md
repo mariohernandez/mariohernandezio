@@ -2,7 +2,7 @@
 date: "2018-05-20"
 title: "Running a training workshop"
 tags: ['training']
-draft: false
+draft: true
 featured: false
 featuredImage: "/images/training-workshop.webp"
 featuredImageAlt: "Developers looking at computer screen"
@@ -10,6 +10,7 @@ imageThumb: "/images/thumbs/training-workshop.webp"
 featuredImageCredit: "Unsplash.com"
 featuredImageCreditUrl: "https://unsplash.com/"
 summary: "For the past couple of years I have been running private and community driven training workshops and I'd like to share my experiences and lessons learned."
+eleventyExcludeFromCollections: true
 ---
 **Update 1-10-19**
 I wrote an extended version of this post at [Mediacurrent's blog](https://www.mediacurrent.com/blog/planning-effective-training/), check it out.
