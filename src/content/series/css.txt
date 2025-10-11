@@ -1,0 +1,14 @@
+---
+title: CSS
+description: "Some of my favorite tricks and tips for building modern and accessible webistes using the latest CSS techniques and features."
+series:
+  slug: "css"
+  description: "A series for post tagged with CSS"
+  order: 10
+permalink: /series/css/index.html
+---
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  {% include "./seriesLogic.html" %}
+{% endblock %}

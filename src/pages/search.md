@@ -1,6 +1,6 @@
 ---
 title: "Looking for somethin'?"
-body: 'Search here or check out some of my posts below.'
+body: "Let's start"
 permalink: '/search/index.html'
 layout: 'layouts/search.html'
 ---

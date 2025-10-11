@@ -3,6 +3,9 @@ date: "2025-05-01"
 title: "Understanding The Owl Selector"
 subtitle: "A simple yet effective CSS solution for managing content flow in your HTML documents."
 tags: ['css', 'theme']
+# series:
+#   slug: "css"
+#   order: 2
 draft: false
 featured: false
 featuredImage: "/images/heroes/owl.webp"

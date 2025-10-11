@@ -2,6 +2,9 @@
 date: "2020-12-13"
 title: "Styling Forms Elements"
 tags: ['css', 'forms']
+# series:
+#   slug: "css"
+#   order: 3
 draft: false
 featured: false
 featuredImage: "/images/frames.webp"
