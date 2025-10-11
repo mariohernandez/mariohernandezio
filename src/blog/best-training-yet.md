@@ -2,7 +2,7 @@
 date: "2019-04-20"
 title: "Our best training yet"
 tags: ['drupalcon', 'training']
-draft: false
+draft: true
 featured: false
 featuredImage: "/images/students.webp"
 featuredImageAlt: "Team members conducting training workshop"
@@ -10,6 +10,7 @@ imageThumb: "/images/thumbs/students.webp"
 featuredCredit: "Mario Hernandez"
 featuredCreditUrl: "https://twitter.com/imariohernandez"
 summary: "DrupalCon Seattle 2019 proved to be our best experience yet at conducting a training workshop and would like to share the good and bad with you."
+eleventyExcludeFromCollections: true
 ---
 
 For the past few years we've been working on a training curriculum around [Component Based Development](https://events.drupal.org/seattle2019/training/component-based-development) and every time we finish updating it for an upcoming event we feel really good about it and think we finally got it.  In reality, a training curriculum for a topic so complex as Component Development is probably never finished.
