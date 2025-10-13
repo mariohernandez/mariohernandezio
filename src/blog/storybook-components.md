@@ -316,7 +316,6 @@ In addition, I also marked the template path.  As you can see the current templa
 
 And finally, I marked examples of attributes Drupal is injecting in the markup. These attributes may not always be useful but it is a good practice to ensure they are available even when we are writing custom markup for our components.
 
-
 ## Create a template suggestion
 
 By looking at the path of the template in the code inspector, we can see that the original template being used is located inside the Olivero core theme. The debugging screenshot above shows a pretty extensive list of templates suggestions, and based on our requirements, copying the file **node--teaser.html.twig** makes sense since we are going to be working with a node in teaser view mode.
