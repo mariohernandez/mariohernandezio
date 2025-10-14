@@ -65,6 +65,22 @@ The Style options module provides three plugins:
 * The **Background Color** plugin, for attaching background colors to components.
 * The **Background Image** plugin, for attaching background images to components.
 
+===== Consider editing this =======
+### Customizing Style Options
+
+To configure Style Options for your project, follow these steps:
+
+1. Create configuration files in your module or theme directory with the
+   naming convention `[module name].style_options.yml` or
+   `[theme name].style_options.yml`.
+1. Define the desired style options within these configuration files. Refer to
+   `example.style_options.yml` for guidance on available configuration options
+    and syntax.
+1. Save the configuration files, and the defined styles will be applied to the
+   corresponding components in your Drupal site.
+
+===========
+
 In this post we will only focus in the **CSS class** plugin for simplicity.
 
 Here's an example of customizing options to change the orientation of the card's content to switch the image/text to the oposite side:
