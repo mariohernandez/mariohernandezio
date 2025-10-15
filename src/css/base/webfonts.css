@@ -3,6 +3,7 @@
   src: url('../../fonts/wotfard-regular-webfont.eot');
   src: url('../../fonts/wotfard-regular-webfont.woff2') format('woff2'),
       url('../../fonts/wotfard-regular-webfont.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
+  font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }

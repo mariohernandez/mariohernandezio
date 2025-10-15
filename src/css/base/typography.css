@@ -5,7 +5,7 @@
  */
 :where(html) {
   /* Font family. */
-  --font-primary: Wotfard, Arial, sans-serif;
+  --font-primary: Wotfard, sans-serif;
   --font-secondary: Georgia, 'Times New Roman', Times,serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
@@ -32,10 +32,10 @@
   --h4-max: 1.333rem;   /* 24px */
 
   /* Homepage large title in all caps. */
-  --big-title-min: 3.111rem;  /* 56px */
-  --big-title-max: 4rem;      /* 72px */
+  --title-min: 4rem;  /* 72px */
+  --title-max: 6rem;  /* 108px */
 
-  --hero-title: clamp(var(--big-title-min), 2.763rem + 1.739vw, var(--big-title-max));
+  --hero-title: clamp(var(--title-min), 3.217rem + 3.478vw, var(--title-max));
 
   /* Other available Font sizes. */
   --font-size-2: 0.111rem;    /* 2px */

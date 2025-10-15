@@ -13,7 +13,6 @@
 
 .hero__title {
   font-size: var(--hero-title);
-  line-height: var(--line-height-1);
   text-align: center;
 }
 
