@@ -3,11 +3,23 @@
  * Global Color custom properties
  * Light and Dark mode technique:
  * https://www.bram.us/2023/10/09/the-future-of-css-easy-light-dark-mode-color-switching-with-light-dark/
+ * https://m2.material.io/design/color/dark-theme.html#states
  */
  :where(html) {
   /* Primary colors. */
-  --color-primary: #0e1e25;
+  --color-dark-text: #292929;
+  --color-light-text: #e3e3e3;
+  /* --color-dark-bg: #292929; */
+  --color-dark-bg: #121212;
+  --color-light-bg: #e3e3e3;
+  --color-dark-accent: #bb86fc;
+  --color-light-accent: #663399; /* rebeccapurple. */
+
+  /* Original ones. To be removed eventually. */
+  --color-primary: #121212;
   --color-secondary: #663399; /* rebeccapurple. */
+  --color-light: #f9f9f9;
+  --color-dark: #393939; /* or #313131 */
 
   /* Accents. */
   --blue-100: #f4f6fc;

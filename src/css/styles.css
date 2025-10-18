@@ -1,12 +1,21 @@
-/* Imports all existing css stylesheets. */
-@import './base/reset';
-@import './base/base';
-@import './base/webfonts';
-@import './base/colors';
-@import './base/forms';
-@import './base/typography';
+/** style.css
+ * 1. Define the layer order for the entire project.
+ * https://youtu.be/DI-dgSlaeIY?si=F9d2mwZIQImWa-SK
+ */
+@layer reset, base, components, utilities, overrides;
 
-@import './utilities/animations';
+/* Import custom sheets into designated layers. */
+/* Reset styles. */
+@import './base/reset' layer(reset);
+
+/* Base styles. */
+@import './base/base' layer(base);
+@import './base/colors' layer(base);
+@import './base/forms' layer(base);
+@import './base/typography' layer(base);
+@import './base/webfonts' layer(base);
+
+/* @import './utilities/animations';
 @import './utilities/breakpoints';
 @import './utilities/code';
 @import './utilities/link-arrow';
@@ -18,9 +27,9 @@
 @import './utilities/zindex';
 
 @import './layout/layout';
-@import './layout/search';
+@import './layout/search'; */
 
-@import './components/404';
+/* @import './components/404';
 @import './components/about';
 @import './components/author';
 @import './components/button';
@@ -44,5 +53,5 @@
 @import './components/social';
 @import './components/social-share';
 @import './components/tags';
-@import './components/thanks';
-@import './components/callout'; /* Positioned here to override body styles */
+@import './components/thanks'; */
+/* @import './components/callout';  Positioned here to override body styles */

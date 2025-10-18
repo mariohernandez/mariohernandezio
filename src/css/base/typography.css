@@ -16,26 +16,40 @@
   --body-max: 1rem;     /* 18px */
 
   /* Global font size variables.
-   * https://www.marcbacon.com/tools/clamp-calculator/
-   */
+  * https://www.marcbacon.com/tools/clamp-calculator/
+  */
   --text-default: clamp(var(--body-min), 0.845rem + 0.217vw, var(--body-max));
   --text-small: clamp(var(--text-min), 0.734rem + 0.217vw, var(--text-max))
-
-  /* Global size for all headings. */
-  --h1-min: 2.222rem;   /* 40px */
-  --h1-max: 2.889rem;   /* 52px */
-  --h2-min: 1.778rem;   /* 32px */
-  --h2-max: 2.222rem;   /* 40px */
-  --h3-min: 1.333rem;   /* 24px */
-  --h3-max: 1.778rem;   /* 32px */
-  --h4-min: 1.111rem;   /* 20px */
-  --h4-max: 1.333rem;   /* 24px */
 
   /* Homepage large title in all caps. */
   --title-min: 4rem;  /* 72px */
   --title-max: 6rem;  /* 108px */
 
   --hero-title: clamp(var(--title-min), 3.217rem + 3.478vw, var(--title-max));
+
+  h1 {
+    --h1-min: 2.222rem;   /* 40px */
+    --h1-max: 2.889rem;   /* 52px */
+    font-size: clamp(var(--h1-min), 1.961rem + 1.304vw, var(--h1-max));
+  }
+
+  h2 {
+    --h2-min: 1.778rem;   /* 32px */
+    --h2-max: 2.222rem;   /* 40px */
+    font-size: clamp(var(--h2-min), 1.604rem + 0.87vw, var(--h2-max));
+  }
+
+  h3 {
+    --h3-min: 1.333rem;   /* 24px */
+    --h3-max: 1.778rem;   /* 32px */
+    font-size: clamp(var(--h3-min), 1.159rem + 0.87vw, var(--h3-max));
+  }
+
+  h4 {
+    --h4-min: 1.111rem;   /* 20px */
+    --h4-max: 1.333rem;   /* 24px */
+    font-size: clamp(var(--h4-min), 1.024rem + 0.435vw, var(--h4-max));
+  }
 
   /* Other available Font sizes. */
   --font-size-2: 0.111rem;    /* 2px */
