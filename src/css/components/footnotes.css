@@ -13,7 +13,7 @@
 
 .footnotes__heading {
   border-block-start: 1px solid var(--gray-medium);
-  font-size: var(--font-size-16);
+  font-size: var(--font-size-16) !important;
   margin-block-start: var(--size-60);
   padding-block-start: var(--size-10);
 }

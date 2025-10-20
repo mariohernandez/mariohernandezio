@@ -180,6 +180,10 @@ There are times when altering options for a component after its original configu
 
 Keep in mind, this is not a Styles options issue, this is just the way it works if the fields or options you had available are changed or removed.
 
-#### Footnotes{.footnotes__heading}
+## In closing
+
+Providing components customization options to content editors helps in finding creative ways to display content resulting in a more engaging and rich content experience. While options may be good, too many of them could overwhelme users and have the opposite effect you inteded.
+
+### Footnotes{.footnotes__heading}
 
 [^1]: Dries Buytaert. “Evolving Drupal's Layout Builder to an Experience Builder.” [dri.es](https://dri.es/evolving-drupal-layout-builder-to-an-experience-builder){target="_blank" rel="noopener noreferrer"}, April 23, 2024.

@@ -36,10 +36,6 @@
   margin-block-end: var(--size-40);
 }
 
-.blog-post__share {
-  margin-block: var(--size-20) var(--size-10);
-}
-
 .blog-post__body {
   margin-inline: auto;
   max-width: 60ch;
