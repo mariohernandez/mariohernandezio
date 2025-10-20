@@ -12,12 +12,12 @@
 }
 
 .footnotes__heading {
-  border-block-end: 1px solid var(--gray-medium);
+  border-block-start: 1px solid var(--gray-medium);
   font-size: var(--font-size-16);
-  padding-block-end: var(--size-8);
+  margin-block-start: var(--size-60);
+  padding-block-start: var(--size-10);
 }
 
 .footnote-ref a {
-  font-weight: bold;
   text-decoration: none;
 }

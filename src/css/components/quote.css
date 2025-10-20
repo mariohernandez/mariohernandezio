@@ -16,6 +16,11 @@ blockquote {
   padding: var(--size-10) 0 var(--size-10) var(--size-30);
   text-align: left;
 
+  .quote__citation {
+    display: block;
+    font-weight: bold;
+  }
+
   &::before {
     color: var(--purple);
     content: '"';
