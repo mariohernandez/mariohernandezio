@@ -6,15 +6,14 @@
 blockquote {
   color: var(--gray-darker);
   font-family: var(--font-secondary);
-  font-size: var(--font-size-22);
+  font-size: var(--font-size-18);
   font-style: italic;
-  line-height: var(--line-height-14);
-  margin: var(--size-40) auto;
+  line-height: 1.5;
+  margin: var(--size-30) auto var(--size-20);
   position: relative;
   border-left: var(--size-4) solid var(--purple);
-  margin-block-start: var(--size-60);
-  max-width: var(--size-720);
-  padding: var(--size-20) 0 var(--size-20) var(--size-80);
+  max-width: 90%;
+  padding: var(--size-10) 0 var(--size-10) var(--size-30);
   text-align: left;
 
   &::before {
@@ -22,10 +21,10 @@ blockquote {
     content: '"';
     display: block;
     font-family: cursive, serif;
-    font-size: var(--font-size-140);
+    font-size: var(--font-size-60, 60px);
     font-weight: var(--weight-700);
     left: calc(var(--size-1) * -1); /* Negative value */
     position: absolute;
-    top: calc(var(--size-80) * -1); /* Negative value */
+    top: calc(var(--size-30) * -1); /* Negative value */
   }
 }
