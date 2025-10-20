@@ -1,0 +1,23 @@
+.footnotes {
+  font-size: var(--font-size-14);
+  padding-block-start: var(--size-8);
+
+  a {
+    color: unset;
+  }
+}
+
+.footnotes-sep {
+  display: none;
+}
+
+.footnotes__heading {
+  border-block-end: 1px solid var(--gray-medium);
+  font-size: var(--font-size-16);
+  padding-block-end: var(--size-8);
+}
+
+.footnote-ref a {
+  font-weight: bold;
+  text-decoration: none;
+}

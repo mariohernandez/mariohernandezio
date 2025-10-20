@@ -28,12 +28,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 // https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
-const markdownItOptions = {
-  html: true,
-  breaks: true,
-  linkify: true
-};
-const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs);
+const markdownItFootnote = require("markdown-it-footnote");
+
+// const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
 
 // ---------- Start of postcss compiling -------------
 // https://zenzes.me/eleventy-integrate-postcss-and-tailwind-css/
@@ -59,6 +56,11 @@ const postcssFilter = (cssCode, done) => {
 // const readingTime = require('eleventy-plugin-reading-time');
 
 module.exports = function(eleventyConfig) {
+
+  eleventyConfig.amendLibrary("md", (markdownLibrary) => {
+    markdownLibrary.use(markdownItAttrs);
+    markdownLibrary.use(markdownItFootnote);
+  });
 
   // Post readtime plugin configuration.
   // eleventyConfig.addPlugin(readingTime);
@@ -123,9 +125,6 @@ module.exports = function(eleventyConfig) {
 
   // Or delete entries too
   eleventyConfig.watchIgnores.delete("README.md");
-
-  // Enables html attributes in markdown
-  eleventyConfig.setLibrary('md', markdownLib);
 
   // Enables syntax highlight & line numbers for code blocks.
   eleventyConfig.addPlugin(syntaxHighlight, {
