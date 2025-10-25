@@ -1,6 +1,6 @@
 ---
-date: "2025-10-24"
-title: "Customizing Drupal Paragraph types with Style Options"
+date: "2025-10-25"
+title: "Customizing Drupal Paragraph types with Style options"
 subtitle: "A light weight approach to adding dynamic customization options to your paragraph types using the style_options module."
 tags: ['drupal', 'theming']
 draft: false
@@ -11,7 +11,6 @@ imageThumb: "/images/thumbs/styles-options-thumb.webp"
 featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
 summary: "Making your paragraph types more flexible and scalable by adding customization options your content editors will love."
-eleventyExcludeFromCollections: false
 ---
 To build scalable websites, start by creating solid, reusable, and customizable frontend components. Flexible and dynamic components not only help developers by reducing code duplication and complexity, but they also enhance the editor’s experience by providing options to control how content is displayed. The way these options are exposed to content creators depends on your site’s architecture and Drupal configuration.
 
@@ -39,19 +38,15 @@ To achieve the various front-end displays shown above, we simply pass a CSS modi
 
 Providing customization options to content editors through a UI typically requires storing data in the database—often by creating new fields, entity view modes, entity references, and more.
 
-The Style Options module offers an appealing alternative because it eliminates the need for additional fields or entity view modes. Instead, it stores all configuration options in a YAML file located in the root of your theme or module. The module includes an example file, `example.style_options.yml`, which provides excellent examples of customization options. It’s worth noting that this is considered a **developer-focused** module, as it does not provide a UI for configuration.
+The [Style options](https://www.drupal.org/project/style_options){target="_blank" rel="noopener noreferrer"} module offers an appealing alternative because it eliminates the need for additional fields or entity view modes. Instead, it stores all configuration options in a YAML file located in the root of your theme or module. The module includes an example file, `example.style_options.yml`, which provides excellent examples of customization options. It’s worth noting that this is considered a **developer-focused** module, as it does not provide a UI for configuration.
 
 ### Install and Configure Style Options
 
-Install and enable the style_options module as you normally do other modules.
+1. Install and enable the style_options module as you normally do other modules.
 
-Either create a new paragraph type or edit an existing one you wish to provide styles options to and enable the **Style Options** behavior as shown in the screenshot below.
+1. Either create a new paragraph type or edit an existing one you wish to provide styles options to and enable the **Style Options** behavior as shown in the screenshot below.![Enable the style options functionality in Card paragraph type](/images/blog-images/styles.webp){.body-image .body-image--left .body-image--wide}
 
-![Enable the style options functionality in Card paragraph type](/images/blog-images/styles.webp){.body-image .body-image--left}
-
-Enable the style options functionality in a paragraph type{.caption}
-
-Lastly, be sure your paragraph types templates use the `attributes` variable as this is how Style options passes the required attributes such as CSS classes to your templates.
+1. Lastly, be sure your paragraph types templates use the `attributes` variable as this is how Style options passes the required attributes such as CSS classes to your templates.
 
 ### Styles Options configuration example
 
@@ -61,12 +56,11 @@ The Style options module provides three plugins:
 * The **Background Color** plugin, for attaching background colors to components.
 * The **Background Image** plugin, for attaching background images to components.
 
-For simplicity of this post, I'll only cover the _CSS Class_ plugin as this is the one I used the most.{.callout}
+For simplicity of this post, I'll only cover the _CSS Class_ plugin as this is the one I used the most. You should check out the other two plugins though.{.callout}
 
-Let's take a look at a simple example of providing editors with options to change the side the image appears in the Card component.
+Let's take a look at a simple example where provide editors with options to change the side the image appears in the Card component above.
 
-Create the styles option configuration file in the root of your module or theme with the naming convention `[module_name].style_options.yml` or
-   `[theme_name].style_options.yml`.
+Create the styles option configuration file in the root of your module or theme with the naming convention `[module_name].style_options.yml` or `[theme_name].style_options.yml`.
 
 {% raw %}
 
@@ -123,7 +117,7 @@ Example of styles to customize a component's border style.{.caption}
 
 `paragraphs` defines a section for paragraph types to make use of the options defined within the **options** section (line 3). See the project's README for other contexts.
 
-`_defaults` allows to define as many style options as possible as defaults for all paragraphs. This avoids repeating the same configuration for each paragraph type.
+`_defaults` allows to define any style option as defaults for all paragraphs you choose to use. This avoids repeating the same configuration for each paragraph type.
 
 `my_paragraph` is the ID for the paragraphs I want to configure with specific options (i.e. image_side).
 
@@ -131,7 +125,7 @@ Example of styles to customize a component's border style.{.caption}
 
 Earlier, I noted that using Style Options to manage component behavior reduces interaction with Drupal’s configuration and database compared to adding fields or view modes. However, Drupal still tracks the options editors select.
 
-The second `options:` key (line 7) is a zero-based index array, meaning values start at 0 and increment by order: 0, 1, 2…. Drupal stores these values like any other select field. If you inspect the select field during content creation, you’ll see each `<option>` element has a value attribute matching its index. See screenshot.
+The second `options:` key (line 7) is a zero-based index array, meaning values start at 0 and increment by order: 0, 1, 2…. Drupal stores these values like any other select field. If you inspect the select field in the edit form, you’ll see each `<option>` element has a value attribute matching its index. See screenshot.
 
 ![Screenshot of style options select field](/images/blog-images/value.webp){.body-image .body-image--left .body-image--wide}
 
@@ -174,13 +168,12 @@ options:
 
 {% endraw %}
 
-Now index `1` has a new value of `image-right`, and index `2` no longer exists.
-
 With this change:
 
-* Editors will see **Image on Right** as the only option to choose.
-* Cards whose index value was `1` (`image-left`), will now get `image-right` since index `2` moved up to the index `1` order/value.
-* Cards whose index value was `2` (`image-right`), will no longer get a CSS class because that index option no longer exists. The card's behavior may change as a result.
+1. Cards whose option value used to be `image-left`, will now get `image-right` because the latter moved from index `2` to index `1`, and the card is expecting index `1`'s value.
+1. Cards whose option value used to be `image-right`, will no longer get a value because the original index `2` item (image-right), no longer exists.
+
+As you can probably guess, if Drupal's database is not updated accordingly, the behavior of existing cards will change.
 
 ### How to solve this issue?
 
@@ -192,7 +185,7 @@ Keep in mind, this isn’t a Style Options issue; it’s simply how databases an
 
 Providing customization options for components offers benefits like better UX and reduced code duplication. However, too many options can overwhelm users and have the opposite effect. Be selective—offer only the essentials to keep the experience simple and effective.
 
-Happy Coding! 🙌
+Be sure to learn about the other two plugins the Style options module offers: _background image_ and _background color_. Also, if you need to improve your layout paragraphs, take a look at the [Layout options](https://www.drupal.org/project/layout_options){target="_blank" rel="noopener noreferrer"} module.
 
 ### Footnotes{.footnotes__heading}
 
