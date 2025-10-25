@@ -42,5 +42,8 @@
     "postcss-preset-env": "^10.2.1",
     "stylelint": "^16.20.0",
     "terser": "^5.41.0"
+  },
+  "dependencies": {
+    "markdown-it-footnote": "^4.0.0"
   }
 }

@@ -3,6 +3,8 @@
   background-color: var(--lighter-blue);
   border-inline-start: 4px solid var(--light-blue);
   display: block;
+  font-size: 90%;
+  line-height: 1.4;
   margin-block: 0 var(--size-30);
   max-width: 100%;
   padding: var(--size-20);

@@ -96,7 +96,6 @@ common styles. */
     display: inline-block;
     font-size: var(--font-size-12);
     text-decoration: none;
-    text-transform: uppercase;
 
     span {
       letter-spacing: initial;
