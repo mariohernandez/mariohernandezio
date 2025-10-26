@@ -25,3 +25,19 @@ navToggle.addEventListener('click', () => {
     navToggle.setAttribute('aria-label', 'Open menu');
   }
 });
+
+// Initialize Splide.
+document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide( '#image-carousel', {
+    type   : 'loop',
+    isNavigation: true,
+    pagination: true,
+    focus: 'center',
+    start: 1,
+    // perPage: 2,
+    fixedWidth : '30rem',
+    gap        : '2rem',
+    // autoWidth  : true,
+    width: 960,
+  } ).mount();
+} );

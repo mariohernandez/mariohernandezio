@@ -1,16 +1,22 @@
-{% if postListHeadline %}
-  <header>
-    <h2 class="post-list__heading" data-highlight="primary">
-      {{ postListHeadline }}
-    </h2>
-  </header>
-{% endif %}
-<ul class="post-list__items" role="list">
-  {% for item in postListItems %}
-    <li class="post-list__item">
-      {% include "components/card.njk" %}
-    </li>
-  {% endfor %}
-</ul>
-<a href="/blog" class="post-list__all-posts button button--link" data-link="arrow">See more posts
-<span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span></a>
+<section id="image-carousel" class="splide" aria-label="Beautiful Images">
+  {% if postListHeadline %}
+    <header>
+      <h2 class="post-list__heading" data-highlight="primary">
+        {{ postListHeadline }}
+      </h2>
+    </header>
+  {% endif %}
+  <div class="splide__track">
+		<ul class="splide__list">
+      {% for item in postListItems %}
+        <li class="splide__slide">
+          {% include "components/card/card.html" %}
+        </li>
+      {% endfor %}
+		</ul>
+  </div>
+  {# <a href="/blog"
+    class="post-list__all-posts button button--link"
+    data-link="arrow">See more posts<span class="link-arrow">{% include '../../images/icons/arrow.svg' %}</span></a> #}
+  <ul class="splide__pagination"></ul>
+</section>
