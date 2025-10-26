@@ -36,3 +36,32 @@ h6 {
   color: CanvasText;
   line-height: var(--leading-snug); /* 1.3 */
 }
+
+/* Styles for code blocks line numbers */
+pre {
+  counter-reset: lineNumber;
+}
+
+code[class*="language-"] {
+  font-size: var(--text-min);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  line-height: 1.3;
+}
+
+/* Line number styles. */
+code .highlight-line:before {
+  -webkit-user-select: none;
+  border-right: 1px solid #404040;
+  color: #858585;
+  content: counter(lineNumber);
+  counter-increment: lineNumber;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  inline-size: 2.4em;
+  margin-inline-end: 1em;
+  padding-inline-end: 1em;
+  text-align: right;
+}

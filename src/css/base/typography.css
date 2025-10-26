@@ -9,16 +9,17 @@
   --font-secondary: Georgia, 'Times New Roman', Times,serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Base font sizes. */
+  /* Base font sizes (18px base). */
   --text-min: 0.778rem; /* 14px */
   --text-max: 0.889rem; /* 16px */
-  --body-min: 0.889rem; /* 16px */
-  --body-max: 1rem;     /* 18px */
+  --body-min: 1rem;     /* 16px */
+  --body-max: 1.111rem; /* 20px */
+
 
   /* Global font size variables.
   * https://www.marcbacon.com/tools/clamp-calculator/
   */
-  --text-default: clamp(var(--body-min), 0.845rem + 0.217vw, var(--body-max));
+  --text-default: clamp(var(--body-min), 0.951rem + 0.225vw, var(--body-max));
   --text-small: clamp(var(--text-min), 0.734rem + 0.217vw, var(--text-max))
 
   /* Homepage large title in all caps. */

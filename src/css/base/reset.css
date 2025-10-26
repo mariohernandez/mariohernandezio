@@ -7,7 +7,7 @@
 /* New layered reset.
 https://frontendmasters.com/blog/the-coyier-css-starter/ */
 html {
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   /* color-scheme: light; */
   tab-size: 2;
   hanging-punctuation: first allow-end last;
