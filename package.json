@@ -44,6 +44,7 @@
     "terser": "^5.41.0"
   },
   "dependencies": {
+    "markdown-it-anchor": "^9.2.0",
     "markdown-it-footnote": "^4.0.0"
   }
 }

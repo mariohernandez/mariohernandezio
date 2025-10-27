@@ -29,8 +29,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItFootnote = require("markdown-it-footnote");
-
-// const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
+const markdownItAnchor = require('markdown-it-anchor');
 
 // ---------- Start of postcss compiling -------------
 // https://zenzes.me/eleventy-integrate-postcss-and-tailwind-css/
@@ -56,11 +55,27 @@ const postcssFilter = (cssCode, done) => {
 // const readingTime = require('eleventy-plugin-reading-time');
 
 module.exports = function(eleventyConfig) {
-
+  const markdownItOptions = {
+    html: true,
+    breaks: true,
+    linkify: true
+  };
   eleventyConfig.amendLibrary("md", (markdownLibrary) => {
     markdownLibrary.use(markdownItAttrs);
     markdownLibrary.use(markdownItFootnote);
   });
+
+  const markdownItAnchorOptions = {
+    permalink: markdownItAnchor.permalink.ariaHidden({
+      placement: 'after'
+    }),
+    slugify: eleventyConfig.getFilter('slugify')
+  };
+
+  // const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
+  const markdownLib = markdownIt(markdownItOptions).use(markdownItAnchor, markdownItAnchorOptions);
+
+  eleventyConfig.setLibrary('md', markdownLib);
 
   // Post readtime plugin configuration.
   // eleventyConfig.addPlugin(readingTime);
