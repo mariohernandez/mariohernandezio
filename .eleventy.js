@@ -23,7 +23,7 @@ const esbuild = require('esbuild');
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
 
-// Enable the use of HTML attributes in markdown
+// Enable the use of HTML attributes in markdown as well at footnotes and anchors.
 // https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/
 // https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
 const markdownIt = require('markdown-it');
@@ -66,8 +66,13 @@ module.exports = function(eleventyConfig) {
   });
 
   const markdownItAnchorOptions = {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: 'after'
+    // permalink: markdownItAnchor.permalink.ariaHidden({
+    //   placement: 'after'
+    // }),
+    permalink: markdownItAnchor.permalink.linkInsideHeader({
+      symbol: '🔗', // Change this to your desired symbol
+      placement: 'after', // or 'before'
+      class: 'heading-anchor', // Optional: add a custom class
     }),
     slugify: eleventyConfig.getFilter('slugify')
   };

@@ -25,3 +25,21 @@ navToggle.addEventListener('click', () => {
     navToggle.setAttribute('aria-label', 'Open menu');
   }
 });
+
+/**
+  * Add ability to copy heading anchor url to clipboard.
+  */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".heading-anchor").forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default anchor behavior
+      const url = window.location.origin + window.location.pathname + anchor.getAttribute("href");
+      navigator.clipboard.writeText(url).then(() => {
+        // Optional: Provide visual feedback (e.g., a "Copied!" tooltip)
+        console.log("Anchor link copied to clipboard:", url);
+      }).catch((err) => {
+        console.error("Failed to copy anchor link:", err);
+      });
+    });
+  });
+});

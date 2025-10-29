@@ -91,6 +91,17 @@
   ol:not([class]) {
     margin-block-end: var(--size-24);
   }
+
+  .heading-anchor {
+    display: inline-block;
+    font-size: var(--size-18);
+    opacity: 0.3;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .blog-post__tags {
