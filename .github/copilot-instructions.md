@@ -204,6 +204,37 @@ series:
   3. Verify `dist/` exists
   4. Check console for Pagefind errors
 
+## Examples
+
+### Button macro (recommended usage)
+
+This project provides a `button` Nunjucks macro at `src/_includes/components/button/button.njk`.
+It now expects an attribute mapping for `attrs` (object) and escapes the label by default.
+
+- Simple link-style button:
+
+```njk
+{# Renders: <a class="btn btn-primary" href="/blog/post">Read more</a> #}
+{{ button('Read more', '/blog/post') }}
+```
+
+- External link that opens in a new tab (rel added automatically):
+
+```njk
+{# Renders: <a class="btn btn-secondary" href="https://example.com" target="_blank" rel="noopener noreferrer">External</a> #}
+{{ button('External', 'https://example.com', '', 'secondary', { target: '_blank' }) }}
+```
+
+- Button with extra classes:
+
+```njk
+{# Renders: <button class="btn btn-primary u-ml">Subscribe</button> #}
+{{ button('Subscribe', '', 'button', 'primary', { class: 'u-ml' }) }}
+```
+
+If you need to render HTML inside the label, pass a pre-sanitized value and mark it safe at the call site, e.g. `{{ button('<strong>Sign up</strong>' | safe, '/signup') }}`.
+
+
 ### Production Issues
 
 #### Performance
