@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Warn developers when `src/_includes/components/button/button.njk` is staged
-# This hook intentionally prints a friendly notice and allows the commit to proceed.
+# Print prominent warning when button.njk is staged.
+# Non-blocking; allows commit to proceed after displaying notice.
 
 set -euo pipefail
 
@@ -10,22 +10,58 @@ FILE="src/_includes/components/button/button.njk"
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMRTUXB || true)
 
 if echo "$STAGED_FILES" | grep -qE "^${FILE}$"; then
-  cat <<'NOTICE'
-=====================================================================
-NOTICE: You staged changes to `src/_includes/components/button/button.njk`.
+  # Print colorized warning box if terminal supports it
+  if [ -t 1 ] && command -v tput > /dev/null; then
+    BOLD=$(tput bold)
+    RED=$(tput setaf 1)
+    YELLOW=$(tput setaf 3)
+    RESET=$(tput sgr0)
+    DIVIDER="${YELLOW}=================================================================${RESET}"
+    
+    echo
+    echo "$DIVIDER"
+    echo "${BOLD}${RED}❗ ATTENTION: Changes staged to shared component${RESET}"
+    echo "$DIVIDER"
+    echo "${BOLD}File:${RESET} src/_includes/components/button/button.njk"
+    echo
+    echo "${BOLD}Before committing, please verify:${RESET}"
+    echo "  ✓ Accessibility is maintained (ARIA, visible labels)"
+    echo "  ✓ API/signature changes are reflected in all call sites"
+    echo "  ✓ Changes work in dev environment (npm start)"
+    echo "  ✓ Documentation is updated (.github/copilot-instructions.md)"
+    echo
+    echo "${BOLD}To preview:${RESET}"
+    echo "  npm start             # Start dev server"
+    echo "  npm run watch:css     # Watch CSS changes"
+    echo
+    echo "${YELLOW}This is a non-blocking warning. Commit will proceed in 3 seconds...${RESET}"
+    echo "$DIVIDER"
+    echo
+    
+    # Brief pause for visibility
+    sleep 3
+  else
+    # Fallback for non-interactive/basic terminals
+    cat <<'NOTICE'
+=================================================================
+❗ ATTENTION: Changes staged to shared component
+=================================================================
+File: src/_includes/components/button/button.njk
 
-This component is used throughout the site. Before committing, please:
-  - Double-check accessibility (aria attributes, visible labels).
-  - Confirm any API changes to the macro (attrs object vs string) and
-    update call sites accordingly.
-  - Run the dev server to preview: `npm start` or `npm run watch:css`.
-  - Update `.github/copilot-instructions.md` examples if you changed usage.
+Before committing, please verify:
+  ✓ Accessibility is maintained (ARIA, visible labels)
+  ✓ API/signature changes are reflected in all call sites
+  ✓ Changes work in dev environment (npm start)
+  ✓ Documentation is updated (.github/copilot-instructions.md)
 
-If you intended these changes, continue with the commit. To abort, run:
-  git reset --patch "${FILE}"
-  or press Ctrl+C now to cancel this commit.
-=====================================================================
+To preview:
+  npm start             # Start dev server
+  npm run watch:css     # Watch CSS changes
+
+This is a non-blocking warning. Commit will proceed...
+=================================================================
 NOTICE
+  fi
 fi
 
 exit 0
