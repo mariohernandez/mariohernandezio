@@ -12,7 +12,8 @@
     "production": "NODE_ENV=production postcss src/css/styles.css --dir dist/css && NODE_ENV=production npx eleventy && NODE_ENV=production npx -y pagefind --site dist",
     "watch:css": "postcss src/css/styles.css --dir dist/css -w",
     "compile:css": "postcss src/css/styles.css --dir dist/css",
-    "lint": "npx biome check"
+    "lint": "npx biome check",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "browserslist": [
     "last 2 versions and not dead",
