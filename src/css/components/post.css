@@ -96,7 +96,8 @@
 /* Headings anchor including tooltip when a link is copied. */
 .heading-anchor {
   display: inline-block;
-  font-size: var(--size-18);
+  font-size: var(--size-16);
+  font-weight: var(--weight-400);
   opacity: 0.3;
   text-decoration: none;
 
