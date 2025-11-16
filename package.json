@@ -44,6 +44,7 @@
     "terser": "^5.41.0"
   },
   "dependencies": {
+    "@11ty/eleventy-img": "^6.0.4",
     "markdown-it-footnote": "^4.0.0"
   }
 }
