@@ -94,15 +94,24 @@
 }
 
 /* Headings anchor including tooltip when a link is copied. */
-.heading-anchor {
+a.heading-anchor {
+  background-color: var(--purple);
+  cursor: pointer;
+  block-size: 24px;
+  border-radius: 2px;
   display: inline-block;
-  font-size: var(--size-16);
-  font-weight: var(--weight-400);
-  opacity: 0.3;
+  inline-size: 24px;
+  opacity: 0.2;
   text-decoration: none;
 
+  svg {
+    display: block;
+    padding-block-start: 4px;
+    padding-inline-start: 4px;
+  }
+
   &:hover {
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 
