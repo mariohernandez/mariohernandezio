@@ -64,10 +64,6 @@ module.exports = function(eleventyConfig) {
     breaks: true,
     linkify: true
   };
-  eleventyConfig.amendLibrary("md", (markdownLibrary) => {
-    markdownLibrary.use(markdownItAttrs);
-    markdownLibrary.use(markdownItFootnote);
-  });
 
   const markdownItAnchorOptions = {
     permalink: markdownItAnchor.permalink.linkInsideHeader({
@@ -80,8 +76,10 @@ module.exports = function(eleventyConfig) {
   };
 
   // const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
-  const markdownLib = markdownIt(markdownItOptions).use(markdownItAnchor, markdownItAnchorOptions);
-
+  const markdownLib = markdownIt(markdownItOptions)
+    .use(markdownItAttrs)
+    .use(markdownItFootnote)
+    .use(markdownItAnchor, markdownItAnchorOptions);
   eleventyConfig.setLibrary('md', markdownLib);
 
   // Post readtime plugin configuration.
