@@ -1,3 +1,6 @@
+// Using the imagetransform plugin to process images.
+const Image = require("@11ty/eleventy-img");
+
 // Sort blog posts by display order.
 const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
 
@@ -56,7 +59,47 @@ const postcssFilter = (cssCode, done) => {
 // const readingTime = require('eleventy-plugin-reading-time');
 
 module.exports = function(eleventyConfig) {
+  // Image shortcode with responsive srcset and sizes support
+  async function imageShortcode(src, alt = "", sizes = "100vw") {
+    // Return empty string if src is not provided
+    if (!src) {
+      console.warn('[11ty Image] No image source provided');
+      return '';
+    }
 
+    try {
+      // Handle paths that start with / by prepending ./src
+      let imagePath = src;
+      if (src.startsWith('/')) {
+        imagePath = `./src${src}`;
+      }
+
+      let metadata = await Image(imagePath, {
+        widths: [350, 720, 960], // Responsive image widths
+        formats: ["webp"], // Single format generates <img> instead of <picture>
+        outputDir: "./dist/img/",
+        urlPath: "/img/",
+      });
+
+      let imageAttributes = {
+        alt: alt,
+        sizes,
+        loading: "lazy",
+        decoding: "async",
+      };
+
+      // Generates an <img> tag with srcset and sizes attributes
+      return Image.generateHTML(metadata, imageAttributes);
+    } catch (error) {
+      console.error(`[11ty Image] Error processing image: ${src}`, error.message);
+      return '';
+    }
+  }
+
+  // Register the image shortcode
+  eleventyConfig.addAsyncShortcode("image", imageShortcode);
+
+  // Markdown-it configuration
   eleventyConfig.amendLibrary("md", (markdownLibrary) => {
     markdownLibrary.use(markdownItAttrs);
     markdownLibrary.use(markdownItFootnote);

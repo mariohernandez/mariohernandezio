@@ -11,7 +11,7 @@
       {{ content | safe }}
     </div>
     <div class="thanks__image" aria-hidden="true">
-      <img src="{{ image }}" alt="Mario punching blocks" />
+      {% image image, "Mario punching blocks", "(min-width: 768px) 720px, 100vw" %}
     </div>
   </article>
 {% endblock %}
