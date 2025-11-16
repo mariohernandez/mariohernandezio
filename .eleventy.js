@@ -1,3 +1,6 @@
+// Using the imagetransform plugin to process images.
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+
 // Sort blog posts by display order.
 const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
 
@@ -81,6 +84,15 @@ module.exports = function(eleventyConfig) {
     .use(markdownItFootnote)
     .use(markdownItAnchor, markdownItAnchorOptions);
   eleventyConfig.setLibrary('md', markdownLib);
+
+  // Image processing configuration.
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+    // options for the transform plugin
+    formats: ["webp"], // Specify only one format here
+    widths: ["auto"],
+    outputDir: "./_site/img/",
+    urlPath: "/img/",
+  });
 
   // Post readtime plugin configuration.
   // eleventyConfig.addPlugin(readingTime);

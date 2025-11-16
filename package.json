@@ -24,6 +24,7 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.1",
+    "@11ty/eleventy-img": "^6.0.4",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
     "@biomejs/biome": "^2.2.0",
@@ -33,7 +34,9 @@
     "esbuild": "^0.25.10",
     "html-minifier": "^4.0.0",
     "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.3.1",
+    "markdown-it-footnote": "^4.0.0",
     "moment": "^2.29.4",
     "postcss": "^8.5.4",
     "postcss-cli": "^11.0.1",
@@ -42,9 +45,5 @@
     "postcss-preset-env": "^10.2.1",
     "stylelint": "^16.20.0",
     "terser": "^5.41.0"
-  },
-  "dependencies": {
-    "markdown-it-anchor": "^9.2.0",
-    "markdown-it-footnote": "^4.0.0"
   }
 }
