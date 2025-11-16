@@ -2,7 +2,7 @@
   <div class="featured-article__inner">
     {% for item in collections.featuredPost %}
       <div class="featured-article__image image-zoom">
-        <img src="{{ item.data.featuredImage }}" alt="{{ item.data.featuredImageAlt }}" width="960" height="450" />
+        {% image item.data.featuredImage, item.data.featuredImageAlt, "(min-width: 1024px) 960px, 100vw" %}
         {% if item.data.featuredImageCreditUrl or item.data.featuredImageCredit %}
           <div class="featured-article__image--credit">
             <a href="{{ item.data.featuredImageCreditUrl }}" target="_blank"><span>Photo by: </span>{{ item.data.featuredImageCredit }}</a>
