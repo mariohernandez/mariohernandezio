@@ -1,0 +1,43 @@
+{#
+  button macro
+
+  Parameters:
+    - text (string): button label (will be escaped by default)
+    - href (string): if provided renders an <a> element, otherwise <button>
+    - type (string): HTML button type (default: "button")
+    - variant (string): CSS variant used in the `btn-<variant>` class (default: "primary")
+    - attrs (object): optional mapping of additional attributes (e.g. { target: '_blank', class: 'u-ml' })
+
+  Notes:
+    - `attrs.class` will be merged with the base classes ("btn btn-<variant>").
+    - If `attrs.target == '_blank'` and no `rel` is provided, `rel="noopener noreferrer"` is added.
+    - `text` is escaped with the `e` filter. If you need HTML inside the button, pass already-safe content and call `|safe` at the call site.
+}
+{% macro button(text, href="", type="button", variant="primary", attrs=null) %}
+  {% set attrs = attrs or {} %}
+  {% set baseClass = "btn btn-" ~ variant %}
+  {% set extraClass = (attrs.class if attrs.class is defined else '') %}
+  {% set classAttr = baseClass ~ (" " ~ extraClass if extraClass) %}
+
+  {# Ensure rel when opening external links in new tab #}
+  {% if attrs.target is defined and attrs.target == '_blank' and (not attrs.rel is defined) %}
+    {% set relAttr = 'noopener noreferrer' %}
+  {% else %}
+    {% set relAttr = (attrs.rel if attrs.rel is defined else '') %}
+  {% endif %}
+
+  {# Build other attributes string, skipping class and rel (handled separately) #}
+  {% set otherAttrs = '' %}
+  {% for key in attrs %}
+    {% if key != 'class' and key != 'rel' %}
+      {% set otherAttrs = otherAttrs ~ ' ' ~ key ~ '="' ~ attrs[key] ~ '"' %}
+    {% endif %}
+  {% endfor %}
+  {% if relAttr %}{% set otherAttrs = otherAttrs ~ ' rel="' ~ relAttr ~ '"' %}{% endif %}
+
+  {% if href %}
+    <a class="{{ classAttr }}" href="{{ href }}"{{ otherAttrs | safe }}>{{ text | e }}</a>
+  {% else %}
+    <button type="{{ type }}" class="{{ classAttr }}"{{ otherAttrs | safe }}>{{ text | e }}</button>
+  {% endif %}
+{% endmacro %}

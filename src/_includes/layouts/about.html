@@ -27,10 +27,10 @@
     </div>
     <div class="about__images" aria-hidden="true"> {# Hides this contaiiner and images from screen readers. #}
       <div class="about__image about__image--first">
-        {% image about.image, about.alt, "(min-width: 320px) 640px, 100vw" %}
+        <img src="{{ about.image }}" alt="{{ about.alt }}" width="540" height="720" />
       </div>
       <div class="about__image about__image--second">
-        {% image about.image_second, about.alt2, "(min-width: 320px) 640px, 100vw" %}
+        <img src="{{ about.image_second }}" alt="{{ about.alt2 }}" width="640" height="480" />
       </div>
     </div>
   </article>

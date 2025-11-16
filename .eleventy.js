@@ -1,5 +1,5 @@
 // Using the imagetransform plugin to process images.
-const Image = require("@11ty/eleventy-img");
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
 
 // Sort blog posts by display order.
 const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
@@ -26,14 +26,18 @@ const esbuild = require('esbuild');
 // Create a helpful production flag
 const isProduction = process.env.NODE_ENV === 'production';
 
-// Enable the use of HTML attributes in markdown
+// Enable the use of HTML attributes in markdown as well at footnotes and anchors.
 // https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/
 // https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItFootnote = require("markdown-it-footnote");
+const markdownItAnchor = require('markdown-it-anchor');
 
-// const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
+// Define your inline SVG code
+// Example uses a simple '#' symbol, replace with your full SVG markup
+const anchorSymbol = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="oi-connect"><path stroke-miterlimit="10" d="M13.25 16.75 11 19a4.243 4.243 0 0 1-6-6l2.25-2.25m9.5 2.5L19 11a4.243 4.243 0 0 0-6-6l-2.25 2.25" class="oi-vector"/><path d="m9 15 6-6" class="oi-line"/></g></svg>`;
+// The SVG needs to be a single-line string with no whitespace at the beginning
 
 // ---------- Start of postcss compiling -------------
 // https://zenzes.me/eleventy-integrate-postcss-and-tailwind-css/
@@ -59,50 +63,34 @@ const postcssFilter = (cssCode, done) => {
 // const readingTime = require('eleventy-plugin-reading-time');
 
 module.exports = function(eleventyConfig) {
-  // Image shortcode with responsive srcset and sizes support
-  async function imageShortcode(src, alt = "", sizes = "100vw") {
-    // Return empty string if src is not provided
-    if (!src) {
-      console.warn('[11ty Image] No image source provided');
-      return '';
-    }
+  const markdownItOptions = {
+    html: true,
+    breaks: true,
+    linkify: true
+  };
 
-    try {
-      // Handle paths that start with / by prepending ./src
-      let imagePath = src;
-      if (src.startsWith('/')) {
-        imagePath = `./src${src}`;
-      }
+  const markdownItAnchorOptions = {
+    permalink: markdownItAnchor.permalink.linkInsideHeader({
+      symbol: anchorSymbol, // Change this to your desired symbol
+      placement: 'after', // or 'before'
+      ariaHidden: true,
+      class: 'heading-anchor', // Optional: add a custom class
+    }),
+    slugify: eleventyConfig.getFilter('slugify')
+  };
 
-      let metadata = await Image(imagePath, {
-        widths: [350, 720, 960], // Responsive image widths
-        formats: ["webp"], // Single format generates <img> instead of <picture>
-        outputDir: "./dist/img/",
-        urlPath: "/img/",
-      });
+  // const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
+  const markdownLib = markdownIt(markdownItOptions)
+    .use(markdownItAttrs)
+    .use(markdownItFootnote)
+    .use(markdownItAnchor, markdownItAnchorOptions);
+  eleventyConfig.setLibrary('md', markdownLib);
 
-      let imageAttributes = {
-        alt: alt,
-        sizes,
-        loading: "lazy",
-        decoding: "async",
-      };
-
-      // Generates an <img> tag with srcset and sizes attributes
-      return Image.generateHTML(metadata, imageAttributes);
-    } catch (error) {
-      console.error(`[11ty Image] Error processing image: ${src}`, error.message);
-      return '';
-    }
-  }
-
-  // Register the image shortcode
-  eleventyConfig.addAsyncShortcode("image", imageShortcode);
-
-  // Markdown-it configuration
-  eleventyConfig.amendLibrary("md", (markdownLibrary) => {
-    markdownLibrary.use(markdownItAttrs);
-    markdownLibrary.use(markdownItFootnote);
+  // Image processing configuration.
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+    // options for the transform plugin
+    formats: ["webp"], // Specify only one format here
+    widths: ["auto"],
   });
 
   // Post readtime plugin configuration.

@@ -93,6 +93,50 @@
   }
 }
 
+/* Headings anchor including tooltip when a link is copied. */
+a.heading-anchor {
+  background-color: var(--purple);
+  cursor: pointer;
+  block-size: 24px;
+  border-radius: 2px;
+  display: inline-block;
+  inline-size: 24px;
+  opacity: 0.2;
+  text-decoration: none;
+
+  svg {
+    display: block;
+    padding-block-start: 4px;
+    padding-inline-start: 4px;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.anchor-tooltip {
+  visibility: hidden;
+  background-color: var(--purple);
+  color: var(--white);
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px 10px;
+  position: absolute;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  /* Position relative to the element it's attached to */
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.8em;
+}
+
+.anchor-tooltip.show {
+  visibility: visible;
+  opacity: 1;
+}
+
 .blog-post__tags {
   display: flex;
   justify-content: flex-start;
