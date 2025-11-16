@@ -82,7 +82,7 @@ module.exports = function(eleventyConfig) {
       });
 
       let imageAttributes = {
-        alt: alt || '',
+        alt: alt,
         sizes,
         loading: "lazy",
         decoding: "async",
