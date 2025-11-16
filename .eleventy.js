@@ -36,7 +36,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 
 // Define your inline SVG code
 // Example uses a simple '#' symbol, replace with your full SVG markup
-const anchorSymbol = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><g stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="oi-connect"><path stroke-miterlimit="10" d="M13.25 16.75 11 19a4.243 4.243 0 0 1-6-6l2.25-2.25m9.5 2.5L19 11a4.243 4.243 0 0 0-6-6l-2.25 2.25" class="oi-vector"/><path d="m9 15 6-6" class="oi-line"/></g></svg>`;
+const anchorSymbol = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="oi-connect"><path stroke-miterlimit="10" d="M13.25 16.75 11 19a4.243 4.243 0 0 1-6-6l2.25-2.25m9.5 2.5L19 11a4.243 4.243 0 0 0-6-6l-2.25 2.25" class="oi-vector"/><path d="m9 15 6-6" class="oi-line"/></g></svg>`;
 // The SVG needs to be a single-line string with no whitespace at the beginning
 
 // ---------- Start of postcss compiling -------------
@@ -70,6 +70,7 @@ module.exports = function(eleventyConfig) {
   };
 
   const markdownItAnchorOptions = {
+    level: [1, 2, 3], // Only apply anchors to h1, h2, and h3 tags
     permalink: markdownItAnchor.permalink.linkInsideHeader({
       symbol: anchorSymbol, // Change this to your desired symbol
       placement: 'after', // or 'before'

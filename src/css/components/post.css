@@ -95,26 +95,31 @@
 
 /* Headings anchor including tooltip when a link is copied. */
 a.heading-anchor {
-  background-color: var(--purple);
   cursor: pointer;
-  block-size: 24px;
-  border-radius: 2px;
+  block-size: 20px;
   display: inline-block;
-  inline-size: 24px;
-  opacity: 0.2;
+  inline-size: 20px;
+  opacity: 0.6;
+  padding-block-start: 2px;
   text-decoration: none;
 
   svg {
     display: block;
-    padding-block-start: 4px;
-    padding-inline-start: 4px;
+    padding-block-start: 2px;
+    padding-inline-start: 2px;
+    stroke: var(--black) !important;
   }
 
   &:hover {
-    opacity: 0.9;
+    opacity: 1;
+
+    svg {
+      stroke: var(--purple) !important;
+    }
   }
 }
 
+/* Anchor tooltip styles. */
 .anchor-tooltip {
   visibility: hidden;
   background-color: var(--purple);
