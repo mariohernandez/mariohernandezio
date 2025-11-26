@@ -35,7 +35,7 @@ You would think that a big upgrade like this would be a complex task but you'll 
     Fig. 1: Selecting the Convert effect for an image style.{.caption}
 
 2. Select and add the WebP format to the image style.
-  ![Image crop preview settings](/images/blog-images/exibit-webp2.webp){.body-image .body-image--short .body-image--left aria-hidden="true"}
+  ![Adding the WebP format to an image style](/images/blog-images/exibit-webp2.webp){.body-image .body-image--short .body-image--left aria-hidden="true"}
 
     Fig. 2: Adding the WebP format to an image style.{.caption}
 
