@@ -24,7 +24,7 @@ After some research, I found an issue that had been reported in the Image Widget
 
 Looking back, I think this issue was partly of my own making, but seeing that others were experiencing the same it's also possible it was just an odd bug. Long story short, the issue was caused by using an image style with specific hard dimension, as the **crop preview** image, See **Fig. 1** below.
 
-![Image crop preview settings](/images/blog-images/crop-preview.webp){.body-image .body-image--wide .body-image--left}
+![Screenshot of Drupal's Crop preview configuration](/images/blog-images/crop-preview.webp){.body-image .body-image--wide .body-image--left}
 
 Fig. 1: Screenshot of Crop preview configuration.{.caption}
 
