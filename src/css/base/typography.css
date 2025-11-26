@@ -4,7 +4,7 @@
  */
 :root {
   /* Font family. */
-  --font-primary: Wotfard,Helvetica,sans-serif;
+  --font-primary: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, Noto, "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif;
   --font-secondary: Georgia,'Times New Roman',Times,serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
