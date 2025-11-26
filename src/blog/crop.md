@@ -42,7 +42,7 @@ If you read [comment #5](https://www.drupal.org/project/image_widget_crop/issues
 1. I created a new image style called **Crop preview** with the Scale image effect as well as using a wide aspect ratio or crop type such as 16:9.
 1. I configured the **Manage form display** for the **Image** media type (`admin/structure/media/manage/image/form-display`), so it uses the new image style I just created.  See **Fig. 2** below
 
-![Image crop preview settings](/images/blog-images/crop-preview-img.webp){.body-image .body-image--wide .body-image--left}
+![Screenshot of Manage form display settings for images](/images/blog-images/crop-preview-img.webp){.body-image .body-image--wide .body-image--left}
 
 Fig. 2: Screenshot of Manage form display settings for images.{.caption}
 
