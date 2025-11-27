@@ -1,68 +1,73 @@
-// Using the imagetransform plugin to process images.
+// =============================================================================
+// ELEVENTY CONFIGURATION
+// =============================================================================
+
+// =============================================================================
+// DEPENDENCIES & UTILITIES
+// =============================================================================
+
+// Core Eleventy plugins
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
-// Sort blog posts by display order.
+// Custom utilities and filters
 const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
-
-// Filters
 const dateFilter = require('./src/_11ty/filters/date-filter.js');
 const w3DateFilter = require('./src/_11ty/filters/w3-date-filter.js');
-
-// RSS Feed plugin.
-const rssPlugin = require('@11ty/eleventy-plugin-rss');
-
-// Code highlight.
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 // Transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 
-// Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
+// Build tools
 const { minify } = require("terser");
-
-// Lint JS.
 const esbuild = require('esbuild');
 
-// Create a helpful production flag
-const isProduction = process.env.NODE_ENV === 'production';
-
-// Enable the use of HTML attributes in markdown as well at footnotes and anchors.
-// https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/
-// https://dev.to/iarehilton/11ty-markdown-attributes-2dl3
+// Markdown processing
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItFootnote = require("markdown-it-footnote");
 const markdownItAnchor = require('markdown-it-anchor');
 
-// Define your inline SVG code
-// Example uses a simple '#' symbol, replace with your full SVG markup
-const anchorSymbol = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="oi-connect"><path stroke-miterlimit="10" d="M13.25 16.75 11 19a4.243 4.243 0 0 1-6-6l2.25-2.25m9.5 2.5L19 11a4.243 4.243 0 0 0-6-6l-2.25 2.25" class="oi-vector"/><path d="m9 15 6-6" class="oi-line"/></g></svg>`;
-// The SVG needs to be a single-line string with no whitespace at the beginning
-
-// ---------- Start of postcss compiling -------------
-// https://zenzes.me/eleventy-integrate-postcss-and-tailwind-css/
+// CSS processing
 const postCss = require('postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
-const postcssFilter = (cssCode, done) => {
-	// we call PostCSS here.
-	postCss([autoprefixer(), cssnano({ preset: 'default' })])
-		.process(cssCode, {
-			// path to our CSS file
-			from: './src/css/styles.css'
-		})
-		.then(
-			(r) => done(null, r.css),
-			(e) => done(e, null)
-		);
-};
-// ---------- End of postcss compiling -------------
+// =============================================================================
+// CONSTANTS & CONFIGURATION
+// =============================================================================
 
-// Readtime plugin.
-// const readingTime = require('eleventy-plugin-reading-time');
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Define your inline SVG code for anchor links
+const anchorSymbol = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" class="oi-connect"><path stroke-miterlimit="10" d="M13.25 16.75 11 19a4.243 4.243 0 0 1-6-6l2.25-2.25m9.5 2.5L19 11a4.243 4.243 0 0 0-6-6l-2.25 2.25" class="oi-vector"/><path d="m9 15 6-6" class="oi-line"/></g></svg>`;
+
+// =============================================================================
+// UTILITY FUNCTIONS
+// =============================================================================
+
+// PostCSS filter for processing CSS
+const postcssFilter = (cssCode, done) => {
+  postCss([autoprefixer(), cssnano({ preset: 'default' })])
+    .process(cssCode, {
+      from: './src/css/styles.css'
+    })
+    .then(
+      (r) => done(null, r.css),
+      (e) => done(e, null)
+    );
+};
+
+// =============================================================================
+// MAIN CONFIGURATION
+// =============================================================================
 
 module.exports = function(eleventyConfig) {
+  // ===========================================================================
+  // MARKDOWN CONFIGURATION
+  // ===========================================================================
+
   const markdownItOptions = {
     html: true,
     breaks: true,
@@ -72,32 +77,44 @@ module.exports = function(eleventyConfig) {
   const markdownItAnchorOptions = {
     level: [1, 2, 3], // Only apply anchors to h1, h2, and h3 tags
     permalink: markdownItAnchor.permalink.linkInsideHeader({
-      symbol: anchorSymbol, // Change this to your desired symbol
-      placement: 'after', // or 'before'
+      symbol: anchorSymbol,
+      placement: 'after',
       ariaHidden: true,
-      class: 'heading-anchor', // Optional: add a custom class
+      class: 'heading-anchor'
     }),
     slugify: eleventyConfig.getFilter('slugify')
   };
 
-  // const markdownLibrary = markdownIt(markdownItOptions).use[markdownItFootnote];
   const markdownLib = markdownIt(markdownItOptions)
     .use(markdownItAttrs)
     .use(markdownItFootnote)
     .use(markdownItAnchor, markdownItAnchorOptions);
+
   eleventyConfig.setLibrary('md', markdownLib);
 
-  // Image processing configuration.
+  // ===========================================================================
+  // PLUGINS
+  // ===========================================================================
+
+  // Image processing
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-    // options for the transform plugin
-    formats: ["webp"], // Specify only one format here
-    widths: ["auto"],
+    formats: ["webp"],
+    widths: ["auto"]
   });
 
-  // Post readtime plugin configuration.
-  // eleventyConfig.addPlugin(readingTime);
+  // Syntax highlighting for code blocks
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    alwaysWrapLineHighlights: true
+  });
 
-  // Process JS.
+  // RSS feed generation
+  eleventyConfig.addPlugin(rssPlugin);
+
+  // ===========================================================================
+  // TEMPLATE FORMATS & EXTENSIONS
+  // ===========================================================================
+
+  // Process JS files with esbuild
   eleventyConfig.addTemplateFormats('js');
   eleventyConfig.addExtension('js', {
     outputFileExtension: 'js',
@@ -120,86 +137,83 @@ module.exports = function(eleventyConfig) {
     }
   });
 
-  // Minify JS: https://www.11ty.dev/docs/quicktips/inline-js/
-  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
-    code,
-    callback
-  ) {
+  // ===========================================================================
+  // FILTERS & SHORTCODES
+  // ===========================================================================
+
+  // Date filters
+  eleventyConfig.addFilter('dateFilter', dateFilter);
+  eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
+
+  // JS minification filter
+  eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (code, callback) {
     try {
       const minified = await minify(code);
       callback(null, minified.code);
     } catch (err) {
       console.error("Terser error: ", err);
-      // Fail gracefully.
-      callback(null, code);
+      callback(null, code); // Fail gracefully
     }
   });
 
-  // Shortcode for getting the current year.  See partials/footer.html for usage.
-  // Source: https://11ty.rocks/eleventyjs/dates/
+  // PostCSS filter
+  eleventyConfig.addNunjucksAsyncFilter('postcss', postcssFilter);
+
+  // Shortcode for current year
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
-  // ---------- Part of postcss compiling above -------------
-	eleventyConfig.addNunjucksAsyncFilter('postcss', postcssFilter);
-  // -------------------------------------
+  // ===========================================================================
+  // COLLECTIONS
+  // ===========================================================================
 
-  // Enable quiet mode to stop seeing every file that gets processed during build.
-  // eleventyConfig.setQuietMode(true);
-
-  // ---------- Copy files to dist -------------
-  eleventyConfig.addPassthroughCopy("./src/js");
-  eleventyConfig.addPassthroughCopy("./src/fonts");
-  eleventyConfig.addPassthroughCopy("./src/images");
-  eleventyConfig.addPassthroughCopy("./src/manifest.json");
-
-  // Do not rebuild when README.md changes (You can use a glob here too)
-  eleventyConfig.watchIgnores.add("README.md");
-
-  // Or delete entries too
-  eleventyConfig.watchIgnores.delete("README.md");
-
-  // Enables syntax highlight & line numbers for code blocks.
-  eleventyConfig.addPlugin(syntaxHighlight, {
-    alwaysWrapLineHighlights: true,
-  });
-
-  // Only minify HTML if we are in production because it slows builds _right_ down
-  if (isProduction) {
-    eleventyConfig.addTransform('htmlmin', htmlMinTransform);
-  }
-
-  // Plugins
-  eleventyConfig.addPlugin(rssPlugin);
-
-  // Add date filters
-  eleventyConfig.addFilter('dateFilter', dateFilter);
-  eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
-
-  // Returns blog items, sorted by display order
+  // Blog posts collection
   eleventyConfig.addCollection('blog', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md'));
   });
 
-  // Returns blog items, sorted by display order then filtered by featured
+  // Featured posts collection
   eleventyConfig.addCollection('featuredPost', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/blog/*.md')).filter(
       x => x.data.featured
     );
   });
 
-  // Article/blog series collections
+  // Series collections
   eleventyConfig.addCollection(
     'seriesCollections',
     require('./src/_11ty/collections/seriesCollections.js')
   );
 
-  // Watch JavaScript dependencies (turned off by default).
-  eleventyConfig.setWatchJavaScriptDependencies(false);
+  // ===========================================================================
+  // PASSTHROUGH COPIES & WATCH SETTINGS
+  // ===========================================================================
 
-  // Tell 11ty to use the .eleventyignore and ignore our .gitignore file
+  // Copy static assets
+  eleventyConfig.addPassthroughCopy("./src/js");
+  eleventyConfig.addPassthroughCopy("./src/images");
+  eleventyConfig.addPassthroughCopy("./src/manifest.json");
+
+  // Watch targets
+  eleventyConfig.addWatchTarget("./src/css/");
+
+  // Watch ignores
+  eleventyConfig.watchIgnores.add("README.md");
+
+  // Build settings
+  eleventyConfig.setWatchJavaScriptDependencies(false);
   eleventyConfig.setUseGitIgnore(false);
 
-  eleventyConfig.addWatchTarget("./src/css/");
+  // ===========================================================================
+  // PRODUCTION OPTIMIZATIONS
+  // ===========================================================================
+
+  if (isProduction) {
+    eleventyConfig.addTransform('htmlmin', htmlMinTransform);
+  }
+
+  // ===========================================================================
+  // CONFIGURATION RETURN
+  // ===========================================================================
 
   return {
     markdownTemplateEngine: 'njk',
