@@ -42,8 +42,8 @@
  * Adds click-to-copy functionality to heading anchor links with visual feedback
  */
 (() => {
-  // Variable to store the tooltip element (created once and reused)
-  let tooltip;
+  // Variables to store the tooltip element (created once and reused) and its hide timeout.
+  let tooltip, tooltipTimeout;
 
   // Function to create and return the tooltip element (lazy initialization)
   const createTooltip = () => {
@@ -80,7 +80,8 @@
     tip.classList.add('show');
 
     // Hide tooltip after 1.5 seconds
-    setTimeout(() => tip.classList.remove('show'), 1500);
+    clearTimeout(tooltipTimeout);
+    tooltipTimeout = setTimeout(() => tip.classList.remove('show'), 1500);
   };
 
   // Function to copy URL to clipboard using modern Clipboard API
@@ -106,7 +107,7 @@
         e.preventDefault();
 
         // Build full URL from current page + anchor href
-        const url = `${window.location.origin}${window.location.pathname}${anchor.getAttribute('href')}`;
+        const url = anchor.href;
 
         // Attempt to copy URL to clipboard
         if (await copyToClipboard(url)) {
