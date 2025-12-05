@@ -12,7 +12,10 @@ featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
 summary: "Making your paragraph types more flexible and scalable by adding customization options your content editors will love."
 ---
+
 To build scalable websites, start by creating solid, reusable, and customizable frontend components. Flexible and dynamic components not only help developers by reducing code duplication and complexity, but they also enhance the editor’s experience by providing options to control how content is displayed. The way these options are exposed to content creators depends on your site’s architecture and Drupal configuration.
+
+**Updated 12-4-25**: I recently joined **Mike Anello** of [DrupalEasy.com](https://www.drupaleasy.com/){target="_blank" rel="noopener noreferrer"} for a short demo of the Style_options module. You can find the link to the recording at the end of this post.{.callout}
 
 In this post, I’ll be using the powerful [Paragraphs](https://www.drupal.org/project/paragraphs){target="_blank" rel="noopener noreferrer"} Drupal module in combination with the [Style options](https://www.drupal.org/project/style_options){target="_blank" rel="noopener noreferrer"} module. Paragraphs has a robust ecosystem, and its key features are being considered for the Canvas, formerly Drupal Experience Builder.
 
@@ -186,6 +189,11 @@ Keep in mind, this isn’t a Style Options issue; it’s simply how databases an
 Providing customization options for components offers benefits like better UX and reduced code duplication. However, too many options can overwhelm users and have the opposite effect. Be selective—offer only the essentials to keep the experience simple and effective.
 
 Be sure to learn about the other two plugins the Style options module offers: _background image_ and _background color_. Also, if you need to improve your layout paragraphs, take a look at the [Layout options](https://www.drupal.org/project/layout_options){target="_blank" rel="noopener noreferrer"} module.
+
+### Demo of Style options module with Mike Anello
+
+[Watch the recording](https://youtu.be/IWjWExVC0TY?si=6ahEUaXJyaU15_NY&t=48){target="_blank" rel="noopener noreferrer"} 📺
+
 
 ### Footnotes{.footnotes__heading}
 
