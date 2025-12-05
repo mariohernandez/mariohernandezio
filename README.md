@@ -21,18 +21,18 @@ I am a Front-end Software Engineer who specializes in [Drupal](https://drupal.or
 - **Node.js Version:** 22.19.0 (see `.nvmrc`)
 
 ### Key Dependencies
-- `@11ty/eleventy` (^3.1.1) - Static site generator
+- `@11ty/eleventy` (^3.1.2) - Static site generator
 - `@11ty/eleventy-img` (^6.0.4) - Image optimization and transformation
 - `@11ty/eleventy-plugin-rss` (^2.0.4) - RSS feed generation
-- `@11ty/eleventy-plugin-syntaxhighlight` (^5.0.1) - Code syntax highlighting
+- `@11ty/eleventy-plugin-syntaxhighlight` (^5.0.2) - Code syntax highlighting
 - `markdown-it` (^14.1.0) - Markdown processing with plugins:
   - `markdown-it-attrs` - Add classes/attributes to markdown elements
   - `markdown-it-footnote` - Footnote support
   - `markdown-it-anchor` - Automatic heading anchors (h1-h3)
-- `postcss` (^8.5.4) - CSS transformation pipeline
-- `esbuild` (^0.27.0) - JavaScript bundling and minification
-- `terser` (^5.41.0) - JavaScript minification
-- `@biomejs/biome` (^2.2.0) - Linter for JS and CSS
+- `postcss` (^8.5.6) - CSS transformation pipeline
+- `esbuild` (^0.27.1) - JavaScript bundling and minification
+- `terser` (^5.44.1) - JavaScript minification
+- `@biomejs/biome` (^2.3.8) - Linter for JS and CSS
 
 ## Project Structure
 
@@ -343,7 +343,7 @@ npm run search
 
 ## Code Quality
 
-**Linter:** Biome (^2.2.0)
+**Linter:** Biome (^2.3.8)
 
 **Configuration:** `biome.json`
 
