@@ -1,6 +1,11 @@
+# Global build settings.
 [build]
   command = "npm run production"
   publish = "dist"
+
+# Build environment variables
+[build.environment]
+  NODE_VERSION = "22"
 
 ## https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
 [[redirects]]
