@@ -75,10 +75,20 @@
 
   h2 {
     font-size: var(--font-size-24);
+
+    &.small-h2 {
+      font-size: var(--small-h2);
+      margin-block-start: var(--size-40);
+    }
   }
 
   h3 {
     font-size: var(--font-size-20);
+
+    &.small-h3 {
+      font-size: var(--small-h3);
+      margin-block-start: var(--size-40);
+    }
   }
 
   ol {

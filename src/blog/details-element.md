@@ -1,8 +1,7 @@
 ---
-date: "2025-12-28"
-title: "A semantic, responsive, and accessible accordion component"
+date: "2026-01-05"
+title: "The devil is NOT in the details. Building a semantic and accessible accordion for your content"
 subtitle: "A native and lightweight solution for building a pretty common component, the accordion."
-slug: 2025-favorite-front-end-tips-tricks
 tags: ['front-end','coding', 'css']
 draft: false
 featured: true
@@ -13,76 +12,120 @@ featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
 summary: "As 2025 comes to an end, I'd like to share of the tips and tricks that not only made me a better developer, but resulted on better UX, performance, and accessibility in my projects."
 ---
-It's interesting how sometimes we think that for something to make an impact in our web projects it has to be big or complex. Sometimes the simplest, smaller solutions can produce significant benefits. I am a big believer of starting with the basics and native tools and techniques before looking into third party solutions. You'd be surprised how many times developers skip this step and don't realize native solutions in HTML or CSS can achieve similar results as advanced tools or techniques.
 
-This principle of starting lean with native solutions not only applies to the tools you end up using, but also how you write the first line of code in your project.
+It's interesting how we often assume a tool or coding technique must be large or complex to impact our web projects. Oftentimes, the simplest, smallest solutions produce the exact outcome you are looking for. What if, before writing code or downloading a module, we took a step back to see if a native solution already exists?
 
-Lately I've been working on a big rebrand project which introduced new color palettes as well as new components. As I started building new components sometimes it was tempting to add text color, spacing, background color, etc. from the start. I'm sure many of us have fallen into that trap. I call it a trap because if I stand back and stop myself from writing any styles and let the component render at its most basic state, often times I would find that many of the attributes of the component would already be available simply by writing the right markup and let the component automatically adhere to the project's base styles such as text color, background colors, font size, spacing, etc.
+You'd be surprised how many times developers skip this step, failing to realize that native HTML or CSS features can achieve results similar to advanced tools or techniques.
 
-Had I followed my original instict to start styling the component right from the start, I would had most likely write duplicate rules that I would also had to override only to end up at the same place I started before any styles were written.
+## The &lt;details&gt; and &lt;summary&gt; HTML elements
 
-## The accordion
+The `<details>` element, also known as the Details disclosure element, it's described as...
 
-We have all seen them. Accordions are ideal for presenting content in a compact way while allow you to show additional content only when needed. A good example of this content are Frequently Asked Questions (FAQ).
+>...The &lt;details&gt; HTML element creates a disclosure widget in which information is visible only when the widget is toggled into an open state. A summary or label must be provided using the &lt;summary&gt; element.
 
-The same way I used to approach styling a component, the first thing I would typically do when it was time to build an accordion-like component in Drupal was to download and enable either the [FAQ](https://www.drupal.org/project/faq) or [FAQ field](https://www.drupal.org/project/faq) Drupal modules. Both modules are great depending on your desired functionality. The issue with this approach is that I will end up with multiple dependencies such as a Drupal module, JavaScript or JQuery, and lots of CSS I didn't write.
+HTML and CSS have come a long way in the last years, and browser support has improved rapidly. As a result, we can use native solutions to build interactive functionality that previously required JavaScript.
 
-### The &lt;details&gt; and &lt;summary&gt; HTML elements
+![Baseline status badge for details](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility/high.png)
 
-HTML and CSS have come a long way in the last 5-10 years and the browser support has improved rapidly. Thanks to this we can now use native solutions to build interactive functionality. The `<details>` HTML element is a perfect example of how far we've come.
+The [&lt;details&gt; element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) reached **Baseline Widely available** status in January 2020.
 
 ### The Markup
 
+The markup is simple, but it does require the `<summary>` element to be nested within the `<details>` tag. This structure unlocks several native browser features:
+
 ```html
 <details>
-  <summary>Ttitle summary</summary>
+  <summary>Title summary</summary>
   ...details content
 </details>
 ```
 
-Don't be fooled by the simplicity of the markup above. The `<details>` element is full of surprises and goodies. Let's go over a few of them:
+Basic markup and nesting structure of the &lt;details&gt; and &lt;summary&gt; elements.{.caption}
 
-- **Baseline Widely available**: The `<details>` and `<summary>` elements have been fully supported in modern browsers since January 2020.
-- **Semantic out of the box**: SEO and accessibility friendly.
-- **Accessible by default**: Fully functional with assistive technologies and keyboard-navigational out of the box.
-- **Responsive by default**: It naturally adapts to device's viewport width.
-- **Interactive**: When the details content is visible, an attribute of `open` is enabled in the `<details>` element. This makes it possible to style or animate the element based on its state.
-- **Searchable by default**: If you do a page search (`Cmd + F` or `Ctrl + F`), if a match is found within a details element, the element will automatically open to show your results. 🤯 (Test it below)
+Don't be fooled by the simplicity of the markup above though. The `<details>` in combination with the `<summary>` elements pack a surprising set of features. More on this shortly.
+
+While the tags and nesting order above are required, you can still get creative with your markup if the functionality you are building requires specific markup structure. See below:
+
+```html
+<details class="accordion" name="demo">
+  <summary>
+    <h3 class="accordion__title">Cras justo odio, dapibus ac facilisis in</h3>
+  </summary>
+  <p class="accordion__content">
+    Cras mattis <a href="#">consectetur purus</a> sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+  <span class="accordion__footer">Learn more <a href="#">about this topic</a></span>
+</details>
+```
+
+A more elaborate example of the &lt;details&gt; and &lt;summary&gt; elements using custom markup while adhering to standards.{.caption}
+
+## Notable &lt;details&gt; features
+
+I have to admit, I was not aware of one or two of these features. I'm glad to learn about them.
+
+### Attributes{.small-h3}
+
+* `open`: This Boolean attribute indicates whether the details — that is, the contents of the `<details>` element — are currently visible. The details are shown when this attribute exists, or hidden when this attribute is absent. By default this attribute is absent.
+* `name`: The name attribute specifies a group name. Modern browsers now support the `name` attribute on `<details>` elements, allowing you to create exclusive accordions (where opening one closes others) using only HTML. 🌟
+
+### Events{.small-h3}
+
+* `toggle`: If for some reason you need to use JavaScript, the `<details>`'s `toggle` event is available to tap into it with JavaScript.
+* **Native Disclosure Widget**: By default, the `<details>` element is collapsed, showing only the content of the `<summary>`.
+
+### Accessibility{.small-h3}
+
+* **Accessible by Default**: The structure is recognized by screen readers as a disclosure widget, and it is natively keyboard-accessible using the Enter or Space keys.
+* **Focusable**: By default the `<details>` element is focusable when navigating with keyboard or assistive technologies. It's smart enough that if its details contain focusable content (i.e. links, buttons, etc.), it automaically navigates those elements by simply continuing to press the Tab key.
+
+### Other{.small-h3}
+
+* **Semantic** in nature for improved SEO.
+* **Responsive** out of the box. No CSS needed.
+* **State-Based Styling**: The presence or absence of the `open` attribute allows you to easily apply different CSS styles for the expanded and collapsed states.
+* **Built-in Interactivity**: Clicking or touching on the `<summary>` automatically toggles the `<details>` element's open state, revealing or hiding the nested content without any JavaScript.
+* **Page-searchable** by default. If you do a page search by pressing `Cmd + F` or `Ctrl + F` in your keyboard, and if a match is found within a `<details>` element, the `<details>` will automatically open to show the highlighted results. 🤯
+
+#### Try page search below
+
+<div class="callout">
 
 {% raw %}
 <details>
-  <summary>The title of a basic/native accordion</summary>
-  <p>Go ahead and do a page search using any of the keywords in this details content and if a match is found the details will automatically open.</p>
+  <summary>Click me or press on me</summary>
+  <p>Go ahead, close the details first and then do a page search for the word <strong>"beautiful"</strong>. Watch the details element automatically open when the keyword is found.</p>
 </details>
 {% endraw %}
+</div>
 
-Who knew a little H TML element could pack so many ...
+## What does this all mean?
 
-### What does all this mean?
+Learning about the features available in the `<details>` element opens up all kinds of possibilities for the aesthetics and behavior we want to achieve with the accordion.
 
-Knowing all the features available in the details element opens up all kind of posibilities for the astetics and behavior we want to achive for the accordion. Using modern CSS allows us to not only style the accordion any way we wish, but using newly supported transition rules we can achieve a smooth open/close transition only possible with JavaScript in the past. Let's take a look at how we can build a truly beautiful and animated accordion.
+### Codepen Demo
 
-```css
-details {
-  background: #ffffff;
-  font-size: 1rem;
-  inline-size: 100%;
-  max-inline-size: 640px;
+With a little CSS and no JavaScript, we end up with an accordion that adheres to web and accessibility standards while providing a smooth animation effect that previously required JavaScript. Run the CodePen below for an example.
 
-  &:hover {
-    cursor: pointer;
-  }
+{% raw %}
+<p class="codepen" data-height="562" data-default-tab="result" data-slug-hash="jErEPoj" data-pen-title="Accordion with Details element" data-preview="true" data-user="mariohernandez" style="height: 562px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+      <span>See the Pen <a href="https://codepen.io/mariohernandez/pen/jErEPoj">
+  Accordion with Details element</a> by Mario Hernandez (<a href="https://codepen.io/mariohernandez">@mariohernandez</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+      </p>
+      <script async src="https://public.codepenassets.com/embed/index.js"></script>
+{% endraw %}
 
-  &::details-content {
-    line-height: 1.5;
-  }
-}
+_Demo of an accordion component built with the `<details>` element and CSS_.
 
-summary {
-  padding: var(--details-padding);
-}
-```
+### Live demo
+
+I recently implemented this very component in a [Drupal site](https://www.almd.uscourts.gov/jurors/frequently-asked-questions){target="_blank" rel="noopener noreferrer}. 🤓
+
+## Resources
+
+* Detail's `::details-conent` pseudo elment. [Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::details-content){target="_blank" rel="noopener noreferrer}.
+* The `<details>` element reached [Baseline Widely available](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) in 2020.
 
 ## In closing
 
-It's an exciting time in web development and although there is a lot of uncertainty about AI, there are areas that are relatively safe to experiment with while still being cautious for unexpected results. Happy Coding! 🤖
+Even after using the `<details>` element for some time, I am still blown away by how much functionality a few lines of HTML combined with CSS can create. My advice to developers—especially those who have been coding for a while—is to revisit the basics from time to time; you'll be surprised how much things have evolved. Happy coding! 🌟
