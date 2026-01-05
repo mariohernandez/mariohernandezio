@@ -1,33 +1,33 @@
 ---
 date: "2026-01-05"
-title: "The devil is NOT in the details. Building a semantic and accessible accordion for your content"
-subtitle: "A native and lightweight solution for building a pretty common component, the accordion."
+title: "Native Accordions. Let HTML do the heavy lifting"
+subtitle: "A native and lightweight solution for building advanced UIs without dependencies."
 tags: ['front-end','coding', 'css']
 draft: false
 featured: true
-featuredImage: "/images/heroes/ai.webp"
-featuredImageAlt: "Illustration of person using a laptop with coding-related graphics around him."
-imageThumb: "/images/thumbs/ai.webp"
+featuredImage: "/images/heroes/details.webp"
+featuredImageAlt: "Illustration of person using a laptop with coding-related graphics projected on a big screen."
+imageThumb: "/images/thumbs/details-thumb.webp"
 featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
-summary: "As 2025 comes to an end, I'd like to share of the tips and tricks that not only made me a better developer, but resulted on better UX, performance, and accessibility in my projects."
+summary: "If you haven't looked at the &lt;details&gt; element lately you may be missing out on some great features."
 ---
 
 It's interesting how we often assume a tool or coding technique must be large or complex to impact our web projects. Oftentimes, the simplest, smallest solutions produce the exact outcome you are looking for. What if, before writing code or downloading a module, we took a step back to see if a native solution already exists?
 
-You'd be surprised how many times developers skip this step, failing to realize that native HTML or CSS features can achieve results similar to advanced tools or techniques.
+You'd be surprised how many times developers skip this step, failing to realize that native HTML or CSS features can achieve results similar to advanced tools or techniques. In this post we will focus on the `<details>` HTML element to build pretty awesome accordions.
 
 ## The &lt;details&gt; and &lt;summary&gt; HTML elements
 
 The `<details>` element, also known as the Details disclosure element, it's described as...
 
->...The &lt;details&gt; HTML element creates a disclosure widget in which information is visible only when the widget is toggled into an open state. A summary or label must be provided using the &lt;summary&gt; element.
+>...the &lt;details&gt; HTML element creates a disclosure widget in which information is visible only when the widget is toggled into an open state. A summary or label must be provided using the &lt;summary&gt; element.
 
 HTML and CSS have come a long way in the last years, and browser support has improved rapidly. As a result, we can use native solutions to build interactive functionality that previously required JavaScript.
 
 ![Baseline status badge for details](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility/high.png)
 
-The [&lt;details&gt; element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) reached **Baseline Widely available** status in January 2020.
+_The [&lt;details&gt; element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) reached **Baseline Widely available** status in January 2020_.
 
 ### The Markup
 
