@@ -15,6 +15,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js');
 const dateFilter = require('./src/_11ty/filters/date-filter.js');
 const w3DateFilter = require('./src/_11ty/filters/w3-date-filter.js');
+const slugify = require("slugify");
 
 // Transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
@@ -65,6 +66,20 @@ const postcssFilter = (cssCode, done) => {
 
 module.exports = function(eleventyConfig) {
   // ===========================================================================
+  // SLUGIFY CONFIGURATION to customize urls.
+  // ===========================================================================
+  eleventyConfig.addFilter("slug", (str) => {
+    if (!str) {
+      return;
+    }
+    return slugify(str, {
+      lower: true,    // convert to lowercase
+      strict: true,   // remove all safe special characters
+      remove: /["'.]/g, // regex to explicitly remove characters like quotes or dots
+    });
+  });
+
+  // ===========================================================================
   // MARKDOWN CONFIGURATION
   // ===========================================================================
 
@@ -82,7 +97,6 @@ module.exports = function(eleventyConfig) {
       ariaHidden: true,
       class: 'heading-anchor'
     }),
-    slugify: eleventyConfig.getFilter('slugify')
   };
 
   const markdownLib = markdownIt(markdownItOptions)
