@@ -1,0 +1,8 @@
+/* Utility classes for altering the size of blog post headings if needed. */
+h2.small-h2 {
+  font-size: var(--small-h2);
+}
+
+h3.small-h3 {
+  font-size: var(--small-h3);
+}

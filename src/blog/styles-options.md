@@ -4,7 +4,7 @@ title: "Customizing Drupal Paragraph types with Style options"
 subtitle: "A light weight approach to adding dynamic customization options to your paragraph types using the style_options module."
 tags: ['drupal', 'theming']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/heroes/styles-options.webp"
 featuredImageAlt: "Multiple individuals building a web page as if they are building a house"
 imageThumb: "/images/thumbs/styles-options-thumb.webp"
@@ -193,7 +193,6 @@ Be sure to learn about the other two plugins the Style options module offers: _b
 ### Demo of Style options module with Mike Anello
 
 [Watch the recording](https://youtu.be/IWjWExVC0TY?si=6ahEUaXJyaU15_NY&t=48){target="_blank" rel="noopener noreferrer"} 📺
-
 
 ### Footnotes{.footnotes__heading}
 
