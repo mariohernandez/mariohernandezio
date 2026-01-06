@@ -59,7 +59,7 @@ A more elaborate example of the &lt;details&gt; and &lt;summary&gt; elements usi
 
 ## Notable &lt;details&gt; features
 
-### Attributes{.small-h3}{id#features}
+### Attributes{.small-h3}
 
 * `open`: This Boolean attribute indicates whether the details — that is, the contents of the `<details>` element — are currently visible. The details are shown when this attribute exists, or hidden when this attribute is absent. By default this attribute is absent.
 * `name`: The name attribute specifies a group name. Modern browsers now support the `name` attribute on `<details>` elements, allowing you to create exclusive accordions (where opening one closes others) using only HTML. 🌟
