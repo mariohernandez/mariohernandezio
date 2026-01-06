@@ -155,6 +155,19 @@ module.exports = function(eleventyConfig) {
   // FILTERS & SHORTCODES
   // ===========================================================================
 
+  // Embed CodePen Shortcode
+  eleventyConfig.addShortcode("codepen", (url, height = 560) => {
+    // Extracts the slug from a URL like codepen.io
+    const parts = url.split('/');
+    const user = parts[3];
+    const slug = parts[parts.length - 1];
+
+    return `<p class="codepen" data-height="${height}" data-default-tab="result" data-slug-hash="${slug}" data-user="${user}" data-preview="true">
+    <span>See the Pen <a href="${url}">by Mario Hernandez (<a href="https://codepen.io/mariohernandez">@mariohernandez</a>)
+    View on CodePen</a><a href="https://codepen.io">CodePen</a>.</span></p>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>`;
+  });
+
   // Date filters
   eleventyConfig.addFilter('dateFilter', dateFilter);
   eleventyConfig.addFilter('w3DateFilter', w3DateFilter);

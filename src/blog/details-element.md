@@ -1,8 +1,8 @@
 ---
-date: "2026-01-05"
+date: "2026-01-06"
 title: "Native Accordions. Let HTML do the heavy lifting"
 subtitle: "A native and lightweight solution for building advanced UIs without dependencies."
-tags: ['front-end','coding', 'css']
+tags: ['html','coding', 'css']
 draft: false
 featured: true
 featuredImage: "/images/heroes/details.webp"
@@ -13,15 +13,15 @@ featuredImageCreditUrl: "https://copilot.microsoft.com/"
 summary: "If you haven't looked at the &lt;details&gt; element lately you may be missing out on some great features."
 ---
 
-It's interesting how we often assume a tool or coding technique must be large or complex to impact our web projects. Oftentimes, the simplest, smallest solutions produce the exact outcome you are looking for. What if, before writing code or downloading a module, we took a step back to see if a native solution already exists?
+We often assume a tool or coding technique must be complex to be impactful, yet oftentimes, the most elegant solutions are the simplest. Before writing custom code or installing a new module, we should investigate if a native browser solution already exists. Developers often overlook this step, missing the fact that native HTML and CSS can frequently replicate the functionality of advanced third-party libraries with far less overhead.
 
-You'd be surprised how many times developers skip this step, failing to realize that native HTML or CSS features can achieve results similar to advanced tools or techniques. In this post we will focus on the `<details>` HTML element to build pretty awesome accordions.
+This post explores the power of the native `<details>` element. By returning to these fundamental building blocks, you can create accessible, high-performance accordions without the weight of unnecessary dependencies.
 
 ## The &lt;details&gt; and &lt;summary&gt; HTML elements
 
 The `<details>` element, also known as the Details disclosure element, it's described as...
 
->...the &lt;details&gt; HTML element creates a disclosure widget in which information is visible only when the widget is toggled into an open state. A summary or label must be provided using the &lt;summary&gt; element.
+>...an HTML element which creates a disclosure widget in which information is visible only when the widget is toggled into an open state. A summary or label must be provided using the &lt;summary&gt; element.
 
 HTML and CSS have come a long way in the last years, and browser support has improved rapidly. As a result, we can use native solutions to build interactive functionality that previously required JavaScript.
 
@@ -31,7 +31,7 @@ _The [&lt;details&gt; element](https://developer.mozilla.org/en-US/docs/Web/HTML
 
 ### The Markup
 
-The markup is simple, but it does require the `<summary>` element to be nested within the `<details>` tag. This structure unlocks several native browser features:
+The markup is simple, but it does require the `<summary>` element to be nested within the `<details>` tag. But don't be fooled by the simplicity of the markup, the `<details>` combined with the `<summary>` elements pack a surprising set of features. More on this shortly.
 
 ```html
 <details>
@@ -40,11 +40,9 @@ The markup is simple, but it does require the `<summary>` element to be nested w
 </details>
 ```
 
-Basic markup and nesting structure of the &lt;details&gt; and &lt;summary&gt; elements.{.caption}
+Standard markup and nesting structure of the &lt;details&gt; and &lt;summary&gt; elements.{.caption}
 
-Don't be fooled by the simplicity of the markup above though. The `<details>` in combination with the `<summary>` elements pack a surprising set of features. More on this shortly.
-
-While the tags and nesting order above are required, you can still get creative with your markup if the functionality you are building requires specific markup structure. See below:
+While the markup structure above is required, you can still get creative with the markup should the thing you are building has specific markup requirements. See below:
 
 ```html
 <details class="accordion" name="demo">
@@ -61,9 +59,7 @@ A more elaborate example of the &lt;details&gt; and &lt;summary&gt; elements usi
 
 ## Notable &lt;details&gt; features
 
-I have to admit, I was not aware of one or two of these features. I'm glad to learn about them.
-
-### Attributes{.small-h3}
+### Attributes{.small-h3}{id#features}
 
 * `open`: This Boolean attribute indicates whether the details — that is, the contents of the `<details>` element — are currently visible. The details are shown when this attribute exists, or hidden when this attribute is absent. By default this attribute is absent.
 * `name`: The name attribute specifies a group name. Modern browsers now support the `name` attribute on `<details>` elements, allowing you to create exclusive accordions (where opening one closes others) using only HTML. 🌟
@@ -106,14 +102,8 @@ Learning about the features available in the `<details>` element opens up all ki
 
 With a little CSS and no JavaScript, we end up with an accordion that adheres to web and accessibility standards while providing a smooth animation effect that previously required JavaScript. Run the CodePen below for an example.
 
-{% raw %}
-<p class="codepen" data-height="562" data-default-tab="result" data-slug-hash="jErEPoj" data-pen-title="Accordion with Details element" data-preview="true" data-user="mariohernandez" style="height: 562px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-      <span>See the Pen <a href="https://codepen.io/mariohernandez/pen/jErEPoj">
-  Accordion with Details element</a> by Mario Hernandez (<a href="https://codepen.io/mariohernandez">@mariohernandez</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-      </p>
-      <script async src="https://public.codepenassets.com/embed/index.js"></script>
-{% endraw %}
+<!-- Embedding a codepen. -->
+{% codepen "https://codepen.io/mariohernandez/pen/jErEPoj" %}
 
 _Demo of an accordion component built with the `<details>` element and CSS_.
 

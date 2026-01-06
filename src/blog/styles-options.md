@@ -194,7 +194,6 @@ Be sure to learn about the other two plugins the Style options module offers: _b
 
 [Watch the recording](https://youtu.be/IWjWExVC0TY?si=6ahEUaXJyaU15_NY&t=48){target="_blank" rel="noopener noreferrer"} 📺
 
-
 ### Footnotes{.footnotes__heading}
 
 [^1]: Dries Buytaert. “Evolving Drupal's Layout Builder to an Experience Builder.” [dri.es](https://dri.es/evolving-drupal-layout-builder-to-an-experience-builder){target="_blank" rel="noopener noreferrer"}, April 23, 2024.
