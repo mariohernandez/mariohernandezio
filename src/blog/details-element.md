@@ -67,12 +67,12 @@ A more elaborate example of the &lt;details&gt; and &lt;summary&gt; elements usi
 ### Events{.small-h3}
 
 * `toggle`: If for some reason you need to use JavaScript, the `<details>`'s `toggle` event is available to tap into it with JavaScript.
-* **Native Disclosure Widget**: By default, the `<details>` element is collapsed, showing only the content of the `<summary>`.
 
 ### Accessibility{.small-h3}
 
 * **Accessible by Default**: The structure is recognized by screen readers as a disclosure widget, and it is natively keyboard-accessible using the Enter or Space keys.
-* **Focusable**: By default the `<details>` element is focusable when navigating with keyboard or assistive technologies. It's smart enough that if its details contain focusable content (i.e. links, buttons, etc.), it automaically navigates those elements by simply continuing to press the Tab key.
+* **Focusable**: By default the `<details>` element is focusable when navigating with keyboard or assistive technologies. It's smart enough that if its details contain focusable content (i.e. links, buttons, etc.), it automatically navigates those elements by simply continuing to press the Tab key.
+* **Native Disclosure Widget**: By default, the `<details>` element is collapsed, showing only the content of the `<summary>`.
 
 ### Other{.small-h3}
 
@@ -113,7 +113,7 @@ I recently implemented this very component in a [Drupal site](https://www.almd.u
 
 ## Resources
 
-* Detail's `::details-conent` pseudo elment. [Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::details-content){target="_blank" rel="noopener noreferrer}.
+* Learn more about the `::details-content` [pseudo-element](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::details-content){target="_blank" rel="noopener noreferrer}.
 * The `<details>` element reached [Baseline Widely available](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) in 2020.
 
 ## In closing
