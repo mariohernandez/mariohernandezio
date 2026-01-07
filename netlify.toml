@@ -27,7 +27,6 @@
   package = "netlify-plugin-submit-sitemap"
 
   [plugins.inputs]
-    baseUrl = "https://mariohernandez.io"
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
     providers = ["google", "yandex"]
