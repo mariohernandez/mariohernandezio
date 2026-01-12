@@ -181,7 +181,6 @@ module.exports = function(eleventyConfig) {
     <span>See the Pen <a href="${url}">by Mario Hernandez (<a href="https://codepen.io/mariohernandez">@mariohernandez</a>)
     View on CodePen</a><a href="https://codepen.io">CodePen</a>.</span></p>
     <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>`;
-
   });
 
   // Date filters
