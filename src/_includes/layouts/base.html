@@ -37,7 +37,7 @@
       gtag('config', 'G-KFWBDSLVNK');
     </script>
 
-    <!-- Pagefind search. -->
+    {# Pagefind search. #}
     <script src="/pagefind/pagefind-ui.js"></script>
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
@@ -51,11 +51,11 @@
       {% block content %}{% endblock %}
     </main>
     {% include "partials/footer.html" %}
-    <!-- capture the JS content as a Nunjucks variable ... -->
+    <!-- capture the JS content as a Nunjucks variable -->
     {% set js %}
       {% include '../../../src/js/scripts.js' %}
     {% endset %}
-    <!-- ...then feed it through our jsmin filter to minify -->
+    <!-- feed it through our jsmin filter to minify -->
     <script>
       {{ js | jsmin | safe }}
     </script>

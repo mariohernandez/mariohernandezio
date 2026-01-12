@@ -1,22 +1,19 @@
 html {
   font-size: 62.5%;
-  /* Opt-in smooth scroll via html[data-smooth-scroll] */
-  &[data-smooth-scroll="enabled"] {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scrollbar-gutter: stable;
 }
 
 /* Ensures transitions are not applied for users who prefer reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   html[data-view-transitions="enabled"] {
     @view-transition {
       navigation: auto;
     }
   }
-}
+} */
 
 body {
   color: var(--gray-darker);
