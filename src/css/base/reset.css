@@ -119,12 +119,6 @@ dd[role='list'] {
   padding: 0;
 }
 
-/* Adds background color when text is selected. */
-::selection {
-  background-color: var(--purple);
-  color: var(--white);
-}
-
 :disabled {
   cursor: default;
 }
