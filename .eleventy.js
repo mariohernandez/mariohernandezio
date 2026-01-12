@@ -69,13 +69,14 @@ module.exports = function(eleventyConfig) {
   // BASELINE-STATUS: Embed baseline status for any given element..
   // ===========================================================================
   eleventyConfig.addShortcode("baseline", function(featureId) {
-    // This shortcode pushes the CDN script to the "js" bundle only once per page
-    return `
-      <script type="module" src="https://unpkg.com/baseline-status"></script>
-      <baseline-status featureId="${featureId}"></baseline-status>`;
-
-      // Use in markdown or templates like this:
-      // {% baseline 'details' %}
+    // This shortcode ensures the CDN script is added only once per page.
+    // Usage: {% baseline 'details' %}
+    let script = '';
+    if (!this.page.baselineScriptAdded) {
+      this.page.baselineScriptAdded = true;
+      script = '<script type="module" src="https://unpkg.com/baseline-status"></script>';
+    }
+    return `${script}<baseline-status featureId="${featureId}"></baseline-status>`;
   });
 
   // ===========================================================================
@@ -169,6 +170,7 @@ module.exports = function(eleventyConfig) {
   // ===========================================================================
 
   // Embed CodePen Shortcode
+  // Usage in .md: {% codepen "https://codepen.io/mariohernandez/pen/jErEPoj" %}
   eleventyConfig.addShortcode("codepen", (url, height = 560) => {
     // Extracts the slug from a URL like codepen.io
     const parts = url.split('/');
@@ -180,8 +182,6 @@ module.exports = function(eleventyConfig) {
     View on CodePen</a><a href="https://codepen.io">CodePen</a>.</span></p>
     <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>`;
 
-      // Use in markdown or templates like this:
-      // {% codepen "https://codepen.io/mariohernandez/pen/jErEPoj" %}
   });
 
   // Date filters
