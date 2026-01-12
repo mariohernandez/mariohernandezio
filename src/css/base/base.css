@@ -1,13 +1,30 @@
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
+  /* Opt-in smooth scroll via html[data-smooth-scroll] */
+  &[data-smooth-scroll="enabled"] {
+    scroll-behavior: smooth;
+  }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scrollbar-gutter: stable;
 }
 
-@view-transition {
-  navigation: auto;
+/**
+ * Purpose:
+ * Enable browser view transitions for navigations while honoring user motion preferences.
+ *
+ * What this rule does:
+ * - Only runs when the user has not requested reduced motion (prefers-reduced-motion: no-preference).
+ * - Targets the root element when view transitions are explicitly enabled via html[data-view-transitions="enabled"].
+ * - Registers a @view-transition rule with navigation: auto so the browser can automatically capture and animate navigation changes.
+ * - Ensures transitions are not applied for users who prefer reduced motion.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-view-transitions="enabled"] {
+    @view-transition {
+      navigation: auto;
+    }
+  }
 }
 
 body {
