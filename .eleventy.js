@@ -61,10 +61,23 @@ const postcssFilter = (cssCode, done) => {
 };
 
 // =============================================================================
-// MAIN CONFIGURATION
+// *** MAIN CONFIGURATION ***
 // =============================================================================
 
 module.exports = function(eleventyConfig) {
+  // ===========================================================================
+  // BASELINE-STATUS: Embed baseline status for any given element..
+  // ===========================================================================
+  eleventyConfig.addShortcode("baseline", function(featureId) {
+    // This shortcode pushes the CDN script to the "js" bundle only once per page
+    return `
+      <script type="module" src="https://unpkg.com/baseline-status"></script>
+      <baseline-status featureId="${featureId}"></baseline-status>`;
+
+      // Use in markdown or templates like this:
+      // {% baseline 'details' %}
+  });
+
   // ===========================================================================
   // SLUGIFY CONFIGURATION to customize urls.
   // ===========================================================================
@@ -166,6 +179,9 @@ module.exports = function(eleventyConfig) {
     <span>See the Pen <a href="${url}">by Mario Hernandez (<a href="https://codepen.io/mariohernandez">@mariohernandez</a>)
     View on CodePen</a><a href="https://codepen.io">CodePen</a>.</span></p>
     <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>`;
+
+      // Use in markdown or templates like this:
+      // {% codepen "https://codepen.io/mariohernandez/pen/jErEPoj" %}
   });
 
   // Date filters
