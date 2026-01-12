@@ -1,6 +1,21 @@
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
+  /* Opt-in smooth scroll via html[data-smooth-scroll] */
+  &[data-smooth-scroll="enabled"] {
+    scroll-behavior: smooth;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-gutter: stable;
+}
+
+/* Ensures transitions are not applied for users who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-view-transitions="enabled"] {
+    @view-transition {
+      navigation: auto;
+    }
+  }
 }
 
 body {
@@ -110,4 +125,9 @@ code .highlight-line:before {
   padding-right: 1.2em;
   text-align: right;
   width: 2.4em;
+}
+
+::selection {
+  background-color: var(--purple);
+  color: var(--white);
 }

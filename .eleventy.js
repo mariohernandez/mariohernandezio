@@ -61,10 +61,24 @@ const postcssFilter = (cssCode, done) => {
 };
 
 // =============================================================================
-// MAIN CONFIGURATION
+// *** MAIN CONFIGURATION ***
 // =============================================================================
 
 module.exports = function(eleventyConfig) {
+  // ===========================================================================
+  // BASELINE-STATUS: Embed baseline status for any given element..
+  // ===========================================================================
+  eleventyConfig.addShortcode("baseline", function(featureId) {
+    // This shortcode ensures the CDN script is added only once per page.
+    // Usage: {% baseline 'details' %}
+    let script = '';
+    if (!this.page.baselineScriptAdded) {
+      this.page.baselineScriptAdded = true;
+      script = '<script type="module" src="https://unpkg.com/baseline-status"></script>';
+    }
+    return `${script}<baseline-status featureId="${featureId}"></baseline-status>`;
+  });
+
   // ===========================================================================
   // SLUGIFY CONFIGURATION to customize urls.
   // ===========================================================================
@@ -156,6 +170,7 @@ module.exports = function(eleventyConfig) {
   // ===========================================================================
 
   // Embed CodePen Shortcode
+  // Usage in .md: {% codepen "https://codepen.io/mariohernandez/pen/jErEPoj" %}
   eleventyConfig.addShortcode("codepen", (url, height = 560) => {
     // Extracts the slug from a URL like codepen.io
     const parts = url.split('/');

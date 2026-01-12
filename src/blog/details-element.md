@@ -25,9 +25,8 @@ The `<details>` element, also known as the Details disclosure element, it's desc
 
 HTML and CSS have come a long way in the last years, and browser support has improved rapidly. As a result, we can use native solutions to build interactive functionality that previously required JavaScript.
 
-![Baseline status badge for details](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility/high.png)
-
-_The [&lt;details&gt; element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) reached **Baseline Widely available** status in January 2020_.
+Details is widely supported by all major browsers since January 2020.
+{% baseline 'details' %}
 
 ### The Markup
 
