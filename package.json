@@ -12,8 +12,7 @@
     "production": "NODE_ENV=production postcss src/css/styles.css --dir dist/css && NODE_ENV=production npx eleventy && NODE_ENV=production npx -y pagefind --site dist",
     "watch:css": "postcss src/css/styles.css --dir dist/css -w",
     "compile:css": "postcss src/css/styles.css --dir dist/css",
-    "lint": "npx biome check",
-    "pa11y": "pa11y http://localhost:8080 --wait 2000"
+    "lint": "npx biome check"
   },
   "browserslist": [
     "last 2 versions and not dead",
