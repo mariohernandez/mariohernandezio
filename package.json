@@ -14,6 +14,10 @@
     "compile:css": "postcss src/css/styles.css --dir dist/css",
     "lint": "npx biome check"
   },
+  "pa11y": {
+    "timeout": 120000,
+    "wait": 2000
+  },
   "browserslist": [
     "last 2 versions and not dead",
     ">= 1%",
