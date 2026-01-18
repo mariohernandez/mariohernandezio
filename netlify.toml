@@ -24,8 +24,10 @@
   status = 301
 
 [[plugins]]
-  package = "netlify-plugin-submit-sitemap"
+  package = "@netlify/plugin-a11y"
 
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
   [plugins.inputs]
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
