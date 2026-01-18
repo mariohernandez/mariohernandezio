@@ -27,7 +27,7 @@
   package = "@netlify/plugin-a11y"
   [plugins.inputs]
     # Check all HTML files in this project (the default behavior)
-    checkPaths = ['/', '/blog/*']
+    checkPaths = ['/dist/**/*']
     failWithIssues = false
     # Ignore all HTML files in `/admin`
     ignoreDirectories = ['/pagefind']
