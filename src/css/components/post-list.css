@@ -14,7 +14,10 @@
   grid-column-gap: var(--size-20);
   grid-row-gap: var(--size-50);
   /* min() with 100% prevents overflow in extra narrow spaces */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-250)), 1fr));
+  grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, var(--size-250)), 1fr)
+    );
 }
 
 .post-list__link {
@@ -40,7 +43,6 @@
 
 /* Styles for list without cards. */
 .blog__article {
-
   > * + * {
     margin-block-start: var(--size-6);
   }
