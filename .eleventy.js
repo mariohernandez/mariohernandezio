@@ -7,6 +7,7 @@
 // =============================================================================
 
 // Core Eleventy plugins
+const htmlmin = require("html-minifier-next");
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -16,9 +17,6 @@ const sortByDisplayOrder = require('./src/_11ty/utils/sort-by-display-order.js')
 const dateFilter = require('./src/_11ty/filters/date-filter.js');
 const w3DateFilter = require('./src/_11ty/filters/w3-date-filter.js');
 const slugify = require("slugify");
-
-// Transforms
-const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 
 // Build tools
 const { minify } = require("terser");
@@ -198,6 +196,21 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  // HTML minification transform.
+  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+    // Only minify HTML output
+    if (outputPath && outputPath.endsWith(".html")) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        // Add other options as needed
+      });
+      return minified;
+    }
+    return content;
+  });
+
   // PostCSS filter
   eleventyConfig.addNunjucksAsyncFilter('postcss', postcssFilter);
 
@@ -249,9 +262,9 @@ module.exports = function(eleventyConfig) {
   // PRODUCTION OPTIMIZATIONS
   // ===========================================================================
 
-  if (isProduction) {
-    eleventyConfig.addTransform('htmlmin', htmlMinTransform);
-  }
+  // if (isProduction) {
+  //   ...
+  // }
 
   // ===========================================================================
   // CONFIGURATION RETURN
