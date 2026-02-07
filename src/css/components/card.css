@@ -36,7 +36,7 @@
 
 .card__teaser {
   font-size: var(--size-16);
-  line-height: var(--line-height-1 0.5);
+  line-height: var(--line-height-1-5);
 }
 
 .card__content {

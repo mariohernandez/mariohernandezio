@@ -196,20 +196,25 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  // ===========================================================================
+  // PRODUCTION OPTIMIZATIONS
   // HTML minification transform.
-  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-    // Only minify HTML output
-    if (outputPath && outputPath.endsWith(".html")) {
-      let minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        // Add other options as needed
-      });
-      return minified;
-    }
-    return content;
-  });
+  // ===========================================================================
+  if (isProduction) {
+    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+      // Only minify HTML output
+      if (outputPath && outputPath.endsWith(".html")) {
+        let minified = htmlmin.minify(content, {
+          useShortDoctype: true,
+          removeComments: true,
+          collapseWhitespace: true,
+          // Add other options as needed
+        });
+        return minified;
+      }
+      return content;
+    });
+  }
 
   // PostCSS filter
   eleventyConfig.addNunjucksAsyncFilter('postcss', postcssFilter);
@@ -257,14 +262,6 @@ module.exports = function(eleventyConfig) {
   // Build settings
   eleventyConfig.setWatchJavaScriptDependencies(false);
   eleventyConfig.setUseGitIgnore(false);
-
-  // ===========================================================================
-  // PRODUCTION OPTIMIZATIONS
-  // ===========================================================================
-
-  // if (isProduction) {
-  //   ...
-  // }
 
   // ===========================================================================
   // CONFIGURATION RETURN
