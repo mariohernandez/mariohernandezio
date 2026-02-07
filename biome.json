@@ -13,7 +13,10 @@
     "rules": {
       "recommended": true,
       "suspicious": {
-        "noUnknownAtRules": "off"
+        "noUnknownAtRules": {
+          "level": "warn",
+          "options": { "ignore": ["custom-media"] }
+        }
       }
     }
   },
