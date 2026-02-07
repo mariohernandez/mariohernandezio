@@ -4,12 +4,11 @@
  */
 
 .page-header__summary {
-  margin-block-end: 0.5rem
+  margin-block-end: 0.5rem;
 }
 
 /* Individual tag above article title. */
 .blog-post__tag {
-
   .eyebrow {
     margin-block-end: var(--size-20);
 
@@ -117,14 +116,14 @@ a.heading-anchor {
     display: block;
     padding-block-start: 2px;
     padding-inline-start: 2px;
-    stroke: var(--black) !important;
+    stroke: var(--black);
   }
 
   &:hover {
     opacity: 1;
 
     svg {
-      stroke: var(--purple) !important;
+      stroke: var(--purple);
     }
   }
 }
@@ -140,7 +139,9 @@ a.heading-anchor {
   position: absolute;
   z-index: 1000;
   opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
   /* Position relative to the element it's attached to */
   transform: translateX(-50%);
   white-space: nowrap;
@@ -169,7 +170,7 @@ a.heading-anchor {
     display: block;
     font-size: 1.2rem;
     font-weight: var(--weight-700);
-    letter-spacing: 0.10em;
+    letter-spacing: 0.1em;
     line-height: var(--line-height-1);
     margin-block-end: 1.6rem;
     text-align: center;
@@ -189,7 +190,7 @@ a.heading-anchor {
     margin-block-end: 0;
     padding-inline-start: 0;
 
-     @media (width >= 48rem) {
+    @media (width >= 48rem) {
       flex-direction: row;
     }
   }
