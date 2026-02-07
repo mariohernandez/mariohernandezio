@@ -12,12 +12,11 @@
     margin-inline: auto;
   }
 
-
   /* Styles for CTA link and arrow svg image. */
   .button--link {
     align-items: center;
     display: flex;
-    font-size: var(--size-18) !important;
+    font-size: var(--size-18);
     line-height: 1;
 
     .link-arrow {

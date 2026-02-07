@@ -100,7 +100,7 @@
   // Wait for DOM to be fully loaded before setting up anchor click handlers
   document.addEventListener('DOMContentLoaded', () => {
     // Find all heading anchor elements on the page
-    document.querySelectorAll('.heading-anchor').forEach(anchor => {
+    document.querySelectorAll('.heading-anchor').forEach((anchor) => {
       // Add click event listener to each anchor
       anchor.addEventListener('click', async (e) => {
         // Prevent default anchor link behavior (page jumping)
