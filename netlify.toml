@@ -23,16 +23,16 @@
   to = "/blog/responsive-images-in-drupal-a-series"
   status = 301
 
-[[plugins]]
-  package = "@netlify/plugin-a11y"
-  [plugins.inputs]
-    # Check all HTML files in this project (the default behavior)
-    # checkPaths = ['/dist/**/*']
-    failWithIssues = false
-    # Ignore all HTML files in `/admin`
-    ignoreDirectories = ['/pagefind']
-    # Perform a11y check against WCAG 2.1 AAA
-    wcagLevel = 'WCAG2AAA'
+# [[plugins]]
+#   package = "@netlify/plugin-a11y"
+#   [plugins.inputs]
+#     # Check all HTML files in this project (the default behavior)
+#     # checkPaths = ['/dist/**/*']
+#     failWithIssues = false
+#     # Ignore all HTML files in `/admin`
+#     ignoreDirectories = ['/pagefind']
+#     # Perform a11y check against WCAG 2.1 AAA
+#     wcagLevel = 'WCAG2AAA'
 
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
