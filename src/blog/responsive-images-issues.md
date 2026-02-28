@@ -1,23 +1,60 @@
 ---
 date: "2026-01-06"
-title: "Native Accordions. Let HTML do the heavy lifting"
-subtitle: "A native and lightweight solution for building advanced UIs without dependencies."
-tags: ['html','coding', 'css']
+title: "Two Drupal core issues in responsive images you may not know you are experiencing - and how to fix them"
+subtitle: "Explaining and patching two issues in Drupal core that could afect how your responsive images render."
+slug: responsive-images-core-issues
+series:
+  slug: "responsive-images"
+  order: 8
+tags: ['responsive images', 'drupal']
 draft: false
-featured: false
+featured: true
 featuredImage: "/images/heroes/details.webp"
 featuredImageAlt: "Illustration of person using a laptop with coding-related graphics projected on a big screen."
 imageThumb: "/images/thumbs/details-thumb.webp"
 featuredImageCredit: "Microsoft Copilot"
 featuredImageCreditUrl: "https://copilot.microsoft.com/"
-summary: "If you haven't looked at the &lt;details&gt; element lately you may be missing out on some great features."
+summary: "I have identified two bugs in Drupal core's responsive_image which create big problems when rendering images."
 ---
 
-We often assume a tool or coding technique must be complex to be impactful, yet oftentimes, the most elegant solutions are the simplest. Before writing custom code or installing a new module, we should investigate if a native browser solution already exists. Developers often overlook this step, missing the fact that native HTML and CSS can frequently replicate the functionality of advanced third-party libraries with far less overhead.
+In early 2025 I was faced with an odd issue with images which I originally ignored thinking it was something I was doing wrong when configuring responsive images for one of my projects. I was a little confused because I have worked with Drupal's responsive images for a while, I have given several talks on the topic, and as you can see, I have written about it extensively, and yet, this was an issue I had not ran into in the past.
 
-This post explores the power of the native `<details>` element. By returning to these fundamental building blocks, you can create accessible, high-performance accordions without the weight of unnecessary dependencies.
+It became clear this was not a misconfiguration on my part when I ran into the same issue in a separate project.
 
-## The &lt;details&gt; and &lt;summary&gt; HTML elements
+**The issue (TLDR)**: _Images render using the fallback image dimensions rather than the image selected by the browser_.
+
+**Full version**: Starting with Drupal 10.4, while configuring responsive images for a Drupal project, I noticed the images were rendering smaller than they should which was a big problem. After experiencing the same issue in a second project, I began researching and ran across this Drupal issue **INSERT ORIGINAL FALLBACK ISSUE HERE (NOT MY OWN)**.
+
+It turned out a recent "improvement" to responsive images was to force your image to use the dimensions of the fallback image. The logic behind this change was to prevent content-shifting during the page load. If the browser does not know at what size an image should render, content would shift on the page until the right image dimensions have been identified and added to the image's `width` and `height` attributes.
+
+The issue above is a real issue because Drupal can't assign the right image width and height to the `<img>` tag until the page loads. I don't know the answer to solving this issue however, forcing images to always use the dimensions of the fallback image is not the solution. In fact, doing this defeats the entire purpose of responsive images. At its core, when using the image's `srcset` and `sizes` attributes, the browser selects the best image based on several factors including screen resolution, connection speed, screen size, etc.
+
+If you use the `<picture>` element, there is no issue because with the fallback image because `<picture>` allows us to instruct the browser as to which image to use for each breakpoint.
+
+## The patch
+
+The clue for me was the original drupal issue where the functionality to use the fallback image's width and height was set. My solution in the way of a patch was to undo that functionality and go back to the original way things were.
+
+I created [issue:3516726](https://www.drupal.org/project/drupal/issues/3516726) where I added a simple patch.
+
+## Wait, there is more
+
+Would you believe it that as soon as I created the patch above I identified a second responsive images bug? That's right!
+Let's do this again.
+
+**Second issue (TLDR)**: _Drupal assigns the width and height of the last image in the list of image styles within the responsive images configuration_.
+
+**Full version**: In reality, this new bug is no different than the first one -- it forces the width and height of an arbitrary image rather than the one selected by the browser.
+
+The intentions are still good but I don't think this is how to go about addressing the core issue; provide the correct width and height to the render image to avoid content shifting and also address an accessibility issue.
+
+When configuring responsive images using the image's `srcset` and `sizes` attribute rather than the `<picture>` element, you want to provide multiple images sources as well as a dimension for how big or how small the image should render. With this data at hand, the browser makes an smart decision of selecting the best image for the job based on several factors including screen resolution, connection speed, screen size, etc.
+
+The problem I identified this time is that Drupal selects the last image style in the list of sources you have provided regardless of whether the image style meets the configuration criteria you have defined. Again, this defeats the entire purpose of responsive images as it did in the first issue.
+
+## The second patch
+
+Just like before, I filed [Issue:3523451](https://www.drupal.org/project/drupal/issues/3523451) which effectively updates Drupal's logic and rather than prescribe a specific image style based on its location in the list of sources, it identifies the best image candidate.
 
 The `<details>` element, also known as the Details disclosure element, it's described as...
 
