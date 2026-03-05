@@ -1,0 +1,177 @@
+/* Reset source: https://piccalil.li/blog/a-more-modern-css-reset/  */
+/* https://git.dbushell.com/dbushell/patchwork/src/branch/main/static/css/base/reset.css */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent font size inflation */
+html {
+  color-scheme: light dark;
+  hanging-punctuation: first allow-end last;
+  interpolate-size: allow-keywords;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(html.translated-rtl) {
+  direction: rtl;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(html) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100svh; /* Small Viewport Height */
+}
+
+:where(html.translated-rtl) {
+  direction: rtl;
+}
+
+:where(body) {
+  min-block-size: 100svb;
+  min-inline-size: 300px;
+}
+
+input,
+textarea {
+  hanging-punctuation: none; /* https://adactio.com/journal/21027 */
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd,
+details {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list class,
+which suggests default styling will be removed */
+ul[class*='no-list'],
+ol[class*='no-list'] {
+  list-style: none;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* The <a> elements that don't have a class get default styles */
+a:not([class]) {
+  color: currentColor;
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+video,
+figure {
+  display: block;
+  max-width: 100%;
+}
+
+:where(canvas, img, picture, svg, video, figure, canvas) {
+  block-size: auto;
+  border: none;
+  display: block;
+  max-inline-size: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+:where(button, input, progress, select, textarea) {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  hanging-punctuation: none;
+  line-height: inherit;
+  text-align: start;
+  touch-action: manipulation;
+}
+
+:where(button) {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+:where(textarea:not([rows])) {
+  field-sizing: content;
+}
+
+:where(textarea) {
+  resize: vertical;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5rem;
+}
+
+:where(fieldset, iframe) {
+  border: none;
+}
+
+:where(p, li) {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+:where(abbr[title]) {
+  border: none;
+  text-decoration: none;
+}
+
+:where(cite) {
+  font-style: inherit;
+}
+
+:where(small) {
+  font-size: inherit;
+}
+
+:where(dialog, [popover]) {
+  background: transparent;
+  border: none;
+  color: inherit;
+  margin: auto;
+  max-block-size: none;
+  max-inline-size: none;
+  position: fixed;
+}
+
+:where([popover]) {
+  inset: auto;
+}
+
+:where(dialog:not([open], [popover]), [popover]:not(:popover-open)) {
+  display: none;
+}
+
+:where([hidden]:not([hidden="until-found"])) {
+  display: none !important;
+}

@@ -1,0 +1,11 @@
+:root {
+  /* Primitive colors custom properties  */
+  --black: #000000;
+  --white: #ffffff;
+
+  /* Brand colors custom properties  */
+  --foreground: var(--black);
+  --background: var(--white);
+  --link: #1a0dab;
+  --hover: #551a8b;
+}
