@@ -1,0 +1,9 @@
+:root {
+  --highest: 50;
+  --high: 40;
+  --low: 30;
+  --lower: 20;
+  --lowest: 10;
+  --ground: 0;
+  --below: -1;
+}

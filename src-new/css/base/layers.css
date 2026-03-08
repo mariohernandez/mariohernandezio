@@ -1,0 +1,17 @@
+/** style.css
+ * 1. Define the layer order for the entire project.
+ * https://youtu.be/DI-dgSlaeIY?si=F9d2mwZIQImWa-SK
+ */
+@layer reset, base, components, utilities, layout, theme;
+
+/* Import custom sheets into designated layers. */
+/* Reset styles. */
+@import './base/reset' layer(reset);
+@import 'https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css' layer(reset);
+
+/* Base styles. */
+@import './base/base' layer(base);
+@import './base/colors' layer(base);
+@import './base/forms' layer(base);
+@import './base/typography' layer(base);
+@import './base/webfonts' layer(base);

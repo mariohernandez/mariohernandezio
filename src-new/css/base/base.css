@@ -1,0 +1,65 @@
+/**
+ * @file base.css.
+ * Project base styles.
+ */
+html {
+  font-size: 112.5%; /* = 18px */
+}
+
+body {
+  color: CanvasText;
+  background-color: Canvas;
+  line-height: 1.6;
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-synthesis: none;
+}
+
+a:not([class]) {
+  color: var(--link);
+  text-decoration: underline;
+
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: CanvasText;
+}
+
+/* Styles for code blocks line numbers */
+pre {
+  counter-reset: lineNumber;
+}
+
+code[class*="language-"] {
+  font-size: var(--text-min);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  line-height: 1.3;
+}
+
+/* Line number styles. */
+code .highlight-line:before {
+  -webkit-user-select: none;
+  border-right: 1px solid #404040;
+  color: #858585;
+  content: counter(lineNumber);
+  counter-increment: lineNumber;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  inline-size: 2.4em;
+  margin-inline-end: 1em;
+  padding-inline-end: 1em;
+  text-align: right;
+}

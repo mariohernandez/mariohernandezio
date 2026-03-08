@@ -1,0 +1,7 @@
+:root {
+  --mobile: (width >= 18rem);            /* ~ 324px */
+  --tablet: (width >= 42.666rem);        /* ~ 768px */
+  --tablet-lg: (width >= 56.888rem);  /* ~ 1024px */
+  --laptop: (width >= 71.11rem);         /* ~ 1280px */
+  --desktop: (width >= 80rem);           /* ~ 1440px */
+}
