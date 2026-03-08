@@ -17,30 +17,82 @@ featuredImageCreditUrl: "https://copilot.microsoft.com/"
 summary: "I have identified two bugs in Drupal core's responsive_image which create big problems when rendering images."
 ---
 
-In early 2025 I was faced with an odd issue with images which I originally ignored thinking it was something I was doing wrong when configuring responsive images for one of my projects. I was a little confused because I have worked with Drupal's responsive images for a while, I have given several talks on the topic, and as you can see, I have written about it extensively, and yet, this was an issue I had not ran into in the past.
+In early 2025 I noticed an odd behavior with how responsive images were rendering. This was a Drupal 10.4 site and the configuration I set was being ignored causing images to render smaller than expected.
 
-It became clear this was not a misconfiguration on my part when I ran into the same issue in a separate project.
+I am not an expert about responsive images, but I have been working with them for many years. I have conducted training workshops and talks about them and have even written a 7-part blog series about responsive images. My point is, in all these years, I had never encountered this issue.
 
-**The issue (TLDR)**: _Images render using the fallback image dimensions rather than the image selected by the browser_.
+**Info**: The issues described in this post do not affect the `<picture>` element. They are only present when using the `srcset` & `sizes` attributes of the `<img>` tag.{.callout}
 
-**Full version**: Starting with Drupal 10.4, while configuring responsive images for a Drupal project, I noticed the images were rendering smaller than they should which was a big problem. After experiencing the same issue in a second project, I began researching and ran across this Drupal issue **INSERT ORIGINAL FALLBACK ISSUE HERE (NOT MY OWN)**.
+After some debuggin and testing, I noticed the image rendering issue was directly related to the fallback image style used in the responsive images UI. Drupal by default sets the images's `width` and `height` attributes with that of the fallback image style. Unfortunately the result is nothing short of "wrong". See below.
 
-It turned out a recent "improvement" to responsive images was to force your image to use the dimensions of the fallback image. The logic behind this change was to prevent content-shifting during the page load. If the browser does not know at what size an image should render, content would shift on the page until the right image dimensions have been identified and added to the image's `width` and `height` attributes.
+![Comparison screenshot of small rendered image and large loaded image](/images/blog-images/fallback.webp){.body-image}
 
-The issue above is a real issue because Drupal can't assign the right image width and height to the `<img>` tag until the page loads. I don't know the answer to solving this issue however, forcing images to always use the dimensions of the fallback image is not the solution. In fact, doing this defeats the entire purpose of responsive images. At its core, when using the image's `srcset` and `sizes` attributes, the browser selects the best image based on several factors including screen resolution, connection speed, screen size, etc.
+Rendering image at 325 x 217px (fallback image dimensions), but loading the image at 2600 x 1733px.{.caption}
 
-If you use the `<picture>` element, there is no issue because with the fallback image because `<picture>` allows us to instruct the browser as to which image to use for each breakpoint.
+Additional research led me to [this Drupal.org issue](https://www.drupal.org/node/3377420){target="_blank" rel="noopener noreferrer} which seems to be where things may have changed and resulted on the bug above. After reading through the comments in the issue page [other issues](https://www.drupal.org/project/drupal/issues/3359421){target="_blank" rel="noopener noreferrer} are referenced which are even older than `#3377420`, and go back to Drupal 10.1. On either case, I see the main reason for the new changes was to address a well-known issue when loading images, **Cumulative Layout Shift**.
+
+## Cumulative Layout Shift
+
+Cumulative Layout Shift, or CLS[^1], has been a problem for many years when rendering images or other media content. CLS refers to the shifting of layouts or content as pages with images load. If your Drupal site is rendering images small and then "jumping" to full size, your real-world users are experiencing layout shifts. This is not only a bad user experience for your visitors, but it also affects accessibility and SEO[^2] ranking.
+
+While addressing CLS should be a priority, I don't think forcing the fallback image's dimensions into the rendered image is the way to go about it. I don't have the answer to this problem but there are ways to improve the user experience by reducing CLS. See the "Additional Resources" at the end of this post.
+
+As I mentioned earlier, If you use the `<picture>` element, there is no issue with the fallback image because `<picture>` allows us to instruct the browser which image to use for each breakpoint and by doing so we provide the browser with the image's width which it's all it needs to properly calculate the image's aspect ratio to avoid CLS.
 
 ## The patch
 
-The clue for me was the original drupal issue where the functionality to use the fallback image's width and height was set. My solution in the way of a patch was to undo that functionality and go back to the original way things were.
+The clue for me was the original drupal issue where the functionality to use the fallback image's width and height was set. My solution in the way of a patch was to revert those changes and go back to the original state.
 
-I created [issue:3516726](https://www.drupal.org/project/drupal/issues/3516726) where I added a simple patch.
+I created [issue:3516726](https://www.drupal.org/project/drupal/issues/3516726){target="_blank" rel="noopener noreferrer} where I added a patch with corresponding tests.
 
-## Wait, there is more
+The patch removes the logic that was forcing the fallback image's width and height into the rendered image thus letting the multiple sources/image style candidates be the criteria for the rendered image's dimensions. But...
 
-Would you believe it that as soon as I created the patch above I identified a second responsive images bug? That's right!
-Let's do this again.
+## ... Another bug?
+
+Would you believe it that after fixing the fallback image issue, I ran across  a second related bug? The second issue is very similar to the first one in that images render at different size of expected. However, the cause of this issue is different; this time Drupal uses the dimensions of the last image style in the responsive image styles UI. The outcome is the same as the first issue because if the dimensions of the last image style are too small then the image would render much smaller than the expected size.
+
+Take the example below: Say I want the image to be rendered at about 1040px when the viewport width reaches 1040px. Since the last image style in my configuration is only 500x500px, that's how big my image will be rendered because the width and height of my image will have 500 as their values.
+
+![Responsive images UI highlighting image styles](/images/blog-images/imgstyle.webp){.body-image}
+
+Responsive images UI highlighting multiple image styles{.caption}
+
+### Second patch
+
+## Why is this happening?
+
+The answer is simple, CLS. It may seem like a relatively easy problem to solve but as you can see from both these issues, it is not.
+
+The core of the issue is that Drupal does not know the image's width and height before the page is fully loaded to populate the image's width and height attributes. It's only after the page has gone through the process of analyzing the responsive images configuration and the page has finished loading, that Drupal has the dimensions information. So in an effort to avoid CLS while the page is loading, Drupal is doing its best to provide some kind of value as width and height so it can reduce the issue of not having width of height descriptor values at all.
+
+## The promise
+
+In theory, the introduction of `srcset` and `sizes` attributes for the `<img>` tag was supposed to be the solution. As you may know, when defining multiple sources so the browser can make a smart decision to select the best one based on the user's environment such as screen size, screen resolution, network speed, browser user preferences, etc., each source must include the `w` descriptor which represents the width of each image/source.  Let's see this in code:
+
+```php
+<img
+  srcset="image-small.jpg 300w, image-medium.jpg 800w, image-large.jpg 1200w"
+  sizes="(min-width: 1200px) 1200px, (min-width: 760px) 800px, 100vw"
+  src="image-medium.jpg"
+  alt="A description of the image">
+```
+
+Code representation of an <img> tag with multiple sources and sizes query.{.caption}
+
+Notice the `srcset` attribute contains multiple image options/sources to satisfy any use case in this example. Also notice how each image includes a width descriptor like `300w`, `800w`, etc. The `w` descriptor's job is to inform the browser how wide each image is.
+
+The next important piece to the puzzle is the `sizes` attribute. The value of `sizes` can be as simple as `100vw` which means, regardless of the breakpoint, the image should always render at 100% the viewport width (full width). However in our example, we are including a basic media query based on the width of the viewport: If the viewport is 1200px or wider, the image should render at 1200px, if it's 760px or wider, the image should render at 800px, otherwise, anything smaller (i.e. mobile devices), should be 100% or full width.
+
+### Putting it all together
+
+In the no-too-distant past (because I still remember), the browser lacked enough information to determine the size an image should render. Now thanks to `srcset` and `sizes`, we can give the browser all the information it needs to make a smart decision as to which image is the best one based on our criteria. Let's go through the scenario in the code snippet above:
+
+* Thanks to the `srcset`, I can tell the browser how wide each image/source is and based on this the browser can calculate the image's aspect ratio which is essential to address CLS.
+* The `sizes` media query or value, if it's a single value (i.e. `100vw`), tells the browser: "Hey browser, here are these images each of which are **xx** wide, then look at condition in the `sizes` atribute which will tell you how big images should render in relation to the viewport width. Finally, because you are super smart and know the user's environment really well, select the best image/source to render while ensuring a great UX, performance, and avoid CLS."
+
+We know the browser is doing its job because when I inspect the rendered images while experiencing either of the two bugs above, the image the browser loads is in fact the correct one based on our `srcset` and `sizes` configuration. However, the visual outcome is not what we expect because Drupal is enforcing width and height values to the `<img>` without considering the rendering criteria we have configured.
+
+## Where do we go from here?
 
 **Second issue (TLDR)**: _Drupal assigns the width and height of the last image in the list of image styles within the responsive images configuration_.
 
@@ -155,3 +207,10 @@ I recently implemented this very component in a [Drupal site](https://www.almd.u
 ## In closing
 
 Even after using the `<details>` element for some time, I am still blown away by how much functionality a few lines of HTML combined with CSS can create. My advice to developers—especially those who have been coding for a while—is to revisit the basics from time to time; you'll be surprised how much things have evolved. Happy coding! 🌟
+
+* [^1]: Cumulative Layout Shift [CLS](https://web.dev/articles/cls){target="_blank" rel="noopener noreferrer"}, April 12, 2023.
+* [^2]: CLS is a confirmed, [direct ranking factor for Google](https://www.wixseoexpert.com/post/google-ranking-factors-the-complete-list-2026){target="_blank" rel="noopener noreferrer"}, November 19, 2025.
+
+## Additional resources
+
+* [Optimize Cumulative Layout Shift](https://web.dev/articles/optimize-cls){target="_blank" rel="noopener noreferrer"}
