@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  color: var(--gray-darker);
+  color: var(--gray-darkest);
   font-family: var(--font-primary);
   font-size: var(--font-size-20);
   line-height: var(--line-height-1-8);
