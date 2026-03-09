@@ -120,12 +120,9 @@ code .highlight-line:before {
   display: inline-block;
   font-variant-numeric: tabular-nums;
   margin-right: 1.2em;
-  overflow-x: auto;
   padding-right: 1.2em;
   text-align: right;
   width: 2.4em;
-  white-space: pre;
-  min-height: 1.5rem; /* Match your line-height */
 }
 
 ::selection {

@@ -1,5 +1,5 @@
 ---
-date: "2026-01-06"
+date: "2026-03-10"
 title: "Two Drupal core issues in responsive images you may be experiencing and not know it"
 subtitle: "Explaining and patching two issues in Drupal core that could afect how your responsive images render."
 slug: responsive-images-core-issues
@@ -9,12 +9,12 @@ series:
 tags: ['responsive images', 'drupal']
 draft: false
 featured: true
-featuredImage: "/images/heroes/details.webp"
-featuredImageAlt: "Illustration of person using a laptop with coding-related graphics projected on a big screen."
-imageThumb: "/images/thumbs/details-thumb.webp"
-featuredImageCredit: "Microsoft Copilot"
-featuredImageCreditUrl: "https://copilot.microsoft.com/"
-summary: "I have identified two bugs in Drupal core's responsive_image which create big problems when rendering images."
+featuredImage: "/images/heroes/holding-tablet.webp"
+featuredImageAlt: "Hand under low light holding tablet displaying unsplash images"
+imageThumb: "/images/thumbs/holding-tablet-thumb.webp"
+featuredImageCredit: "Egor Komarov"
+featuredImageCreditUrl: "https://unsplash.com/@egorkomarov"
+summary: "Providing solutions to two bugs with responsive images that could create visual as well as functional havoc."
 ---
 
 In early 2025 I noticed an odd behavior with how responsive images were rendering. This was a Drupal 10.4 site and the configuration I set was being ignored causing images to render smaller than expected.
@@ -85,7 +85,7 @@ Notice the `srcset` attribute contains multiple image options/sources to satisfy
 
 The next important piece to the puzzle is the `sizes` attribute. The value of `sizes` can be as simple as `100vw` which means, regardless of the breakpoint, the image should always render at 100% the viewport width (full width). However in our example, we are including a basic media query based on the width of the viewport: If the viewport is 1200px or wider, the image should render at 1200px, if it's 760px or wider, the image should render at 800px, otherwise, anything smaller (i.e. mobile devices), should be 100% or full width.
 
-### Putting it all together
+## Putting it all together
 
 In the no-too-distant past (because I still remember), the browser lacked enough information to determine the size an image should render. Now thanks to `srcset` and `sizes`, we can give the browser all the information it needs to make a smart decision as to which image is the best one based on our criteria. Let's go through the scenario in the code snippet above:
 
@@ -101,17 +101,15 @@ We know the browser is doing its job because when I inspect the rendered images 
 1. Use the `<picture>` element
 1. Try the patches in this post and see how things work for you
 
-
-
-## In closing
+### In closing
 
 Even after using the `<details>` element for some time, I am still blown away by how much functionality a few lines of HTML combined with CSS can create. My advice to developers—especially those who have been coding for a while—is to revisit the basics from time to time; you'll be surprised how much things have evolved. Happy coding! 🌟
 
-### Resources
+#### Resources
 
 * [Optimize Cumulative Layout Shift](https://web.dev/articles/optimize-cls){target="_blank" rel="noopener noreferrer"}
 
-#### Footnotes
+#### Footnotes{.eyebrow}
 
 [^1]: Cumulative Layout Shift [CLS](https://web.dev/articles/cls){target="_blank" rel="noopener noreferrer"}, April 12, 2023.
 
