@@ -1,13 +1,14 @@
 /**
- * @file
- * Z-index variables.
+ * @file zindex.css
+ * Z-index custom properties.
  */
-:root {
-  --below: -1;
-  --ground: 0;
-  --lowest: 10;
-  --lower: 20;
-  --low: 30;
-  --high: 40;
-  --highest: 50;
+:where(html) {
+  --weight-0: -1;
+  --weight-1: 1;
+  --weight-10: 10;
+  --weight-20: 20;
+  --weight-30: 30;
+  --weight-40: 40;
+  --weight-50: 50;
+  --weight-100: 100;
 }

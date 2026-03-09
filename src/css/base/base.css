@@ -1,34 +1,28 @@
+/**
+ * @file base.css.
+ * Base project styles.
+ */
 html {
-  font-size: 62.5%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scrollbar-gutter: stable;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Ensures transitions are not applied for users who prefer reduced motion. */
-  @view-transition {
-    navigation: auto;
-  }
+  font-size: 112.5%; /* = 18px */
 }
 
 body {
-  color: var(--gray-darker);
+  color: CanvasText;
+  background-color: Canvas;
+  line-height: 1.6;
   font-family: var(--font-primary);
-  font-size: var(--font-size-20);
-  line-height: var(--line-height-1-8);
+  font-size: var(--text-default);
+  font-synthesis: none;
+  line-height: var(--leading-relaxed);
 }
 
 a {
-  color: var(--black);
+  color: var(--color-secondary);
   text-decoration: underline;
 
+  &:visited,
   &:hover,
-  &:focus {
+  &:active {
     text-decoration: none;
   }
 }
@@ -36,69 +30,11 @@ a {
 h1,
 h2,
 h3,
-h4 {
-  color: var(--black);
-  line-height: var(--line-height-1);
-}
-
-h1 {
-  font-size: var(--font-size-26);
-
-  @media (width >= 48rem) {
-    font-size: var(--font-size-40);
-  }
-
-  @media (width >= 63rem) {
-    font-size: var(--font-size-50);
-  }
-}
-
-h2 {
-  font-size: var(--font-size-30);
-}
-
-h3 {
-  font-size: var(--font-size-24);
-}
-
-h4 {
-  font-size: var(--font-size-18);
-}
-
-/* The 'height: auto' ensures post image resizes proportional
-keeping its original aspect ratio. */
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
-
-/* Code snippets styles.
- * If code snippet is inline with text. */
-.blog-post__body {
-  ul,
-  ol,
-  p {
-    code {
-      background-color: var(--gray-lighten);
-      border: 1px solid var(--gray-medium);
-      border-radius: 5px;
-      color: var(--gray-darkest);
-      display: inline-block;
-      font-family: var(--font-monospace);
-      font-size: var(--font-size-16);
-      line-height: 1;
-      padding-block: var(--size-3);
-      padding-inline: var(--size-5);
-      vertical-align: middle;
-      word-break: break-all;
-    }
-  }
-}
-
-code[class*="language-"] {
-  font-size: var(--font-size-14);
-  line-height: 1.3;
+h4,
+h5,
+h6 {
+  color: CanvasText;
+  line-height: var(--leading-snug); /* 1.3 */
 }
 
 /* Styles for code blocks line numbers */
@@ -106,11 +42,16 @@ pre {
   counter-reset: lineNumber;
 }
 
-pre[class*="language-"] {
-  margin-block-end: var(--size-30);
-  margin-block-start: var(--size-10);
+code[class*="language-"] {
+  font-size: var(--text-min);
 }
 
+code[class*="language-"],
+pre[class*="language-"] {
+  line-height: 1.3;
+}
+
+/* Line number styles. */
 code .highlight-line:before {
   -webkit-user-select: none;
   border-right: 1px solid #404040;
@@ -119,10 +60,10 @@ code .highlight-line:before {
   counter-increment: lineNumber;
   display: inline-block;
   font-variant-numeric: tabular-nums;
-  margin-right: 1.2em;
-  padding-right: 1.2em;
+  inline-size: 2.4em;
+  margin-inline-end: 1em;
+  padding-inline-end: 1em;
   text-align: right;
-  width: 2.4em;
 }
 
 ::selection {
