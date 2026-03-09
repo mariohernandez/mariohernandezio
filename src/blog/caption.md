@@ -7,7 +7,7 @@ tags: ['css', 'theme']
 #   slug: "css"
 #   order: 1
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/heroes/frame.webp"
 featuredImageAlt: "Black metal frame on beach sand"
 imageThumb: "/images/thumbs/frame-thumb.webp"

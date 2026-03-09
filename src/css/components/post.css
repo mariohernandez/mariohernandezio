@@ -4,12 +4,11 @@
  */
 
 .page-header__summary {
-  margin-block-end: 0.5rem
+  margin-block-end: 0.5rem;
 }
 
 /* Individual tag above article title. */
 .blog-post__tag {
-
   .eyebrow {
     margin-block-end: var(--size-20);
 
@@ -34,10 +33,6 @@
 .blog-post__date {
   font-size: var(--font-size-16);
   margin-block-end: var(--size-40);
-}
-
-.blog-post__share {
-  margin-block: var(--size-20) var(--size-10);
 }
 
 .blog-post__body {
@@ -79,10 +74,20 @@
 
   h2 {
     font-size: var(--font-size-24);
+
+    &.small-h2 {
+      font-size: var(--small-h2);
+      margin-block-start: var(--size-40);
+    }
   }
 
   h3 {
     font-size: var(--font-size-20);
+
+    &.small-h3 {
+      font-size: var(--small-h3);
+      margin-block-start: var(--size-40);
+    }
   }
 
   ol {
@@ -95,6 +100,57 @@
   ol:not([class]) {
     margin-block-end: var(--size-24);
   }
+}
+
+/* Headings anchor including tooltip when a link is copied. */
+a.heading-anchor {
+  cursor: pointer;
+  block-size: 20px;
+  display: inline-block;
+  inline-size: 20px;
+  opacity: 0.6;
+  padding-block-start: 2px;
+  text-decoration: none;
+
+  svg {
+    display: block;
+    padding-block-start: 2px;
+    padding-inline-start: 2px;
+    stroke: var(--black);
+  }
+
+  &:hover {
+    opacity: 1;
+
+    svg {
+      stroke: var(--purple);
+    }
+  }
+}
+
+/* Anchor tooltip styles. */
+.anchor-tooltip {
+  visibility: hidden;
+  background-color: var(--purple);
+  color: var(--white);
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px 10px;
+  position: absolute;
+  z-index: 1000;
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  /* Position relative to the element it's attached to */
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.8em;
+}
+
+.anchor-tooltip.show {
+  visibility: visible;
+  opacity: 1;
 }
 
 .blog-post__tags {
@@ -114,7 +170,7 @@
     display: block;
     font-size: 1.2rem;
     font-weight: var(--weight-700);
-    letter-spacing: 0.10em;
+    letter-spacing: 0.1em;
     line-height: var(--line-height-1);
     margin-block-end: 1.6rem;
     text-align: center;
@@ -134,7 +190,7 @@
     margin-block-end: 0;
     padding-inline-start: 0;
 
-     @media (width >= 48rem) {
+    @media (width >= 48rem) {
       flex-direction: row;
     }
   }

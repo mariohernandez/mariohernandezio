@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "netlify"
+  ],
+  "enableAllProjectMcpServers": true
+}

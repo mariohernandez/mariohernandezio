@@ -30,7 +30,7 @@
     }
   }
 
- [data-state="active"] {
+  [data-state="active"] {
     color: var(--gray-darker);
     text-decoration: none;
     pointer-events: none;

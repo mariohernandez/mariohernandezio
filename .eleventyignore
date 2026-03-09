@@ -1,1 +1,4 @@
 node_modules
+
+# It prevents .js 11ty files from displaying in sitemap.xml.
+/src/**/*.js

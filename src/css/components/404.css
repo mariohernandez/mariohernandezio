@@ -5,12 +5,17 @@
 
 :root {
   --font-base: Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
-  --font-display: 'Rubik Mono One', monospace;
+  --font-display: "Rubik Mono One", monospace;
   --color-dark: #363950;
   --color-light: var(--white);
   --color-light-shade: #f3f3f3;
   --color-primary: var(--purple);
-  --gradient-primary: linear-gradient(111deg, #002846 0%, #ff7373 82.7%, #ffaf7b 97.2%);
+  --gradient-primary: linear-gradient(
+    111deg,
+    #002846 0%,
+    #ff7373 82.7%,
+    #ffaf7b 97.2%
+  );
   --gradient-secondary: linear-gradient(180deg, #a25863 0%, #373950 100%);
   --size-step-0: clamp(1rem, 0.9592rem + 0.2041vw, 1.125rem);
   --size-step-1: clamp(1.44rem, 1.2576rem + 0.9122vw, 1.9988rem);

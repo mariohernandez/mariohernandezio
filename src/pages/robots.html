@@ -1,6 +1,7 @@
 ---
 permalink: /robots.txt
+eleventyExcludeFromCollections: true <!-- Stops file from appearing in the sitemap.xml. -->
 ---
 User-agent: *
-Allow: /
+Disallow:
 Sitemap: {{ site.url }}/sitemap.xml

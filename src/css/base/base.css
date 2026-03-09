@@ -65,3 +65,8 @@ code .highlight-line:before {
   padding-inline-end: 1em;
   text-align: right;
 }
+
+::selection {
+  background-color: var(--purple);
+  color: var(--white);
+}
