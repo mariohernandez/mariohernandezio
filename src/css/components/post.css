@@ -13,7 +13,7 @@
     margin-block-end: var(--size-20);
 
     &:hover {
-      color: var(--gray-darker2);
+      color: var(--gray-darker);
     }
   }
 }
@@ -24,7 +24,7 @@
 }
 
 .page-header__subtitle {
-  color: var(--gray-darker2);
+  color: var(--gray-darker);
   font-size: var(--size-22);
   font-style: italic;
   text-wrap: balance;
@@ -104,25 +104,25 @@
 
 /* Headings anchor including tooltip when a link is copied. */
 a.heading-anchor {
-  cursor: pointer;
-  block-size: 20px;
-  display: inline-block;
-  inline-size: 20px;
-  opacity: 0.6;
-  padding-block-start: 2px;
+  color: var(--gray-darkest);
   text-decoration: none;
 
-  svg {
-    display: block;
-    padding-block-start: 2px;
-    padding-inline-start: 2px;
-    stroke: var(--black);
+  &::after {
+    block-size: 20px;
+    color: var(--gray-dark);
+    cursor: pointer;
+    content: '#';
+    display: inline-block;
+    inline-size: 20px;
+    margin-inline-start: 8px;
+    opacity: 0.6;
   }
 
   &:hover {
     opacity: 1;
 
-    svg {
+    &::after {
+      color: var(--purple);
       stroke: var(--purple);
     }
   }
