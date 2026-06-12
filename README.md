@@ -13,14 +13,16 @@ I am a Front-end Software Engineer who specializes in [Drupal](https://drupal.or
 ## Tech Stack
 
 ### Core Technologies
+
 - **Static Site Generator:** [Eleventy 3.x](https://www.11ty.dev/)
 - **Template Engine:** Nunjucks
 - **CSS Processing:** PostCSS with nested syntax support
 - **JavaScript Bundler:** esbuild
 - **Search:** Pagefind
-- **Node.js Version:** 22.19.0 (see `.nvmrc`)
+- **Node.js Version:** 24.14.1 (see `.nvmrc`)
 
 ### Key Dependencies
+
 - `@11ty/eleventy` (^3.1.2) - Static site generator
 - `@11ty/eleventy-img` (^6.0.4) - Image optimization and transformation
 - `@11ty/eleventy-plugin-rss` (^2.0.4) - RSS feed generation
@@ -36,7 +38,7 @@ I am a Front-end Software Engineer who specializes in [Drupal](https://drupal.or
 
 ## Project Structure
 
-```
+```md
 .
 ├── .eleventy.js           # Eleventy configuration
 ├── postcss.config.js      # PostCSS configuration
@@ -75,7 +77,8 @@ I am a Front-end Software Engineer who specializes in [Drupal](https://drupal.or
 ## Getting Started
 
 ### Prerequisites
-- Node.js 22.19.0 (use nvm for version management)
+
+- Node.js 24.14.1 (use nvm for version management)
 - npm (comes with Node.js)
 
 ### Installation
@@ -129,20 +132,24 @@ npm run lint
 ### Eleventy Configuration (`.eleventy.js`)
 
 **Input/Output:**
+
 - Input directory: `src/`
 - Output directory: `dist/`
 
 **Template Engines:**
+
 - Markdown templates: Nunjucks
 - Data files: Nunjucks
 - HTML templates: Nunjucks
 
 **Collections:**
+
 - `blog` - All blog posts sorted by display order
 - `featuredPost` - Posts with `featured: true` in frontmatter
 - `seriesCollections` - Multi-part posts grouped by series slug
 
 **Markdown Processing:**
+
 - Parser: markdown-it with HTML, breaks, and linkify enabled
 - Plugins:
   - Attributes support for adding classes/IDs to elements
@@ -150,17 +157,20 @@ npm run lint
   - Auto-generated heading anchors (h1-h3) with custom SVG icon
 
 **Image Processing:**
+
 - Automatic WebP conversion for all images
 - Width: auto (preserves original dimensions)
 - Plugin: @11ty/eleventy-img
 
 **JavaScript Processing:**
+
 - Entry point: `src/js/scripts.js`
 - Bundler: esbuild (target: ES2020)
 - Minification: enabled in production
 - Bundle mode: enabled (includes dependencies)
 
 **Filters & Shortcodes:**
+
 - `dateFilter` - Format dates for display
 - `w3DateFilter` - ISO 8601 date format for machine-readable dates
 - `jsmin` - Terser-based JavaScript minification
@@ -168,11 +178,13 @@ npm run lint
 - `year` - Current year (for copyright notices)
 
 **Production Optimizations:**
+
 - HTML minification via html-minifier (production only)
 
 ### PostCSS Configuration (`postcss.config.js`)
 
 **Plugin Pipeline:**
+
 1. `postcss-import` - Inline @import rules
 2. `cssnano` - CSS minification and optimization
 3. `postcss-nested` - Nested CSS syntax support (Sass-like)
@@ -182,6 +194,7 @@ npm run lint
    - Custom media queries: preserved
 
 **Browser Support (browserslist):**
+
 - Last 2 versions of all browsers (excluding dead browsers)
 - Browsers with >= 1% global usage
 - Browsers with >= 1% usage in US market
@@ -191,6 +204,7 @@ npm run lint
 **Methodology:** BEM (Block Element Modifier)
 
 **Directory Structure:**
+
 - `base/` - Reset, typography, global styles
 - `components/` - Component-specific styles
 - `utilities/` - Utility/helper classes
@@ -200,10 +214,12 @@ npm run lint
 ### Netlify Configuration (`netlify.toml`)
 
 **Build Settings:**
+
 - Build command: `npm run production`
 - Publish directory: `dist/`
 
 **Redirects:**
+
 - 301 redirects configured for post URL changes
 - Ensures SEO preservation for renamed articles
 
@@ -235,6 +251,7 @@ series:                          # Optional - for multi-part posts
 ### Series Posts
 
 Multi-part blog posts can be linked using the `series` frontmatter:
+
 - `slug` - Unique identifier for the series
 - `order` - Order within the series
 - `description` - Optional series description
@@ -244,14 +261,17 @@ The `seriesCollections` collection automatically groups and orders these posts f
 ### Image Guidelines
 
 **Formats:**
+
 - Preferred format: WebP
 - Images automatically converted to WebP during build
 
 **Locations:**
+
 - Full-size images: `src/images/`
 - Thumbnails: `src/images/thumbs/`
 
 **Dimensions:**
+
 - Featured images: 16:9 ratio recommended
 - Thumbnails: scaled versions of featured images
 
@@ -271,6 +291,7 @@ The `seriesCollections` collection automatically groups and orders these posts f
 ```
 
 Parameters:
+
 1. Label (string)
 2. URL (string)
 3. Type (optional): 'link' or 'button'
@@ -280,12 +301,14 @@ Parameters:
 ## Build Pipeline
 
 ### Development Build Flow
+
 1. User runs `npm start` - Eleventy dev server starts
 2. User runs `npm run watch:css` (separate terminal) - PostCSS watches CSS
 3. CSS changes → PostCSS compilation → auto-reload
 4. Template/content changes → Eleventy rebuild → auto-reload
 
 ### Production Build Flow
+
 1. `NODE_ENV=production` set
 2. PostCSS compiles and minifies CSS
 3. Eleventy processes:
@@ -301,14 +324,17 @@ Parameters:
 **Engine:** Pagefind
 
 **Indexing:**
+
 - Runs only during production build (`npm run production`)
 - Not available during development mode
 
 **UI Integration:**
+
 - Search UI mounts to `#search` element
 - Automatically indexes all HTML content in `dist/`
 
 **Local Testing:**
+
 ```bash
 npm run search
 ```
@@ -316,14 +342,17 @@ npm run search
 ## Analytics & Integrations
 
 **Google Analytics 4:**
+
 - Tag ID: `G-KFWBDSLVNK`
 - Configured in base layout
 
 **RSS Feed:**
+
 - Available at `/feed.xml`
 - Generated via @11ty/eleventy-plugin-rss
 
 **Syntax Highlighting:**
+
 - Powered by @11ty/eleventy-plugin-syntaxhighlight
 - Automatic for fenced code blocks
 - Line highlighting support enabled
@@ -333,12 +362,14 @@ npm run search
 **Platform:** Netlify
 
 **Automatic Deployment:**
+
 - Triggered on push to main branch
 - Build command: `npm run production`
 - Deploy previews: enabled for pull requests
 
 **Environment:**
-- Node.js version: Specified via `.nvmrc` (22.19.0)
+
+- Node.js version: Specified via `.nvmrc` (24.14.1)
 - Build logs: Available in Netlify dashboard
 
 ## Code Quality
@@ -348,10 +379,12 @@ npm run search
 **Configuration:** `biome.json`
 
 **Coverage:**
+
 - JavaScript files
 - CSS files
 
 **Usage:**
+
 ```bash
 npm run lint
 ```
@@ -361,6 +394,7 @@ npm run lint
 ### Typical Development Session
 
 1. **Start development servers:**
+
    ```bash
    npm start                # Terminal 1: Eleventy
    npm run watch:css        # Terminal 2: PostCSS
@@ -377,6 +411,7 @@ npm run lint
    - Changes auto-reload
 
 4. **Before committing:**
+
    ```bash
    npm run lint             # Check code quality
    npm run production       # Test production build
@@ -403,6 +438,7 @@ npm run lint
 ## Browser Support
 
 Based on browserslist configuration:
+
 - Last 2 versions of all major browsers
 - Browsers with >= 1% global market share
 - Browsers with >= 1% US market share
@@ -413,6 +449,7 @@ This ensures modern CSS and JavaScript features work with automatic fallbacks wh
 ## Performance Considerations
 
 **Optimization Strategies:**
+
 - HTML minification in production
 - CSS minification via cssnano
 - JavaScript bundling and minification
@@ -420,6 +457,7 @@ This ensures modern CSS and JavaScript features work with automatic fallbacks wh
 - Efficient static site generation (no runtime)
 
 **Build Size:**
+
 - Minimal JavaScript footprint
 - Optimized CSS output
 - Compressed images
@@ -427,6 +465,7 @@ This ensures modern CSS and JavaScript features work with automatic fallbacks wh
 ## MCP Server Integration
 
 **Netlify MCP Server:**
+
 - Configuration: `.mcp.json`
 - Enables Claude Code integration with Netlify
 - Allows deployment management from IDE
@@ -448,6 +487,7 @@ Mario Hernandez
 ## Support & Documentation
 
 For questions about:
+
 - **Eleventy:** https://www.11ty.dev/docs/
 - **PostCSS:** https://postcss.org/
 - **Netlify:** https://docs.netlify.com/
