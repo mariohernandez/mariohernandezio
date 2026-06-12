@@ -9,7 +9,7 @@
 // Core Eleventy plugins
 const htmlmin = require("html-minifier-next");
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
-const rssPlugin = require('@11ty/eleventy-plugin-rss');
+const { rssPlugin } = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 // Custom utilities and filters
