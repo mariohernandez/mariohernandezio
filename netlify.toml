@@ -4,7 +4,7 @@
   command = "npm run production"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "24"
 
 ## https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
 
