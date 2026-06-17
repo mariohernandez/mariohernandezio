@@ -1,5 +1,5 @@
 ---
-date: "2026-06-16"
+date: "2026-06-17"
 title: "Don't let AI have the last word"
 subtitle: "Do you feel confident to push back on AI's proposed coding solutions? I hope so."
 slug: dont-let-ai-have-the-last-word
@@ -133,6 +133,10 @@ Needless to say, this was the right call and the final result was summarized by 
 </div>
 {% endraw %}
 
+For me the main learning lesson of these simple yet real examples is that in the past, “_knowing how to code_” mostly meant knowing the syntax, semantics and understanding what you were writing. That part is becoming less critical with AI. But the more important skill, "_knowing what not to write_", hasn’t changed. Avoiding poor tradeoffs, recognizing over-engineered or fragile solutions, those still require judgment. That judgment hasn’t gone away; it’s just being applied later in the process.
+
 ## In closing
 
-When properly trained and instructed, AI can be a real asset to your coding process. Clearly in my case I had not done a good job at providing the right context and instructions for the Assistant to follow. However, whenever I run into situations like this, I make sure it is documented for AI's future use.
+These are interesting times for developers. We don’t yet know what this shift means for how we consume knowledge, but I do hope I never lose the desire to read, watch, and try new learning materials, and to still feel excited about them.
+
+Happy learning! 📚
