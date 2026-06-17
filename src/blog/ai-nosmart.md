@@ -76,7 +76,8 @@ If you know CSS really well you can skip these examples, but if you don't know w
 1. all 4 sides reserve space.
 1. all 4 sides reserve space.
 1. width / height honored again.
-1. top/bottom are PAINTED but reserve NO space — they don't push the lines above/below apart. (i.e. any element with `display: inline-block;`).
+1. it does not break content flow (i.e. any element with `display: inline-block;`)
+1. because the element is inline, a whitespace of typically ~4px is rendered in your HTML. That's why a row of inline-block boxes set to width: 25% won't fit four-across.
 
 Did you know all those specifics about the `display` CSS property? What if I didn't understand them and wondered why my layout is broken? What if I want to turn an inline-level element into a block-level element and vice versa? What would that do to my layout or spacing around elements?
 
@@ -95,7 +96,7 @@ I'll focus on only the one piece AI and I had a disagreement on and had to have 
 * As any typical card, I needed a title, image, label, and a link/cta field.
 * The link needed a label (i.e. "Read the full article"), url, and an icon (svg).
 
-AI built the component for me using SDC's conventions along with my custom Storybook's workflow and it worked as expected in Drupal and Storybook, but since this was one of the first components I was building in this new project, I decided that for the link's icon, I wanted to extract the inline SVG from the `link.twig` template and instead create an `<svg>...</svg>` asset out of it so I could re-use it in other components.
+AI built the component for me using [Single Directory Component (SDC)](https://www.drupal.org/project/sdc){target="_blank" rel="noopener noreferrer"} conventions along with my custom Storybook's workflow and it worked as expected in Drupal and Storybook, but since this was one of the first components I was building in this new project, I decided that for the link's icon, I wanted to extract the inline SVG from the `link.twig` template and instead create an `<svg>...</svg>` asset out of it so I could re-use it in other components.
 
 Originally, AI had opted to use Twig's `source()` function which is a valid and proper approach for inlining SVGs into components or Twig templates, however, I like to use `{% raw %}{% include %}{% endraw %}` as it provides better cache management especially if I plan to use many icons on my site.
 
