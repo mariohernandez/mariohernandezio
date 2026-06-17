@@ -11,7 +11,7 @@ featuredImageAlt: "A teacher pointing at a chalkboard that reads 'Hello, world' 
 imageThumb: "/images/thumbs/ai-bot-thumb.webp"
 featuredImageCredit: "Claude Design"
 featuredImageCreditUrl: "https://claude.com/product/overview"
-summary: AI has not replaced my learning habits, it has validated them.
+summary: "AI has not replaced my learning habits, it has validated them."
 ---
 What an exciting time to be a developer. Over the past year, I've gradually begun adopting a number of AI tools to improve the quality of my work, be more efficient, and even dive into areas of development I had never been strong in.
 
@@ -89,8 +89,6 @@ The code challenge was relatively simple because I have done this many times, bu
 
 ## Build a Card component with SDC in Storybook
 
-<!-- [Single Directory Components, SDC](https://mariohernandez.io) -->
-
 I'll focus on only the one piece AI and I had a disagreement on and had to have a heart-to-heart talk about; The card's cta link.
 
 * As any typical card, I needed a title, image, label, and a link/cta field.
@@ -105,7 +103,7 @@ Here's the verbatim conversation about this "simple" change:
 **Me**:
 _can we extract the icon's svg tag and create a file for it inside `src/assets/images/`? then twig include it in `link.twig`? this way we can reuse it in other components_{.callout}
 
-Simple enough, except my project's workflow is unique in that SDC and Storybook share assets (twig, yml, css, js, images), to ensure there is a single source of thruth. However, since this was a new project, I had not registered all the required namespaces for Drupal and Storybook to share assets.
+Simple enough, except my project's workflow is unique in that SDC and Storybook share assets (twig, yml, css, js, images), to ensure there is a single source of truth. However, since this was a new project, I had not registered all the required namespaces for Drupal and Storybook to share assets.
 
 **AI**:
 _Good call — `{% raw %}{% include %}{% endraw %}` sidesteps source() entirely and avoids the namespace registration work in both Drupal and Storybook_.{.callout}
