@@ -107,8 +107,8 @@ pre {
 }
 
 pre[class*="language-"] {
-  margin-block-end: var(--size-30);
-  margin-block-start: var(--size-10);
+  margin-block-end: var(--size-6);
+  margin-block-start: var(--size-30);
 }
 
 code .highlight-line:before {

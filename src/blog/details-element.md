@@ -4,7 +4,7 @@ title: "Native Accordions. Let HTML do the heavy lifting"
 subtitle: "A native and lightweight solution for building advanced UIs without dependencies."
 tags: ['html','coding', 'css']
 draft: false
-featured: true
+featured: false
 featuredImage: "/images/heroes/details.webp"
 featuredImageAlt: "Illustration of person using a laptop with coding-related graphics projected on a big screen."
 imageThumb: "/images/thumbs/details-thumb.webp"
