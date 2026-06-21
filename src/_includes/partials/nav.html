@@ -12,12 +12,12 @@
         </li>
       {% else %}
         <li class="navigation__item navigation__item--search">
-          <a class="navigation__link navigation__link--search" href="{{ item.url }}"
+          <a class="navigation__link navigation__link--search"  aria-label="Press to begin searching this site" href="{{ item.url }}"
             {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
-            {% include "../../images/icons/" + (item.icon) + ".svg" %}
-            <span>
-              {{ item.text }}
+            <span class="visually-hidden">
+              Press to begin searching this site.
             </span>
+            {% include "../../images/icons/" + (item.icon) + ".svg" %}
           </a>
         </li>
       {% endif %}
